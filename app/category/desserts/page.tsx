@@ -1,5 +1,5 @@
 function page() {
-  return <div>desserts</div>
+  return <div>desserts!</div>
 }
 
 export default page
