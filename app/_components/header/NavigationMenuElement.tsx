@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import Button from "./Button"
+import Button from "../ui/Button"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { twMerge } from "tailwind-merge"
@@ -40,7 +40,7 @@ function NavigationMenuElement({ category, closeMenu }: PropsType) {
 
       <div className="mt-10 cursor-pointer text-center">{label}</div>
       <Link href={`/category/${link}`} className="mt-10">
-        <Button color="bg-stone-50" styles="cursor-pointer">
+        <Button color="bg-stone-50" className="cursor-pointer">
           Choose
         </Button>
       </Link>

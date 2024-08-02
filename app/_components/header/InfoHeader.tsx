@@ -1,7 +1,7 @@
-import InfoHeaderCart from "./InfoHeaderCart";
-import InfoHeaderLike from "./InfoHeaderLike";
-import InfoHeaderNumber from "./InfoHeaderNumber";
-import InfoHeaderUser from "./InfoHeaderUser";
+import InfoHeaderCart from "./InfoHeaderCart"
+import InfoHeaderLike from "./InfoHeaderLike"
+import InfoHeaderNumber from "./InfoHeaderNumber"
+import InfoHeaderUser from "./InfoHeaderUser"
 
 function InfoHeader() {
   return (
@@ -21,7 +21,7 @@ function InfoHeader() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default InfoHeader;
+export default InfoHeader

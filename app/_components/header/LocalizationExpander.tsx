@@ -1,5 +1,5 @@
 import LocalizationExpanderBlock from "./LocalizationExpanderBlock"
-import LocalizationExpanderButton from "./Button"
+import LocalizationExpanderButton from "../ui/Button"
 
 function LocalizationExpander() {
   return (
