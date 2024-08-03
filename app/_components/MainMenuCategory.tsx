@@ -1,12 +1,13 @@
 import MenuCard from "./MenuCard"
+import Button from "./ui/Button"
 
 // сделать потом ограничение на 8 штук максиму для отображения.
 
 function MainMenuCategory() {
   return (
-    <div className="flex flex-col items-center bg-blue-100 pt-12">
+    <div className="flex max-w-[1304px] flex-col items-center bg-blue-100 px-3 pt-12">
       <h1 className="text-center text-5xl font-bold">Pizza</h1>
-      <div className="mt-9 grid w-full grid-cols-4 gap-[6px]">
+      <div className="mb-12 mt-9 grid w-full grid-cols-4 gap-[6px]">
         <MenuCard />
         <MenuCard />
         <MenuCard />
@@ -15,6 +16,9 @@ function MainMenuCategory() {
         <MenuCard />
         <MenuCard />
       </div>
+      <Button className="mb-3 bg-stone-700 py-3 text-[16px] font-bold text-stone-50">
+        See all
+      </Button>
     </div>
   )
 }

@@ -63,6 +63,7 @@ export default function MainSwiper() {
                 // fill
                 width={1200}
                 height={460}
+                className="cursor-pointer"
               />
             </div>
           </SwiperSlide>

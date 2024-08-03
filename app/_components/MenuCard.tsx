@@ -41,10 +41,7 @@ function MenuCard() {
               <AiOutlinePlus />
             </div>
           </div> */}
-          <Button
-            color="bg-stone-100"
-            className="bg-stone-100 py-3 text-[16px] font-bold hover:bg-[#ffc700]"
-          >
+          <Button className="bg-stone-100 py-3 text-[16px] font-bold hover:bg-[#ffc700]">
             Order
           </Button>
         </div>
