@@ -40,7 +40,7 @@ function NavigationMenuElement({ category, closeMenu }: PropsType) {
 
       <div className="mt-10 cursor-pointer text-center">{label}</div>
       <Link href={`/category/${link}`} className="mt-10">
-        <Button color="bg-stone-50" className="cursor-pointer">
+        <Button className="h-[40px] max-h-[40px] w-[104px] max-w-[104px] cursor-pointer bg-stone-50">
           Choose
         </Button>
       </Link>
