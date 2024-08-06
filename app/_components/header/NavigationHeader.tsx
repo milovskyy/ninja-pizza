@@ -14,7 +14,7 @@ function NavigationHeader() {
             <p>Home</p>
           </Link>
         </li>
-        <li className="justify-cente group flex h-full flex-col items-center font-bold text-stone-800">
+        <li className="group flex h-full flex-col items-center justify-center font-bold text-stone-800">
           <div className="flex h-[56px] items-center justify-center gap-1 rounded-full px-5 hover:bg-stone-200">
             <p>Menu</p>
             <IoIosArrowDown

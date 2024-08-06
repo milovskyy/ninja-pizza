@@ -18,6 +18,7 @@ function Button({ children, className, action, ...props }: PropsType) {
       //   color ? `${color}` : "bgmain",
       //   className && `${className}`,
       // )}
+      title="Click me"
       className={cn(
         "flex cursor-pointer items-center justify-center rounded-full bg-[#ffc700] px-6 py-2 text-center text-[14px] text-stone-900",
         className,

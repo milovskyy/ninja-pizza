@@ -13,23 +13,23 @@ import { useRouter } from "next/navigation"
 
 const slides = [
   {
-    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider5.webp",
+    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider/slider5.webp",
     link: "/slide1",
   },
   {
-    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider2.webp",
+    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider/slider2.webp",
     link: "/slide2",
   },
   {
-    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider3.png",
+    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider/slider3.png",
     link: "/slide3",
   },
   {
-    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider4.webp",
+    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider/slider4.webp",
     link: "/slide4",
   },
   {
-    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider1.webp",
+    url: "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/slider/slider1.webp",
     link: "/slide5",
   },
 ]

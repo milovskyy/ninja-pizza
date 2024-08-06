@@ -1,4 +1,4 @@
-import Logo from "./Logo"
+import Logo from "../Logo"
 import LocalizationHeader from "./LocalizationHeader"
 import NavigationHeader from "./NavigationHeader"
 import InfoHeader from "./InfoHeader"

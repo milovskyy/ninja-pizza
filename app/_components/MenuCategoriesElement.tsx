@@ -1,10 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import Button from "../ui/Button"
+import Button from "./ui/Button"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { twMerge } from "tailwind-merge"
+import { cn } from "@/lib/utils"
 
 type PropsType = {
   category: {
@@ -13,19 +14,23 @@ type PropsType = {
     link: string
     color: string
   }
-  closeMenu: () => void
+  separate?: boolean
 }
 
-function NavigationMenuElement({ category, closeMenu }: PropsType) {
+function MenuCategoriesElement({ category, separate }: PropsType) {
   const { image, label, link, color } = category
 
   const router = useRouter()
 
   return (
     <div
-      className={`${color} flex h-[380px] w-[200px] flex-col items-center p-6 pb-10`}
+      // className={`${color} flex h-[380px] w-[200px] flex-col items-center p-6 pb-10`}
+      className={cn(
+        "flex h-[380px] w-[200px] flex-col items-center p-6 pb-10",
+        color,
+        separate && "w-full rounded-3xl",
+      )}
       onClick={() => {
-        closeMenu()
         router.push(`/category/${link}`)
       }}
     >
@@ -38,9 +43,11 @@ function NavigationMenuElement({ category, closeMenu }: PropsType) {
         <Image src={image} alt="img" fill className="object-cover" />
       </div>
 
-      <div className="mt-10 cursor-pointer text-center">{label}</div>
+      <div className="mt-10 cursor-pointer text-center text-xl font-bold">
+        {label}
+      </div>
       <Link href={`/category/${link}`} className="mt-10">
-        <Button className="h-[40px] max-h-[40px] w-[104px] max-w-[104px] cursor-pointer bg-stone-50">
+        <Button className="h-[40px] max-h-[40px] w-[104px] max-w-[104px] cursor-pointer bg-stone-50 font-bold">
           Choose
         </Button>
       </Link>
@@ -48,4 +55,4 @@ function NavigationMenuElement({ category, closeMenu }: PropsType) {
   )
 }
 
-export default NavigationMenuElement
+export default MenuCategoriesElement
