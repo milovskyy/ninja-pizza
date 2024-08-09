@@ -1,56 +1,23 @@
-import NavigationMenuElement from "./MenuCategoriesElement"
-
-const menuCategories = [
-  {
-    image:
-      "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/categories/pizza2x.webp",
-    label: "Pizza",
-    link: "pizza",
-    color: "bg-[#fff3dd]",
-  },
-  {
-    image:
-      "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/categories/snacks2x.webp",
-    label: "Snacks",
-    link: "snacks",
-    color: "bg-[#f0efff]",
-  },
-  {
-    image:
-      "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/categories/drinks2x.webp",
-    label: "Drinks",
-    link: "drinks",
-    color: "bg-[#e3f3ff]",
-  },
-  {
-    image:
-      "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/categories/sauces2x.webp",
-    label: "Extras",
-    link: "extras",
-    color: "bg-[#e4f1c6]",
-  },
-  {
-    image:
-      "https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/categories/desert3x.webp",
-    label: "Desserts",
-    link: "desserts",
-    color: "bg-[#ffe1e1]",
-  },
-]
+import { getCategories } from "@/lib/data-service"
+import MenuCategoriesElement from "./MenuCategoriesElement"
 
 type PropsType = {
   separate?: boolean
 }
 
+export const revalidate = 0
+
 // сортировать чтоб сначала новые шли
 
-function MenuCategories({ separate }: PropsType) {
+async function MenuCategories({ separate }: PropsType) {
+  const categories = await getCategories()
+
   return (
     <div className={`flex ${separate && "w-full gap-2"}`}>
-      {menuCategories.map((category) => {
+      {categories.map((category) => {
         return (
-          <NavigationMenuElement
-            key={category.link}
+          <MenuCategoriesElement
+            key={category.linkName}
             category={category}
             separate={separate}
           />
@@ -75,4 +42,11 @@ const x1 = [
   "",
 ]
 
-const x11 = ["Choux pastry", "MMaple syrup", "Cashews"]
+const x11 = [
+  "Sriracha",
+  "Smoked paprika",
+  "Cane sugar",
+  "Hellmann`s Original",
+  "Dry onion",
+  "Fresh garlic",
+]

@@ -35,8 +35,6 @@ function MenuCard({ product }: PropsType) {
 
   const formattedIngredients = formatIngredients(ingredients.slice(0, 4))
 
-  console.log(vegetarian)
-
   return (
     <div className="flex w-full rounded-2xl bg-white p-6 pb-5">
       <div className="relative flex w-full flex-col">

@@ -1,47 +1,96 @@
 // import { notFound } from "next/navigation"
 // import { eachDayOfInterval } from "date-fns"
+import { initialSort } from "./helperFunction"
+import { supabase } from "./supabase"
 
 import {
   AllProductsType,
+  CategoryType,
   ProductType,
   SeparateMenuType,
 } from "@/app/_types/TypeProduct"
-import { supabase } from "./supabase"
 
 // For testing
 // await new Promise((res) => setTimeout(res, 2000));
 
-/////////////
+// const { data: desserts, error: error1 } = await supabase
+// .from("products")
+// .select("*")
+// .eq("category", "Desserts")
+
+// const { data: pizzas, error: error2 } = await supabase
+// .from("products")
+// .select("*")
+// .eq("category", "Pizza")
+
+// if (error1 || error2) {
+//   console.log(error1, error2, "error TYT")
+//   throw new Error("Products could not be loaded")
+// }
+// const data = [
+//   { name: "Pizza", products: pizzas },
+//   { name: "Desserts", products: desserts },
+// ]
 
 // GET
 
 export const getProducts = async function () {
-  // const { data, error } = await supabase.from("products").select("*")
-  const { data: desserts, error: error1 } = await supabase
-    .from("products")
-    .select("*")
-    .eq("category", "Desserts")
+  const { data: products, error } = await supabase.from("products").select("*")
 
-  const { data: pizzas, error: error2 } = await supabase
-    .from("products")
-    .select("*")
-    .eq("category", "Pizza")
-
-  // if (error) {
-  //   console.log(error, "error TYT")
-  //   throw new Error("Products could not be loaded")
-  // }
-  if (error1 || error2) {
-    console.log(error1, error2, "error TYT")
+  if (error) {
+    console.log(error, "error")
     throw new Error("Products could not be loaded")
   }
 
-  const data = [
-    { name: "Pizza", products: pizzas },
-    { name: "Desserts", products: desserts },
-  ]
+  const data = initialSort(products)
 
   return data as SeparateMenuType
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+
+export const getProductsByCategory = async function (category: string) {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("linkCategory", category)
+
+  if (error) {
+    console.log(error, "error")
+    throw new Error("Products could not be loaded")
+  }
+
+  return data as ProductType[]
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+
+export const getCategories = async function () {
+  const { data, error } = await supabase.from("categories").select("*")
+
+  if (error) {
+    console.log(error, "error")
+    throw new Error("Categories could not be loaded")
+  }
+
+  return data as CategoryType[]
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+
+export const getCategoryColor = async function (category: string) {
+  const { data, error } = await supabase
+    .from("categories")
+    .select("*")
+    .eq("linkName", category)
+    .single()
+
+  if (error) {
+    console.log(error, "error")
+    throw new Error("Categories could not be loaded")
+  }
+
+  return data as CategoryType
 }
 
 // Guests are uniquely identified by their email address

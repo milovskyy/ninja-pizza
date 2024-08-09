@@ -7,6 +7,8 @@ import ReceiveOrder from "../_components/about/ReceiveOrder"
 import MapComponent from "../_components/MapComponent"
 import MobileAppBanner from "../_components/MobileAppBanner"
 
+export const revalidate = 0
+
 function About() {
   return (
     <div className="w-full max-w-[1304px]">

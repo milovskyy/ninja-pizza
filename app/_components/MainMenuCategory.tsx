@@ -7,23 +7,33 @@ import Button from "./ui/Button"
 type PropsType = {
   products: ProductType[]
   name: string
+  limit?: number
 }
 
-function MainMenuCategory({ products, name }: PropsType) {
+function MainMenuCategory({ products, name, limit }: PropsType) {
+  // console.log(products)
+
+  const productsToShow = limit ? products.slice(0, limit) : products
+
+  if (!products || products.length === 0) return
+  // //////////////////////////
+
   return (
-    <div className="flex max-w-[1304px] flex-col items-center bg-blue-100 px-3 pt-12">
+    <div className="flex max-w-[1304px] flex-col items-center px-3 pb-2 pt-14">
       <h1 className="text-center text-5xl font-bold">{name}</h1>
       <div className="mb-12 mt-9 grid w-full grid-cols-4 gap-[6px]">
-        {products.map((product) => (
+        {productsToShow.map((product) => (
           <MenuCard key={product.id} product={product} />
         ))}
       </div>
-      <Button
-        className="mb-3 bg-stone-700 py-3 text-[16px] font-bold text-stone-50"
-        link={`/category/${name.toLowerCase()}`}
-      >
-        See all
-      </Button>
+      {limit && (
+        <Button
+          className="mb-3 bg-stone-700 py-3 text-[16px] font-bold text-stone-50"
+          link={`/category/${name.toLowerCase()}`}
+        >
+          See all
+        </Button>
+      )}
     </div>
   )
 }

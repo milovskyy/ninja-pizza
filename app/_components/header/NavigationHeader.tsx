@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { IoIosArrowDown } from "react-icons/io"
 import NavigationMenu from "./NavigationMenu"
+import MenuCategories from "../MenuCategories"
 
 function NavigationHeader() {
   return (
@@ -22,7 +23,9 @@ function NavigationHeader() {
               className="relative top-[1px] transition duration-300 group-hover:rotate-180"
             />
           </div>
-          <NavigationMenu />
+          <NavigationMenu>
+            <MenuCategories />
+          </NavigationMenu>
         </li>
         <li>
           <Link

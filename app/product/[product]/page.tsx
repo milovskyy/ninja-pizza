@@ -3,7 +3,7 @@ type PropsType = {
 }
 
 export default function Page({ params }: PropsType) {
-  console.log(params)
+  // console.log(params)
   const { product } = params
   return <div>{product}</div>
 }

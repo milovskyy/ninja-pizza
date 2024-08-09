@@ -19,11 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manrope.className} mx-auto flex flex-col items-center justify-center bg-stone-200`}
+        className={`${manrope.className} mx-auto flex flex-col items-center justify-center bg-stone-100`}
       >
         <AppHeader />
         <main className="mt-[84px] flex-1">{children}</main>
-        <AppFooter />
       </body>
     </html>
   )

@@ -15,6 +15,14 @@ export type ProductType = {
   vegetarian: null | boolean
 }
 
+export type CategoryType = {
+  id: number
+  name: string
+  linkName: string
+  image: string
+  color: string
+}
+
 export type AllProductsType = {
   products: ProductType[]
 }
