@@ -1,16 +1,17 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import { useRouter } from "next/navigation"
 
 type PropsType = {
   children: string
   className?: string
+  link?: string
   action?: () => void
 }
 
-// type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
-
-function Button({ children, className, action, ...props }: PropsType) {
+function Button({ children, className, link, action, ...props }: PropsType) {
+  const router = useRouter()
   return (
     <button
       // className={twMerge(
@@ -23,7 +24,12 @@ function Button({ children, className, action, ...props }: PropsType) {
         "flex cursor-pointer items-center justify-center rounded-full bg-[#ffc700] px-6 py-2 text-center text-[14px] text-stone-900",
         className,
       )}
-      onClick={action}
+      onClick={() => {
+        {
+          link && router.push(`${link}`)
+        }
+        // action())
+      }}
       {...props}
     >
       {children}

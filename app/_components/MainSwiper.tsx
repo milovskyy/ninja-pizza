@@ -10,6 +10,7 @@ import "swiper/css/pagination"
 import { Pagination } from "swiper/modules"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
+import { AllProductsType } from "../_types/TypeProduct"
 
 const slides = [
   {

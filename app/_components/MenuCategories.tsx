@@ -42,6 +42,8 @@ type PropsType = {
   separate?: boolean
 }
 
+// сортировать чтоб сначала новые шли
+
 function MenuCategories({ separate }: PropsType) {
   return (
     <div className={`flex ${separate && "w-full gap-2"}`}>
@@ -59,3 +61,18 @@ function MenuCategories({ separate }: PropsType) {
 }
 
 export default MenuCategories
+
+const x1 = [
+  "Dough made of four types of flour",
+  "Mozzarella",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+]
+
+const x11 = ["Choux pastry", "MMaple syrup", "Cashews"]

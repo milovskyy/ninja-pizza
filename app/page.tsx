@@ -1,21 +1,22 @@
-import Image from "next/image"
 import MainSwiper from "./_components/MainSwiper"
 import MainAbout from "./_components/MainAbout"
-import MainMenuCategory from "./_components/MainMenuCategory"
 import MobileAppBanner from "./_components/MobileAppBanner"
-import AppFooter from "./_components/footer/AppFooter"
 import MapComponent from "./_components/MapComponent"
+import { getProducts } from "@/lib/data-service"
+import MainFullMenu from "./_components/MainFullMenu"
 
-export default function Home() {
+export const revalidate = 0
+
+export default async function Home() {
+  const products = await getProducts()
+
   return (
     <div className="flex max-w-[1304px] flex-1 flex-col bg-red-100">
       <MainSwiper />
       <MainAbout />
-      <div className="mb-16 flex flex-col">
-        <MainMenuCategory />
-        <MainMenuCategory />
-        <MainMenuCategory />
-      </div>
+
+      <MainFullMenu products={products} />
+
       <MapComponent />
       <div className="mt-[-100px]">
         <MobileAppBanner />
