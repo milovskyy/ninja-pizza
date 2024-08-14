@@ -1,5 +1,6 @@
 import { ProductType } from "../_types/TypeProduct"
 import MenuCard from "./MenuCard"
+import PizzaFilter from "./PizzaFilter"
 import Button from "./ui/Button"
 
 // сделать потом ограничение на 8 штук максиму для отображения.
@@ -11,7 +12,7 @@ type PropsType = {
 }
 
 function MainMenuCategory({ products, name, limit }: PropsType) {
-  // console.log(products)
+  console.log(limit)
 
   const productsToShow = limit ? products.slice(0, limit) : products
 
@@ -19,9 +20,11 @@ function MainMenuCategory({ products, name, limit }: PropsType) {
   // //////////////////////////
 
   return (
-    <div className="flex max-w-[1304px] flex-col items-center px-3 pb-2 pt-14">
-      <h1 className="text-center text-5xl font-bold">{name}</h1>
-      <div className="mb-12 mt-9 grid w-full grid-cols-4 gap-[6px]">
+    <div className="flex max-w-[1304px] flex-col items-center px-3 pb-2">
+      <h1 className="mb-9 self-start text-5xl font-extrabold">{name}</h1>
+      {!limit && name === "Pizza" && <PizzaFilter />}
+
+      <div className="mb-12 grid w-full grid-cols-4 gap-[6px]">
         {productsToShow.map((product) => (
           <MenuCard key={product.id} product={product} />
         ))}

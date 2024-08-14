@@ -13,10 +13,8 @@ type PropsType = {
 
 function MenuCard({ product }: PropsType) {
   const {
-    id,
     name,
     linkName,
-    category,
     image,
     ingredients,
     price,
@@ -39,10 +37,10 @@ function MenuCard({ product }: PropsType) {
     <div className="flex w-full rounded-2xl bg-white p-6 pb-5">
       <div className="relative flex w-full flex-col">
         <Link
-          href={`/product/${linkName}`}
+          href={`/product/${linkName}1`}
           className="relative aspect-square w-[75%] self-center rounded-2xl bg-white"
         >
-          <Image src={product.image} alt="img" fill className="object-cover" />
+          <Image src={image} alt="img" fill className="object-cover" />
         </Link>
         <Link className="mt-6 flex-1" href={`/product/${linkName}`}>
           <h1 className="text-center text-xl font-bold">{name}</h1>

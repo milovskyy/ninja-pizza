@@ -22,11 +22,6 @@ function MenuCategoriesElement({ category, separate }: PropsType) {
 
   const router = useRouter()
 
-  const bgColor = `bg-[${color}]`
-
-  console.log(bgColor)
-  // bg-gradient-to-r from-cyan-500 to-blue-500
-
   return (
     <div
       className={cn(

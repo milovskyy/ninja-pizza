@@ -2,6 +2,7 @@ import AppFooter from "@/app/_components/footer/AppFooter"
 import MainMenuCategory from "@/app/_components/MainMenuCategory"
 import MenuCategories from "@/app/_components/MenuCategories"
 import MobileAppBanner from "@/app/_components/MobileAppBanner"
+import Navigation from "@/app/_components/NavigationCategory"
 import { getCategoryColor, getProductsByCategory } from "@/lib/data-service"
 import { cn } from "@/lib/utils"
 
@@ -29,8 +30,9 @@ export default async function Page({ params }: PropsType) {
       }}
     >
       <div className="mt-[84px] flex flex-col">
+        <Navigation name={name} />
         <MainMenuCategory products={products} name={name} />
-        <h2 className="my-10 text-center text-3xl font-bold">
+        <h2 className="my-10 text-center text-3xl font-extrabold">
           Take a look at other categories
         </h2>
         <MenuCategories separate={true} />

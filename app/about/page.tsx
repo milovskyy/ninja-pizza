@@ -4,6 +4,7 @@ import MakeOrder from "../_components/about/MakeOrder"
 import MenuSelect from "../_components/about/MenuSelect"
 import PaymentMethod from "../_components/about/PaymentMethod"
 import ReceiveOrder from "../_components/about/ReceiveOrder"
+import AppFooter from "../_components/footer/AppFooter"
 import MapComponent from "../_components/MapComponent"
 import MobileAppBanner from "../_components/MobileAppBanner"
 
@@ -20,6 +21,7 @@ function About() {
       <MenuSelect />
       <AboutUs />
       <MobileAppBanner />
+      <AppFooter />
     </div>
   )
 }

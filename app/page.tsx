@@ -12,7 +12,7 @@ export default async function Home() {
   const products = await getProducts()
 
   return (
-    <div className="flex max-w-[1304px] flex-1 flex-col bg-red-100">
+    <div className="flex max-w-[1304px] flex-1 flex-col">
       <MainSwiper />
       <MainAbout />
 

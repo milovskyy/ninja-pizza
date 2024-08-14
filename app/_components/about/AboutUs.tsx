@@ -1,6 +1,6 @@
 function AboutUs() {
   return (
-    <div className="mx-auto mb-24 mt-16 flex max-w-[726px] flex-col gap-5">
+    <div className="mx-auto mb-32 mt-16 flex max-w-[726px] flex-col gap-5">
       <h1 className="text-3xl font-bold">About us</h1>
       <p className="font-semibold">
         Ninja Pizza is a premium pizza delivery service to your home and office.
