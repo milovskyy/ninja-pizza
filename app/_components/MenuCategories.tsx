@@ -43,10 +43,11 @@ const x1 = [
 ]
 
 const x11 = [
-  "Sriracha",
-  "Smoked paprika",
-  "Cane sugar",
-  "Hellmann`s Original",
-  "Dry onion",
-  "Fresh garlic",
+  "Parmesan",
+  "Crispy fried onion",
+  "Jalapeno pepper",
+  "Pickles",
+  "Salzburg poultry sausages",
+  "Mustard-pickled cucumbers",
+  "Bread",
 ]

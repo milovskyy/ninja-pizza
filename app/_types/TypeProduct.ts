@@ -1,9 +1,7 @@
 export type ProductType = {
   id: number
   name: string
-  linkName: string
   category: string
-  image: string
   ingredients: string[]
   price: number
   size: string

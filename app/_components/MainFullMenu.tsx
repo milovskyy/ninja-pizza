@@ -5,6 +5,8 @@ type PropsType = {
   products: SeparateMenuType
 }
 
+const PRODUCTLIMIT = 8
+
 export const revalidate = 0
 
 function MainFullMenu({ products }: PropsType) {
@@ -15,9 +17,9 @@ function MainFullMenu({ products }: PropsType) {
       {filteredProducts.map((category) => (
         <MainMenuCategory
           key={category.name}
-          products={category.products}
+          products={category.products.slice(0, PRODUCTLIMIT)}
           name={category.name}
-          limit={8}
+          limit={PRODUCTLIMIT}
         />
       ))}
     </div>

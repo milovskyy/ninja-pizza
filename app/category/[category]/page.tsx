@@ -8,15 +8,22 @@ import { cn } from "@/lib/utils"
 
 type PropsType = {
   params: { category: string }
+  searchParams: { filter: string }
 }
 
+// export const revalidate = 0 - no sense because of dynamic rendering
 export const revalidate = 0
+// export const revalidate = 0 - no sense because of dynamic rendering
 
-export default async function Page({ params }: PropsType) {
+export default async function Page({ params, searchParams }: PropsType) {
   const { category } = params
 
+  const filter = searchParams?.filter ?? "all"
+
+  // const filter = "seafood"
+
   const [products, { name, color }] = await Promise.all([
-    getProductsByCategory(category),
+    getProductsByCategory(category.charAt(0).toUpperCase() + category.slice(1)),
     getCategoryColor(category),
   ])
 
@@ -31,7 +38,10 @@ export default async function Page({ params }: PropsType) {
     >
       <div className="mt-[84px] flex flex-col">
         <Navigation name={name} />
-        <MainMenuCategory products={products} name={name} />
+        {products.length !== 0 && (
+          <MainMenuCategory products={products} name={name} filter={filter} />
+        )}
+        {/* <MainMenuCategory products={products} name={name} /> */}
         <h2 className="my-10 text-center text-3xl font-extrabold">
           Take a look at other categories
         </h2>

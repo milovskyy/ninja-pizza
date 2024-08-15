@@ -1,62 +1,40 @@
 "use client"
 
-import Image from "next/image"
+import { usePathname, useSearchParams, useRouter } from "next/navigation"
+import { useState } from "react"
+import PizzaFilterButton from "./PizzaFilterButton"
+
+const filters = ["spicy", "meat", "vegetarian", "seafood"]
 
 function PizzaFilter() {
+  const [selectedFilter, setSelectedFilter] = useState("")
+
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const handleFilter = (filter: string) => {
+    if (selectedFilter === filter) {
+      router.replace(`${pathname}`, { scroll: false })
+      setSelectedFilter("")
+      return
+    }
+    const params = new URLSearchParams(searchParams)
+    params.set("filter", filter)
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+    setSelectedFilter(filter)
+  }
+
   return (
-    <div className="mb-3 mt-5 flex w-full gap-9 self-start rounded-2xl bg-white p-5">
-      <div className="flex gap-2">
-        <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-main">
-          <div className="h-[14px] w-[14px] rounded-full bg-main" />
-        </div>
-        <Image
-          src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/spicyFilter.png"
-          alt=""
-          width={24}
-          height={24}
-          className=""
+    <div className="mb-3 mt-5 flex w-full gap-9 self-start rounded-2xl bg-white px-5 py-3">
+      {filters.map((filter) => (
+        <PizzaFilterButton
+          key={filter}
+          name={filter}
+          handleFilter={handleFilter}
+          selectedFilter={selectedFilter}
         />
-        <p className="font-semibold">Spicy</p>
-      </div>
-      <div className="flex gap-2">
-        <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-main">
-          <div className="h-[14px] w-[14px] rounded-full bg-main" />
-        </div>
-        <Image
-          src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/meatFilter.png"
-          alt=""
-          width={24}
-          height={24}
-          className=""
-        />
-        <p className="font-semibold">Meat</p>
-      </div>
-      <div className="flex gap-2">
-        <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-main">
-          <div className="h-[14px] w-[14px] rounded-full bg-main" />
-        </div>
-        <Image
-          src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/veganFilter.png"
-          alt=""
-          width={24}
-          height={24}
-          className=""
-        />
-        <p className="font-semibold">Vegetarian</p>
-      </div>
-      <div className="flex gap-2">
-        <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-main">
-          <div className="h-[14px] w-[14px] rounded-full bg-main" />
-        </div>
-        <Image
-          src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/fishFilter.png"
-          alt=""
-          width={24}
-          height={24}
-          className=""
-        />
-        <p className="font-semibold">Seafood</p>
-      </div>
+      ))}
     </div>
   )
 }

@@ -3,20 +3,32 @@ import MenuCard from "./MenuCard"
 import PizzaFilter from "./PizzaFilter"
 import Button from "./ui/Button"
 
-// сделать потом ограничение на 8 штук максиму для отображения.
-
 type PropsType = {
   products: ProductType[]
   name: string
   limit?: number
+  filter?: string
 }
 
-function MainMenuCategory({ products, name, limit }: PropsType) {
-  console.log(limit)
+function MainMenuCategory({ products, name, limit, filter }: PropsType) {
+  let productsToShow = products
 
-  const productsToShow = limit ? products.slice(0, limit) : products
+  if (limit) productsToShow = products.slice(0, limit)
 
-  if (!products || products.length === 0) return
+  // сортировать чтоб сначала были NEW
+
+  if (name === "Pizza") {
+    if (filter === "spicy")
+      productsToShow = products.filter((prod) => prod.spicy === true)
+    if (filter === "meat")
+      productsToShow = products.filter((prod) => prod.meat === true)
+    if (filter === "seafood")
+      productsToShow = products.filter((prod) => prod.seafood === true)
+    if (filter === "vegetarian")
+      productsToShow = products.filter((prod) => prod.vegetarian === true)
+  }
+
+  // итерация по Object.keys чтоб определить что в юрл поиске значение поиска есть в ключах обьекта продукта
   // //////////////////////////
 
   return (

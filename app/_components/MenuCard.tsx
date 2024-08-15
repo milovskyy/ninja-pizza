@@ -14,43 +14,55 @@ type PropsType = {
 function MenuCard({ product }: PropsType) {
   const {
     name,
-    linkName,
-    image,
+    // linkName,
+    // image,
     ingredients,
     price,
     size,
     hit,
-    meat,
     isNew,
-    seafood,
     spicy,
     vegetarian,
+    category,
   } = product
+
+  console.log(product.category.toLowerCase())
 
   function formatIngredients(ingredients: string[]) {
     return ingredients.join(", ")
   }
 
-  const formattedIngredients = formatIngredients(ingredients.slice(0, 4))
+  let formattedIngredients
+
+  if (ingredients?.length > 0)
+    formattedIngredients = formatIngredients(ingredients.slice(0, 4))
 
   return (
     <div className="flex w-full rounded-2xl bg-white p-6 pb-5">
       <div className="relative flex w-full flex-col">
         <Link
-          href={`/product/${linkName}1`}
+          href={`/product/${name.toLowerCase().replace(/\s+/g, "-")}`}
           className="relative aspect-square w-[75%] self-center rounded-2xl bg-white"
         >
-          <Image src={image} alt="img" fill className="object-cover" />
+          <Image
+            src={`https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/products/${category.toLowerCase()}/${name.replace(/\s+/g, "%20")}.webp`}
+            alt="img"
+            fill
+            className="object-cover"
+          />
         </Link>
-        <Link className="mt-6 flex-1" href={`/product/${linkName}`}>
+        <Link
+          className="mt-6 flex-1"
+          href={`/product/${name.toLowerCase().replace(/\s+/g, "-")}`}
+        >
           <h1 className="text-center text-xl font-bold">{name}</h1>
         </Link>
 
         <div className="flex items-center">
           <h3 className="mt-3 flex-1 text-center text-[14px] font-semibold text-stone-400">
             <span className="font-semibold text-[#ffc700]">{size}</span>
-            {" - "}
-            {formattedIngredients}
+
+            {ingredients?.length > 0 && ` - " ${formattedIngredients}`}
           </h3>
         </div>
 
@@ -93,7 +105,7 @@ function MenuCard({ product }: PropsType) {
           <div className="absolute left-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#ddf0ce] p-[7px]">
             <div className="relative aspect-square">
               <Image
-                src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/veganFilter.png"
+                src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/vegetarian.png"
                 alt="img"
                 fill
                 className="object-cover"
@@ -106,7 +118,7 @@ function MenuCard({ product }: PropsType) {
           <div className="absolute right-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#fad5d5] p-[7px]">
             <div className="relative aspect-square">
               <Image
-                src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/spicyFilter.png"
+                src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/spicy.png"
                 alt="img"
                 fill
                 className="object-cover"

@@ -53,7 +53,7 @@ export const getProductsByCategory = async function (category: string) {
   const { data, error } = await supabase
     .from("products")
     .select("*")
-    .eq("linkCategory", category)
+    .eq("category", category)
 
   if (error) {
     console.log(error, "error")
