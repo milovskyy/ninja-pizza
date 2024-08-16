@@ -4,7 +4,6 @@ import { initialSort } from "./helperFunction"
 import { supabase } from "./supabase"
 
 import {
-  AllProductsType,
   CategoryType,
   ProductType,
   SeparateMenuType,
@@ -35,7 +34,10 @@ import {
 // GET
 
 export const getProducts = async function () {
-  const { data: products, error } = await supabase.from("products").select("*")
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("*")
+    .order("id", { ascending: true })
 
   if (error) {
     console.log(error, "error")
@@ -44,7 +46,9 @@ export const getProducts = async function () {
 
   const data = initialSort(products)
 
-  return data as SeparateMenuType
+  console.log(data)
+
+  return data as SeparateMenuType[]
 }
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -54,6 +58,7 @@ export const getProductsByCategory = async function (category: string) {
     .from("products")
     .select("*")
     .eq("category", category)
+    .order("id", { ascending: true })
 
   if (error) {
     console.log(error, "error")
@@ -66,7 +71,10 @@ export const getProductsByCategory = async function (category: string) {
 // /////////////////////////////////////////////////////////////////////////////
 
 export const getCategories = async function () {
-  const { data, error } = await supabase.from("categories").select("*")
+  const { data, error } = await supabase
+    .from("categories")
+    .select("*")
+    .order("id", { ascending: true })
 
   if (error) {
     console.log(error, "error")

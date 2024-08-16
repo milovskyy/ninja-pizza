@@ -29,9 +29,7 @@ export default async function Page({ params, searchParams }: PropsType) {
 
   return (
     <div
-      className={cn(
-        "absolute left-0 top-0 flex w-full flex-1 justify-center bg-gradient-to-b from-cyan-500 to-blue-100",
-      )}
+      className={cn("absolute left-0 top-0 flex w-full flex-1 justify-center")}
       style={{
         background: `linear-gradient(180deg, ${color} 0%, #f5f5f4 80%)`,
       }}
@@ -41,7 +39,6 @@ export default async function Page({ params, searchParams }: PropsType) {
         {products.length !== 0 && (
           <MainMenuCategory products={products} name={name} filter={filter} />
         )}
-        {/* <MainMenuCategory products={products} name={name} /> */}
         <h2 className="my-10 text-center text-3xl font-extrabold">
           Take a look at other categories
         </h2>

@@ -24,9 +24,8 @@ function MenuCard({ product }: PropsType) {
     spicy,
     vegetarian,
     category,
+    alcohol,
   } = product
-
-  console.log(product.category.toLowerCase())
 
   function formatIngredients(ingredients: string[]) {
     return ingredients.join(", ")
@@ -45,7 +44,8 @@ function MenuCard({ product }: PropsType) {
           className="relative aspect-square w-[75%] self-center rounded-2xl bg-white"
         >
           <Image
-            src={`https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/products/${category.toLowerCase()}/${name.replace(/\s+/g, "%20")}.webp`}
+            src={`https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/products/${category.toLowerCase()}/${name.replace(/\s+/g, "%20")}.${alcohol ? "png" : "webp"}`}
+            // src={`https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/products/drinks/FantaPineapple.webp`}
             alt="img"
             fill
             className="object-cover"

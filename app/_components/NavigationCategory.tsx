@@ -12,7 +12,7 @@ function NavigationCategory({ name }: PropsType) {
   const router = useRouter()
 
   return (
-    <div className="my-10 flex items-center gap-4 text-xs font-bold">
+    <div className="my-8 flex items-center gap-4 text-xs font-bold">
       <div
         onClick={() => router.back()}
         className="flex cursor-pointer items-center gap-3 rounded-full bg-stone-300/35 px-4 py-3 text-stone-500"

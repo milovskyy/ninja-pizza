@@ -1,15 +1,13 @@
 import MainMenuCategory from "./MainMenuCategory"
-import { SeparateMenuType } from "../_types/TypeProduct"
-
-type PropsType = {
-  products: SeparateMenuType
-}
+import { getProducts } from "@/lib/data-service"
 
 const PRODUCTLIMIT = 8
 
 export const revalidate = 0
 
-function MainFullMenu({ products }: PropsType) {
+async function MainFullMenu() {
+  const products = await getProducts()
+
   const filteredProducts = products.filter((obj) => obj.name !== "Extras")
 
   return (

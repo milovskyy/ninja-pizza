@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { Manrope } from "next/font/google"
 import "./globals.css"
 import AppHeader from "./_components/header/AppHeader"
-import AppFooter from "./_components/footer/AppFooter"
 
 const manrope = Manrope({ subsets: ["latin"] })
 

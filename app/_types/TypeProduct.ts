@@ -11,6 +11,7 @@ export type ProductType = {
   seafood: null | boolean
   spicy: null | boolean
   vegetarian: null | boolean
+  alcohol: null | boolean
 }
 
 export type CategoryType = {
@@ -21,11 +22,8 @@ export type CategoryType = {
   color: string
 }
 
-export type AllProductsType = {
-  products: ProductType[]
-}
+// export type AllProductsType = {
+//   products: ProductType[]
+// }
 
-export type SeparateMenuType = [
-  { name: string; products: ProductType[] },
-  { name: string; products: ProductType[] },
-]
+export type SeparateMenuType = { name: string; products: ProductType[] }
