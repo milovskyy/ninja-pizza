@@ -1,6 +1,24 @@
-export const initialSort = (products) => {
+import { ProductType } from "@/app/_types/TypeProduct"
+
+type PropsType = {
+  // id: number
+  // name: string
+  // category: string
+  // ingredients: string[]
+  // price: number
+  // size: string
+  // hit: null | boolean
+  // meat: null | boolean
+  // isNew: null | boolean
+  // seafood: null | boolean
+  // spicy: null | boolean
+  // vegetarian: null | boolean
+  // alcohol: null | boolean
+}
+
+export const initialSort = (products: ProductType[]) => {
   const productsByCategories = products.reduce((acc, curr) => {
-    const category = curr.category
+    const category = curr.category as string
 
     if (!acc[category]) {
       acc[category] = { name: curr.category, products: [] }
