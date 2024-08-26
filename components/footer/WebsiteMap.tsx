@@ -7,7 +7,7 @@ function WebsiteMap() {
       <div className="inline-flex">
         <Link
           href="/"
-          className="inline-flex px-2 font-semibold text-stone-800 hover:text-main"
+          className="inline-flex px-2 font-semibold text-stone-800 hover:text-primary"
         >
           Home
         </Link>
@@ -15,7 +15,7 @@ function WebsiteMap() {
       <div className="inline-flex">
         <Link
           href="/about"
-          className="inline-flex px-2 font-semibold text-stone-800 hover:text-main"
+          className="inline-flex px-2 font-semibold text-stone-800 hover:text-primary"
         >
           About
         </Link>
@@ -23,7 +23,7 @@ function WebsiteMap() {
       <div className="inline-flex">
         <Link
           href="/news"
-          className="inline-flex px-2 font-semibold text-stone-800 hover:text-main"
+          className="inline-flex px-2 font-semibold text-stone-800 hover:text-primary"
         >
           News
         </Link>

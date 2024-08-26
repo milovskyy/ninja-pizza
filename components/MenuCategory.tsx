@@ -1,7 +1,7 @@
-import { ProductType } from "../_types/TypeProduct"
+import { ProductType } from "@/app/_types/TypeProduct"
 import MenuCard from "./MenuCard"
+import Link from "next/link"
 import PizzaFilter from "./PizzaFilter"
-import Button from "./ui/Button"
 
 type PropsType = {
   products: ProductType[]
@@ -10,7 +10,7 @@ type PropsType = {
   filter?: string
 }
 
-function MainMenuCategory({ products, name, limit, filter }: PropsType) {
+function MenuCategory({ products, name, limit, filter }: PropsType) {
   let productsToShow = products
 
   if (limit) productsToShow = products.slice(0, limit)
@@ -32,7 +32,7 @@ function MainMenuCategory({ products, name, limit, filter }: PropsType) {
   // //////////////////////////
 
   return (
-    <div className="flex max-w-[1304px] flex-col items-center px-3 pb-2">
+    <div className="flex flex-col items-center px-3 pb-2">
       <h1 className="mb-6 self-start text-5xl font-extrabold">{name}</h1>
       {!limit && name === "Pizza" && <PizzaFilter />}
 
@@ -42,15 +42,15 @@ function MainMenuCategory({ products, name, limit, filter }: PropsType) {
         ))}
       </div>
       {limit && (
-        <Button
-          className="mb-3 bg-stone-700 py-3 text-[16px] font-bold text-stone-50"
-          link={`/category/${name.toLowerCase()}`}
+        <Link
+          href={`/category/${name.toLowerCase()}`}
+          className="mb-3 rounded-full bg-stone-700 px-6 py-4 text-[16px] font-bold text-stone-50"
         >
           See all
-        </Button>
+        </Link>
       )}
     </div>
   )
 }
 
-export default MainMenuCategory
+export default MenuCategory

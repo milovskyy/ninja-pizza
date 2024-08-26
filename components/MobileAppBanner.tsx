@@ -3,8 +3,8 @@ import MobileAppIcons from "./MobileAppIcons"
 
 function MobileAppBanner() {
   return (
-    <div className="flex h-[420px] max-w-[1304px] items-center justify-center px-3">
-      <div className="bgmain absolute flex h-[420px] w-[1432px] items-center justify-between rounded-[32px] px-[88px]">
+    <div className="flex h-[420px] items-center justify-center px-3">
+      <div className="absolute flex h-[420px] w-[1432px] items-center justify-between rounded-[32px] bg-primary px-[88px]">
         <div className="flex max-w-[500px] flex-col gap-10">
           <div className="text text-[48px] font-[800] leading-[60px]">
             Download the mobile app and save time ordering

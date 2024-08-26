@@ -15,7 +15,10 @@ function MapComponent() {
   return (
     <div className="flex h-[670px] w-[1304px] items-center justify-center">
       <div className="absolute flex h-[670px] w-full items-center justify-center overflow-hidden py-[200px]">
-        <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
+        <APIProvider
+          // @ts-ignore
+          apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+        >
           <div className="h-[720px] w-full overflow-hidden">
             <Map
               defaultZoom={13}

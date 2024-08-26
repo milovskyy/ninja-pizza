@@ -7,7 +7,7 @@ import FooterAbout from "./About"
 
 function AppFooter() {
   return (
-    <div className="flex max-w-[1304px] flex-col items-center px-3 py-12">
+    <div className="flex flex-col items-center px-3 py-12">
       <div className="grid w-full grid-cols-[6fr_2fr_3fr_2.5fr] gap-24 pb-12">
         <FooterAbout />
         <WebsiteMap />

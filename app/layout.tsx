@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Manrope } from "next/font/google"
 import "./globals.css"
-import AppHeader from "./_components/header/AppHeader"
+import AppHeader from "@/components/header/AppHeader"
 
 const manrope = Manrope({ subsets: ["latin"] })
 
@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manrope.className} mx-auto flex flex-col items-center justify-center bg-stone-100`}
+        className={`${manrope.className} mx-auto flex min-h-screen flex-col items-center bg-stone-100`}
       >
         <AppHeader />
-        <main className="mt-[84px] flex-1">{children}</main>
+        <main className="mt-[84px] flex w-full flex-1">{children}</main>
       </body>
     </html>
   )

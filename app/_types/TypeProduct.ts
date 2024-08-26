@@ -12,6 +12,7 @@ export type ProductType = {
   spicy: null | boolean
   vegetarian: null | boolean
   alcohol: null | boolean
+  linkName: string
 }
 
 export type CategoryType = {

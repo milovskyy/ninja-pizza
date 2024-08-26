@@ -3,9 +3,9 @@
 import Image from "next/image"
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
 import { GoHeart } from "react-icons/go"
-import Button from "./ui/Button"
 import Link from "next/link"
-import { ProductType } from "../_types/TypeProduct"
+import { ProductType } from "../app/_types/TypeProduct"
+import { PRODUCT_IMAGE_URL } from "@/app/_constants/constants"
 
 type PropsType = {
   product: ProductType
@@ -14,8 +14,7 @@ type PropsType = {
 function MenuCard({ product }: PropsType) {
   const {
     name,
-    // linkName,
-    // image,
+    linkName,
     ingredients,
     price,
     size,
@@ -44,8 +43,7 @@ function MenuCard({ product }: PropsType) {
           className="relative aspect-square w-[75%] self-center rounded-2xl bg-white"
         >
           <Image
-            src={`https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/products/${category.toLowerCase()}/${name.replace(/\s+/g, "%20")}.${alcohol ? "png" : "webp"}`}
-            // src={`https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/products/drinks/FantaPineapple.webp`}
+            src={`${PRODUCT_IMAGE_URL}/products/${category.toLowerCase()}/${name.replace(/\s+/g, "%20")}.${alcohol ? "png" : "webp"}`}
             alt="img"
             fill
             className="object-cover"
@@ -80,9 +78,12 @@ function MenuCard({ product }: PropsType) {
               <AiOutlinePlus />
             </div>
           </div> */}
-          <Button className="bg-stone-100 py-3 text-[16px] font-bold hover:bg-[#ffc700]">
+          <Link
+            href="/"
+            className="rounded-full bg-stone-100 px-6 py-3 text-[16px] font-bold text-stone-900 hover:bg-primary"
+          >
             Order
-          </Button>
+          </Link>
         </div>
 
         <div className="absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-3 text-stone-500 hover:text-red-600">
@@ -105,7 +106,7 @@ function MenuCard({ product }: PropsType) {
           <div className="absolute left-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#ddf0ce] p-[7px]">
             <div className="relative aspect-square">
               <Image
-                src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/vegetarian.png"
+                src={`${PRODUCT_IMAGE_URL}filters/vegetarian.png`}
                 alt="img"
                 fill
                 className="object-cover"
@@ -118,7 +119,7 @@ function MenuCard({ product }: PropsType) {
           <div className="absolute right-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#fad5d5] p-[7px]">
             <div className="relative aspect-square">
               <Image
-                src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/filters/spicy.png"
+                src={`${PRODUCT_IMAGE_URL}filters/spicy.png`}
                 alt="img"
                 fill
                 className="object-cover"

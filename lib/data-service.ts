@@ -46,8 +46,6 @@ export const getProducts = async function () {
 
   const data = initialSort(products)
 
-  console.log(data)
-
   return data as SeparateMenuType[]
 }
 
@@ -66,6 +64,23 @@ export const getProductsByCategory = async function (category: string) {
   }
 
   return data as ProductType[]
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+
+export const getProductByLinkName = async function (name: string) {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("linkName", name)
+    .single()
+
+  if (error) {
+    console.log(error, "error")
+    // throw new Error("Product could not be loaded")
+  }
+
+  return data as ProductType
 }
 
 // /////////////////////////////////////////////////////////////////////////////

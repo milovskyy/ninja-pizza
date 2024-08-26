@@ -5,18 +5,20 @@ import { useRouter } from "next/navigation"
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io"
 
 type PropsType = {
-  name: string
+  category: string
+  product?: string
 }
 
-function NavigationCategory({ name }: PropsType) {
+function NavigationCategory({ category, product }: PropsType) {
   const router = useRouter()
+
+  console.log(product)
 
   return (
     <div className="my-8 flex items-center gap-4 text-xs font-bold">
       <div
         onClick={() => router.back()}
         className="flex cursor-pointer items-center gap-3 rounded-full bg-stone-300/35 px-4 py-3 text-stone-500"
-        //   onClick={}
       >
         <IoIosArrowBack />
         <p>Back</p>
@@ -25,7 +27,21 @@ function NavigationCategory({ name }: PropsType) {
         Home
       </Link>
       <IoIosArrowForward className="text-stone-500" />
-      <div className="text-stone-500">{name}</div>
+
+      {product ? (
+        <>
+          <Link
+            href={`/category/${category.toLocaleLowerCase()}`}
+            className="text-stone-500"
+          >
+            {category}
+          </Link>
+          <IoIosArrowForward className="text-stone-500" />
+          <div className="text-stone-500">{product}</div>
+        </>
+      ) : (
+        <div className="text-stone-500">{category}</div>
+      )}
     </div>
   )
 }

@@ -1,8 +1,9 @@
-import AppFooter from "@/app/_components/footer/AppFooter"
-import MainMenuCategory from "@/app/_components/MainMenuCategory"
-import MenuCategories from "@/app/_components/MenuCategories"
-import MobileAppBanner from "@/app/_components/MobileAppBanner"
-import Navigation from "@/app/_components/NavigationCategory"
+import { Container } from "@/components/Container"
+import AppFooter from "@/components/footer/AppFooter"
+import MenuCategory from "@/components/MenuCategory"
+import MenuCategories from "@/components/MenuCategories"
+import MobileAppBanner from "@/components/MobileAppBanner"
+import Navigation from "@/components/Navigation"
 import { getCategoryColor, getProductsByCategory } from "@/lib/data-service"
 import { cn } from "@/lib/utils"
 
@@ -11,7 +12,6 @@ type PropsType = {
   searchParams: { filter: string }
 }
 
-// export const revalidate = 0 - no sense because of dynamic rendering
 export const revalidate = 0
 // export const revalidate = 0 - no sense because of dynamic rendering
 
@@ -22,6 +22,8 @@ export default async function Page({ params, searchParams }: PropsType) {
 
   // const filter = "seafood"
 
+  // ФИЛЬТРОВАТЬ ПРОДУКТЫ ПО ISNEW
+
   const [products, { name, color }] = await Promise.all([
     getProductsByCategory(category.charAt(0).toUpperCase() + category.slice(1)),
     getCategoryColor(category),
@@ -29,15 +31,17 @@ export default async function Page({ params, searchParams }: PropsType) {
 
   return (
     <div
-      className={cn("absolute left-0 top-0 flex w-full flex-1 justify-center")}
+      className={cn(
+        "absolute left-0 top-0 flex w-full flex-1 justify-center px-3",
+      )}
       style={{
         background: `linear-gradient(180deg, ${color} 0%, #f5f5f4 80%)`,
       }}
     >
-      <div className="mt-[84px] flex flex-col">
-        <Navigation name={name} />
+      <Container className="mt-[84px] flex flex-col">
+        <Navigation category={name} />
         {products.length !== 0 && (
-          <MainMenuCategory products={products} name={name} filter={filter} />
+          <MenuCategory products={products} name={name} filter={filter} />
         )}
         <h2 className="my-10 text-center text-3xl font-extrabold">
           Take a look at other categories
@@ -47,7 +51,7 @@ export default async function Page({ params, searchParams }: PropsType) {
           <MobileAppBanner />
         </div>
         <AppFooter />
-      </div>
+      </Container>
     </div>
   )
 }

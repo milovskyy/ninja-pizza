@@ -11,7 +11,7 @@ function LocalizationExpanderBlock({
   return (
     <div className="flex flex-col gap-3">
       <div>{text}</div>
-      <div className="flex gap-2">{children}</div>
+      <div className="grid grid-cols-2 gap-2">{children}</div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import Image from "next/image"
-import Logo from "../Logo"
 import MobileAppIcons from "../MobileAppIcons"
-import ButtonPhoneCall from "../footer/ButtonPhoneCall"
+import { Button } from "@/components/ui/button"
+import Logo from "../Logo"
 
 function MakeOrder() {
   return (
@@ -55,19 +55,28 @@ function MakeOrder() {
           <div className="flex flex-1 items-center justify-center self-center text-xl font-bold">
             By phone
           </div>
-          <div className="grid grid-cols-2 gap-2 py-1">
-            <ButtonPhoneCall
-              number="+38 (095) 344 22 44"
-              className="rounded-full bg-stone-200 py-1 hover:bg-main hover:text-stone-800"
-            />
-            <ButtonPhoneCall
-              number="+38 (067) 344 22 44"
-              className="rounded-full bg-stone-200 py-1 hover:bg-main hover:text-stone-800"
-            />
-            <ButtonPhoneCall
-              number="+38 (063) 344 22 44"
-              className="rounded-full bg-stone-200 py-1 hover:bg-main hover:text-stone-800"
-            />
+          <div className="grid w-full grid-cols-2 gap-2 py-1">
+            <Button
+              variant={"phone"}
+              size={"phone"}
+              className="rounded-full bg-stone-200 py-1 hover:bg-primary hover:text-stone-800"
+            >
+              +38 (095) 344 22 44
+            </Button>
+            <Button
+              variant={"phone"}
+              size={"phone"}
+              className="rounded-full bg-stone-200 py-1 hover:bg-primary hover:text-stone-800"
+            >
+              +38 (067) 344 22 44
+            </Button>
+            <Button
+              variant={"phone"}
+              size={"phone"}
+              className="rounded-full bg-stone-200 py-1 hover:bg-primary hover:text-stone-800"
+            >
+              +38 (063) 344 22 44
+            </Button>
           </div>
         </div>
       </div>

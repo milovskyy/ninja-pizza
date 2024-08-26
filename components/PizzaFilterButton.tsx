@@ -13,10 +13,10 @@ function PizzaFilterButton({ handleFilter, selectedFilter, name }: PropsType) {
       onClick={() => handleFilter(name)}
     >
       <div
-        className={`${selectedFilter === name ? "border-main" : "border-stone-200"} flex h-6 w-6 items-center justify-center rounded-full border-2`}
+        className={`${selectedFilter === name ? "border-primary" : "border-stone-200"} flex h-6 w-6 items-center justify-center rounded-full border-2`}
       >
         <div
-          className={`h-[14px] w-[14px] rounded-full ${selectedFilter === name ? "bg-main" : "bg-transparent"}`}
+          className={`h-[14px] w-[14px] rounded-full ${selectedFilter === name ? "bg-primary" : "bg-transparent"}`}
         />
       </div>
       <Image

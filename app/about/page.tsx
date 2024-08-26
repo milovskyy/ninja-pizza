@@ -1,18 +1,19 @@
-import AboutUs from "../_components/about/AboutUs"
-import DeliveryDetails from "../_components/about/DeliveryDetails"
-import MakeOrder from "../_components/about/MakeOrder"
-import MenuSelect from "../_components/about/MenuSelect"
-import PaymentMethod from "../_components/about/PaymentMethod"
-import ReceiveOrder from "../_components/about/ReceiveOrder"
-import AppFooter from "../_components/footer/AppFooter"
-import MapComponent from "../_components/MapComponent"
-import MobileAppBanner from "../_components/MobileAppBanner"
+import { Container } from "@/components/Container"
+import AboutUs from "../../components/about/AboutUs"
+import DeliveryDetails from "../../components/about/DeliveryDetails"
+import MakeOrder from "../../components/about/MakeOrder"
+import MenuSelect from "../../components/about/MenuSelect"
+import PaymentMethod from "../../components/about/PaymentMethod"
+import ReceiveOrder from "../../components/about/ReceiveOrder"
+import AppFooter from "../../components/footer/AppFooter"
+import MapComponent from "../../components/MapComponent"
+import MobileAppBanner from "../../components/MobileAppBanner"
 
 export const revalidate = 0
 
 function About() {
   return (
-    <div className="w-full max-w-[1304px]">
+    <Container>
       <MapComponent />
       <DeliveryDetails />
       <MakeOrder />
@@ -22,7 +23,7 @@ function About() {
       <AboutUs />
       <MobileAppBanner />
       <AppFooter />
-    </div>
+    </Container>
   )
 }
 
