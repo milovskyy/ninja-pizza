@@ -11,7 +11,7 @@ export const ProductImage = ({ product }: Props) => {
   const { name, category, alcohol, vegetarian, spicy } = product
 
   return (
-    <div className={cn("relative p-10")}>
+    <div className={cn("relative px-10 py-3")}>
       <div className="relative aspect-square w-[400px]">
         <Image
           src={`${PRODUCT_IMAGE_URL}/products/${category.toLowerCase()}/${name.replace(/\s+/g, "%20")}.${alcohol ? "png" : "webp"}`}
@@ -23,7 +23,7 @@ export const ProductImage = ({ product }: Props) => {
       {(vegetarian || spicy) && (
         <div
           className={cn(
-            "absolute left-0 top-[40px] flex items-center justify-center gap-3 rounded-[15px_15px_70px_15px] p-2 pl-3 pr-6",
+            "absolute left-0 top-4 flex items-center justify-center gap-3 rounded-[15px_15px_70px_15px] p-2 pl-3 pr-6",
             vegetarian ? "bg-[#ddf0ce]" : "bg-[#fad5d5]",
           )}
         >

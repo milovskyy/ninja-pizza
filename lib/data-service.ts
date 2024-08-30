@@ -5,6 +5,7 @@ import { supabase } from "./supabase"
 
 import {
   CategoryType,
+  IngredientType,
   ProductType,
   SeparateMenuType,
 } from "@/app/_types/TypeProduct"
@@ -115,6 +116,23 @@ export const getCategoryColor = async function (category: string) {
 
   return data as CategoryType
 }
+
+// ////////////////////////////////////////////////////////////////////////////
+
+export const getIngredients = async function () {
+  const { data, error } = await supabase.from("ingredients").select("*")
+  // .order("name", { ascending: true })
+
+  if (error) {
+    console.log(error, "error")
+    throw new Error("Ingredients could not be loaded")
+  }
+
+  return data
+  // as IngredientType[]
+}
+
+// ////////////////////////////////////////////////////////////////////////////
 
 // Guests are uniquely identified by their email address
 // export async function getGuest(email) {

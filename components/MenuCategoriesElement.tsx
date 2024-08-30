@@ -46,9 +46,7 @@ function MenuCategoriesElement({ category, separate }: PropsType) {
         {name}
       </div>
       <Link href={`/category/${linkName}`} className="mt-10">
-        <Button className="h-[40px] max-h-[40px] w-[104px] max-w-[104px] cursor-pointer bg-stone-50 font-bold">
-          Choose
-        </Button>
+        <Button className="bg-stone-50 font-bold">Choose</Button>
       </Link>
     </div>
   )

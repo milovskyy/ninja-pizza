@@ -12,8 +12,6 @@ type PropsType = {
 function NavigationCategory({ category, product }: PropsType) {
   const router = useRouter()
 
-  console.log(product)
-
   return (
     <div className="my-8 flex items-center gap-4 text-xs font-bold">
       <div

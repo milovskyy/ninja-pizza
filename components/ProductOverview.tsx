@@ -1,5 +1,3 @@
-"use client"
-
 import { ProductType } from "@/app/_types/TypeProduct"
 import { cn } from "@/lib/utils"
 import { ProductImage } from "./ProductImage"
@@ -11,7 +9,7 @@ type Props = {
 
 export const ProductOverview = ({ product }: Props) => {
   return (
-    <div className={cn("flex justify-between px-5")}>
+    <div className={cn("my-6 flex items-center gap-20")}>
       <ProductImage product={product} />
       <ProductDescription product={product} />
     </div>

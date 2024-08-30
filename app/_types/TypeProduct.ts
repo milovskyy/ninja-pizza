@@ -23,8 +23,12 @@ export type CategoryType = {
   color: string
 }
 
-// export type AllProductsType = {
-//   products: ProductType[]
-// }
+export type IngredientType = {
+  id: number
+  name: string
+  image: string
+  price: number
+  extra: boolean
+}
 
 export type SeparateMenuType = { name: string; products: ProductType[] }

@@ -21,7 +21,9 @@ export default function RootLayout({
         className={`${manrope.className} mx-auto flex min-h-screen flex-col items-center bg-stone-100`}
       >
         <AppHeader />
-        <main className="mt-[84px] flex w-full flex-1">{children}</main>
+        <main className="mt-[84px] flex w-full flex-1 justify-center">
+          {children}
+        </main>
       </body>
     </html>
   )

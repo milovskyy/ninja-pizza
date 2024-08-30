@@ -6,6 +6,8 @@ import { GoHeart } from "react-icons/go"
 import Link from "next/link"
 import { ProductType } from "../app/_types/TypeProduct"
 import { PRODUCT_IMAGE_URL } from "@/app/_constants/constants"
+import { PlusMinusBlock } from "./PlusMinusBlock"
+import { Button } from "./ui/button"
 
 type PropsType = {
   product: ProductType
@@ -69,21 +71,15 @@ function MenuCard({ product }: PropsType) {
             <div className="text-xl font-bold">{price}</div>
             <div className="text-sm font-semibold text-stone-400">UAH</div>
           </div>
-          {/* <div className="flex items-center justify-center gap-3">
-            <div className="cursor-pointer rounded-full bg-stone-100 p-[18px] hover:bg-[#ffc700]">
-              <AiOutlineMinus />
-            </div>
-            <div className="font-bold">1</div>
-            <div className="cursor-pointer rounded-full bg-stone-100 p-[18px] hover:bg-[#ffc700]">
-              <AiOutlinePlus />
-            </div>
-          </div> */}
-          <Link
-            href="/"
-            className="rounded-full bg-stone-100 px-6 py-3 text-[16px] font-bold text-stone-900 hover:bg-primary"
-          >
+
+          {/* <PlusMinusBlock
+            number={3}
+            bg="bg-stone-100"
+            hoverBg="hover:bg-primary"
+          /> */}
+          <Button className="rounded-full bg-stone-100 text-[16px] font-bold text-stone-900 hover:bg-primary">
             Order
-          </Link>
+          </Button>
         </div>
 
         <div className="absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-3 text-stone-500 hover:text-red-600">
