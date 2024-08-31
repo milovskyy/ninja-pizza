@@ -13,10 +13,14 @@ type PropsType = {
 
 export const revalidate = 0
 
+// METADATA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 export default async function Page({ params }: PropsType) {
   const { product: productName } = params
 
   const product = await getProductByLinkName(productName)
+
+  console.log(productName)
 
   if (!product) return notFound()
 

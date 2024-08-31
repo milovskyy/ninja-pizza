@@ -120,12 +120,33 @@ export const getCategoryColor = async function (category: string) {
 // ////////////////////////////////////////////////////////////////////////////
 
 export const getIngredients = async function () {
-  const { data, error } = await supabase.from("ingredients").select("*")
-  // .order("name", { ascending: true })
+  const { data, error } = await supabase
+    .from("ingredients")
+    .select("*")
+    .order("name", { ascending: true })
 
   if (error) {
     console.log(error, "error")
     throw new Error("Ingredients could not be loaded")
+  }
+
+  return data
+  // as IngredientType[]
+}
+
+// ////////////////////////////////////////////////////////////////////////////
+
+export const getProductIngredients = async function (ingredient: string[]) {
+  const { data, error } = await supabase
+    .from("ingredients")
+    .select("*")
+    // .eq("name", ingredient)
+    .in("name", ingredient)
+
+  if (error) {
+    console.log(ingredient)
+    console.log(error, "error")
+    // throw new Error("Ingredients could not be loaded")
   }
 
   return data

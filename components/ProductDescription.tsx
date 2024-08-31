@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "./ui/button"
 import { GoHeart } from "react-icons/go"
 import { PlusMinusBlock } from "./PlusMinusBlock"
-import { getIngredients } from "@/lib/data-service"
+import { getProductIngredients } from "@/lib/data-service"
 import { Ingredients } from "./Ingredients"
 
 type Props = {
@@ -14,9 +14,9 @@ type Props = {
 }
 
 export const ProductDescription = async ({ product }: Props) => {
-  const allIngredients = await getIngredients()
-
   const { name, ingredients, price, size, isNew, hit } = product
+
+  const productIngredients = await getProductIngredients(ingredients)
 
   // УБРАТЬ ПОТОМ ЮЗ КЛИЕНТ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   return (
@@ -35,8 +35,10 @@ export const ProductDescription = async ({ product }: Props) => {
       )}
       <div className={cn("flex flex-1 flex-col gap-4")}>
         <h1 className="text-[44px] font-extrabold">{name}</h1>
-        <Ingredients ingredients={allIngredients} />
-        <div className="flex items-center gap-3">
+        {!!productIngredients?.length && (
+          <Ingredients productIngredients={productIngredients} />
+        )}
+        <div className="mt-4 flex items-center gap-3">
           <div className="mr-3 flex flex-col">
             <div className="text-2xl font-black">{price} UAH</div>
             <div className="text-sm font-semibold">{size}</div>
@@ -44,9 +46,9 @@ export const ProductDescription = async ({ product }: Props) => {
           <Button className="text-[16px]">Add to cart</Button>
           <PlusMinusBlock number={3} />
 
-          <div className="cursor-pointer rounded-full bg-white p-3 text-stone-500 hover:text-red-600">
+          <Button className="h-[52px] w-[52px] bg-white p-3 text-stone-500 hover:bg-white hover:text-red-600">
             <GoHeart size="24px" className="relative top-[1px]" />
-          </div>
+          </Button>
         </div>
       </div>
     </div>

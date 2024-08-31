@@ -34,7 +34,7 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
   return (
     <div className="flex flex-col items-center px-3 pb-2">
       <h1 className="mb-6 self-start text-5xl font-extrabold">{name}</h1>
-      {!limit && name === "Pizza" && <PizzaFilter />}
+      {!limit && name === "Pizza" && <PizzaFilter filter={filter} />}
 
       <div className="mb-12 grid w-full grid-cols-4 gap-[6px]">
         {productsToShow.map((product) => (

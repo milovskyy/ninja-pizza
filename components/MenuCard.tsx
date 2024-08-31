@@ -41,7 +41,7 @@ function MenuCard({ product }: PropsType) {
     <div className="flex w-full rounded-2xl bg-white p-6 pb-5">
       <div className="relative flex w-full flex-col">
         <Link
-          href={`/product/${name.toLowerCase().replace(/\s+/g, "-")}`}
+          href={`/product/${linkName}`}
           className="relative aspect-square w-[75%] self-center rounded-2xl bg-white"
         >
           <Image
@@ -51,10 +51,7 @@ function MenuCard({ product }: PropsType) {
             className="object-cover"
           />
         </Link>
-        <Link
-          className="mt-6 flex-1"
-          href={`/product/${name.toLowerCase().replace(/\s+/g, "-")}`}
-        >
+        <Link className="mt-6 flex-1" href={`/product/${linkName}`}>
           <h1 className="text-center text-xl font-bold">{name}</h1>
         </Link>
 

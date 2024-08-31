@@ -6,8 +6,14 @@ import PizzaFilterButton from "./PizzaFilterButton"
 
 const filters = ["spicy", "meat", "vegetarian", "seafood"]
 
-function PizzaFilter() {
-  const [selectedFilter, setSelectedFilter] = useState("")
+type Props = {
+  filter: string | undefined
+}
+
+function PizzaFilter({ filter = "" }: Props) {
+  const [selectedFilter, setSelectedFilter] = useState(filter)
+
+  // console.log(filter)
 
   const searchParams = useSearchParams()
   const pathname = usePathname()
