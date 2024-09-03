@@ -1,7 +1,7 @@
 "use server"
 
 import { SeparateMenuType } from "@/app/_types/TypeProduct"
-import { initialSort } from "./helperFunction"
+import { groupProductsByCategory } from "./helperFunction"
 import { supabase } from "./supabase"
 
 export const getProducts = async function () {
@@ -15,7 +15,7 @@ export const getProducts = async function () {
     throw new Error("Products could not be loaded")
   }
 
-  const data = initialSort(products)
+  const data = groupProductsByCategory(products)
 
   return data as SeparateMenuType[]
 }

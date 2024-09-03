@@ -13,35 +13,41 @@ export const categoryProductsByLinkname = (
   return filteredProducts
 }
 
-export const initialSort = (products: ProductType[]) => {
-  const productsByCategories = products.reduce((acc, curr) => {
-    const category = curr.category as string
+export const groupProductsByCategory = (products: ProductType[]) => {
+  const productsByCategory = products.reduce(
+    (productsByCategory, product) => {
+      const category = product.category
 
-    if (!acc[category]) {
-      acc[category] = { name: curr.category, products: [] }
-    }
-    acc[category].products.push(curr)
-    return acc
-  }, [])
+      if (!productsByCategory[category]) {
+        productsByCategory[category] = {
+          name: category,
+          products: [],
+        }
+      }
 
-  // const productsByCategories = {
-  //   Pizza: { name: "Pizza", products: [] },
-  //   Snacks: { name: "Snacks", products: [] },
-  //   Desserts: { name: "Desserts", products: [] },
-  //   Drinks: { name: "Drinks", products: [] },
-  //   Extras: { name: "Extras", products: [] },
-  // }
+      productsByCategory[category].products.push(product)
 
-  // products.forEach((element) => {
-  //   const category = element.category
-  //   productsByCategories[category].products.push(element)
-  //   // console.log(productsByCategories[category].products)
-  // })
+      return productsByCategory
+    },
+    {} as { [category: string]: { name: string; products: ProductType[] } },
+  )
 
-  const result = Object.values(productsByCategories)
-
-  return result
+  return Object.values(productsByCategory)
 }
+
+// const productsByCategories = {
+//   Pizza: { name: "Pizza", products: [] },
+//   Snacks: { name: "Snacks", products: [] },
+//   Desserts: { name: "Desserts", products: [] },
+//   Drinks: { name: "Drinks", products: [] },
+//   Extras: { name: "Extras", products: [] },
+// }
+
+// products.forEach((element) => {
+//   const category = element.category
+//   productsByCategories[category].products.push(element)
+//   // console.log(productsByCategories[category].products)
+// })
 
 // const result = values.sort((a, b) => {
 //   if (a.name === "Pizza" && b.name !== "Pizza") {

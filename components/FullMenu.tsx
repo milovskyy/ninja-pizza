@@ -1,20 +1,12 @@
 import { PRODUCTLIMIT } from "@/app/_constants/constants"
 import MenuCategory from "./MenuCategory"
-// import { getProducts } from "@/lib/data-service"
-import { useEffect } from "react"
-import useProducts from "@/app/_store/products"
+
 import { getProducts } from "@/lib/actions"
-import { useQuery } from "@tanstack/react-query"
 
 export const revalidate = 0
 
 async function FullMenu() {
   const products = await getProducts()
-
-  // const { data: products, error } = useQuery({
-  //   queryKey: ["products"],
-  //   queryFn: getProducts,
-  // })
 
   const filteredProducts = products?.filter((obj) => obj.name !== "Extras")
 
