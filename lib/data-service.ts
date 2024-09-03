@@ -1,6 +1,3 @@
-// import { notFound } from "next/navigation"
-// import { eachDayOfInterval } from "date-fns"
-import { initialSort } from "./helperFunction"
 import { supabase } from "./supabase"
 
 import {
@@ -35,7 +32,6 @@ import {
 // GET
 
 export const getProducts = async function () {
-  // const { data: products, error } = await supabase
   const { data, error } = await supabase
     .from("products")
     .select("*")
@@ -46,9 +42,6 @@ export const getProducts = async function () {
     throw new Error("Products could not be loaded")
   }
 
-  // const data = initialSort(products)
-
-  // return data as SeparateMenuType[]
   return data as ProductType[]
 }
 

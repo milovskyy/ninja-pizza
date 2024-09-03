@@ -6,7 +6,7 @@ import FullMenu from "../components/FullMenu"
 import AppFooter from "../components/footer/AppFooter"
 import { Container } from "@/components/Container"
 
-export const revalidate = 0
+export const revalidate = 1000
 
 export default async function Home() {
   return (

@@ -1,14 +1,16 @@
 import { PRODUCTLIMIT } from "@/app/_constants/constants"
 import MenuCategory from "./MenuCategory"
-
-import { getProducts } from "@/lib/actions"
+import { getProducts } from "@/lib/data-service"
+import { groupProductsByCategory } from "@/lib/helperFunction"
 
 export const revalidate = 0
 
 async function FullMenu() {
   const products = await getProducts()
 
-  const filteredProducts = products?.filter((obj) => obj.name !== "Extras")
+  const data = groupProductsByCategory(products)
+
+  const filteredProducts = data?.filter((obj) => obj.name !== "Extras")
 
   console.log(products)
 
