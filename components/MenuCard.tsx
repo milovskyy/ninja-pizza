@@ -24,8 +24,7 @@ function MenuCard({ product }: PropsType) {
     isNew,
     spicy,
     vegetarian,
-    category,
-    alcohol,
+    image,
   } = product
 
   function formatIngredients(ingredients: string[]) {
@@ -38,18 +37,13 @@ function MenuCard({ product }: PropsType) {
     formattedIngredients = formatIngredients(ingredients.slice(0, 4))
 
   return (
-    <div className="flex w-full rounded-2xl bg-white p-6 pb-5">
+    <div className="flex w-full rounded-3xl bg-white p-6 pb-5">
       <div className="relative flex w-full flex-col">
         <Link
           href={`/product/${linkName}`}
           className="relative aspect-square w-[75%] self-center rounded-2xl bg-white"
         >
-          <Image
-            src={`${PRODUCT_IMAGE_URL}/products/${category.toLowerCase()}/${name.replace(/\s+/g, "%20")}.${alcohol ? "png" : "webp"}`}
-            alt="img"
-            fill
-            className="object-cover"
-          />
+          <Image src={image} alt="img" fill className="object-cover" />
         </Link>
         <Link className="mt-5" href={`/product/${linkName}`}>
           <h1 className="text-center text-xl font-bold">{name}</h1>

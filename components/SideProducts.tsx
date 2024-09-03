@@ -2,42 +2,45 @@
 
 import { ProductType, SeparateMenuType } from "@/app/_types/TypeProduct"
 import { cn } from "@/lib/utils"
-import { ProductImage } from "./ProductImage"
-import { ProductDescription } from "./ProductDescription"
-import { Container } from "./Container"
+import Image from "next/image"
+
 import Link from "next/link"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
 
 type Props = {
-  index: number
-  categoryProducts: ProductType[]
+  productName?: string
+  products: ProductType[]
 }
 
-export const SideProducts = ({ index, categoryProducts }: Props) => {
-  console.log(categoryProducts)
-
-  // const router = useRouter();
-  // const [currentProductIndex, setCurrentProductIndex] = useState(0);
-
-  // const { pathname, search } = router;
-
-  // router.replace(${pathname}?index=${currentProductIndex}${search});
-  // }, [currentProductIndex, router]);
+export const SideProducts = ({ productName, products }: Props) => {
+  const index = products?.findIndex((p) => p.linkName === productName)
 
   return (
     <div className={cn("justify-betweenbg-blue-100 flex")}>
       <Link
-        href={`/product/${categoryProducts[index - 1]?.linkName}`}
+        href={`/product/${products[index - 1]?.linkName}`}
         className="absolute left-0 top-1/2 -translate-y-1/2 bg-red-500 p-5"
       >
-        {categoryProducts[index - 1]?.name}
+        <div>
+          <Image
+            src={products[index - 1]?.image}
+            alt={products[index - 1]?.name}
+            width={150}
+            height={150}
+          />
+        </div>
       </Link>
       <Link
-        href={`/product/${categoryProducts[index + 1]?.linkName}`}
+        href={`/product/${products[index + 1]?.linkName}`}
         className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-500 p-5"
       >
-        {categoryProducts[index + 1]?.name}
+        <div>
+          <Image
+            src={products[index + 1]?.image}
+            alt={products[index + 1]?.name}
+            width={150}
+            height={150}
+          />
+        </div>
       </Link>
     </div>
   )

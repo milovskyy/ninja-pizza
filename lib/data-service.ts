@@ -35,7 +35,8 @@ import {
 // GET
 
 export const getProducts = async function () {
-  const { data: products, error } = await supabase
+  // const { data: products, error } = await supabase
+  const { data, error } = await supabase
     .from("products")
     .select("*")
     .order("id", { ascending: true })
@@ -45,9 +46,10 @@ export const getProducts = async function () {
     throw new Error("Products could not be loaded")
   }
 
-  const data = initialSort(products)
+  // const data = initialSort(products)
 
-  return data as SeparateMenuType[]
+  // return data as SeparateMenuType[]
+  return data as ProductType[]
 }
 
 // /////////////////////////////////////////////////////////////////////////////

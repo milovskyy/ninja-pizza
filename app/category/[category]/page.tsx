@@ -12,15 +12,13 @@ type PropsType = {
   searchParams: { filter: string }
 }
 
-export const revalidate = 0
+export const revalidate = 10000
 // export const revalidate = 0 - no sense because of dynamic rendering
 
 export default async function Page({ params, searchParams }: PropsType) {
   const { category } = params
 
   const filter = searchParams?.filter ?? "all"
-
-  // const filter = "seafood"
 
   // ФИЛЬТРОВАТЬ ПРОДУКТЫ ПО ISNEW
 

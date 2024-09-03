@@ -8,17 +8,12 @@ type Props = {
 }
 
 export const ProductImage = ({ product }: Props) => {
-  const { name, category, alcohol, vegetarian, spicy } = product
+  const { image, vegetarian, spicy } = product
 
   return (
     <div className={cn("relative px-10 py-3")}>
       <div className="relative aspect-square w-[400px]">
-        <Image
-          src={`${PRODUCT_IMAGE_URL}/products/${category.toLowerCase()}/${name.replace(/\s+/g, "%20")}.${alcohol ? "png" : "webp"}`}
-          alt="img"
-          fill
-          className="object-cover"
-        />
+        <Image src={image} alt="img" fill className="object-cover" />
       </div>
       {(vegetarian || spicy) && (
         <div

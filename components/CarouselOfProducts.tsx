@@ -15,10 +15,10 @@ import MenuCard from "./MenuCard"
 import Link from "next/link"
 
 type Props = {
-  drinks: ProductType[]
+  products: ProductType[]
 }
 
-export const CarouselOfProducts = ({ drinks }: Props) => {
+export const CarouselOfProducts = ({ products }: Props) => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
 
@@ -34,12 +34,14 @@ export const CarouselOfProducts = ({ drinks }: Props) => {
     })
   }, [api])
 
-  const productCategory = drinks[0].category
+  const productCategory = products[0].category
 
   return (
-    <div className={cn("my-6 mb-20 flex flex-col gap-6 px-5")}>
+    <div className={cn("mb-20 mt-14 flex flex-col gap-8 px-5")}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[32px] font-bold">Add some drinks</h2>
+        <h2 className="text-[32px] font-bold">
+          {productCategory === "Drinks" ? "Add some drinks" : "Add a pizza"}
+        </h2>
         <div className="flex gap-2">
           <Link href={`/category/${productCategory.toLocaleLowerCase()}`}>
             <Button className="bg-white font-bold">See all</Button>
@@ -67,10 +69,10 @@ export const CarouselOfProducts = ({ drinks }: Props) => {
           align: "start",
         }}
       >
-        <CarouselContent className="-ml-1 w-full">
-          {drinks.map((drink) => (
-            <CarouselItem key={drink.id} className="flex basis-1/4 pl-1">
-              <MenuCard product={drink} />
+        <CarouselContent className="-ml-2 w-full">
+          {products.map((product) => (
+            <CarouselItem key={product.id} className="flex basis-1/4 pl-2">
+              <MenuCard product={product} />
             </CarouselItem>
           ))}
         </CarouselContent>

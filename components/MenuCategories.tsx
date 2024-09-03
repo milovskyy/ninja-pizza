@@ -29,25 +29,25 @@ async function MenuCategories({ separate }: PropsType) {
 
 export default MenuCategories
 
-const x1 = [
-  "Dough made of four types of flour",
-  "Mozzarella",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-]
+// const x1 = [
+//   "Dough made of four types of flour",
+//   "Mozzarella",
+//   "",
+//   "",
+//   "",
+//   "",
+//   "",
+//   "",
+//   "",
+//   "",
+// ]
 
-const x11 = [
-  "Parmesan",
-  "Crispy fried onion",
-  "Jalapeno pepper",
-  "Pickles",
-  "Salzburg poultry sausages",
-  "Mustard-pickled cucumbers",
-  "Bread",
-]
+// const x11 = [
+//   "Parmesan",
+//   "Crispy fried onion",
+//   "Jalapeno pepper",
+//   "Pickles",
+//   "Salzburg poultry sausages",
+//   "Mustard-pickled cucumbers",
+//   "Bread",
+// ]

@@ -1,19 +1,16 @@
 import { ProductType } from "@/app/_types/TypeProduct"
 
-type PropsType = {
-  // id: number
-  // name: string
-  // category: string
-  // ingredients: string[]
-  // price: number
-  // size: string
-  // hit: null | boolean
-  // meat: null | boolean
-  // isNew: null | boolean
-  // seafood: null | boolean
-  // spicy: null | boolean
-  // vegetarian: null | boolean
-  // alcohol: null | boolean
+export const categoryProductsByLinkname = (
+  products: ProductType[],
+  linkName: string,
+) => {
+  const category = products.find((product) => product.linkName === linkName)
+
+  const filteredProducts = products.filter(
+    (obj) => obj.category === category?.category,
+  )
+
+  return filteredProducts
 }
 
 export const initialSort = (products: ProductType[]) => {

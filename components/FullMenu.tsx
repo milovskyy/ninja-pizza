@@ -1,31 +1,26 @@
-"use client"
-
 import { PRODUCTLIMIT } from "@/app/_constants/constants"
 import MenuCategory from "./MenuCategory"
-import { getProducts } from "@/lib/data-service"
+// import { getProducts } from "@/lib/data-service"
 import { useEffect } from "react"
 import useProducts from "@/app/_store/products"
+import { getProducts } from "@/lib/actions"
+import { useQuery } from "@tanstack/react-query"
 
 export const revalidate = 0
 
-function FullMenu() {
-  // const products = await getProducts()
+async function FullMenu() {
+  const products = await getProducts()
 
-  const { products, fetchProducts, isLoading, error } = useProducts()
+  // const { data: products, error } = useQuery({
+  //   queryKey: ["products"],
+  //   queryFn: getProducts,
+  // })
 
-  useEffect(() => {
-    fetchProducts()
-  }, [])
+  const filteredProducts = products?.filter((obj) => obj.name !== "Extras")
 
-  if (isLoading) {
-    return <div>Загрузка...</div>
-  }
+  console.log(products)
 
-  if (error) {
-    return <div>Ошибка: {error}</div>
-  }
-
-  const filteredProducts = products.filter((obj) => obj.name !== "Extras")
+  if (!products || !filteredProducts) return null
 
   return (
     <div className="mb-16 flex flex-col">
