@@ -140,20 +140,55 @@ export const getProductIngredients = async function (ingredient: string[]) {
   const { data, error } = await supabase
     .from("ingredients")
     .select("*")
-    // .eq("name", ingredient)
     .in("name", ingredient)
 
   if (error) {
-    console.log(ingredient)
     console.log(error, "error")
     // throw new Error("Ingredients could not be loaded")
   }
+
+  data?.sort((a, b) => ingredient.indexOf(a.name) - ingredient.indexOf(b.name))
 
   return data
   // as IngredientType[]
 }
 
 // ////////////////////////////////////////////////////////////////////////////
+export const getHitDrinks = async function () {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("category", "Drinks")
+    .eq("hit", true)
+    .order("id", { ascending: true })
+
+  if (error) {
+    console.log(error, "error")
+    throw new Error("Drinks could not be loaded")
+  }
+
+  return data as ProductType[]
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+
+export const getHitPizzas = async function () {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("category", "Pizza")
+    .eq("hit", true)
+    .order("id", { ascending: true })
+
+  if (error) {
+    console.log(error, "error")
+    throw new Error("Drinks could not be loaded")
+  }
+
+  return data as ProductType[]
+}
+
+// /////////////////////////////////////////////////////////////////////////////
 
 // Guests are uniquely identified by their email address
 // export async function getGuest(email) {

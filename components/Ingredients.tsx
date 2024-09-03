@@ -20,8 +20,6 @@ export const Ingredients = ({ productIngredients }: Props) => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
 
-  console.log(productIngredients)
-
   useEffect(() => {
     if (!api) {
       return
@@ -59,7 +57,13 @@ export const Ingredients = ({ productIngredients }: Props) => {
         </div>
       </div>
       <div className="overflow-hidden rounded-xl">
-        <Carousel className="max-w-[720px w-[720px]" setApi={setApi}>
+        <Carousel
+          className="max-w-[720px w-[720px]"
+          setApi={setApi}
+          opts={{
+            align: "start",
+          }}
+        >
           <CarouselContent className="flex w-full justify-start">
             {productIngredients.map((productIngredients) => (
               <CarouselItem

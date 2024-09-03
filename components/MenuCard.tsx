@@ -51,19 +51,19 @@ function MenuCard({ product }: PropsType) {
             className="object-cover"
           />
         </Link>
-        <Link className="mt-6 flex-1" href={`/product/${linkName}`}>
+        <Link className="mt-5" href={`/product/${linkName}`}>
           <h1 className="text-center text-xl font-bold">{name}</h1>
         </Link>
 
-        <div className="flex items-center">
-          <h3 className="mt-3 flex-1 text-center text-[14px] font-semibold text-stone-400">
-            <span className="font-semibold text-[#ffc700]">{size}</span>
+        <div className="flex flex-1 items-center">
+          <h3 className="mt-3 flex-1 items-center text-center text-[14px] font-semibold text-stone-400">
+            <span className="font-semibold text-main">{size}</span>
 
             {ingredients?.length > 0 && ` - " ${formattedIngredients}`}
           </h3>
         </div>
 
-        <div className="mt-6 flex items-center justify-between">
+        <div className="mt-5 flex items-center justify-between">
           <div className="flex gap-2">
             <div className="text-xl font-bold">{price}</div>
             <div className="text-sm font-semibold text-stone-400">UAH</div>
@@ -74,9 +74,7 @@ function MenuCard({ product }: PropsType) {
             bg="bg-stone-100"
             hoverBg="hover:bg-primary"
           /> */}
-          <Button className="rounded-full bg-stone-100 text-[16px] font-bold text-stone-900 hover:bg-primary">
-            Order
-          </Button>
+          <Button className="bg-stone-100 text-[16px] font-bold">Order</Button>
         </div>
 
         <div className="absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-3 text-stone-500 hover:text-red-600">

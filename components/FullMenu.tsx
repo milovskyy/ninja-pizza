@@ -1,17 +1,31 @@
+"use client"
+
 import { PRODUCTLIMIT } from "@/app/_constants/constants"
 import MenuCategory from "./MenuCategory"
 import { getProducts } from "@/lib/data-service"
+import { useEffect } from "react"
+import useProducts from "@/app/_store/products"
 
 export const revalidate = 0
 
-async function FullMenu() {
-  const products = await getProducts()
+function FullMenu() {
+  // const products = await getProducts()
+
+  const { products, fetchProducts, isLoading, error } = useProducts()
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  if (isLoading) {
+    return <div>Загрузка...</div>
+  }
+
+  if (error) {
+    return <div>Ошибка: {error}</div>
+  }
 
   const filteredProducts = products.filter((obj) => obj.name !== "Extras")
-
-  const prodNames = products[4].products.map((obj) => obj.name)
-
-  console.log(prodNames)
 
   return (
     <div className="mb-16 flex flex-col">
