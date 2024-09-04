@@ -19,34 +19,36 @@ export const SideProducts = ({ prevProduct, nextProduct }: Props) => {
     <div className={cn("justify-betweenbg-blue-100 flex")}>
       {prevProduct && (
         <Link
-          href={`/product/${prevProduct?.linkName}`}
+          href={`/prod/${prevProduct?.linkName}`}
           scroll={false}
           // onClick={() => router.push(`/product/${prevProduct?.linkName}`)}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-red-500 p-5"
+          className="absolute left-0 top-1/2 -translate-y-1/2 p-5"
         >
           <div>
             <Image
-              src={prevProduct?.image}
-              alt={prevProduct?.name}
+              src={prevProduct.image}
+              alt={prevProduct.name}
               width={150}
               height={150}
+              className="opacity-50"
             />
           </div>
         </Link>
       )}
       {nextProduct && (
         <Link
-          href={`/product/${nextProduct?.linkName}`}
+          href={`/prod/${nextProduct?.linkName}`}
           scroll={false}
           // onClick={() => router.push(`/product/${nextProduct?.linkName}`)}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-500 p-5"
+          className="absolute right-0 top-1/2 -translate-y-1/2 p-5"
         >
           <div>
             <Image
-              src={nextProduct?.image}
-              alt={nextProduct?.name}
+              src={nextProduct.image}
+              alt={nextProduct.name}
               width={150}
               height={150}
+              className="opacity-50"
             />
           </div>
         </Link>

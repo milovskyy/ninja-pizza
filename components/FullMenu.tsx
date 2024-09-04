@@ -12,8 +12,6 @@ async function FullMenu() {
 
   const filteredProducts = data?.filter((obj) => obj.name !== "Extras")
 
-  console.log(products)
-
   if (!products || !filteredProducts) return null
 
   return (

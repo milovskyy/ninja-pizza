@@ -17,7 +17,7 @@ type PropsType = {
 }
 // METADATA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-export const revalidate = 1000
+export const revalidate = 1000000
 // export const revalidate = 0
 
 export default async function Page({ params }: PropsType) {
@@ -29,9 +29,9 @@ export default async function Page({ params }: PropsType) {
   const index = products.findIndex((p) => p.linkName === productName)
   const prevProduct = products[index - 1]
   const nextProduct = products[index + 1]
+  const product = products[index]
 
   // const product = products.find((p) => p.linkName === productName)
-  const product = products[index]
 
   if (!product) notFound()
 

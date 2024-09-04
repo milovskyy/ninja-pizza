@@ -42,6 +42,8 @@ export const getProducts = async function () {
     throw new Error("Products could not be loaded")
   }
 
+  console.log("запрос")
+
   return data as ProductType[]
 }
 
