@@ -32,6 +32,8 @@ export const Ingredients = ({ productIngredients }: Props) => {
     })
   }, [api])
 
+  if (!productIngredients) return null
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -67,7 +69,7 @@ export const Ingredients = ({ productIngredients }: Props) => {
           <CarouselContent className="flex w-full justify-start">
             {productIngredients.map((productIngredients) => (
               <CarouselItem
-                key={productIngredients.id}
+                key={productIngredients?.id}
                 className="basis-[18.2%]"
               >
                 <IngredientItem ingredient={productIngredients} />

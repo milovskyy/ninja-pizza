@@ -1,22 +1,26 @@
 // "use client"
 // УБРАТЬ ПОТОМ ЮЗ КЛИЕНТ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-import { ProductType } from "@/app/_types/TypeProduct"
+import { IngredientType, ProductType } from "@/app/_types/TypeProduct"
 import { cn } from "@/lib/utils"
 import { Button } from "./ui/button"
 import { GoHeart } from "react-icons/go"
 import { PlusMinusBlock } from "./PlusMinusBlock"
-import { getProductIngredients } from "@/lib/data-service"
 import { Ingredients } from "./Ingredients"
+import { useIngredients } from "@/app/_store/ingredients"
 
 type Props = {
   product: ProductType
 }
 
-export const ProductDescription = async ({ product }: Props) => {
+export const ProductDescription = ({ product }: Props) => {
   const { name, ingredients, price, size, isNew, hit } = product
 
-  const productIngredients = await getProductIngredients(ingredients)
+  const { allIngredients } = useIngredients()
+
+  const productIngredients = ingredients
+    ?.map((ing) => allIngredients.find((i) => i.name === ing))
+    .filter((item) => item !== undefined) as IngredientType[]
 
   // УБРАТЬ ПОТОМ ЮЗ КЛИЕНТ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   return (

@@ -4,15 +4,20 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io"
 import { Container } from "./Container"
+import { useProducts } from "@/app/_store/products"
 
 type PropsType = {
-  category: string
-  product?: string
+  productName?: string
+  categoryName?: string
 }
 
-function NavigationCategory({ category, product }: PropsType) {
+function NavigationCategory({ productName, categoryName }: PropsType) {
   const router = useRouter()
+  const { allProducts } = useProducts()
 
+  const product = allProducts.find((p) => p.linkName === productName)
+
+  console.log(product)
   return (
     <Container>
       <div className="my-8 flex items-center gap-4 text-xs">
@@ -34,16 +39,16 @@ function NavigationCategory({ category, product }: PropsType) {
         {product ? (
           <>
             <Link
-              href={`/category/${category.toLocaleLowerCase()}`}
+              href={`/category/${product.category.toLocaleLowerCase()}`}
               className="font-semibold tracking-wider text-stone-500"
             >
-              {category}
+              {product.category}
             </Link>
             <IoIosArrowForward className="text-stone-500" />
-            <div className="tracking-wider text-stone-500">{product}</div>
+            <div className="tracking-wider text-stone-500">{product.name}</div>
           </>
         ) : (
-          <div className="tracking-wider text-stone-500">{category}</div>
+          <div className="tracking-wider text-stone-500">{categoryName}</div>
         )}
       </div>
     </Container>

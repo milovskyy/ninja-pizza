@@ -9,6 +9,8 @@ import {
 // For testing
 // await new Promise((res) => setTimeout(res, 2000));
 
+// ///////////////////////////////////////////////////////////////////////////
+
 export const getProducts = async function () {
   const { data, error } = await supabase
     .from("products")

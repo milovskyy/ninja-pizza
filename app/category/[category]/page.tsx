@@ -26,6 +26,17 @@ export default async function Page({ params, searchParams }: PropsType) {
     getCategoryColor(category),
   ])
 
+  // const sortedProducts = [...products].sort(
+  //   (a, b) => (a.isNew === true ? 0 : 1) - (b.isNew === true ? 0 : 1),
+  // )
+  const sortedProducts = [...products].sort((a, b) => {
+    if (a.isNew && !b.isNew) return -1
+    if (!a.isNew && b.isNew) return 1
+    return 0
+  })
+
+  console.log(sortedProducts)
+
   return (
     <div
       className={cn(
@@ -36,8 +47,8 @@ export default async function Page({ params, searchParams }: PropsType) {
       }}
     >
       <Container className="mt-[84px] flex flex-col">
-        <Navigation category={name} />
-        {products.length !== 0 && (
+        <Navigation categoryName={name} />
+        {sortedProducts.length !== 0 && (
           <MenuCategory products={products} name={name} filter={filter} />
         )}
         <h2 className="my-10 text-center text-3xl font-extrabold">
