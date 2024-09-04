@@ -35,8 +35,6 @@ export default async function Page({ params, searchParams }: PropsType) {
     return 0
   })
 
-  console.log(sortedProducts)
-
   return (
     <div
       className={cn(
