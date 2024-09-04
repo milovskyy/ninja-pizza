@@ -27,9 +27,11 @@ export default async function Page({ params }: PropsType) {
 
   const products = categoryProductsByLinkname(AllProducts, productName)
   const index = products.findIndex((p) => p.linkName === productName)
-  const prevProduct = products[index + 1]
+  const prevProduct = products[index - 1]
+  const nextProduct = products[index + 1]
 
-  const product = products.find((p) => p.linkName === productName)
+  // const product = products.find((p) => p.linkName === productName)
+  const product = products[index]
 
   if (!product) notFound()
 
@@ -42,27 +44,17 @@ export default async function Page({ params }: PropsType) {
 
   return (
     <div className="flex flex-1 flex-col">
-      <Navigation category={product.category} product={product.name} />
+      {/* <Navigation category={product.category} product={product.name} /> */}
       <div className="relative">
-        <SideProducts productName={productName} products={products} />
+        <SideProducts prevProduct={prevProduct} nextProduct={nextProduct} />
         <Container className="my-6 flex items-center gap-20">
           <ProductImage product={product} />
           <ProductDescription product={product} />
         </Container>
       </div>
       <Container>
-        {prevProduct && (
-          <div>
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={150}
-              height={150}
-            />
-          </div>
-        )}
         <OrderingInformation />
-        <CarouselOfProducts products={carouselProducts} />
+        <CarouselOfProducts products={AllProducts} />
         <MobileAppBanner />
         <AppFooter />
       </Container>

@@ -5,43 +5,52 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 type Props = {
-  productName?: string
-  products: ProductType[]
+  prevProduct?: ProductType
+  nextProduct?: ProductType
 }
 
-export const SideProducts = ({ productName, products }: Props) => {
-  const index = products?.findIndex((p) => p.linkName === productName)
+export const SideProducts = ({ prevProduct, nextProduct }: Props) => {
+  const router = useRouter()
 
   return (
     <div className={cn("justify-betweenbg-blue-100 flex")}>
-      <Link
-        href={`/product/${products[index - 1]?.linkName}`}
-        className="absolute left-0 top-1/2 -translate-y-1/2 bg-red-500 p-5"
-      >
-        <div>
-          <Image
-            src={products[index - 1]?.image}
-            alt={products[index - 1]?.name}
-            width={150}
-            height={150}
-          />
-        </div>
-      </Link>
-      <Link
-        href={`/product/${products[index + 1]?.linkName}`}
-        className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-500 p-5"
-      >
-        <div>
-          <Image
-            src={products[index + 1]?.image}
-            alt={products[index + 1]?.name}
-            width={150}
-            height={150}
-          />
-        </div>
-      </Link>
+      {prevProduct && (
+        <Link
+          href={`/product/${prevProduct?.linkName}`}
+          scroll={false}
+          // onClick={() => router.push(`/product/${prevProduct?.linkName}`)}
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-red-500 p-5"
+        >
+          <div>
+            <Image
+              src={prevProduct?.image}
+              alt={prevProduct?.name}
+              width={150}
+              height={150}
+            />
+          </div>
+        </Link>
+      )}
+      {nextProduct && (
+        <Link
+          href={`/product/${nextProduct?.linkName}`}
+          scroll={false}
+          // onClick={() => router.push(`/product/${nextProduct?.linkName}`)}
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-500 p-5"
+        >
+          <div>
+            <Image
+              src={nextProduct?.image}
+              alt={nextProduct?.name}
+              width={150}
+              height={150}
+            />
+          </div>
+        </Link>
+      )}
     </div>
   )
 }
