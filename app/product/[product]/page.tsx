@@ -9,7 +9,6 @@ import { ProductImage } from "@/components/ProductImage"
 import { SideProducts } from "@/components/SideProducts"
 import { getProducts } from "@/lib/data-service"
 import { categoryProductsByLinkname } from "@/lib/helperFunction"
-import Image from "next/image"
 import { notFound } from "next/navigation"
 
 type PropsType = {
