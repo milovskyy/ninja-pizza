@@ -21,17 +21,15 @@ export const revalidate = 1000000
 // export const revalidate = 0
 
 export default async function Page({ params }: PropsType) {
-  const { product: productName } = params
+  const productName = params.product
 
   const AllProducts = await getProducts()
 
   const products = categoryProductsByLinkname(AllProducts, productName)
   const index = products.findIndex((p) => p.linkName === productName)
+  const product = products[index]
   const prevProduct = products[index - 1]
   const nextProduct = products[index + 1]
-  const product = products[index]
-
-  // const product = products.find((p) => p.linkName === productName)
 
   if (!product) notFound()
 
@@ -40,11 +38,10 @@ export default async function Page({ params }: PropsType) {
       obj.category === (product.category === "Drinks" ? "Pizza" : "Drinks") &&
       obj.hit === true,
   )
-  // /////////////// ПОРАБОТАТЬ С КАРУСЕЛЬЬЮ. А ТО ТАМ ЫСЁ ПОД ДРИНКС
 
   return (
     <div className="flex flex-1 flex-col">
-      {/* <Navigation category={product.category} product={product.name} /> */}
+      <Navigation category={product.category} product={product.name} />
       <div className="relative">
         <SideProducts prevProduct={prevProduct} nextProduct={nextProduct} />
         <Container className="my-6 flex items-center gap-20">
@@ -54,7 +51,7 @@ export default async function Page({ params }: PropsType) {
       </div>
       <Container>
         <OrderingInformation />
-        <CarouselOfProducts products={AllProducts} />
+        <CarouselOfProducts products={carouselProducts} />
         <MobileAppBanner />
         <AppFooter />
       </Container>

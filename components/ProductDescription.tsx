@@ -13,10 +13,10 @@ type Props = {
   product: ProductType
 }
 
-export const ProductDescription = ({ product }: Props) => {
+export const ProductDescription = async ({ product }: Props) => {
   const { name, ingredients, price, size, isNew, hit } = product
 
-  // const productIngredients = await getProductIngredients(ingredients)
+  const productIngredients = await getProductIngredients(ingredients)
 
   // УБРАТЬ ПОТОМ ЮЗ КЛИЕНТ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   return (
@@ -35,9 +35,9 @@ export const ProductDescription = ({ product }: Props) => {
       )}
       <div className={cn("flex flex-1 flex-col gap-4")}>
         <h1 className="text-[44px] font-extrabold">{name}</h1>
-        {/* {!!productIngredients?.length && (
+        {!!productIngredients?.length && (
           <Ingredients productIngredients={productIngredients} />
-        )} */}
+        )}
         <div className="mt-4 flex items-center gap-3">
           <div className="mr-3 flex flex-col">
             <div className="text-2xl font-black">{price} UAH</div>
