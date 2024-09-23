@@ -11,6 +11,7 @@ function NavigationHeader() {
           <Link
             className="flex h-[56px] items-center justify-center rounded-full px-5 font-bold text-stone-800 hover:bg-stone-200"
             href="/"
+            prefetch={true}
           >
             <p>Home</p>
           </Link>
@@ -31,6 +32,7 @@ function NavigationHeader() {
           <Link
             className="flex h-[56px] items-center justify-center rounded-full px-5 font-bold text-stone-800 hover:bg-stone-200"
             href="/about"
+            prefetch={true}
           >
             <p>About</p>
           </Link>
@@ -39,6 +41,7 @@ function NavigationHeader() {
           <Link
             className="flex h-[56px] items-center justify-center rounded-full px-5 font-bold text-stone-800 hover:bg-stone-200"
             href="/news"
+            prefetch={true}
           >
             <p>News</p>
           </Link>

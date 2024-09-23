@@ -25,10 +25,7 @@ export const AppInitializer = ({
   const { setIngredients } = useIngredients()
   const { setCategories } = useCategories()
 
-  // console.log("app init")
-
   useEffect(() => {
-    // console.log("app init in useEffect")
     setProducts(products)
     setIngredients(ingredients)
     setCategories(categories)

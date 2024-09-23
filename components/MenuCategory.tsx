@@ -49,6 +49,7 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
         <Link
           href={`/category/${name.toLowerCase()}`}
           className="mb-3 rounded-full bg-stone-700 px-6 py-4 text-[16px] font-bold text-stone-50"
+          prefetch={true}
         >
           See all
         </Link>

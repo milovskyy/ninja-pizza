@@ -5,9 +5,11 @@ import { cn } from "@/lib/utils"
 import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
 
-type Props = {}
+type Props = {
+  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-export const Cart = ({}: Props) => {
+export const Cart = ({ setIsCartOpen }: Props) => {
   const { cart } = useCart()
 
   const cartTotalPrice = cart?.items.reduce(
@@ -16,15 +18,13 @@ export const Cart = ({}: Props) => {
   )
 
   return (
-    <div
-      className={cn(
-        "absolute right-0 top-20 flex h-[635px] max-h-[635px] w-[480px] flex-col overflow-hidden rounded-3xl",
-      )}
-    >
+    <>
       <div className="flex flex-1 flex-col gap-3 bg-white first-line:pt-6">
         <h2 className="px-6 pt-6 text-xl font-bold">Your order</h2>
         <div className="flex max-h-[475px] flex-col gap-2 overflow-auto px-6 pb-2">
-          {cart?.items.map((item) => <CartItem key={item.id} item={item} />)}
+          {cart?.items.map((item) => (
+            <CartItem key={item.id} item={item} setIsCartOpen={setIsCartOpen} />
+          ))}
         </div>
       </div>
       <div className="flex justify-between bg-primary p-6">
@@ -41,6 +41,6 @@ export const Cart = ({}: Props) => {
           Place an order
         </Button>
       </div>
-    </div>
+    </>
   )
 }

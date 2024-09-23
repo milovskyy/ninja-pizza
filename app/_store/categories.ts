@@ -2,12 +2,12 @@ import { create } from "zustand"
 import { CategoryType } from "../_types/TypeProduct"
 
 type Store = {
-  allCategories: CategoryType[]
+  categories: CategoryType[]
   setCategories: (newCategories: CategoryType[]) => void
 }
 
 export const useCategories = create<Store>()((set) => ({
-  allCategories: [],
+  categories: [],
   setCategories: (newCategories: CategoryType[]) =>
-    set({ allCategories: newCategories }),
+    set({ categories: newCategories }),
 }))

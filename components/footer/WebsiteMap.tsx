@@ -8,6 +8,7 @@ function WebsiteMap() {
         <Link
           href="/"
           className="inline-flex px-2 font-semibold text-stone-800 hover:text-primary"
+          prefetch={true}
         >
           Home
         </Link>
@@ -16,6 +17,7 @@ function WebsiteMap() {
         <Link
           href="/about"
           className="inline-flex px-2 font-semibold text-stone-800 hover:text-primary"
+          prefetch={true}
         >
           About
         </Link>
@@ -24,6 +26,7 @@ function WebsiteMap() {
         <Link
           href="/news"
           className="inline-flex px-2 font-semibold text-stone-800 hover:text-primary"
+          prefetch={true}
         >
           News
         </Link>

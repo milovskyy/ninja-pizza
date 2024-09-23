@@ -1,16 +1,16 @@
-import { getCategories } from "@/lib/data-service"
+"use client"
+
 import MenuCategoriesElement from "./MenuCategoriesElement"
+import { useCategories } from "@/app/_store/categories"
 
 type PropsType = {
   separate?: boolean
 }
 
-export const revalidate = 0
-
 // сортировать чтоб сначала новые шли
 
-async function MenuCategories({ separate }: PropsType) {
-  const categories = await getCategories()
+function MenuCategories({ separate }: PropsType) {
+  const { categories } = useCategories()
 
   return (
     <div className={`flex ${separate && "w-full gap-2"}`}>
@@ -28,26 +28,3 @@ async function MenuCategories({ separate }: PropsType) {
 }
 
 export default MenuCategories
-
-// const x1 = [
-//   "Dough made of four types of flour",
-//   "Mozzarella",
-//   "",
-//   "",
-//   "",
-//   "",
-//   "",
-//   "",
-//   "",
-//   "",
-// ]
-
-// const x11 = [
-//   "Parmesan",
-//   "Crispy fried onion",
-//   "Jalapeno pepper",
-//   "Pickles",
-//   "Salzburg poultry sausages",
-//   "Mustard-pickled cucumbers",
-//   "Bread",
-// ]

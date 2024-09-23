@@ -57,6 +57,7 @@ export const CarouselOfProducts = ({ productName }: Props) => {
         <div className="flex gap-2">
           <Link
             href={`/category/${productCategory === "Drinks" ? "pizza" : "drinks"}`}
+            prefetch={true}
           >
             <Button className="bg-white font-bold">See all</Button>
           </Link>

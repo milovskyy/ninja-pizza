@@ -7,6 +7,7 @@ import { useClickAway } from "react-use"
 import { useRef, useState } from "react"
 import { Cart } from "../Cart"
 import { X } from "lucide-react"
+import { CartEmpty } from "../CartEmpty"
 
 function InfoHeaderCart() {
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -45,7 +46,15 @@ function InfoHeaderCart() {
             <X />
           </div>
         )}
-        {isCartOpen && <Cart />}
+        {isCartOpen && (
+          <div className="absolute right-0 top-20 flex h-[635px] max-h-[635px] w-[480px] flex-col overflow-hidden rounded-3xl bg-white">
+            {numberOfProducts ? (
+              <Cart setIsCartOpen={setIsCartOpen} />
+            ) : (
+              <CartEmpty setIsCartOpen={setIsCartOpen} />
+            )}
+          </div>
+        )}
       </div>
       {isCartOpen && (
         <div className="fixed left-0 top-0 z-[-2] h-full w-full bg-stone-800/35 p-5" />
