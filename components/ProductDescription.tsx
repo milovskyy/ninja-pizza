@@ -6,7 +6,6 @@ import { PlusMinusBlock } from "./PlusMinusBlock"
 import { Ingredients } from "./Ingredients"
 import { useIngredients } from "@/app/_store/ingredients"
 import { useCart } from "@/app/_store/cart"
-import { useCartActions } from "@/hooks/useCartActions"
 import toast from "react-hot-toast"
 
 type Props = {
