@@ -6,9 +6,9 @@ export const categoryProductsByLinkname = (
 ) => {
   const category = products.find((product) => product.linkName === linkName)
 
-  const filteredProducts = products.filter(
-    (obj) => obj.category === category?.category,
-  )
+  const filteredProducts = products
+    .filter((obj) => obj.category === category?.category)
+    .sort((a, b) => (a.isNew === true ? 0 : 1) - (b.isNew === true ? 0 : 1))
 
   return filteredProducts
 }

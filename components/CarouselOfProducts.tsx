@@ -52,7 +52,7 @@ export const CarouselOfProducts = ({ productName }: Props) => {
     <div className={cn("mb-20 mt-14 flex flex-col gap-8 px-5")}>
       <div className="flex items-center justify-between">
         <h2 className="text-[32px] font-bold">
-          {productCategory === "Drinks" ? "Add some drinks" : "Add a pizza"}
+          {productCategory !== "Drinks" ? "Add some drinks" : "Add a pizza"}
         </h2>
         <div className="flex gap-2">
           <Link

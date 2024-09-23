@@ -5,12 +5,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "gdgccriibsrmjzltjugb.supabase.co",
-        // port: "php",
+        port: "",
         pathname: "/storage/v1/object/public/images/**",
       },
     ],
   },
 }
-//   https://php.ninjapizza.com.ua/images/cats/drinks2x.webp
 
 export default nextConfig

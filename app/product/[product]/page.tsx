@@ -15,9 +15,6 @@ import { notFound } from "next/navigation"
 type PropsType = {
   params: { product: string }
 }
-// METADATA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// export const revalidate = 0
 
 export default function Page({ params }: PropsType) {
   const productName = params.product
@@ -26,7 +23,6 @@ export default function Page({ params }: PropsType) {
     <div className="flex flex-1 flex-col">
       <Navigation productName={productName} />
       <ProductDetails productName={productName} />
-
       <Container>
         <OrderingInformation />
         <CarouselOfProducts productName={productName} />

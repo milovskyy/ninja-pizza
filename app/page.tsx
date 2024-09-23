@@ -6,9 +6,7 @@ import FullMenu from "../components/FullMenu"
 import AppFooter from "../components/footer/AppFooter"
 import { Container } from "@/components/Container"
 
-export const revalidate = 1000
-
-export default async function Home() {
+export default function Home() {
   return (
     <Container className="flex flex-1 flex-col">
       <MainSwiper />

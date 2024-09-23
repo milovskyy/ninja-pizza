@@ -20,6 +20,7 @@ export const IngredientItem = ({ className, ingredient }: Props) => {
         alt={ingredient.name}
         width={48}
         height={48}
+        priority
       />
       <p
         className="line-clamp-2 flex max-w-[102px] flex-1 items-center justify-center text-center text-xs font-semibold"

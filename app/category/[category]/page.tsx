@@ -19,21 +19,10 @@ export default async function Page({ params, searchParams }: PropsType) {
 
   const filter = searchParams?.filter ?? "all"
 
-  // ФИЛЬТРОВАТЬ ПРОДУКТЫ ПО ISNEW
-
   const [products, { name, color }] = await Promise.all([
     getProductsByCategory(category.charAt(0).toUpperCase() + category.slice(1)),
     getCategoryColor(category),
   ])
-
-  // const sortedProducts = [...products].sort(
-  //   (a, b) => (a.isNew === true ? 0 : 1) - (b.isNew === true ? 0 : 1),
-  // )
-  const sortedProducts = [...products].sort((a, b) => {
-    if (a.isNew && !b.isNew) return -1
-    if (!a.isNew && b.isNew) return 1
-    return 0
-  })
 
   return (
     <div
@@ -46,7 +35,7 @@ export default async function Page({ params, searchParams }: PropsType) {
     >
       <Container className="mt-[84px] flex flex-col">
         <Navigation categoryName={name} />
-        {sortedProducts.length !== 0 && (
+        {products.length !== 0 && (
           <MenuCategory products={products} name={name} filter={filter} />
         )}
         <h2 className="my-10 text-center text-3xl font-extrabold">

@@ -17,7 +17,6 @@ function NavigationCategory({ productName, categoryName }: PropsType) {
 
   const product = allProducts.find((p) => p.linkName === productName)
 
-  console.log(product)
   return (
     <Container>
       <div className="my-8 flex items-center gap-4 text-xs">

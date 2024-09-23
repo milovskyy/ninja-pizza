@@ -6,6 +6,7 @@ import { ProductDescription } from "./ProductDescription"
 import { Container } from "./Container"
 import { useProducts } from "@/app/_store/products"
 import { categoryProductsByLinkname } from "@/lib/helperFunction"
+import { notFound } from "next/navigation"
 
 type Props = {
   productName: string
@@ -21,6 +22,8 @@ export const ProductDetails = ({ productName }: Props) => {
   const nextProduct = products[index + 1]
 
   if (allProducts.length === 0) return <div>loading..................</div>
+
+  if (!product) return notFound()
 
   return (
     <div className="relative">

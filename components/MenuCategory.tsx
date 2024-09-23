@@ -31,6 +31,10 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
   // итерация по Object.keys чтоб определить что в юрл поиске значение поиска есть в ключах обьекта продукта
   // //////////////////////////
 
+  productsToShow.sort(
+    (a, b) => (a.isNew === true ? 0 : 1) - (b.isNew === true ? 0 : 1),
+  )
+
   return (
     <div className="flex flex-col items-center px-3 pb-2">
       <h1 className="mb-6 self-start text-5xl font-extrabold">{name}</h1>

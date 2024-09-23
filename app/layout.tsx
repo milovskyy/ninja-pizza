@@ -4,6 +4,7 @@ import "./globals.css"
 import AppHeader from "@/components/header/AppHeader"
 import { getCategories, getIngredients, getProducts } from "@/lib/data-service"
 import { AppInitializer } from "@/components/AppInitializer"
+import { Toaster } from "react-hot-toast"
 
 const manrope = Manrope({ subsets: ["latin"] })
 
@@ -28,6 +29,16 @@ export default async function RootLayout({
       <body
         className={`${manrope.className} mx-auto flex min-h-screen flex-col items-center bg-stone-100`}
       >
+        <Toaster
+          containerStyle={{
+            top: 100,
+          }}
+          toastOptions={{
+            success: {
+              duration: 2000,
+            },
+          }}
+        />
         <AppInitializer
           products={products}
           categories={categories}

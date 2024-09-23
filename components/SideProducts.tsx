@@ -18,15 +18,14 @@ export const SideProducts = ({ prevProduct, nextProduct }: Props) => {
           scroll={false}
           className="absolute left-0 top-1/2 -translate-y-1/2 p-5"
         >
-          <div>
-            <Image
-              src={prevProduct.image}
-              alt={prevProduct.name}
-              width={150}
-              height={150}
-              className="opacity-50"
-            />
-          </div>
+          <Image
+            src={prevProduct.image}
+            alt={prevProduct.name}
+            width={150}
+            height={150}
+            className="opacity-50"
+            priority
+          />
         </Link>
       )}
       {nextProduct && (
@@ -35,15 +34,14 @@ export const SideProducts = ({ prevProduct, nextProduct }: Props) => {
           scroll={false}
           className="absolute right-0 top-1/2 -translate-y-1/2 p-5"
         >
-          <div>
-            <Image
-              src={nextProduct.image}
-              alt={nextProduct.name}
-              width={150}
-              height={150}
-              className="opacity-50"
-            />
-          </div>
+          <Image
+            src={nextProduct.image}
+            alt={nextProduct.name}
+            width={150}
+            height={150}
+            className="opacity-50"
+            priority
+          />
         </Link>
       )}
     </div>

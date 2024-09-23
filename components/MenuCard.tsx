@@ -1,13 +1,14 @@
 "use client"
 
 import Image from "next/image"
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
 import { GoHeart } from "react-icons/go"
 import Link from "next/link"
 import { ProductType } from "../app/_types/TypeProduct"
 import { PRODUCT_IMAGE_URL } from "@/app/_constants/constants"
 import { PlusMinusBlock } from "./PlusMinusBlock"
 import { Button } from "./ui/button"
+import { useCart } from "@/app/_store/cart"
+import toast from "react-hot-toast"
 
 type PropsType = {
   product: ProductType
@@ -15,6 +16,7 @@ type PropsType = {
 
 function MenuCard({ product }: PropsType) {
   const {
+    id,
     name,
     linkName,
     ingredients,
@@ -26,6 +28,19 @@ function MenuCard({ product }: PropsType) {
     vegetarian,
     image,
   } = product
+
+  const cartProduct = {
+    id,
+    name,
+    price,
+    size,
+    image,
+    quantity: 1,
+    linkName,
+  }
+
+  const { add, cart, increase, decrease } = useCart()
+  const itemsInCart = cart?.items.find((item) => item.name === name)?.quantity
 
   function formatIngredients(ingredients: string[]) {
     return ingredients.join(", ")
@@ -63,12 +78,32 @@ function MenuCard({ product }: PropsType) {
             <div className="text-sm font-semibold text-stone-400">UAH</div>
           </div>
 
-          {/* <PlusMinusBlock
-            number={3}
-            bg="bg-stone-100"
-            hoverBg="hover:bg-primary"
-          /> */}
-          <Button className="bg-stone-100 text-[16px] font-bold">Order</Button>
+          {itemsInCart ? (
+            <PlusMinusBlock
+              number={itemsInCart}
+              plusFunc={() => {
+                toast.success("Product has been added to cart", {
+                  id: "clipboard",
+                })
+                increase(cartProduct)
+              }}
+              minusFunc={() => decrease(cartProduct)}
+              bg="bg-stone-100"
+              hoverBg="hover:bg-primary"
+            />
+          ) : (
+            <Button
+              className="bg-stone-100 text-[16px] font-bold"
+              onClick={() => {
+                toast.success("Product has been added to cart", {
+                  id: "clipboard",
+                })
+                add(cartProduct)
+              }}
+            >
+              Order
+            </Button>
+          )}
         </div>
 
         <div className="absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-3 text-stone-500 hover:text-red-600">

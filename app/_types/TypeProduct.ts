@@ -16,6 +16,26 @@ export type ProductType = {
   image: string
 }
 
+export type cartProductType = {
+  id: number
+  name: string
+  price: number
+  size: string
+  image: string
+  quantity: number
+  linkName: string
+}
+
+export type cartType = {
+  id: number
+  userId: string
+  token: string
+  items: cartProductType[]
+  totalAmount: number
+  // createdAt: Date
+  // updatedAt: Date
+}
+
 export type CategoryType = {
   id: number
   name: string
