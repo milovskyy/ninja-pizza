@@ -12,7 +12,7 @@ type Props = {
 export const Cart = ({ setIsCartOpen }: Props) => {
   const { cart } = useCart()
 
-  const cartTotalPrice = cart?.items.reduce(
+  const cartTotalPrice = cart?.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0,
   )
@@ -22,7 +22,7 @@ export const Cart = ({ setIsCartOpen }: Props) => {
       <div className="flex flex-1 flex-col gap-3 bg-white first-line:pt-6">
         <h2 className="px-6 pt-6 text-xl font-bold">Your order</h2>
         <div className="flex max-h-[475px] flex-col gap-2 overflow-auto px-6 pb-2">
-          {cart?.items.map((item) => (
+          {cart?.map((item) => (
             <CartItem key={item.id} item={item} setIsCartOpen={setIsCartOpen} />
           ))}
         </div>

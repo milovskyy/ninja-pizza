@@ -13,10 +13,10 @@ function InfoHeaderCart() {
   const [isCartOpen, setIsCartOpen] = useState(false)
 
   const { cart } = useCart()
-  const numberOfProducts = cart.items.reduce(
-    (acc, item) => acc + item.quantity,
-    0,
-  )
+
+  // console.log(cart)
+  const numberOfProducts = cart?.reduce((acc, item) => acc + item.quantity, 0)
+  // const numberOfProducts = 33
 
   const ref = useRef(null)
   useClickAway(ref, () => {

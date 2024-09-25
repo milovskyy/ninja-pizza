@@ -7,6 +7,7 @@ import { Ingredients } from "./Ingredients"
 import { useIngredients } from "@/app/_store/ingredients"
 import { useCart } from "@/app/_store/cart"
 import toast from "react-hot-toast"
+import { useCartActions } from "@/hooks/useCartActions"
 
 type Props = {
   product: ProductType
@@ -27,17 +28,16 @@ export const ProductDescription = ({ product }: Props) => {
   }
 
   const { allIngredients } = useIngredients()
+  const { handleAdd, handleIncrease, handleDecrease } = useCartActions()
 
-  const { add, cart, increase, decrease } = useCart()
-  const itemsInCart = cart?.items.find((item) => item.name === name)?.quantity
+  const { cart } = useCart()
+  const itemsInCart = cart?.find((item) => item.name === name)?.quantity
 
   const productIngredients = ingredients
     ?.map((ing) => allIngredients.find((i) => i.name === ing))
     .filter((item) => item !== undefined) as IngredientType[]
 
   // ...... ДОБАВИТЬ СЮДА СКЕЛЕТОН (ШАДСН) ПРИ ЗАГРУЗКЕ. А ТО ЕСТЬ ПУСТОЕ МЕСТО
-
-  // console.log(cart.items)
 
   return (
     <div className={cn("relative flex flex-col items-center justify-center")}>
@@ -70,9 +70,9 @@ export const ProductDescription = ({ product }: Props) => {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                increase(cartProduct)
+                handleIncrease(cartProduct)
               }}
-              minusFunc={() => decrease(cartProduct)}
+              minusFunc={() => handleDecrease(cartProduct)}
             />
           ) : (
             <Button
@@ -81,7 +81,7 @@ export const ProductDescription = ({ product }: Props) => {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                add(cartProduct)
+                handleAdd(cartProduct)
               }}
             >
               Add to cart

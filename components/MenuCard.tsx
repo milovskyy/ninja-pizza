@@ -9,6 +9,8 @@ import { PlusMinusBlock } from "./PlusMinusBlock"
 import { Button } from "./ui/button"
 import { useCart } from "@/app/_store/cart"
 import toast from "react-hot-toast"
+import { useLocalStorage } from "react-use"
+import { useCartActions } from "@/hooks/useCartActions"
 
 type PropsType = {
   product: ProductType
@@ -39,8 +41,10 @@ function MenuCard({ product }: PropsType) {
     linkName,
   }
 
-  const { add, cart, increase, decrease } = useCart()
-  const itemsInCart = cart?.items.find((item) => item.name === name)?.quantity
+  const { cart } = useCart()
+  const itemsInCart = cart?.find((item) => item.name === name)?.quantity
+
+  const { handleAdd, handleIncrease, handleDecrease } = useCartActions()
 
   function formatIngredients(ingredients: string[]) {
     return ingredients.join(", ")
@@ -85,9 +89,9 @@ function MenuCard({ product }: PropsType) {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                increase(cartProduct)
+                handleIncrease(cartProduct)
               }}
-              minusFunc={() => decrease(cartProduct)}
+              minusFunc={() => handleDecrease(cartProduct)}
               bg="bg-stone-100"
               hoverBg="hover:bg-primary"
             />
@@ -98,7 +102,7 @@ function MenuCard({ product }: PropsType) {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                add(cartProduct)
+                handleAdd(cartProduct)
               }}
             >
               Order

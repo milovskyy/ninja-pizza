@@ -2,9 +2,9 @@ import { cartProductType } from "@/app/_types/TypeProduct"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { PlusMinusBlock } from "./PlusMinusBlock"
-import { useCart } from "@/app/_store/cart"
 import { X } from "lucide-react"
 import Link from "next/link"
+import { useCartActions } from "@/hooks/useCartActions"
 
 type Props = {
   item: cartProductType
@@ -13,12 +13,12 @@ type Props = {
 
 export const CartItem = ({ item, setIsCartOpen }: Props) => {
   const { name, price, size, image, quantity, linkName } = item
-  const { remove, increase, decrease } = useCart()
+  const { handleRemove, handleIncrease, handleDecrease } = useCartActions()
 
   return (
     <div className={cn("relative flex gap-3 rounded-3xl bg-stone-100 p-4")}>
       <div
-        onClick={() => remove(item)}
+        onClick={() => handleRemove(item)}
         className="absolute left-[-13px] top-1/2 flex h-[26px] w-[26px] -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white hover:bg-red-500 hover:text-white"
       >
         <X size={15} strokeWidth={3} />
@@ -51,8 +51,8 @@ export const CartItem = ({ item, setIsCartOpen }: Props) => {
             size="h-[32px]"
             bg="bg-stone-200"
             hoverBg=""
-            plusFunc={() => increase(item)}
-            minusFunc={() => decrease(item)}
+            plusFunc={() => handleIncrease(item)}
+            minusFunc={() => handleDecrease(item)}
           />
         </div>
       </div>
