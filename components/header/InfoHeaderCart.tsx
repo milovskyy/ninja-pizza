@@ -14,9 +14,7 @@ function InfoHeaderCart() {
 
   const { cart } = useCart()
 
-  // console.log(cart)
   const numberOfProducts = cart?.reduce((acc, item) => acc + item.quantity, 0)
-  // const numberOfProducts = 33
 
   const ref = useRef(null)
   useClickAway(ref, () => {
@@ -47,7 +45,7 @@ function InfoHeaderCart() {
           </div>
         )}
         {isCartOpen && (
-          <div className="absolute right-0 top-20 flex h-[635px] max-h-[635px] w-[480px] flex-col overflow-hidden rounded-3xl bg-white">
+          <div className="absolute right-0 top-[74px] flex h-[635px] max-h-[635px] w-[480px] flex-col overflow-hidden rounded-3xl bg-white">
             {numberOfProducts ? (
               <Cart setIsCartOpen={setIsCartOpen} />
             ) : (
