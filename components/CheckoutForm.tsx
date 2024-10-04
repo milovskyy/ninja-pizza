@@ -11,9 +11,11 @@ import MyForm from "./DeliveryTEST"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
-  checkoutFormSchema,
-  CheckoutFormValues,
-} from "@/app/_constants/checkout-form-schema"
+  checkoutFormSchemaDelivery,
+  CheckoutFormDeliveryValues,
+  checkoutFormSchemaPickup,
+  CheckoutFormPickupValues,
+} from "@/app/_constants/checkoutFormSchema"
 
 type Props = {}
 
@@ -31,8 +33,12 @@ export const CheckoutForm = ({}: Props) => {
   //   control,
   // } = useForm<AuthType>()
 
-  const form = useForm<CheckoutFormValues>({
-    resolver: zodResolver(checkoutFormSchema),
+  const form = useForm({
+    resolver: zodResolver(
+      method === "Delivery"
+        ? checkoutFormSchemaDelivery
+        : checkoutFormSchemaPickup,
+    ),
     defaultValues: {
       name: "",
       phone: "",
@@ -43,11 +49,13 @@ export const CheckoutForm = ({}: Props) => {
       doorbell: false,
       doorOutside: false,
       comment: "",
+      pickupAdress: "Street 1",
     },
   })
 
   const onSubmit = (data: any) => {
     console.log(data)
+    // тут формировать обьект с данными исходя из значения доставки (убирать ненужные поля если самовывоз)
   }
   // extends React.InputHTMLAttributes<HTMLInputElement> {}
 

@@ -2,12 +2,17 @@ import { cn } from "@/utils/utils"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useState } from "react"
 import { Controller, useFormContext } from "react-hook-form"
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form"
+import { FormCheckbox } from "./form/formCheckbox"
 
 type Props = {}
 
 export const DeliveryDetails = ({}: Props) => {
-  const [isOpen, setIsOpen] = useState(false)
-
   const {
     register,
     formState: { errors },
@@ -100,40 +105,9 @@ export const DeliveryDetails = ({}: Props) => {
           />
         </div>
       </div>
-      <div className="flex items-center space-x-2">
-        <Checkbox id="doorbell" {...register("doorbell")} className="h-5 w-5" />
-        <div className="grid gap-1.5 leading-none">
-          <label
-            htmlFor="doorbell"
-            className="text-medium cursor-pointer font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Do not ring the doorbell
-          </label>
-        </div>
-      </div>
-      <div className="flex items-center space-x-2">
-        <Checkbox id="door" {...register("door")} className="h-5 w-5" />
-        <div className="grid gap-1.5 leading-none">
-          <label
-            htmlFor="door"
-            className="marker:text-medium cursor-pointer font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Leave at the door
-          </label>
-        </div>
-      </div>
 
-      {/* ........ */}
-
-      {/* ........ */}
-      <Controller
-        defaultValue={false}
-        control={control}
-        name="isRemote"
-        render={({ field: { onChange, value } }) => (
-          <Checkbox onChange={onChange} checked={value} />
-        )}
-      />
+      <FormCheckbox name="doorBell" label="Do not ring the doorbell" />
+      <FormCheckbox name="doorOutside" label="Leave at the door" />
     </div>
   )
 }

@@ -21,7 +21,7 @@ export const DeliveryAdressSelect = ({}: Props) => {
       </p>
 
       <Controller
-        name="pickup-adress"
+        name="pickupAdress"
         control={control}
         defaultValue={PICKUP_ADDRESSES[0]}
         render={({ field }) => (
@@ -44,5 +44,3 @@ export const DeliveryAdressSelect = ({}: Props) => {
     </div>
   )
 }
-
-import * as React from "react"

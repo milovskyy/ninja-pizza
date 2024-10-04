@@ -1,6 +1,7 @@
 import { useCart } from "@/app/_store/cart"
 import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
+import { DELIVERYPRICE } from "@/app/_constants/constants"
 
 type Props = {
   method: string
@@ -25,13 +26,30 @@ export const CheckoutOrderDetails = ({ method }: Props) => {
         </p>
       </div>
       <div className="flex justify-between bg-primary p-6">
-        <div className="gap2 flex flex-col">
-          <h3 className="text-sm font-medium text-stone-600">Order amount:</h3>
-          <div className="flex gap-2">
-            <div className="text-xl font-bold text-stone-900">
-              {cartTotalPrice}
+        <div className="flex gap-4">
+          {cartTotalPrice < 500 && (
+            <div className="gap2 flex flex-col">
+              <h3 className="text-sm font-medium text-stone-600">Delivery:</h3>
+              <div className="flex gap-2">
+                <div className="text-xl font-bold text-stone-900">
+                  {DELIVERYPRICE}
+                </div>
+                <div className="text-sm font-medium text-stone-600">UAH</div>
+              </div>
             </div>
-            <div className="text-sm font-medium text-stone-600">UAH</div>
+          )}
+          <div className="gap2 flex flex-col">
+            <h3 className="text-sm font-medium text-stone-600">
+              Order amount:
+            </h3>
+            <div className="flex gap-2">
+              <div className="text-xl font-bold text-stone-900">
+                {cartTotalPrice < 500
+                  ? cartTotalPrice + DELIVERYPRICE
+                  : cartTotalPrice}
+              </div>
+              <div className="text-sm font-medium text-stone-600">UAH</div>
+            </div>
           </div>
         </div>
 
