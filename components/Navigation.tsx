@@ -11,7 +11,7 @@ type PropsType = {
   categoryName?: string
 }
 
-function NavigationCategory({ productName, categoryName }: PropsType) {
+function Navigation({ productName, categoryName }: PropsType) {
   const router = useRouter()
   const { allProducts } = useProducts()
 
@@ -54,4 +54,4 @@ function NavigationCategory({ productName, categoryName }: PropsType) {
   )
 }
 
-export default NavigationCategory
+export default Navigation

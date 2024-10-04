@@ -2,7 +2,11 @@ import type { Metadata } from "next"
 import { Manrope } from "next/font/google"
 import "./globals.css"
 import AppHeader from "@/components/header/AppHeader"
-import { getCategories, getIngredients, getProducts } from "@/lib/data-service"
+import {
+  getCategories,
+  getIngredients,
+  getProducts,
+} from "@/utils/data-service"
 import { AppInitializer } from "@/components/AppInitializer"
 import { Toaster } from "react-hot-toast"
 

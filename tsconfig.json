@@ -27,8 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/MainSwiper.tsx",
-    "lib/supabase.js",
-    "lib/helperFunction.ts"
+    "utils/supabase.js",
+    "utils/helperFunction.ts"
   ],
   "exclude": ["node_modules"]
 }

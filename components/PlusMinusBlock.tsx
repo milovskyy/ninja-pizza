@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/utils"
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
 import { Button } from "./ui/button"
 

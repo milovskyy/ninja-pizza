@@ -4,8 +4,8 @@ import MenuCategory from "@/components/MenuCategory"
 import MenuCategories from "@/components/MenuCategories"
 import MobileAppBanner from "@/components/MobileAppBanner"
 import Navigation from "@/components/Navigation"
-import { getCategoryColor, getProductsByCategory } from "@/lib/data-service"
-import { cn } from "@/lib/utils"
+import { getCategoryColor, getProductsByCategory } from "@/utils/data-service"
+import { cn } from "@/utils/utils"
 
 type PropsType = {
   params: { category: string }

@@ -19,7 +19,6 @@ export const useCartActions = () => {
 
   const handleIncrease = (cartProduct: cartProductType) => {
     increase(cartProduct)
-    console.log(value)
     const items = cart.map((item) =>
       item.id === cartProduct.id
         ? { ...item, quantity: item.quantity + 1 }

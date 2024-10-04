@@ -1,7 +1,7 @@
 import { PRODUCTLIMIT } from "@/app/_constants/constants"
 import MenuCategory from "./MenuCategory"
-import { getProducts } from "@/lib/data-service"
-import { groupProductsByCategory } from "@/lib/helperFunction"
+import { getProducts } from "@/utils/data-service"
+import { groupProductsByCategory } from "@/utils/helperFunction"
 
 export const revalidate = 0
 

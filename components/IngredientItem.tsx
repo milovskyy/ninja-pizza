@@ -1,5 +1,5 @@
 import { IngredientType } from "@/app/_types/TypeProduct"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/utils"
 import Image from "next/image"
 
 type Props = {

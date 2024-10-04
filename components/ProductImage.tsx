@@ -1,6 +1,6 @@
 import { PRODUCT_IMAGE_URL } from "@/app/_constants/constants"
 import { ProductType } from "@/app/_types/TypeProduct"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/utils"
 import Image from "next/image"
 
 type Props = {

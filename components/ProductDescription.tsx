@@ -1,5 +1,5 @@
 import { IngredientType, ProductType } from "@/app/_types/TypeProduct"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/utils"
 import { Button } from "./ui/button"
 import { GoHeart } from "react-icons/go"
 import { PlusMinusBlock } from "./PlusMinusBlock"

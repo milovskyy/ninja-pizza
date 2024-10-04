@@ -1,4 +1,4 @@
-import { supabase } from "./supabase"
+import { createServerClient } from "./supabase/server"
 
 import { CategoryType, ProductType } from "@/app/_types/TypeProduct"
 
@@ -8,6 +8,7 @@ import { CategoryType, ProductType } from "@/app/_types/TypeProduct"
 // ///////////////////////////////////////////////////////////////////////////
 
 export const getProducts = async function () {
+  const supabase = createServerClient()
   const { data, error } = await supabase
     .from("products")
     .select("*")
@@ -24,6 +25,7 @@ export const getProducts = async function () {
 // /////////////////////////////////////////////////////////////////////////////
 
 export const getProductsByCategory = async function (category: string) {
+  const supabase = createServerClient()
   const { data, error } = await supabase
     .from("products")
     .select("*")
@@ -41,6 +43,7 @@ export const getProductsByCategory = async function (category: string) {
 // /////////////////////////////////////////////////////////////////////////////
 
 export const getCategories = async function () {
+  const supabase = createServerClient()
   const { data, error } = await supabase
     .from("categories")
     .select("*")
@@ -56,6 +59,7 @@ export const getCategories = async function () {
 // /////////////////////////////////////////////////////////////////////////////
 
 export const getCategoryColor = async function (category: string) {
+  const supabase = createServerClient()
   const { data, error } = await supabase
     .from("categories")
     .select("*")
@@ -72,6 +76,7 @@ export const getCategoryColor = async function (category: string) {
 // ////////////////////////////////////////////////////////////////////////////
 
 export const getIngredients = async function () {
+  const supabase = createServerClient()
   const { data, error } = await supabase
     .from("ingredients")
     .select("*")

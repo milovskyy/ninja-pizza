@@ -1,32 +1,28 @@
-"use client"
-
 import { useCart } from "@/app/_store/cart"
-import { cn } from "@/utils/utils"
 import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
-import Link from "next/link"
 
 type Props = {
-  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+  method: string
 }
 
-export const Cart = ({ setIsCartOpen }: Props) => {
+export const CheckoutOrderDetails = ({ method }: Props) => {
   const { cart } = useCart()
 
   const cartTotalPrice = cart?.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0,
   )
-
   return (
-    <>
-      <div className="flex flex-1 flex-col gap-3 bg-white first-line:pt-6">
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2 bg-white first-line:pt-6">
         <h2 className="px-6 pt-6 text-xl font-bold">Your order</h2>
-        <div className="flex max-h-[475px] flex-col gap-2 overflow-auto px-6 pb-2">
-          {cart?.map((item) => (
-            <CartItem key={item.id} item={item} setIsCartOpen={setIsCartOpen} />
-          ))}
+        <div className="flex flex-col gap-2 px-6">
+          {cart?.map((item) => <CartItem key={item.id} item={item} />)}
         </div>
+        <p className="mb-2 flex h-7 items-center justify-center p-1 pl-5 text-sm font-semibold text-stone-400">
+          {method === "Delivery" && " Free delivery from 500 UAH"}
+        </p>
       </div>
       <div className="flex justify-between bg-primary p-6">
         <div className="gap2 flex flex-col">
@@ -38,15 +34,16 @@ export const Cart = ({ setIsCartOpen }: Props) => {
             <div className="text-sm font-medium text-stone-600">UAH</div>
           </div>
         </div>
-        <Link href="/checkout">
-          <Button
-            className="bg-white font-extrabold hover:bg-white"
-            onClick={() => setIsCartOpen(false)}
-          >
-            Checkout
-          </Button>
-        </Link>
+
+        <Button
+          className="bg-white font-extrabold hover:bg-white"
+          type="submit"
+          // onClick={() => console.log(errors)}
+          // disabled={Object.keys(errors).length !== 0}
+        >
+          Place an order
+        </Button>
       </div>
-    </>
+    </div>
   )
 }

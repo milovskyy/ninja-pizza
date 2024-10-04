@@ -3,6 +3,7 @@
 import { useCart } from "@/app/_store/cart"
 import { LiaShoppingBagSolid } from "react-icons/lia"
 import { useClickAway } from "react-use"
+import { usePathname } from "next/navigation"
 
 import { useRef, useState } from "react"
 import { Cart } from "../Cart"
@@ -11,6 +12,7 @@ import { CartEmpty } from "../CartEmpty"
 
 function InfoHeaderCart() {
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const pathname = usePathname()
 
   const { cart } = useCart()
 
@@ -23,8 +25,10 @@ function InfoHeaderCart() {
     }
   })
 
+  if (pathname === "/checkout") return null
+
   return (
-    <>
+    <div className="flex h-[56px] w-[56px] items-center justify-center">
       <div ref={ref} className="relative h-full w-full">
         {!isCartOpen ? (
           <div
@@ -57,7 +61,7 @@ function InfoHeaderCart() {
       {isCartOpen && (
         <div className="fixed left-0 top-0 z-[-2] h-full w-full bg-stone-800/35 p-5" />
       )}
-    </>
+    </div>
   )
 }
 

@@ -1,4 +1,4 @@
-import { supabase } from "./supabase"
+import { createServerClient } from "./supabase/server"
 
 export type AuthType = {
   phone: string
@@ -6,6 +6,7 @@ export type AuthType = {
 }
 
 export async function signupApi({ phone, password }: AuthType) {
+  const supabase = createServerClient()
   const { data, error } = await supabase.auth.signUp({
     phone,
     password,
@@ -17,6 +18,7 @@ export async function signupApi({ phone, password }: AuthType) {
 }
 
 export async function loginApi({ phone, password }: AuthType) {
+  const supabase = createServerClient()
   const { data, error } = await supabase.auth.signInWithPassword({
     phone,
     password,
@@ -28,6 +30,7 @@ export async function loginApi({ phone, password }: AuthType) {
 }
 
 export async function getCurrentUserApi() {
+  const supabase = createServerClient()
   const {
     data: { user },
     error,

@@ -5,7 +5,7 @@ import { ProductImage } from "./ProductImage"
 import { ProductDescription } from "./ProductDescription"
 import { Container } from "./Container"
 import { useProducts } from "@/app/_store/products"
-import { categoryProductsByLinkname } from "@/lib/helperFunction"
+import { categoryProductsByLinkname } from "@/utils/helperFunction"
 import { notFound } from "next/navigation"
 
 type Props = {

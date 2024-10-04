@@ -1,5 +1,5 @@
 import { cartProductType } from "@/app/_types/TypeProduct"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/utils"
 import Image from "next/image"
 import { PlusMinusBlock } from "./PlusMinusBlock"
 import { X } from "lucide-react"
@@ -8,7 +8,7 @@ import { useCartActions } from "@/hooks/useCartActions"
 
 type Props = {
   item: cartProductType
-  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCartOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const CartItem = ({ item, setIsCartOpen }: Props) => {
@@ -26,7 +26,11 @@ export const CartItem = ({ item, setIsCartOpen }: Props) => {
       <Link
         href={`/product/${linkName}`}
         className="flex min-w-[72px] items-center justify-center"
-        onClick={() => setIsCartOpen(false)}
+        onClick={() => {
+          if (setIsCartOpen) {
+            setIsCartOpen(false)
+          }
+        }}
       >
         <Image src={image} alt={name} width={72} height={72} />
       </Link>
@@ -34,7 +38,11 @@ export const CartItem = ({ item, setIsCartOpen }: Props) => {
         <Link
           href={`/product/${linkName}`}
           className="text-sm font-bold"
-          onClick={() => setIsCartOpen(false)}
+          onClick={() => {
+            if (setIsCartOpen) {
+              setIsCartOpen(false)
+            }
+          }}
         >
           {name}
         </Link>

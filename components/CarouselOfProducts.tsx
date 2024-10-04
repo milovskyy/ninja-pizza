@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/utils"
 import { Button } from "./ui/button"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import {
