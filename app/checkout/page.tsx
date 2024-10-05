@@ -2,15 +2,6 @@ import { CheckoutForm } from "@/components/CheckoutForm"
 import { Container } from "@/components/Container"
 import AppFooter from "@/components/footer/AppFooter"
 import Navigation from "@/components/Navigation"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import Image from "next/image"
 
 export default function Checkout() {
   return (

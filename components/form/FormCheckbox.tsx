@@ -21,13 +21,9 @@ export const FormCheckbox = ({ name, label }: Props) => {
       render={({ field }) => (
         <FormItem className="flex items-center gap-3">
           <FormControl>
-            <Checkbox
-              className="h-5 w-5"
-              checked={field.value}
-              onCheckedChange={field.onChange}
-            />
+            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
           </FormControl>
-          <FormLabel className="relative bottom-1 mb-1 cursor-pointer self-center text-base">
+          <FormLabel className="relative bottom-1 mb-1 cursor-pointer self-center text-sm">
             {label}
           </FormLabel>
         </FormItem>

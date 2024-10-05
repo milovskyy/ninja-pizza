@@ -12,10 +12,11 @@ import MyForm from "./DeliveryTEST"
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
   checkoutFormSchemaDelivery,
-  CheckoutFormDeliveryValues,
   checkoutFormSchemaPickup,
-  CheckoutFormPickupValues,
 } from "@/app/_constants/checkoutFormSchema"
+import { FormDeliveryTime } from "./FormDeliveryTime"
+import { FormPaymentMethod } from "./FormPaymentMethod"
+import { FormComments } from "./FormComments"
 
 type Props = {}
 
@@ -46,10 +47,15 @@ export const CheckoutForm = ({}: Props) => {
       entrance: "",
       floor: "",
       apt: "",
-      doorbell: false,
+      doorBell: false,
       doorOutside: false,
       comment: "",
       pickupAdress: "Street 1",
+      time: "The nearest time",
+      date: "Today",
+      paymentMethod: "cash",
+      change: "",
+      persons: "1",
     },
   })
 
@@ -60,7 +66,6 @@ export const CheckoutForm = ({}: Props) => {
   // extends React.InputHTMLAttributes<HTMLInputElement> {}
 
   return (
-    // <MyForm />
     <FormProvider {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
@@ -77,10 +82,9 @@ export const CheckoutForm = ({}: Props) => {
 
           <FormDeliveryDetails method={method} setMethod={setMethod} />
 
-          <div className=""></div>
-          <div className=""></div>
-          <div className=""></div>
-          <div className=""></div>
+          <FormDeliveryTime method={method} />
+          <FormPaymentMethod />
+          <FormComments />
         </div>
         <CheckoutOrderDetails method={method} />
       </form>

@@ -1,14 +1,9 @@
 import { cn } from "@/utils/utils"
-import { Checkbox } from "@/components/ui/checkbox"
-import { useState } from "react"
-import { Controller, useFormContext } from "react-hook-form"
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form"
-import { FormCheckbox } from "./form/formCheckbox"
+
+import { useFormContext } from "react-hook-form"
+
+import { FormCheckbox } from "./form/FormCheckbox"
+import { FormInput } from "./form/FormInput"
 
 type Props = {}
 
@@ -16,13 +11,15 @@ export const DeliveryDetails = ({}: Props) => {
   const {
     register,
     formState: { errors },
-    control,
   } = useFormContext()
 
   return (
     <div className={cn("flex flex-col gap-3")}>
       <h3 className="font-semibold">Free delivery from 500 UAH</h3>
-      <div className="w-full">
+
+      <FormInput label="Street" name="street" required max={40} />
+
+      {/* <div className="w-full">
         <p className="text-sm text-stone-400">
           Street <span className="text-primary">*</span>
         </p>
@@ -39,9 +36,16 @@ export const DeliveryDetails = ({}: Props) => {
             },
           })}
         />
-      </div>
+      </div> */}
       <div className="flex w-full gap-2">
-        <div className="w-full">
+        <FormInput
+          label="Building"
+          required
+          name="building"
+          type="number"
+          max={5}
+        />
+        {/* <div className="w-full">
           <p className="text-sm text-stone-400">
             Building<span className="text-primary">*</span>
           </p>
@@ -58,8 +62,10 @@ export const DeliveryDetails = ({}: Props) => {
               },
             })}
           />
-        </div>
-        <div className="w-full">
+        </div> */}
+
+        <FormInput label="Entrance" name="entrance" type="number" max={2} />
+        {/* <div className="w-full">
           <p className="text-sm text-stone-400">Entrance</p>
           <input
             className={cn(
@@ -73,8 +79,10 @@ export const DeliveryDetails = ({}: Props) => {
               },
             })}
           />
-        </div>
-        <div className="w-full">
+        </div> */}
+
+        <FormInput label="Floor" name="floor" type="number" max={2} />
+        {/* <div className="w-full">
           <p className="text-sm text-stone-400">Floor</p>
           <input
             className={cn(
@@ -88,8 +96,10 @@ export const DeliveryDetails = ({}: Props) => {
               },
             })}
           />
-        </div>
-        <div className="w-full">
+        </div> */}
+
+        <FormInput label="Apt" name="apt" type="number" max={4} />
+        {/* <div className="w-full">
           <p className="text-sm text-stone-400">Apt</p>
           <input
             className={cn(
@@ -103,7 +113,7 @@ export const DeliveryDetails = ({}: Props) => {
               },
             })}
           />
-        </div>
+        </div> */}
       </div>
 
       <FormCheckbox name="doorBell" label="Do not ring the doorbell" />

@@ -13,7 +13,12 @@ export const checkoutFormSchemaDelivery = z.object({
   apt: z.string().max(4).optional(),
   doorBell: z.boolean().default(false).optional(),
   doorOutside: z.boolean().default(false).optional(),
-  comment: z.string().max(90).optional(),
+  date: z.string(),
+  time: z.string(),
+  paymentMethod: z.string(),
+  change: z.string().optional(),
+  persons: z.string(),
+  comment: z.string().max(210).optional(),
 })
 
 export const checkoutFormSchemaPickup = z.object({
@@ -21,8 +26,13 @@ export const checkoutFormSchemaPickup = z.object({
   phone: z
     .string()
     .min(10, { message: "Make sure your phone number has at least 10 digits" }),
-  comment: z.string().max(90).optional(),
+  comment: z.string().max(210).optional(),
   pickupAdress: z.string(),
+  date: z.string(),
+  time: z.string(),
+  change: z.string().optional(),
+  persons: z.string(),
+  paymentMethod: z.string(),
 })
 
 export type CheckoutFormPickupValues = z.infer<typeof checkoutFormSchemaPickup>
