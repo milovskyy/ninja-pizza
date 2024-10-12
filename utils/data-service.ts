@@ -15,7 +15,6 @@ export const getProducts = async function () {
     .order("id", { ascending: true })
 
   if (error) {
-    console.log(error, "error")
     throw new Error("Products could not be loaded")
   }
 
@@ -33,7 +32,6 @@ export const getProductsByCategory = async function (category: string) {
     .order("id", { ascending: true })
 
   if (error) {
-    console.log(error, "error")
     throw new Error("Products could not be loaded")
   }
 

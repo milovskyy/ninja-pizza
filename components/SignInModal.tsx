@@ -56,7 +56,7 @@ export const SignInModal = ({ buttonText }: Props) => {
         password,
       })
 
-      console.log(user, "created user")
+      // console.log(user, "created user")
       toast.success("User successfully created")
       // setIsDialogOpen(false)
     } catch (e: any) {
@@ -66,12 +66,12 @@ export const SignInModal = ({ buttonText }: Props) => {
             phone,
             password,
           })
-          console.log(user, "logged user")
+          // console.log(user, "logged user")
           toast.success("User successfully logged in")
           // setIsDialogOpen(false)
         } catch (e: any) {
           toast.error(e.message)
-          console.log(e.message)
+          // console.log(e.message)
         }
       }
     }
