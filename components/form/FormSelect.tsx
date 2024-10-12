@@ -17,6 +17,7 @@ type Props = {
 
 export const FormSelect = ({ name, label, array }: Props) => {
   const { control } = useFormContext()
+
   return (
     <FormField
       control={control}
@@ -26,7 +27,11 @@ export const FormSelect = ({ name, label, array }: Props) => {
           <FormLabel className="mb-3 pl-1 text-sm text-stone-400">
             {label}
           </FormLabel>
-          <Select onValueChange={field.onChange} defaultValue={array[0]}>
+          <Select
+            onValueChange={field.onChange}
+            defaultValue={array[0]}
+            value={field.value}
+          >
             <FormControl>
               <SelectTrigger className="w-full bg-stone-100 font-semibold tracking-wide outline-none focus:outline-none">
                 <SelectValue />

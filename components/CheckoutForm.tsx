@@ -1,22 +1,26 @@
 "use client"
 
 import { FormProvider, useForm } from "react-hook-form"
+import { useState } from "react"
+import toast from "react-hot-toast"
+import { zodResolver } from "@hookform/resolvers/zod"
+
 import { CheckoutOrderDetails } from "./CheckoutOrderDetails"
 import { SignInModal } from "./SignInModal"
-import { ErrorMessage } from "@hookform/error-message"
-import { FormPersonalDetails } from "./FormPersonalDetails"
-import { FormDeliveryDetails } from "./FormDeliveryDetails"
-import { useState } from "react"
-import MyForm from "./DeliveryTEST"
-
-import { zodResolver } from "@hookform/resolvers/zod"
+import { FormPersonalDetails } from "./form/FormPersonalDetails"
+import { FormDeliveryDetails } from "./form/FormDeliveryDetails"
 import {
   checkoutFormSchemaDelivery,
   checkoutFormSchemaPickup,
 } from "@/app/_constants/checkoutFormSchema"
-import { FormDeliveryTime } from "./FormDeliveryTime"
-import { FormPaymentMethod } from "./FormPaymentMethod"
-import { FormComments } from "./FormComments"
+import { FormDeliveryTime } from "./form/FormDeliveryTime"
+import { FormPaymentMethod } from "./form/FormPaymentMethod"
+import { FormComments } from "./form/FormComments"
+import { useCart } from "@/app/_store/cart"
+import { DELIVERYPRICE } from "@/app/_constants/constants"
+import { createOrder } from "@/utils/actions"
+import { format } from "date-fns"
+import { useCartActions } from "@/hooks/useCartActions"
 
 type Props = {}
 
@@ -27,12 +31,13 @@ export type AuthType = {
 
 export const CheckoutForm = ({}: Props) => {
   const [method, setMethod] = useState("Delivery")
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  //   control,
-  // } = useForm<AuthType>()
+  const { cart } = useCart()
+  const { handleDeleteCart } = useCartActions()
+
+  const cartTotalPrice = cart?.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0,
+  )
 
   const form = useForm({
     resolver: zodResolver(
@@ -41,29 +46,62 @@ export const CheckoutForm = ({}: Props) => {
         : checkoutFormSchemaPickup,
     ),
     defaultValues: {
-      name: "",
-      phone: "",
-      building: "",
+      name: "Igor",
+      phone: "0633442244",
+      street: "Street",
+      building: "3",
       entrance: "",
       floor: "",
       apt: "",
       doorBell: false,
       doorOutside: false,
       comment: "",
-      pickupAdress: "Street 1",
+      pickupAddress: "Street 1",
       time: "The nearest time",
-      date: "Today",
       paymentMethod: "cash",
+      date: "Today",
       change: "",
       persons: "1",
     },
   })
 
-  const onSubmit = (data: any) => {
-    console.log(data)
-    // тут формировать обьект с данными исходя из значения доставки (убирать ненужные поля если самовывоз)
+  const onSubmit = async (data: any) => {
+    let date = data.date
+    if (data.date === "Today") date = format(new Date(), "yyyy-MM-dd")
+    if (data.date === "Tomorrow")
+      date = format(new Date(Date.now() + 86400000), "yyyy-MM-dd")
+    const order = {
+      created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
+      name: data.name,
+      phone: data.phone,
+      method: method,
+      address:
+        method === "Delivery"
+          ? `${data.street} №${data.building}${data.entrance && `, entrance №${data.entrance}`}${data.apt && `, apt №${data.apt}`}${data.floor && `, floor №${data.floor}`}`
+          : data.pickupAddress,
+      choices: `${data.doorBell === true ? "Do not ring the doorbell" : ""}${data.doorOutside && data.doorBell ? ", " : ""}${data.doorOutside === true ? "Leave my order outside the door" : ""}`,
+      date: date + ", " + data.time,
+      change: data.change,
+      persons: data.persons,
+      comment: data.comment,
+      payment: data.paymentMethod,
+      paymentID: "",
+      user: "1366ca27-ac43-4f9e-ac8d-d6193773bfa7",
+      status: "pending",
+      items: JSON.stringify(cart),
+      totalAmount:
+        cartTotalPrice > 500 ? cartTotalPrice : cartTotalPrice + DELIVERYPRICE,
+    }
+    try {
+      await createOrder(order)
+      toast.success("Order successfully created")
+      location.href = "/"
+    } catch (err: any) {
+      console.log(err.message, "error from unSubmit")
+    } finally {
+      handleDeleteCart()
+    }
   }
-  // extends React.InputHTMLAttributes<HTMLInputElement> {}
 
   return (
     <FormProvider {...form}>
@@ -79,14 +117,16 @@ export const CheckoutForm = ({}: Props) => {
             <SignInModal buttonText="Sign in with your phone number" />
           </div>
           <FormPersonalDetails />
-
           <FormDeliveryDetails method={method} setMethod={setMethod} />
-
           <FormDeliveryTime method={method} />
           <FormPaymentMethod />
           <FormComments />
         </div>
-        <CheckoutOrderDetails method={method} />
+        <CheckoutOrderDetails
+          method={method}
+          cart={cart}
+          cartTotalPrice={cartTotalPrice}
+        />
       </form>
     </FormProvider>
   )

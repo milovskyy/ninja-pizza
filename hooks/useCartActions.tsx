@@ -3,13 +3,18 @@ import { cartProductType } from "@/app/_types/TypeProduct"
 import { useLocalStorage } from "react-use"
 
 export const useCartActions = () => {
-  const { add, cart, increase, decrease, remove } = useCart()
+  const { add, cart, increase, decrease, remove, deleteCart } = useCart()
 
   const [value, setValue] = useLocalStorage("cart")
 
   const handleAdd = (cartProduct: cartProductType) => {
     add(cartProduct)
     setValue([...cart, cartProduct])
+  }
+
+  const handleDeleteCart = () => {
+    deleteCart()
+    setValue([])
   }
 
   const handleRemove = (cartProduct: cartProductType) => {
@@ -44,5 +49,6 @@ export const useCartActions = () => {
     handleRemove,
     handleIncrease,
     handleDecrease,
+    handleDeleteCart,
   }
 }

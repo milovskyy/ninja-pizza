@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useFormContext } from "react-hook-form"
-import { FormInput } from "./form/FormInput"
+import { FormInput } from "./FormInput"
 import { FormBlock } from "./FormBlock"
 
 type Props = {}

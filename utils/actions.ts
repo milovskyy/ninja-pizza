@@ -1,6 +1,7 @@
 "use server"
 
-import { getCurrentUserApi, loginApi, signupApi } from "./api-service"
+import { getCurrentUserApi, loginApi, signupApi } from "./auth-service"
+import { createOrderApi } from "./order-service"
 
 export type AuthType = {
   phone: string
@@ -19,4 +20,9 @@ export async function loginAction({ phone, password }: AuthType) {
 export async function getCurrentUser() {
   const user = await getCurrentUserApi()
   return user
+}
+
+export async function createOrder(order: any) {
+  const order1 = await createOrderApi(order)
+  return order1
 }

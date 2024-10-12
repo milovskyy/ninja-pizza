@@ -1,4 +1,5 @@
 import { CheckoutForm } from "@/components/CheckoutForm"
+import { CheckTest } from "@/components/CheckTest"
 import { Container } from "@/components/Container"
 import AppFooter from "@/components/footer/AppFooter"
 import Navigation from "@/components/Navigation"
@@ -7,11 +8,12 @@ export default function Checkout() {
   return (
     <Container className="">
       <Navigation categoryName="Checkout" />
-
       <div className="flex flex-col items-center px-3 pb-2">
         <h1 className="mb-6 self-start text-5xl font-extrabold">Checkout</h1>
         <CheckoutForm />
+        {/* <CheckTest /> */}
       </div>
+
       {/* <Dialog defaultOpen>
         <DialogContent className="flex w-full flex-col items-center justify-center rounded-none px-12 py-10 outline-none">
           <DialogHeader className="mb-5 gap-3">

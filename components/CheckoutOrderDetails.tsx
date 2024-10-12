@@ -1,19 +1,19 @@
-import { useCart } from "@/app/_store/cart"
 import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
 import { DELIVERYPRICE } from "@/app/_constants/constants"
+import { cartProductType } from "@/app/_types/TypeProduct"
 
 type Props = {
   method: string
+  cart: cartProductType[]
+  cartTotalPrice: number
 }
 
-export const CheckoutOrderDetails = ({ method }: Props) => {
-  const { cart } = useCart()
-
-  const cartTotalPrice = cart?.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0,
-  )
+export const CheckoutOrderDetails = ({
+  method,
+  cart,
+  cartTotalPrice,
+}: Props) => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-2 bg-white first-line:pt-6">

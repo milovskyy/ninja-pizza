@@ -1,5 +1,5 @@
 import { getDeliveryDays, getDeliveryTimes } from "@/utils/helperFunction"
-import { FormSelect } from "./form/FormSelect"
+import { FormSelect } from "./FormSelect"
 import { FormBlock } from "./FormBlock"
 import { useFormContext } from "react-hook-form"
 import { DEFAULT_TIME_ARRAY } from "@/app/_constants/constants"

@@ -1,9 +1,9 @@
 "use client"
 
-import { DeliveryMethodToggle } from "./DeliveryMethodToggle"
-import { DeliveryDetails } from "./DeliveryDetails"
+import { DeliveryMethodToggle } from "../DeliveryMethodToggle"
+import { DeliveryDetails } from "../DeliveryDetails"
 import { PICKUP_ADDRESSES } from "@/app/_constants/constants"
-import { FormSelect } from "./form/FormSelect"
+import { FormSelect } from "./FormSelect"
 import { FormBlock } from "./FormBlock"
 
 type Props = {
@@ -17,11 +17,12 @@ export const FormDeliveryDetails = ({ method, setMethod }: Props) => {
       title="Delivery"
       subtitle="Don't forget to check the delivery zone before ordering"
       className="flex flex-col justify-between gap-5"
+      delivery={true}
     >
       <DeliveryMethodToggle method={method} setMethod={setMethod} />
       {method === "Pickup" && (
         <FormSelect
-          name="pickupAdress"
+          name="pickupAddress"
           label="Choose where to pick up"
           array={PICKUP_ADDRESSES}
         />

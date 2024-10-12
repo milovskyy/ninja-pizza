@@ -9,7 +9,6 @@ import { PlusMinusBlock } from "./PlusMinusBlock"
 import { Button } from "./ui/button"
 import { useCart } from "@/app/_store/cart"
 import toast from "react-hot-toast"
-import { useLocalStorage } from "react-use"
 import { useCartActions } from "@/hooks/useCartActions"
 
 type PropsType = {

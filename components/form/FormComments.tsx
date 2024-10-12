@@ -1,8 +1,8 @@
 import { useFormContext } from "react-hook-form"
 import { FormBlock } from "./FormBlock"
-import { FormSelect } from "./form/FormSelect"
-import { FormControl, FormField, FormItem, FormLabel } from "./ui/form"
-import { Textarea } from "./ui/textarea"
+import { FormSelect } from "./FormSelect"
+import { FormControl, FormField, FormItem, FormLabel } from "../ui/form"
+import { Textarea } from "../ui/textarea"
 
 type Props = {}
 

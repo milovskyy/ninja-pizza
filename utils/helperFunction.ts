@@ -1,5 +1,13 @@
+import { DEFAULT_TIME_ARRAY } from "@/app/_constants/constants"
 import { ProductType } from "@/app/_types/TypeProduct"
-import { format, addDays, addMinutes } from "date-fns"
+import {
+  format,
+  addDays,
+  addMinutes,
+  setHours,
+  setMinutes,
+  isAfter,
+} from "date-fns"
 
 export const categoryProductsByLinkname = (
   products: ProductType[],
@@ -38,11 +46,13 @@ export const groupProductsByCategory = (products: ProductType[]) => {
 
 export const getDeliveryDays = () => {
   const days = []
-  const today = new Date()
-  days.push("Today")
+  const now = new Date()
+  const nineOClock = setHours(setMinutes(new Date(), 0), 21)
+  const isTooLate: boolean = isAfter(now, nineOClock)
+  if (!isTooLate) days.push("Today")
   days.push("Tomorrow")
   for (let i = 2; i < 7; i++) {
-    const nextDate = addDays(today, i)
+    const nextDate = addDays(now, i)
     days.push(format(nextDate, "dd.MM.yy"))
   }
   return days
@@ -51,6 +61,9 @@ export const getDeliveryDays = () => {
 export const getDeliveryTimes = () => {
   const timeSlots = []
   const now = new Date()
+  const nineOClock = setHours(setMinutes(new Date(), 0), 21)
+  const isTooLate: boolean = isAfter(now, nineOClock)
+  if (isTooLate) return DEFAULT_TIME_ARRAY
   // const twentyOClock = setHours(setMinutes(new Date(), 0), 20)
   // if (isAfter(now, twentyOClock)) return DEFAULT_TIME_ARRAY
 

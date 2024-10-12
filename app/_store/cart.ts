@@ -8,6 +8,7 @@ type Store = {
   remove: (product: cartProductType) => void
   increase: (product: cartProductType) => void
   decrease: (product: cartProductType) => void
+  deleteCart: () => void
 }
 
 export const useCart = create<Store>()((set) => ({
@@ -15,6 +16,10 @@ export const useCart = create<Store>()((set) => ({
   setCart: (array: cartProductType[]) =>
     set(() => {
       return { cart: array }
+    }),
+  deleteCart: () =>
+    set(() => {
+      return { cart: [] }
     }),
 
   remove: (product: cartProductType) =>

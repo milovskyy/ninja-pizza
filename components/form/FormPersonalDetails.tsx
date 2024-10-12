@@ -1,4 +1,4 @@
-import { FormInput } from "./form/FormInput"
+import { FormInput } from "./FormInput"
 import { FormBlock } from "./FormBlock"
 
 type Props = {}
