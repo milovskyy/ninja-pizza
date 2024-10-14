@@ -67,9 +67,9 @@ export const CheckoutForm = ({}: Props) => {
 
   const onSubmit = async (data: any) => {
     let date = data.date
-    if (data.date === "Today") date = format(new Date(), "yyyy-MM-dd")
+    if (data.date === "Today") date = format(new Date(), "dd-MM-yy")
     if (data.date === "Tomorrow")
-      date = format(new Date(Date.now() + 86400000), "yyyy-MM-dd")
+      date = format(new Date(Date.now() + 86400000), "dd-MM-yy")
     const order = {
       created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
       name: data.name,
@@ -80,7 +80,8 @@ export const CheckoutForm = ({}: Props) => {
           ? `${data.street} №${data.building}${data.entrance && `, entrance №${data.entrance}`}${data.apt && `, apt №${data.apt}`}${data.floor && `, floor №${data.floor}`}`
           : data.pickupAddress,
       choices: `${data.doorBell === true ? "Do not ring the doorbell" : ""}${data.doorOutside && data.doorBell ? ", " : ""}${data.doorOutside === true ? "Leave my order outside the door" : ""}`,
-      date: date + ", " + data.time,
+      date,
+      time: data.time,
       change: data.change,
       persons: data.persons,
       comment: data.comment,

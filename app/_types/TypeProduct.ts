@@ -52,4 +52,25 @@ export type IngredientType = {
   extra: boolean
 }
 
+export type OrderType = {
+  id: number
+  created_at: string
+  name: string
+  phone: string
+  method: string
+  adress: string
+  date: string
+  time: string
+  persons: string
+  choices: string
+  change: string
+  comment: string
+  payment: string
+  paymentID: string
+  user: string
+  status: string
+  items: string
+  totalAmount: number
+}
+
 export type SeparateMenuType = { name: string; products: ProductType[] }

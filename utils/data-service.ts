@@ -88,3 +88,14 @@ export const getIngredients = async function () {
 }
 
 // ////////////////////////////////////////////////////////////////////////////
+
+export const getOrders = async function () {
+  const supabase = createServerClient()
+  const { data, error } = await supabase.from("orders").select("*")
+
+  if (error) {
+    throw new Error("Orders could not be loaded")
+  }
+
+  return data
+}

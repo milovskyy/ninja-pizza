@@ -1,6 +1,7 @@
 import InfoHeaderCart from "./InfoHeaderCart"
 import InfoHeaderLike from "./InfoHeaderLike"
 import InfoHeaderNumber from "./InfoHeaderNumber"
+import InfoHeaderOrders from "./InfoHeaderOrders"
 import InfoHeaderUser from "./InfoHeaderUser"
 
 function InfoHeader() {
@@ -10,6 +11,7 @@ function InfoHeader() {
         <InfoHeaderNumber />
         <InfoHeaderLike />
         <InfoHeaderUser />
+        <InfoHeaderOrders />
         <InfoHeaderCart />
       </div>
     </div>

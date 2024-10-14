@@ -5,6 +5,7 @@ import AppHeader from "@/components/header/AppHeader"
 import {
   getCategories,
   getIngredients,
+  getOrders,
   getProducts,
 } from "@/utils/data-service"
 import { AppInitializer } from "@/components/AppInitializer"
@@ -27,6 +28,7 @@ export default async function RootLayout({
   const products = await getProducts()
   const categories = await getCategories()
   const ingredients = await getIngredients()
+  const orders = await getOrders()
 
   return (
     <html lang="en">
@@ -47,6 +49,7 @@ export default async function RootLayout({
           products={products}
           categories={categories}
           ingredients={ingredients}
+          orders={orders}
         />
         <AppHeader />
         <main className="mt-[84px] flex w-full flex-1 justify-center">
