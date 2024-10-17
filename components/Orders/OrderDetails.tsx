@@ -2,6 +2,7 @@ import { cartProductType, OrderType } from "@/app/_types/TypeProduct"
 import { sortOrderProductsByCategoryOrder } from "@/utils/helperFunction"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
+import { Button } from "../ui/button"
 
 type Props = {
   order: OrderType
@@ -22,7 +23,7 @@ export const OrderDetails = ({ order }: Props) => {
           </div>
         ))}
       </div>
-      <div className="flex flex-col gap-3 overflow-hidden px-1 text-base font-semibold">
+      <div className="flex flex-col gap-3 overflow-hidden p-1 text-base font-semibold">
         <div className="flex items-center justify-between">
           <p>Created:</p>
           <p>{order.created_at}</p>
@@ -68,6 +69,11 @@ export const OrderDetails = ({ order }: Props) => {
             </p>
           </div>
         )}
+        <div className="mt-5 flex justify-end">
+          <Button className="sell-end w-24 rounded-xl bg-stone-200 py-3 font-bold">
+            Edit Order
+          </Button>
+        </div>
       </div>
     </div>
   )

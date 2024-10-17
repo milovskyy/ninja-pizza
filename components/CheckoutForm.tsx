@@ -74,6 +74,7 @@ export const CheckoutForm = ({}: Props) => {
     if (data.date === "Tomorrow")
       date = format(new Date(Date.now() + 86400000), "dd-MM-yy")
     const order = {
+      id: NaN,
       created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
       name: data.name,
       phone: data.phone,
@@ -99,7 +100,6 @@ export const CheckoutForm = ({}: Props) => {
     try {
       await createOrder(order)
       toast.success("Order successfully created")
-      // location.href = "/"
       router.push("/")
     } catch (err: any) {
       console.log(err.message, "error from unSubmit")
