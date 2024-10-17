@@ -5,7 +5,7 @@ type Props = {}
 export const OrdersHeader = ({}: Props) => {
   return (
     <div className="flex flex-1 items-center justify-center gap-4 bg-orange-100 px-5 text-center text-[18px] font-black">
-      <div className="flex h-14 w-[98px] items-center justify-center rounded-xl px-4 py-1">
+      <div className="flex h-14 w-[105px] items-center justify-center rounded-xl px-4 py-1">
         Date
       </div>
       <div className="flex h-14 w-[88px] items-center justify-center rounded-xl p-3">
@@ -18,7 +18,7 @@ export const OrdersHeader = ({}: Props) => {
       <div className="flex w-[94px] items-center justify-center whitespace-nowrap p-2">
         Total
       </div>
-      <div className="flex w-[90px] items-center justify-center p-2">
+      <div className="flex w-[120px] items-center justify-center p-2">
         Status
       </div>
     </div>

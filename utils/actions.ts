@@ -1,7 +1,8 @@
 "use server"
 
+import { OrderType } from "@/app/_types/TypeProduct"
 import { getCurrentUserApi, loginApi, signupApi } from "./auth-service"
-import { createOrderApi } from "./order-service"
+import { createOrderApi, updateOrderApi } from "./order-service"
 
 export type AuthType = {
   phone: string
@@ -22,7 +23,12 @@ export async function getCurrentUser() {
   return user
 }
 
-export async function createOrder(order: any) {
+export async function createOrder(order: OrderType) {
   const order1 = await createOrderApi(order)
+  return order1
+}
+
+export async function updateOrder(order: OrderType, id: number) {
+  const order1 = await updateOrderApi(order, id)
   return order1
 }

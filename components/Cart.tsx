@@ -1,7 +1,6 @@
 "use client"
 
 import { useCart } from "@/app/_store/cart"
-import { cn } from "@/utils/utils"
 import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
 import Link from "next/link"
@@ -17,6 +16,8 @@ export const Cart = ({ setIsCartOpen }: Props) => {
     (acc, item) => acc + item.price * item.quantity,
     0,
   )
+
+  console.log(cart)
 
   return (
     <>

@@ -13,6 +13,14 @@ export const PICKUP_ADDRESSES = [
   "Street 5",
 ]
 
+export const ORDER_STATUSES = [
+  "Pending",
+  "Confirmed",
+  "Shipped",
+  "Delivered",
+  "Cancelled",
+]
+
 export const DEFAULT_TIME_ARRAY = [
   "The nearest time",
   "13:00",

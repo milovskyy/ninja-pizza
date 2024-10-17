@@ -2,6 +2,15 @@ import { CheckoutForm } from "@/components/CheckoutForm"
 import { Container } from "@/components/Container"
 import AppFooter from "@/components/footer/AppFooter"
 import Navigation from "@/components/Navigation"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import Image from "next/image"
 
 export default function Checkout() {
   return (
@@ -12,7 +21,7 @@ export default function Checkout() {
         <CheckoutForm />
       </div>
 
-      {/* <Dialog defaultOpen>
+      <Dialog defaultOpen>
         <DialogContent className="flex w-full flex-col items-center justify-center rounded-none px-12 py-10 outline-none">
           <DialogHeader className="mb-5 gap-3">
             <div className="flex items-center justify-center">
@@ -36,7 +45,7 @@ export default function Checkout() {
             Ok
           </DialogTrigger>
         </DialogContent>
-      </Dialog> */}
+      </Dialog>
       <AppFooter />
     </Container>
   )

@@ -1,7 +1,7 @@
 "use client"
 
 import { FormProvider, useForm } from "react-hook-form"
-import { useState } from "react"
+import { use, useState } from "react"
 import toast from "react-hot-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 
@@ -21,6 +21,7 @@ import { DELIVERYPRICE } from "@/app/_constants/constants"
 import { createOrder } from "@/utils/actions"
 import { format } from "date-fns"
 import { useCartActions } from "@/hooks/useCartActions"
+import { useRouter } from "next/navigation"
 
 type Props = {}
 
@@ -33,6 +34,8 @@ export const CheckoutForm = ({}: Props) => {
   const [method, setMethod] = useState("Delivery")
   const { cart } = useCart()
   const { handleDeleteCart } = useCartActions()
+
+  const router = useRouter()
 
   const cartTotalPrice = cart?.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -88,7 +91,7 @@ export const CheckoutForm = ({}: Props) => {
       payment: data.paymentMethod,
       paymentID: "",
       user: "1366ca27-ac43-4f9e-ac8d-d6193773bfa7",
-      status: "pending",
+      status: "Pending",
       items: JSON.stringify(cart),
       totalAmount:
         cartTotalPrice > 500 ? cartTotalPrice : cartTotalPrice + DELIVERYPRICE,
@@ -96,7 +99,8 @@ export const CheckoutForm = ({}: Props) => {
     try {
       await createOrder(order)
       toast.success("Order successfully created")
-      location.href = "/"
+      // location.href = "/"
+      router.push("/")
     } catch (err: any) {
       console.log(err.message, "error from unSubmit")
     } finally {

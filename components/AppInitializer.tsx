@@ -14,6 +14,7 @@ import {
 } from "@/app/_types/TypeProduct"
 import { useEffect } from "react"
 import { useLocalStorage } from "react-use"
+import { createUserClient } from "@/utils/supabase/client"
 
 type Props = {
   products: ProductType[]
@@ -34,6 +35,30 @@ export const AppInitializer = ({
   const { setCart } = useCart()
   const { setOrders } = useOrders()
   const [value] = useLocalStorage<cartProductType[]>("cart", [])
+
+  const supabase = createUserClient()
+  const { addOrder, deleteOrder, updateOrder } = useOrders()
+  const channels = supabase
+    .channel("custom-all-channel")
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "orders" },
+      (payload: any) => {
+        const { new: newRec, old } = payload
+        const order = { ...newRec, items: JSON.stringify(newRec.items) }
+
+        if (payload.eventType == "INSERT") {
+          addOrder(order as OrderType)
+        }
+        if (payload.eventType == "DELETE") {
+          deleteOrder(old.id)
+        }
+        if (payload.eventType == "UPDATE") {
+          updateOrder(old.id, order as OrderType)
+        }
+      },
+    )
+    .subscribe()
 
   useEffect(() => {
     setProducts(products)

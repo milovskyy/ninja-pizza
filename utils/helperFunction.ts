@@ -1,5 +1,9 @@
 import { DEFAULT_TIME_ARRAY } from "@/app/_constants/constants"
-import { OrderType, ProductType } from "@/app/_types/TypeProduct"
+import {
+  cartProductType,
+  OrderType,
+  ProductType,
+} from "@/app/_types/TypeProduct"
 import {
   format,
   addDays,
@@ -128,29 +132,53 @@ export const getDeliveryTimes = (): string[] => {
   return timeSlots
 }
 
+export const sortOrderProductsByCategoryOrder = (items: cartProductType[]) => {
+  const categoryOrder: { [key: string]: number } = {
+    Pizza: 1,
+    Snacks: 2,
+    Desserts: 3,
+    Extras: 4,
+    Drinks: 5,
+  }
+
+  const sortedProducts = items.sort((a, b) => {
+    return (
+      (categoryOrder[a.category] || Infinity) -
+      (categoryOrder[b.category] || Infinity)
+    )
+  })
+
+  return sortedProducts
+}
+
 interface GroupedEvent {
   date: string
   events: OrderType[]
 }
 
-export const sortOrders = (orders: OrderType[]) => {
-  // const data = [
-  //   { name: "Event A", date: "16-10-24", time: "09:00" },
-  //   { name: "Event B", date: "14-10-24", time: "16:30" },
-  //   { name: "Event C", date: "14-10-24", time: "10:30" },
-  //   { name: "Event D", date: "14-10-24", time: "19:30" },
-  // ]
+export const sortOrdersByDateTime = (orders: OrderType[]) => {
+  orders.sort((a, b) => {
+    const dateA = parse(a.date, "dd-MM-yy", new Date())
+    const dateB = parse(b.date, "dd-MM-yy", new Date())
+
+    // Check if both dates are valid
+    if (!isValid(dateA) || !isValid(dateB)) {
+      throw new Error("Invalid date format")
+    }
+
+    return dateA.getTime() - dateB.getTime()
+  })
 
   const parseDateTime = (dateString: string, timeString: string) => {
     const date = parse(dateString, "dd-MM-yy", new Date())
     if (!isValid(date)) return null
 
     if (timeString === "The nearest time") {
-      return date // Return date object for 'The nearest time'
+      return date
     }
 
     const [hours, minutes] = timeString.split(":").map(Number)
-    date.setHours(hours, minutes) // Set the hours and minutes on the date object
+    date.setHours(hours, minutes)
     return date
   }
 

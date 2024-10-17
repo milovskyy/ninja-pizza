@@ -28,6 +28,7 @@ function MenuCard({ product }: PropsType) {
     spicy,
     vegetarian,
     image,
+    category,
   } = product
 
   const cartProduct = {
@@ -38,6 +39,7 @@ function MenuCard({ product }: PropsType) {
     image,
     quantity: 1,
     linkName,
+    category,
   }
 
   const { cart } = useCart()

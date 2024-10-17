@@ -14,8 +14,18 @@ type Props = {
 }
 
 export const ProductDescription = ({ product }: Props) => {
-  const { name, ingredients, price, size, isNew, hit, id, image, linkName } =
-    product
+  const {
+    name,
+    ingredients,
+    price,
+    size,
+    isNew,
+    hit,
+    id,
+    image,
+    linkName,
+    category,
+  } = product
 
   const cartProduct = {
     id,
@@ -25,6 +35,7 @@ export const ProductDescription = ({ product }: Props) => {
     image,
     quantity: 1,
     linkName,
+    category,
   }
 
   const { allIngredients } = useIngredients()

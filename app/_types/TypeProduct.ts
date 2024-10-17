@@ -24,6 +24,7 @@ export type cartProductType = {
   image: string
   quantity: number
   linkName: string
+  category: string
 }
 
 export type cartType = {
@@ -58,7 +59,7 @@ export type OrderType = {
   name: string
   phone: string
   method: string
-  adress: string
+  address: string
   date: string
   time: string
   persons: string
