@@ -3,6 +3,7 @@ import { sortOrderProductsByCategoryOrder } from "@/utils/helperFunction"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 import { Button } from "../ui/button"
+import { OrderEditModal } from "./OrderEditModal"
 
 type Props = {
   order: OrderType
@@ -26,7 +27,7 @@ export const OrderDetails = ({ order }: Props) => {
       <div className="flex flex-col gap-3 overflow-hidden p-1 text-base font-semibold">
         <div className="flex items-center justify-between">
           <p>Created:</p>
-          <p>{order.created_at}</p>
+          <p>{order.created}</p>
         </div>
         <div className="flex items-center justify-between">
           <p>Name:</p>
@@ -69,11 +70,7 @@ export const OrderDetails = ({ order }: Props) => {
             </p>
           </div>
         )}
-        <div className="mt-5 flex justify-end">
-          <Button className="sell-end w-24 rounded-xl bg-stone-200 py-3 font-bold">
-            Edit Order
-          </Button>
-        </div>
+        <OrderEditModal order={order} />
       </div>
     </div>
   )

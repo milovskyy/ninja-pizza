@@ -55,7 +55,8 @@ export type IngredientType = {
 
 export type OrderType = {
   id: number
-  created_at: string
+  created: string
+  updated: string | null
   name: string
   phone: string
   method: string

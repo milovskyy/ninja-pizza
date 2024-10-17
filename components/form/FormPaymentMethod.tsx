@@ -13,19 +13,20 @@ type Props = {}
 
 export const FormPaymentMethod = ({}: Props) => {
   const { control, watch } = useFormContext()
-  const method = watch("paymentMethod")
+  const method = watch("payment")
   return (
     <FormBlock title="Payment Method" className="grid grid-cols-2 gap-5">
       <div>
         <FormField
           control={control}
-          name="paymentMethod"
+          name="payment"
           render={({ field }) => (
             <FormItem className="mb-3 space-y-3">
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
-                  defaultValue="cash"
+                  value={field.value}
+                  // defaultValue="cash"
                   className="flex flex-col space-y-1"
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">

@@ -7,17 +7,22 @@ type Props = {
   method: string
   cart: cartProductType[]
   cartTotalPrice: number
+  orderId?: number
 }
 
 export const CheckoutOrderDetails = ({
   method,
   cart,
   cartTotalPrice,
+  orderId,
 }: Props) => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-2 bg-white first-line:pt-6">
-        <h2 className="px-6 pt-6 text-xl font-bold">Your order</h2>
+        <h2 className="mb-2 px-6 pt-6 text-xl font-bold">
+          {orderId ? `Order #${orderId}` : "Your order"}
+        </h2>
+
         <div className="flex flex-col gap-2 px-6">
           {cart?.map((item) => <CartItem key={item.id} item={item} />)}
         </div>
@@ -56,10 +61,8 @@ export const CheckoutOrderDetails = ({
         <Button
           className="bg-white font-extrabold hover:bg-white"
           type="submit"
-          // onClick={() => console.log(errors)}
-          // disabled={Object.keys(errors).length !== 0}
         >
-          Place an order
+          {orderId ? "Update order" : "Place order"}
         </Button>
       </div>
     </div>

@@ -22,6 +22,8 @@ export const OrdersMain = () => {
   return (
     <Accordion
       type="multiple"
+      // type="single"
+      // collapsible
       className="flex w-full flex-col gap-3 overflow-hidden rounded-xl bg-stone-100 pb-5"
     >
       <OrdersHeader />

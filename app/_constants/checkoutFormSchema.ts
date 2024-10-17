@@ -5,7 +5,6 @@ export const checkoutFormSchemaDelivery = z.object({
   phone: z
     .string()
     .min(10, { message: "Make sure your phone number has at least 10 digits" }),
-  // pickupAddress: z.string().optional(),
   street: z.string().min(2),
   building: z.string().min(1).max(5),
   entrance: z.string().max(2).optional(),
@@ -18,7 +17,7 @@ export const checkoutFormSchemaDelivery = z.object({
   change: z.string().optional(),
   persons: z.string(),
   comment: z.string().max(210).optional(),
-  paymentMethod: z.string(),
+  payment: z.string(),
 })
 
 export const checkoutFormSchemaPickup = z.object({
@@ -26,16 +25,35 @@ export const checkoutFormSchemaPickup = z.object({
   phone: z
     .string()
     .min(10, { message: "Make sure your phone number has at least 10 digits" }),
-  pickupAddress: z.string(),
+  address: z.string(),
   date: z.string(),
   time: z.string(),
   change: z.string().optional(),
   persons: z.string(),
   comment: z.string().max(210).optional(),
-  paymentMethod: z.string(),
+  payment: z.string(),
+})
+
+export const checkoutFormSchemaEditOrder = z.object({
+  name: z.string().min(2, { message: "Please enter your name" }),
+  phone: z
+    .string()
+    .min(10, { message: "Make sure your phone number has at least 10 digits" }),
+  address: z.string(),
+  date: z.string(),
+  time: z.string(),
+  doorBell: z.boolean().default(false).optional(),
+  doorOutside: z.boolean().default(false).optional(),
+  change: z.string().optional(),
+  persons: z.string(),
+  comment: z.string().max(210).optional(),
+  payment: z.string(),
 })
 
 export type CheckoutFormPickupValues = z.infer<typeof checkoutFormSchemaPickup>
+export type CheckoutFormEditOrderValues = z.infer<
+  typeof checkoutFormSchemaEditOrder
+>
 export type CheckoutFormDeliveryValues = z.infer<
   typeof checkoutFormSchemaDelivery
 >

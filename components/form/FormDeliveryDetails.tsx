@@ -9,25 +9,26 @@ import { FormBlock } from "./FormBlock"
 type Props = {
   method: string
   setMethod: React.Dispatch<React.SetStateAction<string>>
+  address?: string
 }
 
-export const FormDeliveryDetails = ({ method, setMethod }: Props) => {
+export const FormDeliveryDetails = ({ method, setMethod, address }: Props) => {
   return (
     <FormBlock
       title="Delivery"
       subtitle="Don't forget to check the delivery zone before ordering"
       className="flex flex-col justify-between gap-5"
-      delivery={true}
+      delivery={address ? false : true}
     >
       <DeliveryMethodToggle method={method} setMethod={setMethod} />
       {method === "Pickup" && (
         <FormSelect
-          name="pickupAddress"
+          name="address"
           label="Choose where to pick up"
           array={PICKUP_ADDRESSES}
         />
       )}
-      {method === "Delivery" && <DeliveryDetails />}
+      {method === "Delivery" && <DeliveryDetails address={address} />}
     </FormBlock>
     // <div className="flex flex-col gap-3">
     //   <h2 className="text-xl font-bold">Delivery</h2>

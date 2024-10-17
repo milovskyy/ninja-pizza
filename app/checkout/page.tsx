@@ -21,7 +21,7 @@ export default function Checkout() {
         <CheckoutForm />
       </div>
 
-      <Dialog defaultOpen>
+      {/* <Dialog defaultOpen>
         <DialogContent className="flex w-full flex-col items-center justify-center rounded-none px-12 py-10 outline-none">
           <DialogHeader className="mb-5 gap-3">
             <div className="flex items-center justify-center">
@@ -45,7 +45,7 @@ export default function Checkout() {
             Ok
           </DialogTrigger>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
       <AppFooter />
     </Container>
   )
