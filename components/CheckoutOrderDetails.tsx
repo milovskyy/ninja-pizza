@@ -2,12 +2,15 @@ import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
 import { DELIVERYPRICE } from "@/app/_constants/constants"
 import { cartProductType } from "@/app/_types/TypeProduct"
+import { DialogTrigger } from "./ui/dialog"
+import { OrderAddProducts } from "./Orders/OrderAddProducts"
 
 type Props = {
   method: string
   cart: cartProductType[]
   cartTotalPrice: number
   orderId?: number
+  isloading?: boolean
 }
 
 export const CheckoutOrderDetails = ({
@@ -15,6 +18,7 @@ export const CheckoutOrderDetails = ({
   cart,
   cartTotalPrice,
   orderId,
+  isloading,
 }: Props) => {
   return (
     <div className="flex flex-col gap-3">
@@ -30,6 +34,11 @@ export const CheckoutOrderDetails = ({
           {method === "Delivery" && " Free delivery from 500 UAH"}
         </p>
       </div>
+      <OrderAddProducts />
+      {/* MenuCategory */}
+      {/* {orderId && (
+        <Button className="mb-4 w-[25%] self-center">Add more items</Button>
+      )} */}
       <div className="flex justify-between bg-primary p-6">
         <div className="flex gap-4">
           {cartTotalPrice < 500 && method === "Delivery" && (
@@ -60,6 +69,7 @@ export const CheckoutOrderDetails = ({
 
         <Button
           className="bg-white font-extrabold hover:bg-white"
+          disabled={isloading}
           type="submit"
         >
           {orderId ? "Update order" : "Place order"}

@@ -1,6 +1,6 @@
 "use server"
 
-import { OrderType } from "@/app/_types/TypeProduct"
+import { newOrderType, OrderType } from "@/app/_types/TypeProduct"
 import { getCurrentUserApi, loginApi, signupApi } from "./auth-service"
 import { createOrderApi, updateOrderApi } from "./order-service"
 
@@ -23,7 +23,7 @@ export async function getCurrentUser() {
   return user
 }
 
-export async function createOrder(order: OrderType) {
+export async function createOrder(order: newOrderType) {
   const order1 = await createOrderApi(order)
   return order1
 }

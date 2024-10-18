@@ -1,7 +1,7 @@
-import { OrderType } from "@/app/_types/TypeProduct"
+import { newOrderType, OrderType } from "@/app/_types/TypeProduct"
 import { createServerClient } from "./supabase/server"
 
-export const createOrderApi = async function (order: OrderType) {
+export const createOrderApi = async function (order: newOrderType) {
   const supabase = createServerClient()
 
   const { data, error } = await supabase.from("orders").insert([order]).select()

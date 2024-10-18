@@ -17,8 +17,6 @@ export const Cart = ({ setIsCartOpen }: Props) => {
     0,
   )
 
-  console.log(cart)
-
   return (
     <>
       <div className="flex flex-1 flex-col gap-3 bg-white first-line:pt-6">

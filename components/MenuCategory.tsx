@@ -2,10 +2,11 @@ import { ProductType } from "@/app/_types/TypeProduct"
 import MenuCard from "./MenuCard"
 import Link from "next/link"
 import PizzaFilter from "./PizzaFilter"
+import { cn } from "@/utils/utils"
 
 type PropsType = {
   products: ProductType[]
-  name: string
+  name?: string
   limit?: number
   filter?: string
 }
@@ -40,12 +41,17 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
       <h1 className="mb-6 self-start text-5xl font-extrabold">{name}</h1>
       {!limit && name === "Pizza" && <PizzaFilter filter={filter} />}
 
-      <div className="mb-12 grid w-full grid-cols-4 gap-[6px]">
+      <div
+        className={cn(
+          "mb-12 grid w-full gap-[6px]",
+          name ? "grid-cols-4" : "grid-cols-2",
+        )}
+      >
         {productsToShow.map((product) => (
           <MenuCard key={product.id} product={product} />
         ))}
       </div>
-      {limit && (
+      {limit && name && (
         <Link
           href={`/category/${name.toLowerCase()}`}
           className="mb-3 rounded-full bg-stone-700 px-6 py-4 text-[16px] font-bold text-stone-50"

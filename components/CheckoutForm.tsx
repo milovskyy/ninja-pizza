@@ -19,7 +19,7 @@ import { FormPaymentMethod } from "./form/FormPaymentMethod"
 import { FormComments } from "./form/FormComments"
 import { useCart } from "@/app/_store/cart"
 import { DELIVERYPRICE } from "@/app/_constants/constants"
-import { createOrder } from "@/utils/actions"
+import { createOrder, updateOrder } from "@/utils/actions"
 import { format } from "date-fns"
 import { useCartActions } from "@/hooks/useCartActions"
 import { useRouter } from "next/navigation"
@@ -27,6 +27,7 @@ import { OrderType } from "@/app/_types/TypeProduct"
 
 type Props = {
   order?: OrderType
+  setIsopenModal: (state: boolean) => void
 }
 
 export type AuthType = {
@@ -34,8 +35,9 @@ export type AuthType = {
   phone: string
 }
 
-export const CheckoutForm = ({ order }: Props) => {
+export const CheckoutForm = ({ order, setIsopenModal }: Props) => {
   const [method, setMethod] = useState(order?.method || "Delivery")
+  const [isloading, setIsloading] = useState(false)
   const { cart } = useCart()
   const { handleDeleteCart } = useCartActions()
 
@@ -93,7 +95,6 @@ export const CheckoutForm = ({ order }: Props) => {
     if (data.date === "Tomorrow")
       date = format(new Date(Date.now() + 86400000), "dd-MM-yy")
     const newOrder = {
-      id: order?.id || NaN,
       created: order?.created || format(new Date(), "yyyy-MM-dd HH:mm"),
       updated: order ? format(new Date(), "yyyy-MM-dd HH:mm") : null,
       name: data.name,
@@ -120,16 +121,32 @@ export const CheckoutForm = ({ order }: Props) => {
         cartTotalPrice > 500 ? cartTotalPrice : cartTotalPrice + DELIVERYPRICE,
     }
 
-    console.log(newOrder)
-    // try {
-    //   await createOrder(order)
-    //   toast.success("Order successfully created")
-    //   router.push("/")
-    // } catch (err: any) {
-    //   console.log(err.message, "error from unSubmit")
-    // } finally {
-    //   handleDeleteCart()
-    // }
+    if (!order)
+      try {
+        setIsloading(true)
+        await createOrder(newOrder)
+
+        toast.success("Order successfully created")
+        router.push("/")
+      } catch (err: any) {
+        console.log(err.message, "error from order creation")
+      } finally {
+        handleDeleteCart()
+        setIsloading(false)
+      }
+
+    if (order)
+      try {
+        setIsloading(true)
+        await updateOrder({ ...newOrder, id: order.id }, order?.id)
+
+        toast.success("Order successfully updated")
+      } catch (err: any) {
+        console.log(err.message, "error from order update")
+      } finally {
+        setIsloading(false)
+        if (setIsopenModal && isloading === false) setIsopenModal(false)
+      }
   }
 
   return (
@@ -160,9 +177,10 @@ export const CheckoutForm = ({ order }: Props) => {
         </div>
         <CheckoutOrderDetails
           method={method}
-          cart={order ? JSON.parse(order.items) : cart}
+          cart={cart}
           cartTotalPrice={cartTotalPrice}
           orderId={order?.id}
+          isloading={isloading}
         />
       </form>
     </FormProvider>

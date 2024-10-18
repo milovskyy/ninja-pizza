@@ -29,6 +29,12 @@ export const OrderDetails = ({ order }: Props) => {
           <p>Created:</p>
           <p>{order.created}</p>
         </div>
+        {order.updated && (
+          <div className="flex items-center justify-between">
+            <p>Updated:</p>
+            <p>{order.updated}</p>
+          </div>
+        )}
         <div className="flex items-center justify-between">
           <p>Name:</p>
           <p>{order.name}</p>

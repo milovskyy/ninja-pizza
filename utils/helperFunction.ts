@@ -134,7 +134,7 @@ export const getDeliveryTimes = (): string[] => {
   return timeSlots
 }
 
-export const sortOrderProductsByCategoryOrder = (items: cartProductType[]) => {
+export const sortOrderProductsByCategoryOrder = (items: any) => {
   const categoryOrder: { [key: string]: number } = {
     Pizza: 1,
     Snacks: 2,
@@ -143,7 +143,7 @@ export const sortOrderProductsByCategoryOrder = (items: cartProductType[]) => {
     Drinks: 5,
   }
 
-  const sortedProducts = items.sort((a, b) => {
+  const sortedProducts = items.sort((a: any, b: any) => {
     return (
       (categoryOrder[a.category] || Infinity) -
       (categoryOrder[b.category] || Infinity)
