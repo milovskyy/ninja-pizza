@@ -11,7 +11,8 @@ type Props = {
 }
 
 export const OrderPreview = ({ order, setDialogOpen }: Props) => {
-  const items = sortOrderProductsByCategoryOrder(JSON.parse(order.items))
+  const parsedItems = JSON.parse(order.items)
+  const items = sortOrderProductsByCategoryOrder(parsedItems)
   const itemsNumber = items.reduce(
     (acc: number, item: cartProductType) => acc + item.quantity,
     0,

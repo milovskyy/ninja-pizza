@@ -32,21 +32,17 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
   // итерация по Object.keys чтоб определить что в юрл поиске значение поиска есть в ключах обьекта продукта
   // //////////////////////////
 
-  productsToShow.sort(
-    (a, b) => (a.isNew === true ? 0 : 1) - (b.isNew === true ? 0 : 1),
-  )
+  if (name)
+    productsToShow.sort(
+      (a, b) => (a.isNew === true ? 0 : 1) - (b.isNew === true ? 0 : 1),
+    )
 
   return (
     <div className="flex flex-col items-center px-3 pb-2">
       <h1 className="mb-6 self-start text-5xl font-extrabold">{name}</h1>
       {!limit && name === "Pizza" && <PizzaFilter filter={filter} />}
 
-      <div
-        className={cn(
-          "mb-12 grid w-full gap-[6px]",
-          name ? "grid-cols-4" : "grid-cols-2",
-        )}
-      >
+      <div className={cn("mb-12 grid w-full grid-cols-4 gap-[6px]")}>
         {productsToShow.map((product) => (
           <MenuCard key={product.id} product={product} />
         ))}

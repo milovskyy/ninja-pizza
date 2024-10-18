@@ -8,8 +8,7 @@ type Props = {}
 export const OrderAddProducts = ({}: Props) => {
   const { allProducts } = useProducts()
   const products = sortOrderProductsByCategoryOrder(allProducts)
-  console.log(products, "sorted")
-  console.log(allProducts, "all")
+
   return (
     <div className={cn("")}>
       <MenuCategory products={products} />

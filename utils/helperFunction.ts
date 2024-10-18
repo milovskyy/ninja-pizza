@@ -142,14 +142,12 @@ export const sortOrderProductsByCategoryOrder = (items: any) => {
     Extras: 4,
     Drinks: 5,
   }
-
   const sortedProducts = items.sort((a: any, b: any) => {
     return (
       (categoryOrder[a.category] || Infinity) -
       (categoryOrder[b.category] || Infinity)
     )
   })
-
   return sortedProducts
 }
 
@@ -163,7 +161,6 @@ export const sortOrdersByDateTime = (orders: OrderType[]) => {
     const dateA = parse(a.date, "dd-MM-yy", new Date())
     const dateB = parse(b.date, "dd-MM-yy", new Date())
 
-    // Check if both dates are valid
     if (!isValid(dateA) || !isValid(dateB)) {
       throw new Error("Invalid date format")
     }

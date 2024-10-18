@@ -2,8 +2,6 @@ import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
 import { DELIVERYPRICE } from "@/app/_constants/constants"
 import { cartProductType } from "@/app/_types/TypeProduct"
-import { DialogTrigger } from "./ui/dialog"
-import { OrderAddProducts } from "./Orders/OrderAddProducts"
 
 type Props = {
   method: string
@@ -34,11 +32,7 @@ export const CheckoutOrderDetails = ({
           {method === "Delivery" && " Free delivery from 500 UAH"}
         </p>
       </div>
-      <OrderAddProducts />
-      {/* MenuCategory */}
-      {/* {orderId && (
-        <Button className="mb-4 w-[25%] self-center">Add more items</Button>
-      )} */}
+
       <div className="flex justify-between bg-primary p-6">
         <div className="flex gap-4">
           {cartTotalPrice < 500 && method === "Delivery" && (

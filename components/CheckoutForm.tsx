@@ -24,10 +24,12 @@ import { format } from "date-fns"
 import { useCartActions } from "@/hooks/useCartActions"
 import { useRouter } from "next/navigation"
 import { OrderType } from "@/app/_types/TypeProduct"
+import { Button } from "./ui/button"
+import { OrderAddProducts } from "./Orders/OrderAddProducts"
 
 type Props = {
   order?: OrderType
-  setIsopenModal: (state: boolean) => void
+  setIsopenModal?: (state: boolean) => void
 }
 
 export type AuthType = {
@@ -38,6 +40,7 @@ export type AuthType = {
 export const CheckoutForm = ({ order, setIsopenModal }: Props) => {
   const [method, setMethod] = useState(order?.method || "Delivery")
   const [isloading, setIsloading] = useState(false)
+  const [showAddProducts, setShowAddProducts] = useState(false)
   const { cart } = useCart()
   const { handleDeleteCart } = useCartActions()
 
@@ -183,6 +186,31 @@ export const CheckoutForm = ({ order, setIsopenModal }: Props) => {
           isloading={isloading}
         />
       </form>
+      <div className="flex w-full flex-col">
+        {order && (
+          <Button
+            className="mb-4 w-full"
+            onClick={(e) => {
+              e.preventDefault()
+              setShowAddProducts((open) => !open)
+            }}
+          >
+            Add more items
+          </Button>
+        )}
+        {showAddProducts && <OrderAddProducts />}
+        {showAddProducts && (
+          <Button
+            className="mb-4 w-full"
+            onClick={(e) => {
+              e.preventDefault()
+              setShowAddProducts((open) => !open)
+            }}
+          >
+            Add more items
+          </Button>
+        )}
+      </div>
     </FormProvider>
   )
 }
