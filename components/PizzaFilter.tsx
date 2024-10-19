@@ -3,8 +3,7 @@
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { useState } from "react"
 import PizzaFilterButton from "./PizzaFilterButton"
-
-const filters = ["spicy", "meat", "vegetarian", "seafood"]
+import { PIZZA_FILTERS } from "@/app/_constants/constants"
 
 type Props = {
   filter: string | undefined
@@ -12,8 +11,6 @@ type Props = {
 
 function PizzaFilter({ filter = "" }: Props) {
   const [selectedFilter, setSelectedFilter] = useState(filter)
-
-  // console.log(filter)
 
   const searchParams = useSearchParams()
   const pathname = usePathname()
@@ -33,7 +30,7 @@ function PizzaFilter({ filter = "" }: Props) {
 
   return (
     <div className="mb-3 mt-5 flex w-full gap-9 self-start rounded-2xl bg-white px-5 py-3">
-      {filters.map((filter) => (
+      {PIZZA_FILTERS.map((filter) => (
         <PizzaFilterButton
           key={filter}
           name={filter}

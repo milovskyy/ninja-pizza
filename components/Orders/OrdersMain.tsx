@@ -7,11 +7,20 @@ import { RotateLoader } from "react-spinners"
 import { OrdersHeader } from "./OrdersHeader"
 
 import { Accordion } from "@/components/ui/accordion"
+import { useSearchParams } from "next/navigation"
 
 export const OrdersMain = () => {
   const { allOrders } = useOrders()
+  const searchParams = useSearchParams()
+  const status = searchParams.get("status")
+  const time = searchParams.get("time")
 
-  const sortedData = sortOrdersByDateTime(allOrders)
+  const sortedData = sortOrdersByDateTime(allOrders, time)
+  const ordersToShow = status
+    ? sortedData.filter((order) => order.status === status)
+    : sortedData
+
+  // Добавить тут чтоб не показывало прошлые даты заказов
 
   if (allOrders.length === 0)
     return (
@@ -27,7 +36,7 @@ export const OrdersMain = () => {
       className="flex w-full flex-col gap-3 overflow-hidden rounded-xl bg-stone-100 pb-5"
     >
       <OrdersHeader />
-      {sortedData.map((order) => (
+      {ordersToShow.map((order) => (
         <Order key={order.id} order={order} />
       ))}
     </Accordion>

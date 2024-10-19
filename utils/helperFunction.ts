@@ -1,19 +1,13 @@
-import { DEFAULT_TIME_ARRAY } from "@/app/_constants/constants"
-import {
-  cartProductType,
-  OrderType,
-  ProductType,
-} from "@/app/_types/TypeProduct"
+import { OrderType, ProductType } from "@/app/_types/TypeProduct"
 import {
   format,
   addDays,
   addMinutes,
-  setHours,
-  setMinutes,
-  isAfter,
   isValid,
   parse,
   compareAsc,
+  isToday,
+  isAfter,
 } from "date-fns"
 
 export const categoryProductsByLinkname = (
@@ -156,7 +150,10 @@ interface GroupedEvent {
   events: OrderType[]
 }
 
-export const sortOrdersByDateTime = (orders: OrderType[]) => {
+export const sortOrdersByDateTime = (
+  orders: OrderType[],
+  time: string | null,
+) => {
   orders.sort((a, b) => {
     const dateA = parse(a.date, "dd-MM-yy", new Date())
     const dateB = parse(b.date, "dd-MM-yy", new Date())
@@ -211,7 +208,23 @@ export const sortOrdersByDateTime = (orders: OrderType[]) => {
 
   const sortedData: OrderType[] = sortedGroups.flatMap((group) => group.events)
 
-  return sortedData
+  let data = sortedData
+
+  if (time === "History") return data
+
+  if (time === "Today") {
+    data = sortedData.filter(
+      (order) => order.date === format(new Date(), "dd-MM-yy"),
+    )
+    return data
+  }
+
+  data = sortedData.filter((order) => {
+    const itemDate = parse(order.date, "dd-MM-yy", new Date())
+    return isToday(itemDate) || isAfter(itemDate, new Date())
+  })
+
+  return data
 }
 // ;[
 //   { name: "Event A", date: "16-10-24", time: "The nearest time" },

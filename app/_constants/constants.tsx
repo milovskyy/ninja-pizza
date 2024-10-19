@@ -21,6 +21,8 @@ export const ORDER_STATUSES = [
   "Cancelled",
 ]
 
+export const ORDER_TIME_FILTERS = ["Today", "History"]
+
 export const DEFAULT_TIME_ARRAY = [
   "The nearest time",
   "13:00",
@@ -60,3 +62,5 @@ export const DEFAULT_TIME_ARRAY = [
   "21:30",
   "21:45",
 ]
+
+export const PIZZA_FILTERS = ["spicy", "meat", "vegetarian", "seafood"]
