@@ -1,4 +1,3 @@
-import { ORDER_STATUSES } from "@/app/_constants/constants"
 import { cn } from "@/utils/utils"
 
 type Props = {
@@ -19,19 +18,14 @@ export const OrdersFilter = ({
       <div className="flex w-full gap-4">
         {array.map((filter) => (
           <div
-            className="flex cursor-pointer gap-2 p-2"
+            className={cn(
+              "cursor-pointer items-center justify-center rounded-md bg-white p-2 px-4 font-bold",
+              selected === filter && "bg-primary",
+            )}
             onClick={() => handleFilter(type, filter)}
             key={filter}
           >
-            <div
-              className={`${selected === filter ? "border-primary" : "border-stone-200"} flex h-6 w-6 items-center justify-center rounded-full border-2`}
-            >
-              <div
-                className={`h-[14px] w-[14px] rounded-full ${selected === filter ? "bg-primary" : "bg-transparent"}`}
-              />
-            </div>
-
-            <p className="font-semibold">{filter}</p>
+            {filter}
           </div>
         ))}
       </div>

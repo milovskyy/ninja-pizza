@@ -63,7 +63,7 @@ export const OrdersFiltersBlock = ({}: Props) => {
   }
 
   return (
-    <div className="mb-5 flex w-full justify-between rounded-xl bg-white">
+    <div className="mb-5 flex w-full justify-between p-1">
       <OrdersFilter
         handleFilter={handleUpdateFilter}
         selected={selectedStatus}
