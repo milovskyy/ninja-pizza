@@ -97,3 +97,12 @@ export type newOrderType = {
 }
 
 export type SeparateMenuType = { name: string; products: ProductType[] }
+
+export type UserType = {
+  id?: string
+  created_at?: string
+  role?: string
+  number?: string
+  name?: string
+  email?: string
+}

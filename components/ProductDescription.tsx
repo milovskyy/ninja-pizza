@@ -1,4 +1,4 @@
-import { IngredientType, ProductType } from "@/app/_types/TypeProduct"
+import { IngredientType, ProductType } from "@/app/_types/Types"
 import { cn } from "@/utils/utils"
 import { Button } from "./ui/button"
 import { GoHeart } from "react-icons/go"

@@ -1,4 +1,4 @@
-import { ProductType, SeparateMenuType } from "@/app/_types/TypeProduct"
+import { ProductType, SeparateMenuType } from "@/app/_types/Types"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 

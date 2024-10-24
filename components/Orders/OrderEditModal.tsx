@@ -1,16 +1,17 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "../ui/button"
 import { CheckoutForm } from "../CheckoutForm"
-import { OrderType } from "@/app/_types/TypeProduct"
+import { OrderType } from "@/app/_types/Types"
 import { useCart } from "@/app/_store/cart"
 import { useLocalStorage } from "react-use"
 import { useState } from "react"
 
 type Props = {
   order: OrderType
+  setStatus: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const OrderEditModal = ({ order }: Props) => {
+export const OrderEditModal = ({ order, setStatus }: Props) => {
   const [isopenModal, setIsopenModal] = useState(false)
   const cart = JSON.parse(order.items)
 
@@ -18,7 +19,6 @@ export const OrderEditModal = ({ order }: Props) => {
   const [value, setValue] = useLocalStorage("cart")
 
   const cartOnDialogOpen = (state: boolean) => {
-    console.log("orr")
     if (state === true) {
       setCart(cart)
       setValue(cart)
@@ -39,7 +39,11 @@ export const OrderEditModal = ({ order }: Props) => {
           </Button>
         </DialogTrigger>
         <DialogContent className="h-[800px] w-full max-w-7xl overflow-auto">
-          <CheckoutForm order={order} setIsopenModal={cartOnDialogOpen} />
+          <CheckoutForm
+            order={order}
+            setIsopenModal={cartOnDialogOpen}
+            setStatus={setStatus}
+          />
         </DialogContent>
       </Dialog>
     </div>

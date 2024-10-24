@@ -1,4 +1,4 @@
-import { CategoryType } from "@/app/_types/TypeProduct"
+import { CategoryType } from "@/app/_types/Types"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 import Link from "next/link"

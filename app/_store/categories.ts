@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { CategoryType } from "../_types/TypeProduct"
+import { CategoryType } from "../_types/Types"
 
 type Store = {
   categories: CategoryType[]

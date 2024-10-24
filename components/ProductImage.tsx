@@ -1,5 +1,5 @@
 import { PRODUCT_IMAGE_URL } from "@/app/_constants/constants"
-import { ProductType } from "@/app/_types/TypeProduct"
+import { ProductType } from "@/app/_types/Types"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 

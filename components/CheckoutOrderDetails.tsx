@@ -1,7 +1,7 @@
 import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
 import { DELIVERYPRICE } from "@/app/_constants/constants"
-import { cartProductType } from "@/app/_types/TypeProduct"
+import { cartProductType } from "@/app/_types/Types"
 
 type Props = {
   method: string

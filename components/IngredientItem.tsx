@@ -1,4 +1,4 @@
-import { IngredientType } from "@/app/_types/TypeProduct"
+import { IngredientType } from "@/app/_types/Types"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 

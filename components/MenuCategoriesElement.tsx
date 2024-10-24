@@ -6,7 +6,7 @@ import Image from "next/image"
 import { twMerge } from "tailwind-merge"
 import { cn } from "@/utils/utils"
 import { Button } from "@/components/ui/button"
-import { CategoryType } from "@/app/_types/TypeProduct"
+import { CategoryType } from "@/app/_types/Types"
 
 type PropsType = {
   category: CategoryType

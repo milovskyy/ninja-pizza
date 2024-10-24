@@ -1,4 +1,4 @@
-import { OrderType } from "@/app/_types/TypeProduct"
+import { OrderType } from "@/app/_types/Types"
 
 import {
   AccordionContent,
@@ -13,7 +13,6 @@ import { useState } from "react"
 import {
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -41,6 +40,7 @@ export const Order = ({ order }: Props) => {
     const updatedOrder = { ...order, status }
     await updateOrder(updatedOrder, order.id)
   }
+
   return (
     <>
       <AccordionItem
@@ -51,7 +51,7 @@ export const Order = ({ order }: Props) => {
           <OrderPreview order={order} setDialogOpen={setDialogOpen} />
         </AccordionTrigger>
         <AccordionContent>
-          <OrderDetails order={order} />
+          <OrderDetails order={order} setStatus={setStatus} />
         </AccordionContent>
       </AccordionItem>
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

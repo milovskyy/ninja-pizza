@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { loginAction, signupAction } from "@/utils/actions"
+import { createUser, loginAction, signupAction } from "@/utils/actions"
 import Image from "next/image"
 import { useForm, Controller } from "react-hook-form"
 import { ErrorMessage } from "@hookform/error-message"
@@ -22,6 +22,8 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp"
 import { Button } from "./ui/button"
+import { format } from "date-fns"
+import { useRouter } from "next/navigation"
 
 type Props = {
   buttonText: string
@@ -34,59 +36,71 @@ export type AuthType = {
 
 export const SignInModal = ({ buttonText }: Props) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm<AuthType>()
 
-  // const onSubmit = (data: AuthType) => {
-  //   const number = data.phone.replace(/\s+/g, "")
-  //   console.log(data, "data")
-  // }
+  const router = useRouter()
 
   async function onSubmit({ phone, password }: AuthType) {
     if (!phone || !password) return
 
+    const phoneNumber = "380" + phone.replace(/\D/g, "")
+
     try {
-      const user = await signupAction({
-        phone,
+      setIsLoading(true)
+      const { user } = await signupAction({
+        phone: phoneNumber,
         password,
       })
 
-      // console.log(user, "created user")
+      console.log(user, "created user")
+
+      if (user) {
+        const newUser = {
+          created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
+          id: user.id,
+          number: user.phone,
+        }
+        await createUser(newUser)
+      }
+
       toast.success("User successfully created")
-      // setIsDialogOpen(false)
+      setIsDialogOpen(false)
+      setIsLoading(false)
+      reset()
+      router.refresh()
     } catch (e: any) {
       if (e.message === "User already registered") {
         try {
           const user = await loginAction({
-            phone,
+            phone: phoneNumber,
             password,
           })
-          // console.log(user, "logged user")
           toast.success("User successfully logged in")
-          // setIsDialogOpen(false)
+          setIsDialogOpen(false)
+          setIsLoading(false)
+          reset()
+          router.refresh()
         } catch (e: any) {
           toast.error(e.message)
-          // console.log(e.message)
         }
+        return
       }
+      toast.error(e.message)
+    } finally {
+      setIsLoading(false)
     }
   }
-  // setIsLoading(false)
 
-  // const handleGetCurrentUser = async () => {
-  //   const user = await getCurrentUser()
-  //   console.log(user, "user")
-  // }
   return (
-    <Dialog
-      open={isDialogOpen}
-      onOpenChange={() => setIsDialogOpen((open) => !open)}
-    >
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger className="w-full rounded-full bg-primary p-3 text-[16px] font-black hover:bg-main">
         {buttonText}
       </DialogTrigger>
@@ -99,7 +113,6 @@ export const SignInModal = ({ buttonText }: Props) => {
             Please enter your phone number and password
           </DialogDescription>
         </DialogHeader>
-        {/* <Button onClick={handleGetCurrentUser}>current user</Button> */}
         <form
           className="flex w-full flex-col gap-2"
           onSubmit={handleSubmit(onSubmit)}
@@ -132,8 +145,6 @@ export const SignInModal = ({ buttonText }: Props) => {
                 },
                 minLength: {
                   value: 12,
-                  // message:
-                  //   "Please ensure your phone number contains at least 9 digits",
                   message: "Make sure your phone number has at least 9 digits",
                 },
                 onChange: (e) => {
@@ -165,8 +176,6 @@ export const SignInModal = ({ buttonText }: Props) => {
               },
               minLength: {
                 value: 6,
-                // message:
-                //   "Please ensure your password contains at least 6 digits",
                 message: "Make sure your password has at least 6 digits",
               },
             }}
@@ -190,7 +199,9 @@ export const SignInModal = ({ buttonText }: Props) => {
             )}
           />
 
-          <Button className="w-full text-[16px] font-bold">Sign up</Button>
+          <Button className="w-full text-[16px] font-bold" disabled={isLoading}>
+            Sign up
+          </Button>
         </form>
       </DialogContent>
     </Dialog>

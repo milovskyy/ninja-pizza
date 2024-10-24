@@ -6,13 +6,13 @@ function PlaceOrder() {
       <p className="px-2 text-sm text-stone-400">Place an order:</p>
 
       <Button variant={"phone"} size={"phone"}>
-        +38 (095) 344 22 44
+        {"+38 (095) 344 22 44"}
       </Button>
       <Button variant={"phone"} size={"phone"}>
-        +38 (067) 344 22 44
+        {"+38 (067) 344 22 44"}
       </Button>
       <Button variant={"phone"} size={"phone"}>
-        +38 (063) 344 22 44
+        {" +38 (063) 344 22 44"}
       </Button>
 
       <p className="px-2 text-sm text-stone-400">

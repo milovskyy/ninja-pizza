@@ -1,4 +1,4 @@
-import { OrderType, ProductType } from "@/app/_types/TypeProduct"
+import { OrderType, ProductType } from "@/app/_types/Types"
 import {
   format,
   addDays,

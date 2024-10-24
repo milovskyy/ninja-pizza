@@ -20,8 +20,6 @@ export const OrdersMain = () => {
     ? sortedData.filter((order) => order.status === status)
     : sortedData
 
-  // Добавить тут чтоб не показывало прошлые даты заказов
-
   if (allOrders.length === 0)
     return (
       <div className="flex h-[400px] w-full items-center justify-center">
@@ -31,8 +29,6 @@ export const OrdersMain = () => {
   return (
     <Accordion
       type="multiple"
-      // type="single"
-      // collapsible
       className="flex w-full flex-col gap-3 overflow-hidden rounded-xl bg-stone-100 pb-5"
     >
       <OrdersHeader />

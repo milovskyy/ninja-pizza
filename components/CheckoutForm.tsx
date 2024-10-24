@@ -23,13 +23,14 @@ import { createOrder, updateOrder } from "@/utils/actions"
 import { format } from "date-fns"
 import { useCartActions } from "@/hooks/useCartActions"
 import { useRouter } from "next/navigation"
-import { OrderType } from "@/app/_types/TypeProduct"
+import { OrderType } from "@/app/_types/Types"
 import { Button } from "./ui/button"
 import { OrderAddProducts } from "./Orders/OrderAddProducts"
 
 type Props = {
   order?: OrderType
   setIsopenModal?: (state: boolean) => void
+  setStatus?: (state: string) => void
 }
 
 export type AuthType = {
@@ -37,7 +38,7 @@ export type AuthType = {
   phone: string
 }
 
-export const CheckoutForm = ({ order, setIsopenModal }: Props) => {
+export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
   const [method, setMethod] = useState(order?.method || "Delivery")
   const [isloading, setIsloading] = useState(false)
   const [showAddProducts, setShowAddProducts] = useState(false)
@@ -144,6 +145,7 @@ export const CheckoutForm = ({ order, setIsopenModal }: Props) => {
         await updateOrder({ ...newOrder, id: order.id }, order?.id)
 
         toast.success("Order successfully updated")
+        if (setStatus) setStatus("Pending")
       } catch (err: any) {
         console.log(err.message, "error from order update")
       } finally {

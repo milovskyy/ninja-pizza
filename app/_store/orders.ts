@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { OrderType } from "../_types/TypeProduct"
+import { OrderType } from "../_types/Types"
 
 type Store = {
   allOrders: OrderType[]

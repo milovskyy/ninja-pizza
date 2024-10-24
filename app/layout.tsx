@@ -10,6 +10,7 @@ import {
 } from "@/utils/data-service"
 import { AppInitializer } from "@/components/AppInitializer"
 import { Toaster } from "react-hot-toast"
+import { getUser } from "@/utils/users-service"
 
 const manrope = Manrope({ subsets: ["latin"] })
 
@@ -25,10 +26,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const products = await getProducts()
-  const categories = await getCategories()
-  const ingredients = await getIngredients()
-  const orders = await getOrders()
+  const [products, categories, ingredients, orders, user] = await Promise.all([
+    await getProducts(),
+    getCategories(),
+    getIngredients(),
+    getOrders(),
+    getUser(),
+  ])
 
   return (
     <html lang="en">
@@ -50,6 +54,7 @@ export default async function RootLayout({
           categories={categories}
           ingredients={ingredients}
           orders={orders}
+          user={user}
         />
         <AppHeader />
         <main className="mt-[84px] flex w-full flex-1 justify-center">

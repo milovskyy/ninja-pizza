@@ -1,4 +1,4 @@
-import { newOrderType, OrderType } from "@/app/_types/TypeProduct"
+import { newOrderType, OrderType } from "@/app/_types/Types"
 import { createServerClient } from "./supabase/server"
 
 export const createOrderApi = async function (order: newOrderType) {

@@ -1,5 +1,5 @@
 import { useCart } from "@/app/_store/cart"
-import { cartProductType } from "@/app/_types/TypeProduct"
+import { cartProductType } from "@/app/_types/Types"
 import { useLocalStorage } from "react-use"
 
 export const useCartActions = () => {

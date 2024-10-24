@@ -1,6 +1,6 @@
 import { createServerClient } from "./supabase/server"
 
-import { CategoryType, ProductType } from "@/app/_types/TypeProduct"
+import { CategoryType, ProductType } from "@/app/_types/Types"
 
 // For testing
 // await new Promise((res) => setTimeout(res, 2000));
@@ -48,7 +48,8 @@ export const getCategories = async function () {
     .order("id", { ascending: true })
 
   if (error) {
-    throw new Error("Categories could not be loaded")
+    // throw new Error("Categories could not be loaded")
+    throw new Error(error.message)
   }
 
   return data as CategoryType[]
@@ -62,10 +63,11 @@ export const getCategoryColor = async function (category: string) {
     .from("categories")
     .select("*")
     .eq("linkName", category)
-    .single()
+    .maybeSingle()
 
   if (error) {
-    throw new Error("Categories could not be loaded")
+    // throw new Error("Categories could not be loaded")
+    throw new Error(error.message)
   }
 
   return data as CategoryType

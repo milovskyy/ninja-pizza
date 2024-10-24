@@ -1,6 +1,6 @@
 import { createServerClient } from "./supabase/server"
 
-export type AuthType = {
+type AuthType = {
   phone: string
   password: string
 }
@@ -29,14 +29,9 @@ export async function loginApi({ phone, password }: AuthType) {
   return data
 }
 
-export async function getCurrentUserApi() {
+export async function logoutApi() {
   const supabase = createServerClient()
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser()
+  const { error } = await supabase.auth.signOut()
 
   if (error) throw new Error(error.message)
-
-  return user
 }

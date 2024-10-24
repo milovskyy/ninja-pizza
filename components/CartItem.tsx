@@ -1,4 +1,4 @@
-import { cartProductType } from "@/app/_types/TypeProduct"
+import { cartProductType } from "@/app/_types/Types"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 import { PlusMinusBlock } from "./PlusMinusBlock"

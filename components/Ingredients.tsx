@@ -1,6 +1,6 @@
 "use client"
 
-import { IngredientType } from "@/app/_types/TypeProduct"
+import { IngredientType } from "@/app/_types/Types"
 import { IngredientItem } from "./IngredientItem"
 import {
   Carousel,

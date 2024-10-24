@@ -1,4 +1,4 @@
-import { cartProductType, OrderType } from "@/app/_types/TypeProduct"
+import { cartProductType, OrderType } from "@/app/_types/Types"
 import { sortOrderProductsByCategoryOrder } from "@/utils/helperFunction"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
@@ -7,9 +7,10 @@ import { OrderEditModal } from "./OrderEditModal"
 
 type Props = {
   order: OrderType
+  setStatus: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const OrderDetails = ({ order }: Props) => {
+export const OrderDetails = ({ order, setStatus }: Props) => {
   const items = sortOrderProductsByCategoryOrder(JSON.parse(order.items))
   return (
     <div className={cn("grid grid-cols-[2fr_1fr] gap-5 px-8 py-3")}>
@@ -76,7 +77,7 @@ export const OrderDetails = ({ order }: Props) => {
             </p>
           </div>
         )}
-        <OrderEditModal order={order} />
+        <OrderEditModal order={order} setStatus={setStatus} />
       </div>
     </div>
   )

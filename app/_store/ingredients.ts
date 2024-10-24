@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { IngredientType } from "../_types/TypeProduct"
+import { IngredientType } from "../_types/Types"
 
 type Store = {
   allIngredients: IngredientType[]

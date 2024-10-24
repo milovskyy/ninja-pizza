@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { cartProductType, cartType } from "../_types/TypeProduct"
+import { cartProductType, cartType } from "../_types/Types"
 
 type Store = {
   cart: cartProductType[]

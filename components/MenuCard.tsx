@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { GoHeart } from "react-icons/go"
 import Link from "next/link"
-import { ProductType } from "../app/_types/TypeProduct"
+import { ProductType } from "../app/_types/Types"
 import { PRODUCT_IMAGE_URL } from "@/app/_constants/constants"
 import { PlusMinusBlock } from "./PlusMinusBlock"
 import { Button } from "./ui/button"

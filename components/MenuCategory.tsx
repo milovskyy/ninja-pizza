@@ -1,4 +1,4 @@
-import { ProductType } from "@/app/_types/TypeProduct"
+import { ProductType } from "@/app/_types/Types"
 import MenuCard from "./MenuCard"
 import Link from "next/link"
 import PizzaFilter from "./PizzaFilter"

@@ -11,16 +11,19 @@ import {
   IngredientType,
   OrderType,
   ProductType,
-} from "@/app/_types/TypeProduct"
+  UserType,
+} from "@/app/_types/Types"
 import { useEffect } from "react"
 import { useLocalStorage } from "react-use"
 import { createUserClient } from "@/utils/supabase/client"
+import { useUser } from "@/app/_store/user"
 
 type Props = {
   products: ProductType[]
   categories: CategoryType[]
   ingredients: IngredientType[]
   orders: OrderType[]
+  user?: UserType | null
 }
 
 export const AppInitializer = ({
@@ -28,16 +31,19 @@ export const AppInitializer = ({
   categories,
   ingredients,
   orders,
+  user,
 }: Props) => {
   const { setProducts } = useProducts()
   const { setIngredients } = useIngredients()
   const { setCategories } = useCategories()
   const { setCart } = useCart()
   const { setOrders } = useOrders()
+  const { setUser } = useUser()
   const [value] = useLocalStorage<cartProductType[]>("cart", [])
 
   const supabase = createUserClient()
   const { addOrder, deleteOrder, updateOrder } = useOrders()
+
   const channels = supabase
     .channel("custom-all-channel")
     .on(
@@ -66,6 +72,7 @@ export const AppInitializer = ({
     setCategories(categories)
     setOrders(orders)
     setCart(value || [])
+    setUser(user)
   }, [
     setProducts,
     products,
@@ -77,6 +84,8 @@ export const AppInitializer = ({
     value,
     setOrders,
     orders,
+    setUser,
+    user,
   ])
   return null
 }

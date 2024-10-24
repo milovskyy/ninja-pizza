@@ -1,7 +1,7 @@
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel"
-import { cartProductType, OrderType } from "@/app/_types/TypeProduct"
+import { cartProductType, OrderType } from "@/app/_types/Types"
 import { sortOrderProductsByCategoryOrder } from "@/utils/helperFunction"
 import { format } from "date-fns"
 
