@@ -116,31 +116,31 @@ export const SignInModal = ({ buttonText }: Props) => {
         router.refresh()
       }
     } catch (e: any) {
-      if (e.message === "Invalid login credentials") {
-        try {
-          const { user } = await signupAction({
-            phone: phoneNumber,
-            password,
-          })
+      // if (e.message === "Invalid login credentials") {
+      //   try {
+      //     const { user } = await signupAction({
+      //       phone: phoneNumber,
+      //       password,
+      //     })
 
-          if (user) {
-            const newUser = {
-              created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
-              id: user.id,
-              number: user.phone,
-            }
-            await createUser(newUser)
-            toast.success("User successfully created")
-            setIsDialogOpen(false)
-            reset()
-            router.refresh()
-          }
-        } catch (error: any) {
-          toast.error(error?.message || "Registration failed")
-        }
-      } else {
-        toast.error(e?.message || "Login failed")
-      }
+      //     if (user) {
+      //       const newUser = {
+      //         created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
+      //         id: user.id,
+      //         number: user.phone,
+      //       }
+      //       await createUser(newUser)
+      //       toast.success("User successfully created")
+      //       setIsDialogOpen(false)
+      //       reset()
+      //       router.refresh()
+      //     }
+      //   } catch (error: any) {
+      //     toast.error(error?.message || "Registration failed")
+      //   }
+      // } else {
+      // }
+      toast.error(e?.message || "Login failed")
     } finally {
       setIsLoading(false)
     }
