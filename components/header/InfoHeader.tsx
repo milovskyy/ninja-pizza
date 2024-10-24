@@ -6,11 +6,9 @@ import InfoHeaderLike from "./InfoHeaderLike"
 import InfoHeaderNumber from "./InfoHeaderContacts"
 import InfoHeaderOrders from "./InfoHeaderOrders"
 import InfoHeaderUser from "./InfoHeaderUser"
-import { useUser } from "@/app/_store/user"
 
 async function InfoHeader() {
   const user = await getUser()
-  // const { user } = useUser()
   return (
     <div className="flex flex-1 justify-end">
       <div className="ml-20 flex items-center justify-center gap-4">

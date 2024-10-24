@@ -48,52 +48,99 @@ export const SignInModal = ({ buttonText }: Props) => {
 
   const router = useRouter()
 
+  // async function onSubmit({ phone, password }: AuthType) {
+  //   if (!phone || !password) return
+
+  //   const phoneNumber = "380" + phone.replace(/\D/g, "")
+
+  //   try {
+  //     setIsLoading(true)
+  //     const { user } = await signupAction({
+  //       phone: phoneNumber,
+  //       password,
+  //     })
+
+  //     if (user) {
+  //       const newUser = {
+  //         created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
+  //         id: user.id,
+  //         number: user.phone,
+  //       }
+  //       await createUser(newUser)
+  //     }
+
+  //     toast.success("User successfully created")
+  //     setIsDialogOpen(false)
+  //     reset()
+  //     router.refresh()
+  //   } catch (e: any) {
+  //     if (e.message === "User already registered") {
+  //       try {
+  //         const user = await loginAction({
+  //           phone: phoneNumber,
+  //           password,
+  //         })
+  //         toast.success("User successfully logged in")
+  //         setIsDialogOpen(false)
+  //         reset()
+  //         router.refresh()
+  //       } catch (e: any) {
+  //         toast.error(e.message)
+  //       }
+  //       return
+  //     }
+  //     toast.error(e.message)
+  //   } finally {
+  //     setIsLoading(false)
+  //   }
+  // }
+
   async function onSubmit({ phone, password }: AuthType) {
     if (!phone || !password) return
 
     const phoneNumber = "380" + phone.replace(/\D/g, "")
 
+    setIsLoading(true)
+
     try {
-      setIsLoading(true)
-      const { user } = await signupAction({
+      // Попытка войти в систему
+      const { user } = await loginAction({
         phone: phoneNumber,
         password,
       })
 
-      console.log(user, "created user")
-
       if (user) {
-        const newUser = {
-          created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
-          id: user.id,
-          number: user.phone,
-        }
-        await createUser(newUser)
+        toast.success("User successfully logged in")
+        setIsDialogOpen(false)
+        reset()
+        router.refresh()
       }
-
-      toast.success("User successfully created")
-      setIsDialogOpen(false)
-      setIsLoading(false)
-      reset()
-      router.refresh()
     } catch (e: any) {
-      if (e.message === "User already registered") {
+      if (e.message === "Invalid login credentials") {
         try {
-          const user = await loginAction({
+          const { user } = await signupAction({
             phone: phoneNumber,
             password,
           })
-          toast.success("User successfully logged in")
-          setIsDialogOpen(false)
-          setIsLoading(false)
-          reset()
-          router.refresh()
-        } catch (e: any) {
-          toast.error(e.message)
+
+          if (user) {
+            const newUser = {
+              created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
+              id: user.id,
+              number: user.phone,
+            }
+            await createUser(newUser)
+            toast.success("User successfully created")
+            setIsDialogOpen(false)
+            reset()
+            router.refresh()
+          }
+        } catch (error: any) {
+          toast.error(error?.message || "Registration failed")
         }
-        return
+      } else {
+        toast.error(e?.message || "Login failed")
       }
-      toast.error(e.message)
     } finally {
       setIsLoading(false)
     }
