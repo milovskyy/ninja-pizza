@@ -103,44 +103,44 @@ export const SignInModal = ({ buttonText }: Props) => {
     setIsLoading(true)
 
     try {
-      // Попытка войти в систему
-      const { user } = await loginAction({
+      const result = await signupAction({
         phone: phoneNumber,
         password,
       })
 
-      if (user) {
-        toast.success("User successfully logged in")
+      if (result.success) {
+        const newUser = {
+          created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
+          id: result.data?.user?.id,
+          number: result.data?.user?.phone,
+        }
+        await createUser(newUser)
+        toast.success("User successfully created")
         setIsDialogOpen(false)
         reset()
         router.refresh()
       }
-    } catch (e: any) {
-      // if (e.message === "Invalid login credentials") {
-      //   try {
-      //     const { user } = await signupAction({
-      //       phone: phoneNumber,
-      //       password,
-      //     })
+      if (!result.success && result.message === "User already registered") {
+        try {
+          const result = await loginAction({
+            phone: phoneNumber,
+            password,
+          })
 
-      //     if (user) {
-      //       const newUser = {
-      //         created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
-      //         id: user.id,
-      //         number: user.phone,
-      //       }
-      //       await createUser(newUser)
-      //       toast.success("User successfully created")
-      //       setIsDialogOpen(false)
-      //       reset()
-      //       router.refresh()
-      //     }
-      //   } catch (error: any) {
-      //     toast.error(error?.message || "Registration failed")
-      //   }
-      // } else {
-      // }
-      toast.error(e?.message || "Login failed")
+          if (result.success) {
+            toast.success("User successfully logged in")
+            setIsDialogOpen(false)
+            reset()
+            router.refresh()
+          } else {
+            toast.error(result?.message || "Login failed")
+          }
+        } catch (e: any) {
+          toast.error(e.message)
+        }
+      }
+    } catch (e: any) {
+      toast.error(e?.message)
     } finally {
       setIsLoading(false)
     }

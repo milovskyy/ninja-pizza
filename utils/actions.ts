@@ -11,8 +11,8 @@ export type AuthType = {
 }
 
 export async function signupAction({ phone, password }: AuthType) {
-  const user = await signupApi({ phone, password })
-  return user
+  const data = await signupApi({ phone, password })
+  return data
 }
 export async function loginAction({ phone, password }: AuthType) {
   const user = await loginApi({ phone, password })

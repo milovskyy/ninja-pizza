@@ -1,5 +1,5 @@
 // import { useOrders } from "@/app/_store/orders"
-// import { OrderType } from "@/app/_types/TypeProduct"
+// import { OrderType } from "@/app/_types/Types"
 // import { createUserClient } from "@/utils/supabase/client"
 // const supabase = createUserClient()
 // const { addOrder, deleteOrder, updateOrder } = useOrders()

@@ -12,9 +12,19 @@ export async function signupApi({ phone, password }: AuthType) {
     password,
   })
 
-  if (error) throw new Error(error.message)
+  if (error) {
+    return { success: false, message: error.message }
+  }
 
-  return data
+  return { success: true, data }
+  // const { data, error } = await supabase.auth.signUp({
+  //   phone,
+  //   password,
+  // })
+
+  // if (error) throw new Error(error.message)
+
+  // return data
 }
 
 export async function loginApi({ phone, password }: AuthType) {
@@ -24,9 +34,11 @@ export async function loginApi({ phone, password }: AuthType) {
     password,
   })
 
-  if (error) throw new Error(error.message)
+  if (error) {
+    return { success: false, message: error.message }
+  }
 
-  return data
+  return { success: true, data }
 }
 
 export async function logoutApi() {
