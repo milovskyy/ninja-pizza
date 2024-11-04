@@ -30,7 +30,7 @@ export const FormDeliveryDetails = ({
       <DeliveryMethodToggle method={method} setMethod={setMethod} />
       {method === "Pickup" && (
         <FormSelect
-          name="address"
+          name="pickupAddress"
           label="Choose where to pick up"
           array={PICKUP_ADDRESSES}
         />

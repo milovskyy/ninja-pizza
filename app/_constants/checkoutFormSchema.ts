@@ -25,7 +25,7 @@ export const checkoutFormSchemaPickup = z.object({
   phone: z
     .string()
     .min(10, { message: "Make sure your phone number has at least 10 digits" }),
-  address: z.string(),
+  pickupAddress: z.string(),
   date: z.string(),
   time: z.string(),
   change: z.string().optional(),
@@ -40,6 +40,7 @@ export const checkoutFormSchemaEditOrder = z.object({
     .string()
     .min(10, { message: "Make sure your phone number has at least 10 digits" }),
   address: z.string(),
+  pickupAddress: z.string().optional(),
   date: z.string(),
   time: z.string(),
   doorBell: z.boolean().default(false).optional(),

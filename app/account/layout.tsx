@@ -1,4 +1,3 @@
-import { AccountHeader } from "@/components/account/AccountHeader"
 import { AccountNav } from "@/components/account/AccountNav"
 import { UpdateInfo } from "@/components/account/UpdateInfoBlock"
 import { Container } from "@/components/Container"
@@ -30,8 +29,6 @@ export default async function AccountLayout({ children }: LayoutProps) {
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-7">
-          {/* <AccountHeader /> */}
-
           <div className="">{children}</div>
           <MenuCategories separate={true} />
         </div>

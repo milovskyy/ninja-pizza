@@ -117,6 +117,7 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
   })
 
   const onSubmit = async (data: any) => {
+    console.log(data)
     let date = data.date
     if (data.date === "Today") date = format(new Date(), "dd-MM-yy")
     if (data.date === "Tomorrow")
@@ -132,7 +133,8 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
           ? order
             ? data.address
             : `${data.street} №${data.building}${data.entrance && `, entrance №${data.entrance}`}${data.apt && `, apt №${data.apt}`}${data.floor && `, floor №${data.floor}`}`
-          : data.address,
+          : data.pickupAddress,
+      // : data.pickupAddress,
       choices: `${data.doorBell === true ? "Do not ring the doorbell" : ""}${data.doorOutside && data.doorBell ? ", " : ""}${data.doorOutside === true ? "Leave my order outside the door" : ""}`,
       date,
       time: data.time,
