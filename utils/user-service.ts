@@ -1,5 +1,6 @@
 import { UserType } from "@/app/_types/Types"
 import { createServerClient } from "./supabase/server"
+import { revalidatePath } from "next/cache"
 
 export async function createUserApi(user: UserType) {
   const supabase = createServerClient()
@@ -27,7 +28,6 @@ export async function getUser() {
       .maybeSingle()
 
     if (error) throw new Error(error.message)
-    // if (error) console.log(error.message)
 
     return data
   }
@@ -48,4 +48,26 @@ export const updateUserApi = async function (user: UserType, id: string) {
   }
 
   return data
+}
+
+export const updateUserAddressApi = async function (
+  address: string,
+  id: string,
+) {
+  const supabase = createServerClient()
+
+  const { data, error } = await supabase
+    .from("users")
+    .update({ address })
+    .eq("id", id)
+    .select()
+    .maybeSingle()
+
+  if (error) {
+    return { success: false, message: error.message }
+  }
+
+  revalidatePath("/account/address")
+
+  return { success: true, data }
 }

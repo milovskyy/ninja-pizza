@@ -1,6 +1,6 @@
 import { AccountHeader } from "@/components/account/AccountHeader"
 import { AccountNav } from "@/components/account/AccountNav"
-import { UpdateInfo } from "@/components/account/UpdateInfo"
+import { UpdateInfo } from "@/components/account/UpdateInfoBlock"
 import { Container } from "@/components/Container"
 import AppFooter from "@/components/footer/AppFooter"
 import MenuCategories from "@/components/MenuCategories"
@@ -30,7 +30,7 @@ export default async function AccountLayout({ children }: LayoutProps) {
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-7">
-          <AccountHeader />
+          {/* <AccountHeader /> */}
 
           <div className="">{children}</div>
           <MenuCategories separate={true} />

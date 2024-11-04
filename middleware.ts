@@ -1,19 +1,23 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { createMiddlewareClient } from "./utils/supabase/middleware"
-import { getUser } from "./utils/users-service"
+import { getUser } from "./utils/user-service"
 
 export async function middleware(request: NextRequest) {
   const { response } = createMiddlewareClient(request)
 
-  // const user = await getUser()
+  const user = await getUser()
 
-  // if (
-  //   user?.role !== "admin" &&
-  //   (request.nextUrl.pathname === "/orders" ||
-  //     request.nextUrl.pathname.startsWith("/account"))
-  // ) {
-  //   return NextResponse.redirect(new URL("/", request.url))
-  // }
+  if (
+    user?.role !== "admin" &&
+    (request.nextUrl.pathname === "/orders" ||
+      request.nextUrl.pathname.startsWith("/account"))
+  ) {
+    return NextResponse.redirect(new URL("/", request.url))
+  }
+
+  if (request.nextUrl.pathname === "/account") {
+    return NextResponse.redirect(new URL("/account/orders", request.url))
+  }
 
   return response
 }

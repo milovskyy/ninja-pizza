@@ -1,6 +1,6 @@
 // "use client"
 
-import { getUser } from "@/utils/users-service"
+import { getUser } from "@/utils/user-service"
 import InfoHeaderCart from "./InfoHeaderCart"
 import InfoHeaderLike from "./InfoHeaderLike"
 import InfoHeaderNumber from "./InfoHeaderContacts"
@@ -15,8 +15,8 @@ async function InfoHeader() {
         <InfoHeaderNumber />
         <InfoHeaderLike user={Boolean(user)} />
         <InfoHeaderUser user={Boolean(user)} />
-        {/* {user?.role === "admin" && <InfoHeaderOrders />} */}
-        <InfoHeaderOrders />
+        {user?.role === "admin" && <InfoHeaderOrders />}
+        {/* <InfoHeaderOrders /> */}
         <InfoHeaderCart />
       </div>
     </div>

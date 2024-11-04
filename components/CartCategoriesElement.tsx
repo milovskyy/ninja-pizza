@@ -5,7 +5,7 @@ import Link from "next/link"
 
 type Props = {
   category: CategoryType
-  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCartOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const CartCategoriesElement = ({ category, setIsCartOpen }: Props) => {
@@ -17,7 +17,11 @@ export const CartCategoriesElement = ({ category, setIsCartOpen }: Props) => {
         "flex flex-col items-center justify-center gap-1 overflow-hidden rounded-3xl",
       )}
       style={{ backgroundColor: color }}
-      onClick={() => setIsCartOpen(false)}
+      onClick={() => {
+        if (setIsCartOpen) {
+          setIsCartOpen(false)
+        }
+      }}
       prefetch={true}
     >
       <Image

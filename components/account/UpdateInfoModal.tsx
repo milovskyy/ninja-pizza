@@ -64,7 +64,7 @@ export const UpdateInfoModal = () => {
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger className="p-1 px-3">
+      <DialogTrigger className="p-1 px-3 text-stone-400">
         <PencilLine />
       </DialogTrigger>
       <DialogContent className="flex max-w-[400px] flex-col items-center justify-center rounded-none p-10 outline-none">

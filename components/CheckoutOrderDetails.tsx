@@ -2,6 +2,7 @@ import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
 import { DELIVERYPRICE } from "@/app/_constants/constants"
 import { cartProductType } from "@/app/_types/Types"
+import { CartEmpty } from "./CartEmpty"
 
 type Props = {
   method: string
@@ -18,6 +19,13 @@ export const CheckoutOrderDetails = ({
   orderId,
   isloading,
 }: Props) => {
+  if (cart.length === 0)
+    return (
+      <div className="max-h-[800px]">
+        <CartEmpty />
+      </div>
+    )
+
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-2 bg-white first-line:pt-6">

@@ -105,4 +105,17 @@ export type UserType = {
   number?: string
   name?: string
   email?: string
+  address?: string | undefined
+}
+
+export type UserDeliveryAddress = {
+  id: string
+  name: string
+  address: {
+    street: string
+    building: string
+    entrance?: string
+    floor?: string
+    apt?: string
+  }
 }

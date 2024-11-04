@@ -3,7 +3,11 @@
 import { newOrderType, OrderType, UserType } from "@/app/_types/Types"
 import { loginApi, logoutApi, signupApi } from "./auth-service"
 import { createOrderApi, updateOrderApi } from "./order-service"
-import { createUserApi, updateUserApi } from "./users-service"
+import {
+  createUserApi,
+  updateUserAddressApi,
+  updateUserApi,
+} from "./user-service"
 
 export type AuthType = {
   phone: string
@@ -39,5 +43,10 @@ export async function createUser(user: UserType) {
 
 export async function updateUser(user: UserType, id: string) {
   const data = await updateUserApi(user, id)
+  return data
+}
+
+export async function updateUserAddress(address: string, id: string) {
+  const data = await updateUserAddressApi(address, id)
   return data
 }

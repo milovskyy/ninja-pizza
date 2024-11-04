@@ -2,7 +2,7 @@ import { useCategories } from "@/app/_store/categories"
 import { CartCategoriesElement } from "./CartCategoriesElement"
 
 type Props = {
-  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCartOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const CartCategories = ({ setIsCartOpen }: Props) => {

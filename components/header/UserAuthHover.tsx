@@ -10,9 +10,9 @@ export const UserAuthHover = () => {
   const router = useRouter()
   const handleSubmit = async () => {
     try {
-      const user = await logoutAction()
+      await logoutAction()
       toast.success("User successfully logged out")
-      router.push("/")
+      router.refresh()
     } catch (e: any) {
       toast.error(e.message)
     }
@@ -29,7 +29,7 @@ export const UserAuthHover = () => {
           onClick={handleSubmit}
         >
           <LogOut size={20} />
-          <p className="font-semibold">Sign Out</p>
+          <p className="font-semibold">Log Out</p>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { Container } from "./Container"
 import { useProducts } from "@/app/_store/products"
 import { categoryProductsByLinkname } from "@/utils/helperFunction"
 import { notFound } from "next/navigation"
+import { RotateLoader } from "react-spinners"
 
 type Props = {
   productName: string
@@ -21,7 +22,12 @@ export const ProductDetails = ({ productName }: Props) => {
   const prevProduct = products[index - 1]
   const nextProduct = products[index + 1]
 
-  if (allProducts.length === 0) return <div>loading..................</div>
+  if (allProducts.length === 0)
+    return (
+      <div className="flex h-[400px] w-full items-center justify-center">
+        <RotateLoader color="#ffc700" size={25} margin={30} />
+      </div>
+    )
 
   if (!product) return notFound()
 

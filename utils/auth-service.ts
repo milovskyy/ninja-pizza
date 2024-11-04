@@ -17,14 +17,6 @@ export async function signupApi({ phone, password }: AuthType) {
   }
 
   return { success: true, data }
-  // const { data, error } = await supabase.auth.signUp({
-  //   phone,
-  //   password,
-  // })
-
-  // if (error) throw new Error(error.message)
-
-  // return data
 }
 
 export async function loginApi({ phone, password }: AuthType) {

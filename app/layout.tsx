@@ -10,7 +10,7 @@ import {
 } from "@/utils/data-service"
 import { AppInitializer } from "@/components/AppInitializer"
 import { Toaster } from "react-hot-toast"
-import { getUser } from "@/utils/users-service"
+import { getUser } from "@/utils/user-service"
 
 const manrope = Manrope({ subsets: ["latin"] })
 

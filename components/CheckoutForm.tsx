@@ -6,7 +6,6 @@ import toast from "react-hot-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { CheckoutOrderDetails } from "./CheckoutOrderDetails"
-import { SignInModal } from "./SignInModal"
 import { FormPersonalDetails } from "./form/FormPersonalDetails"
 import { FormDeliveryDetails } from "./form/FormDeliveryDetails"
 import {
@@ -23,9 +22,11 @@ import { createOrder, updateOrder } from "@/utils/actions"
 import { format } from "date-fns"
 import { useCartActions } from "@/hooks/useCartActions"
 import { useRouter } from "next/navigation"
-import { OrderType } from "@/app/_types/Types"
+import { OrderType, UserDeliveryAddress } from "@/app/_types/Types"
 import { Button } from "./ui/button"
 import { OrderAddProducts } from "./Orders/OrderAddProducts"
+import { useUser } from "@/app/_store/user"
+import { FormGoLogin } from "./form/FormGoLogin"
 
 type Props = {
   order?: OrderType
@@ -40,12 +41,21 @@ export type AuthType = {
 
 export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
   const [method, setMethod] = useState(order?.method || "Delivery")
+
   const [isloading, setIsloading] = useState(false)
   const [showAddProducts, setShowAddProducts] = useState(false)
   const { cart } = useCart()
   const { handleDeleteCart } = useCartActions()
 
   const router = useRouter()
+
+  const { user } = useUser()
+
+  let userAddressList: UserDeliveryAddress[] = []
+
+  if (user) {
+    userAddressList = user?.address ? JSON.parse(user.address) : []
+  }
 
   const today = format(new Date(), "dd-MM-yy")
   const tomorrow = format(new Date(Date.now() + 86400000), "dd-MM-yy")
@@ -55,6 +65,8 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
     0,
   )
 
+  // address: order?.address || "",
+
   const form = useForm({
     resolver: zodResolver(
       order
@@ -63,15 +75,21 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
           ? checkoutFormSchemaDelivery
           : checkoutFormSchemaPickup,
     ),
-    defaultValues: {
-      name: order?.name || "",
-      phone: order?.phone || "",
+    values: {
+      name: order?.name || user?.name || "",
+      phone: order?.phone || user?.number?.slice(2) || "",
+      date:
+        (order?.date === today
+          ? "Today"
+          : order?.date === tomorrow
+            ? "Tomorrow"
+            : order?.date) || "Today",
       address: order?.address || "",
-      street: "",
-      building: "",
-      entrance: "",
-      floor: "",
-      apt: "",
+      building: userAddressList[0]?.address.building || "",
+      street: userAddressList[0]?.address.street || "",
+      entrance: userAddressList[0]?.address.entrance || "",
+      floor: userAddressList[0]?.address.floor || "",
+      apt: userAddressList[0]?.address.apt || "",
       doorBell: order?.choices.includes("Do not ring the doorbell")
         ? true
         : false,
@@ -82,14 +100,19 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
       pickupAddress: order?.method === "Pickup" ? order?.address : "Street 1",
       time: order?.time || "The nearest time",
       payment: order?.payment || "cash",
+      change: order?.change || "",
+      persons: order?.persons || "1",
+    },
+    defaultValues: {
+      pickupAddress: order?.method === "Pickup" ? order?.address : "Street 1",
+      persons: order?.persons || "1",
+      address: order?.address || "",
       date:
         (order?.date === today
           ? "Today"
           : order?.date === tomorrow
             ? "Tomorrow"
             : order?.date) || "Today",
-      change: order?.change || "",
-      persons: order?.persons || "1",
     },
   })
 
@@ -125,29 +148,28 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
         cartTotalPrice > 500 ? cartTotalPrice : cartTotalPrice + DELIVERYPRICE,
     }
 
+    setIsloading(true)
     if (!order)
       try {
-        setIsloading(true)
         await createOrder(newOrder)
 
         toast.success("Order successfully created")
         router.push("/")
       } catch (err: any) {
-        console.log(err.message, "error from order creation")
+        toast.error(err.message)
       } finally {
-        handleDeleteCart()
+        setTimeout(() => handleDeleteCart(), 2000)
         setIsloading(false)
       }
 
     if (order)
       try {
-        setIsloading(true)
         await updateOrder({ ...newOrder, id: order.id }, order?.id)
 
         toast.success("Order successfully updated")
         if (setStatus) setStatus("Pending")
       } catch (err: any) {
-        console.log(err.message, "error from order update")
+        toast.error(err.message)
       } finally {
         setIsloading(false)
         if (setIsopenModal && isloading === false) setIsopenModal(false)
@@ -161,20 +183,13 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
         className="grid w-full grid-cols-2 gap-3"
       >
         <div className="flex flex-col gap-5 bg-white p-6">
-          {!order && (
-            <div>
-              <h3 className="mb-3 text-sm tracking-wide text-stone-400">
-                Log in to auto-fill your information for a faster pizza
-                delivery!
-              </h3>
-              <SignInModal buttonText="Sign in with your phone number" />
-            </div>
-          )}
+          {!order && !user && <FormGoLogin />}
           <FormPersonalDetails />
           <FormDeliveryDetails
             method={method}
             setMethod={setMethod}
             address={order?.address}
+            user={user}
           />
           <FormDeliveryTime method={method} />
           <FormPaymentMethod />

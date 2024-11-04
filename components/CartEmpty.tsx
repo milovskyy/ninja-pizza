@@ -4,7 +4,7 @@ import { Button } from "./ui/button"
 import { CartCategories } from "./CartCategories"
 
 type Props = {
-  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCartOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const CartEmpty = ({ setIsCartOpen }: Props) => {
