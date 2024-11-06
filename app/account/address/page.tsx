@@ -1,14 +1,13 @@
 import { AccountEmptyBlock } from "@/components/account/AccountEmptyBlock"
 import { UpdateAddressModal } from "@/components/account/UpdateAddressModal"
-import { UserDeliveryAddressList } from "@/components/UserDeliveryAddressList"
+import { UserDeliveryAddressList } from "@/components/account/UserDeliveryAddressList"
 import { getUser } from "@/utils/user-service"
-import { Divide } from "lucide-react"
 
 export const revalidate = 1000
 async function Address() {
   const user = await getUser()
 
-  const userAddresses = user ? JSON.parse(user.address) : []
+  const userAddresses = user ? user.address : []
 
   if (!user) {
     return null

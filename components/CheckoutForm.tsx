@@ -45,7 +45,7 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
   const [isloading, setIsloading] = useState(false)
   const [showAddProducts, setShowAddProducts] = useState(false)
   const { cart } = useCart()
-  const { handleDeleteCart } = useCartActions()
+  const { deleteCartAction } = useCartActions()
 
   const router = useRouter()
 
@@ -54,7 +54,7 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
   let userAddressList: UserDeliveryAddress[] = []
 
   if (user) {
-    userAddressList = user?.address ? JSON.parse(user.address) : []
+    userAddressList = user?.address ? user.address : []
   }
 
   const today = format(new Date(), "dd-MM-yy")
@@ -117,7 +117,6 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
   })
 
   const onSubmit = async (data: any) => {
-    console.log(data)
     let date = data.date
     if (data.date === "Today") date = format(new Date(), "dd-MM-yy")
     if (data.date === "Tomorrow")
@@ -160,7 +159,7 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
       } catch (err: any) {
         toast.error(err.message)
       } finally {
-        setTimeout(() => handleDeleteCart(), 2000)
+        setTimeout(() => deleteCartAction(), 2000)
         setIsloading(false)
       }
 

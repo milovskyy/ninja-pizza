@@ -13,12 +13,16 @@ type Props = {
 
 export const CartItem = ({ item, setIsCartOpen }: Props) => {
   const { name, price, size, image, quantity, linkName } = item
-  const { handleRemove, handleIncrease, handleDecrease } = useCartActions()
+  const {
+    removeProductFromCartAction,
+    increaseProductCartAction,
+    decreaseProductCartAction,
+  } = useCartActions()
 
   return (
     <div className={cn("relative flex gap-3 rounded-3xl bg-stone-100 p-4")}>
       <div
-        onClick={() => handleRemove(item)}
+        onClick={() => removeProductFromCartAction(item)}
         className="absolute left-[-13px] top-1/2 flex h-[26px] w-[26px] -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white hover:bg-red-500 hover:text-white"
       >
         <X size={15} strokeWidth={3} />
@@ -59,8 +63,8 @@ export const CartItem = ({ item, setIsCartOpen }: Props) => {
             size="h-[32px]"
             bg="bg-stone-200"
             hoverBg=""
-            plusFunc={() => handleIncrease(item)}
-            minusFunc={() => handleDecrease(item)}
+            plusFunc={() => increaseProductCartAction(item)}
+            minusFunc={() => decreaseProductCartAction(item)}
           />
         </div>
       </div>

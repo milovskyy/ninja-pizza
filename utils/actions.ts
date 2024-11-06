@@ -1,13 +1,23 @@
 "use server"
 
-import { newOrderType, OrderType, UserType } from "@/app/_types/Types"
+import {
+  cartProductType,
+  newOrderType,
+  OrderType,
+  ProductType,
+  UserDeliveryAddress,
+  UserType,
+} from "@/app/_types/Types"
 import { loginApi, logoutApi, signupApi } from "./auth-service"
 import { createOrderApi, updateOrderApi } from "./order-service"
 import {
   createUserApi,
   updateUserAddressApi,
   updateUserApi,
+  updateUserCartApi,
+  updateUserFavoritesApi,
 } from "./user-service"
+import { AddressType } from "@/components/account/UpdateAddressModal"
 
 export type AuthType = {
   phone: string
@@ -46,7 +56,20 @@ export async function updateUser(user: UserType, id: string) {
   return data
 }
 
-export async function updateUserAddress(address: string, id: string) {
+export async function updateUserAddress(
+  address: UserDeliveryAddress[],
+  id: string,
+) {
   const data = await updateUserAddressApi(address, id)
+  return data
+}
+
+export async function updateUserFavorites(address: ProductType[], id: string) {
+  const data = await updateUserFavoritesApi(address, id)
+  return data
+}
+
+export async function updateUserCart(address: cartProductType[], id: string) {
+  const data = await updateUserCartApi(address, id)
   return data
 }

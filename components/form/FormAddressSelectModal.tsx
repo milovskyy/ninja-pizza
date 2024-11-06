@@ -10,7 +10,7 @@ import {
 
 import { Button } from "../ui/button"
 
-import { UserDeliveryAddress, UserType } from "@/app/_types/Types"
+import { UserDeliveryAddress } from "@/app/_types/Types"
 import { BriefcaseBusiness, House, Star } from "lucide-react"
 
 import { cn } from "@/utils/utils"
@@ -39,8 +39,7 @@ export const FormAddressSelectModal = ({ userAddressList }: Props) => {
     }
 
     const newList = moveToFront([...userAddressList], id)
-    console.log(JSON.stringify(newList))
-    setUser({ ...user, address: JSON.stringify(newList) })
+    setUser({ ...user, address: newList })
 
     setIsDialogOpen(false)
   }

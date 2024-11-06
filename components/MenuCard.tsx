@@ -10,6 +10,11 @@ import { Button } from "./ui/button"
 import { useCart } from "@/app/_store/cart"
 import toast from "react-hot-toast"
 import { useCartActions } from "@/hooks/useCartActions"
+import { useFavorites } from "@/app/_store/favorites"
+import { cn } from "@/utils/utils"
+import { updateUserFavorites } from "@/utils/actions"
+import { useUser } from "@/app/_store/user"
+import { useFavoritesActions } from "@/hooks/useFavoritesActions"
 
 type PropsType = {
   product: ProductType
@@ -43,9 +48,19 @@ function MenuCard({ product }: PropsType) {
   }
 
   const { cart } = useCart()
+  const { favorites } = useFavorites()
+
+  const { favoriteAction } = useFavoritesActions()
+
+  const isFavorite = favorites.some((item) => item.id === id)
+
   const itemsInCart = cart?.find((item) => item.name === name)?.quantity
 
-  const { handleAdd, handleIncrease, handleDecrease } = useCartActions()
+  const {
+    addProductToCardAction,
+    increaseProductCartAction,
+    decreaseProductCartAction,
+  } = useCartActions()
 
   function formatIngredients(ingredients: string[]) {
     return ingredients.join(", ")
@@ -90,9 +105,9 @@ function MenuCard({ product }: PropsType) {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                handleIncrease(cartProduct)
+                increaseProductCartAction(cartProduct)
               }}
-              minusFunc={() => handleDecrease(cartProduct)}
+              minusFunc={() => decreaseProductCartAction(cartProduct)}
               bg="bg-stone-100"
               hoverBg="hover:bg-primary"
             />
@@ -103,7 +118,7 @@ function MenuCard({ product }: PropsType) {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                handleAdd(cartProduct)
+                addProductToCardAction(cartProduct)
               }}
             >
               Order
@@ -111,8 +126,16 @@ function MenuCard({ product }: PropsType) {
           )}
         </div>
 
-        <div className="absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-3 text-stone-500 hover:text-red-600">
-          <GoHeart size="24px" className="relative top-[2px]" />
+        <div
+          className={cn(
+            "absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-2 text-stone-500 hover:text-sky-400",
+            {
+              "bg-sky-200 text-stone-800 hover:text-white": isFavorite,
+            },
+          )}
+          onClick={() => favoriteAction(product)}
+        >
+          <GoHeart size="22px" className="relative top-[2px]" />
         </div>
 
         {isNew && (

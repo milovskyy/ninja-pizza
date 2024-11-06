@@ -4,6 +4,7 @@ import { GoHeart } from "react-icons/go"
 import { UserNotAuthHover } from "./UserNotAuthHover"
 import { cn } from "@/utils/utils"
 import { useRouter } from "next/navigation"
+import { useFavorites } from "@/app/_store/favorites"
 
 type Props = {
   user: boolean
@@ -11,6 +12,8 @@ type Props = {
 
 function InfoHeaderLike({ user }: Props) {
   const router = useRouter()
+
+  const { favorites } = useFavorites()
   const handleClick = () => {
     if (!user) {
       return
@@ -28,6 +31,11 @@ function InfoHeaderLike({ user }: Props) {
           onClick={handleClick}
         >
           <GoHeart size="25px" />
+          {favorites.length > 0 && (
+            <div className="absolute right-[5px] top-[5px] flex h-5 w-5 items-center justify-center rounded-full bg-sky-200 text-xs font-bold text-stone-700">
+              {favorites.length}
+            </div>
+          )}
         </div>
         {!user && (
           <UserNotAuthHover>

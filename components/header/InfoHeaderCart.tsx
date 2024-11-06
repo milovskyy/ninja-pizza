@@ -36,9 +36,11 @@ function InfoHeaderCart() {
             onClick={() => setIsCartOpen(true)}
           >
             <LiaShoppingBagSolid size="28px" />
-            <div className="absolute right-[5px] top-[5px] flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-sm font-bold text-red-50">
-              {numberOfProducts}
-            </div>
+            {numberOfProducts > 0 && (
+              <div className="absolute right-[5px] top-[5px] flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-sm font-bold text-red-50">
+                {numberOfProducts}
+              </div>
+            )}
           </div>
         ) : (
           <div

@@ -44,7 +44,7 @@ export const UpdateAddressModal = ({
 
   let userAddressList: UserDeliveryAddress[] = []
 
-  if (currentUser.address) userAddressList = JSON.parse(currentUser.address)
+  if (currentUser.address) userAddressList = currentUser.address
 
   const updatingAddress = userAddressList.find(
     (userAddress) => userAddress.id === userAddressId,
@@ -112,14 +112,14 @@ export const UpdateAddressModal = ({
       })
     }
 
+    if (!newAddressList) {
+      toast.error("Something went wrong")
+      return
+    }
     try {
       setIsLoading(true)
-      const result = await updateUserAddress(
-        JSON.stringify(newAddressList),
-        currentUser.id,
-      )
+      const result = await updateUserAddress(newAddressList, currentUser.id)
       if (result.success) {
-        console.log(result.data)
         toast.success("Address successfully updated")
         setIsDialogOpen(false)
         form.reset()
@@ -146,12 +146,8 @@ export const UpdateAddressModal = ({
     )
 
     try {
-      const result = await updateUserAddress(
-        JSON.stringify(newAddressList),
-        currentUser.id,
-      )
+      const result = await updateUserAddress(newAddressList, currentUser.id)
       if (result.success) {
-        console.log(result.data)
         toast.success("Address successfully updated")
         setIsDialogOpen(false)
         form.reset()

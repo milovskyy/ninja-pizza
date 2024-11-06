@@ -19,22 +19,12 @@ export type ProductType = {
 export type cartProductType = {
   id: number
   name: string
+  category: string
   price: number
   size: string
   image: string
   quantity: number
   linkName: string
-  category: string
-}
-
-export type cartType = {
-  id: number
-  userId: string
-  token: string
-  items: cartProductType[]
-  totalAmount: number
-  // createdAt: Date
-  // updatedAt: Date
 }
 
 export type CategoryType = {
@@ -105,7 +95,9 @@ export type UserType = {
   number?: string
   name?: string
   email?: string
-  address?: string | undefined
+  address?: UserDeliveryAddress[] | undefined
+  favorites?: ProductType[] | undefined
+  cart?: cartProductType[] | undefined
 }
 
 export type UserDeliveryAddress = {

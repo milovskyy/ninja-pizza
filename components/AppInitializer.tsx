@@ -17,6 +17,7 @@ import { useEffect } from "react"
 import { useLocalStorage } from "react-use"
 import { createUserClient } from "@/utils/supabase/client"
 import { useUser } from "@/app/_store/user"
+import { useFavorites } from "@/app/_store/favorites"
 
 type Props = {
   products: ProductType[]
@@ -39,7 +40,8 @@ export const AppInitializer = ({
   const { setCart } = useCart()
   const { setOrders } = useOrders()
   const { setUser } = useUser()
-  const [value] = useLocalStorage<cartProductType[]>("cart", [])
+  const { setFavorites } = useFavorites()
+  const [value, setValue] = useLocalStorage<cartProductType[]>("cart", [])
 
   const supabase = createUserClient()
   const { addOrder, deleteOrder, updateOrder } = useOrders()
@@ -66,13 +68,19 @@ export const AppInitializer = ({
     )
     .subscribe()
 
+  if (user?.cart && JSON.stringify(value) !== JSON.stringify(user?.cart))
+    setValue(user?.cart)
+
+  console.log(JSON.stringify(value) === JSON.stringify(user?.cart))
+
   useEffect(() => {
     setProducts(products)
     setIngredients(ingredients)
     setCategories(categories)
     setOrders(orders)
-    setCart(value || [])
+    setCart(user?.cart || value || [])
     setUser(user)
+    setFavorites(user?.favorites || [])
   }, [
     setProducts,
     products,
@@ -86,6 +94,7 @@ export const AppInitializer = ({
     orders,
     setUser,
     user,
+    setFavorites,
   ])
   return null
 }

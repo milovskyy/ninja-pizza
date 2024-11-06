@@ -1,7 +1,7 @@
 import { UserDeliveryAddress, UserType } from "@/app/_types/Types"
 import { cn } from "@/utils/utils"
 import { BriefcaseBusiness, House, Star } from "lucide-react"
-import { UpdateAddressModal } from "./account/UpdateAddressModal"
+import { UpdateAddressModal } from "./UpdateAddressModal"
 
 type Props = {
   userAddress: UserDeliveryAddress

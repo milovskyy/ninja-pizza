@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { cartProductType, cartType } from "../_types/Types"
+import { cartProductType } from "../_types/Types"
 
 type Store = {
   cart: cartProductType[]
@@ -54,30 +54,3 @@ export const useCart = create<Store>()((set) => ({
       return { cart: items }
     }),
 }))
-
-// видимо надо создавать дефолтную корзиную , потом отдельная функция добавлять айтемы в корзину (в том числе проверять есть ли уже такой, чтоб увелиичить количество)
-
-// remove: (product: cartProductType) =>
-//   set((state) => {
-//     const items = state.cart.items.find((item) => item.id === product.id)
-//       ? state.cart.items
-//           .map((item) =>
-//             item.id === product.id
-//               ? { ...item, quantity: item.quantity - 1 }
-//               : item,
-//           )
-//           .filter((item) => item.quantity > 0)
-//       : state.cart.items
-//     return { cart: { ...state.cart, items } }
-//   }),
-// add: (product: cartProductType) =>
-//   set((state) => {
-//     const items = state.cart.items.find((item) => item.id === product.id)
-//       ? state.cart.items.map((item) =>
-//           item.id === product.id
-//             ? { ...item, quantity: item.quantity + 1 }
-//             : item,
-//         )
-//       : [...state.cart.items, { ...product, quantity: 1 }]
-//     return { cart: { ...state.cart, items } }
-//   }),

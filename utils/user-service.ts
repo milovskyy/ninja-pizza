@@ -1,6 +1,12 @@
-import { UserType } from "@/app/_types/Types"
+import {
+  cartProductType,
+  ProductType,
+  UserDeliveryAddress,
+  UserType,
+} from "@/app/_types/Types"
 import { createServerClient } from "./supabase/server"
 import { revalidatePath } from "next/cache"
+import { AddressType } from "@/components/account/UpdateAddressModal"
 
 export async function createUserApi(user: UserType) {
   const supabase = createServerClient()
@@ -51,7 +57,7 @@ export const updateUserApi = async function (user: UserType, id: string) {
 }
 
 export const updateUserAddressApi = async function (
-  address: string,
+  address: UserDeliveryAddress[],
   id: string,
 ) {
   const supabase = createServerClient()
@@ -70,4 +76,65 @@ export const updateUserAddressApi = async function (
   revalidatePath("/account/address")
 
   return { success: true, data }
+}
+
+export const updateUserFavoritesApi = async function (
+  favorites: ProductType[],
+  id: string,
+) {
+  const supabase = createServerClient()
+
+  const { data, error } = await supabase
+    .from("users")
+    .update({ favorites })
+    .eq("id", id)
+    .select()
+    .maybeSingle()
+
+  if (error) {
+    return { success: false, message: error.message }
+  }
+
+  return { success: true, data }
+}
+
+export const updateUserCartApi = async function (
+  cart: cartProductType[],
+  id: string,
+) {
+  const supabase = createServerClient()
+
+  const { data, error } = await supabase
+    .from("users")
+    .update({ cart })
+    .eq("id", id)
+    .select()
+    .maybeSingle()
+
+  if (error) {
+    return { success: false, message: error.message }
+  }
+
+  return { success: true, data }
+}
+
+export const getUserOrders = async function (number: string) {
+  const supabase = createServerClient()
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser()
+
+  if (error) return null
+
+  if (user?.id) {
+    const { data, error } = await supabase
+      .from("orders")
+      .select("*")
+      .eq("phone", number)
+
+    if (error) throw new Error(error.message)
+
+    return data
+  }
 }

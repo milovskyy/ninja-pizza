@@ -8,6 +8,8 @@ import { useIngredients } from "@/app/_store/ingredients"
 import { useCart } from "@/app/_store/cart"
 import toast from "react-hot-toast"
 import { useCartActions } from "@/hooks/useCartActions"
+import { useFavorites } from "@/app/_store/favorites"
+import { useFavoritesActions } from "@/hooks/useFavoritesActions"
 
 type Props = {
   product: ProductType
@@ -39,10 +41,19 @@ export const ProductDescription = ({ product }: Props) => {
   }
 
   const { allIngredients } = useIngredients()
-  const { handleAdd, handleIncrease, handleDecrease } = useCartActions()
+  const {
+    addProductToCardAction,
+    increaseProductCartAction,
+    decreaseProductCartAction,
+  } = useCartActions()
+  const { favoriteAction } = useFavoritesActions()
 
   const { cart } = useCart()
   const itemsInCart = cart?.find((item) => item.name === name)?.quantity
+
+  const { favorites } = useFavorites()
+
+  const isFavorite = favorites.some((item) => item.id === id)
 
   const productIngredients = ingredients
     ?.map((ing) => allIngredients.find((i) => i.name === ing))
@@ -81,9 +92,9 @@ export const ProductDescription = ({ product }: Props) => {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                handleIncrease(cartProduct)
+                increaseProductCartAction(cartProduct)
               }}
-              minusFunc={() => handleDecrease(cartProduct)}
+              minusFunc={() => decreaseProductCartAction(cartProduct)}
             />
           ) : (
             <Button
@@ -92,14 +103,22 @@ export const ProductDescription = ({ product }: Props) => {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                handleAdd(cartProduct)
+                addProductToCardAction(cartProduct)
               }}
             >
               Add to cart
             </Button>
           )}
-
-          <Button className="h-[52px] w-[52px] bg-white p-3 text-stone-500 hover:bg-white hover:text-red-600">
+          <Button
+            className={cn(
+              "h-[52px] w-[52px] bg-white p-3 text-stone-500 hover:bg-white hover:text-sky-400",
+              {
+                "bg-sky-200 text-stone-800 hover:bg-sky-200 hover:text-white":
+                  isFavorite,
+              },
+            )}
+            onClick={() => favoriteAction(product)}
+          >
             <GoHeart size="24px" className="relative top-[1px]" />
           </Button>
         </div>

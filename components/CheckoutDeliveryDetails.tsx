@@ -19,7 +19,7 @@ export const CheckoutDeliveryDetails = ({ address }: Props) => {
   let userAddressList: UserDeliveryAddress[] = []
 
   if (user) {
-    userAddressList = user?.address ? JSON.parse(user.address) : []
+    userAddressList = user?.address ? user.address : []
   }
 
   return (

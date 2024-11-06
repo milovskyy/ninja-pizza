@@ -48,8 +48,7 @@ export const groupProductsByCategory = (products: ProductType[]) => {
 export const getDeliveryDays = () => {
   const days = []
   const now = new Date()
-  // const nineOClock = setHours(setMinutes(new Date(), 0), 21)
-  // const isTooLate: boolean = isAfter(now, nineOClock)
+
   days.push("Today")
   days.push("Tomorrow")
   for (let i = 2; i < 7; i++) {
@@ -59,54 +58,15 @@ export const getDeliveryDays = () => {
   return days
 }
 
-// export const getDeliveryTimes = () => {
-//   const timeSlots = []
-//   const now = new Date()
-//   const nineOClock = setHours(setMinutes(new Date(), 0), 21)
-//   const isTooLate: boolean = isAfter(now, nineOClock)
-//   if (isTooLate) return DEFAULT_TIME_ARRAY
-
-//   timeSlots.push("The nearest time")
-
-//   const minutes = now.getMinutes()
-//   const nextQuarterHour = Math.ceil(minutes / 15) * 15
-//   const firstSlotTime = new Date(now)
-//   firstSlotTime.setMinutes(nextQuarterHour + 105)
-
-//   if (firstSlotTime.getHours() >= 24) {
-//     firstSlotTime.setHours(23, 59)
-//   }
-
-//   let currentTime = firstSlotTime
-
-//   const endTime = new Date()
-//   endTime.setHours(22, 0, 0, 0)
-
-//   while (currentTime <= endTime) {
-//     timeSlots.push(format(currentTime, "HH:mm"))
-//     currentTime = addMinutes(currentTime, 15)
-//   }
-
-//   return timeSlots
-// }
-
 export const getDeliveryTimes = (): string[] => {
   const timeSlots: string[] = []
   const now = new Date()
-  // const now = new Date(2024, 9, 17, 11, 25)
-
-  // const nineOClock = setHours(setMinutes(new Date(), 0), 21)
-  // const isTooLate: boolean = isAfter(now, nineOClock)
-  // if (isTooLate) return DEFAULT_TIME_ARRAY
 
   timeSlots.push("The nearest time")
 
   const minutes = now.getMinutes()
   const nextQuarterHour = Math.ceil(minutes / 15) * 15
   const firstSlotTime = new Date(now)
-
-  // firstSlotTime.setHours(13, 0)
-  // console.log(firstSlotTime)
 
   if (firstSlotTime <= now) {
     firstSlotTime.setMinutes(nextQuarterHour + 105)
