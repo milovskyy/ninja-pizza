@@ -14,7 +14,9 @@ export const useUser = create<Store>()((set) => ({
     number: "",
     name: "",
     email: "",
-    address: "",
+    address: [],
+    favorites: [],
+    cart: [],
   },
   setUser: (newUser: UserType | null | undefined) => set({ user: newUser }),
 }))
