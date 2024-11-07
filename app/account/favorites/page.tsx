@@ -2,6 +2,7 @@ import { AccountEmptyBlock } from "@/components/account/AccountEmptyBlock"
 import { UserFavoritesList } from "@/components/account/UserFavoritesList"
 import { getUser } from "@/utils/user-service"
 
+export const revalidate = 1000
 async function Favorites() {
   const user = await getUser()
 

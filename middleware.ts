@@ -7,11 +7,11 @@ export async function middleware(request: NextRequest) {
 
   const user = await getUser()
 
-  if (
-    user?.role !== "admin" &&
-    (request.nextUrl.pathname === "/orders" ||
-      request.nextUrl.pathname.startsWith("/account"))
-  ) {
+  if (user?.role !== "admin" && request.nextUrl.pathname === "/orders") {
+    return NextResponse.redirect(new URL("/", request.url))
+  }
+
+  if (!user && request.nextUrl.pathname === "/account") {
     return NextResponse.redirect(new URL("/", request.url))
   }
 

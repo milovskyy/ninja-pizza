@@ -71,8 +71,6 @@ export const AppInitializer = ({
   if (user?.cart && JSON.stringify(value) !== JSON.stringify(user?.cart))
     setValue(user?.cart)
 
-  console.log(JSON.stringify(value) === JSON.stringify(user?.cart))
-
   useEffect(() => {
     setProducts(products)
     setIngredients(ingredients)
