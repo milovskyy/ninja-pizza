@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel"
-import { cartProductType, OrderType } from "@/app/_types/Types"
+import { CartProductType, OrderType } from "@/app/_types/Types"
 import { sortOrderProductsByCategoryOrder } from "@/utils/helperFunction"
 import { LiaShoppingBagSolid } from "react-icons/lia"
 import toast from "react-hot-toast"
@@ -13,23 +13,25 @@ type Props = {
 }
 
 export const UserOrderPreview = ({ order }: Props) => {
-  const { addProductToCardAction } = useCartActions()
+  // const { addProductToCartAction } = useCartActions()
+  const { addProductsToCartAction } = useCartActions()
 
   const parsedItems = JSON.parse(order.items)
   const items = sortOrderProductsByCategoryOrder(parsedItems)
   const itemsNumber = items.reduce(
-    (acc: number, item: cartProductType) => acc + item.quantity,
+    (acc: number, item: CartProductType) => acc + item.quantity,
     0,
   )
 
-  const images = items.map((item: cartProductType) => item.image)
+  const images = items.map((item: CartProductType) => item.image)
 
   const handleAddToCart = (e: any) => {
     e.preventDefault()
     toast.success("Products have been added to cart", {
       id: "clipboard",
     })
-    parsedItems.forEach((item: cartProductType) => addProductToCardAction(item))
+    // parsedItems.forEach((item: CartProductType) => addProductToCartAction(item))
+    addProductsToCartAction(parsedItems)
   }
 
   return (

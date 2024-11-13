@@ -42,7 +42,7 @@ export const ProductDescription = ({ product }: Props) => {
 
   const { allIngredients } = useIngredients()
   const {
-    addProductToCardAction,
+    addProductToCartAction,
     increaseProductCartAction,
     decreaseProductCartAction,
   } = useCartActions()
@@ -103,7 +103,7 @@ export const ProductDescription = ({ product }: Props) => {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                addProductToCardAction(cartProduct)
+                addProductToCartAction(cartProduct)
               }}
             >
               Add to cart

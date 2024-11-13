@@ -1,6 +1,6 @@
 import { useCart } from "@/app/_store/cart"
 import { useUser } from "@/app/_store/user"
-import { cartProductType } from "@/app/_types/Types"
+import { CartProductType } from "@/app/_types/Types"
 import { updateUserCart } from "@/utils/actions"
 import { useLocalStorage } from "react-use"
 
@@ -10,22 +10,60 @@ export const useCartActions = () => {
 
   const [value, setValue] = useLocalStorage("cart")
 
-  const addProductToCardAction = (cartProduct: cartProductType) => {
+  const addProductsToCartAction = (cartProducts: CartProductType[]) => {
+    setValue((prevCart: any) => {
+      let updatedCart = [...prevCart] // Копируем текущую корзину
+
+      cartProducts.forEach((cartProduct) => {
+        // Проверяем, есть ли каждый товар в корзине
+        const isInCart = updatedCart.some((item) => item.id === cartProduct.id)
+
+        if (!isInCart) {
+          // Если товара нет в корзине, добавляем его
+          updatedCart = [...updatedCart, cartProduct]
+          add(cartProduct) // Обновляем корзину в контексте
+        } else {
+          // Если товар уже есть в корзине, увеличиваем его количество
+          updatedCart = updatedCart.map((item) =>
+            item.id === cartProduct.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item,
+          )
+          increase(cartProduct) // Увеличиваем количество в контексте
+        }
+      })
+
+      // Если пользователь авторизован, обновляем данные на сервере
+      if (user?.id) {
+        updateUserCart(updatedCart, user.id)
+      }
+
+      // Возвращаем обновлённый массив корзины
+      return updatedCart
+    })
+  }
+
+  const addProductToCartAction = (cartProduct: CartProductType) => {
     const isInCart = cart.some((item) => item.id === cartProduct.id)
+
+    let updatedCart
+
     if (!isInCart) {
+      updatedCart = [...cart, cartProduct]
       add(cartProduct)
-      setValue([...cart, cartProduct])
-      if (user?.id) updateUserCart([...cart, cartProduct], user.id)
-    }
-    if (isInCart) {
-      increase(cartProduct)
-      const items = cart.map((item) =>
+    } else {
+      updatedCart = cart.map((item) =>
         item.id === cartProduct.id
           ? { ...item, quantity: item.quantity + 1 }
           : item,
       )
-      setValue(items)
-      if (user?.id) updateUserCart(items, user.id)
+      increase(cartProduct)
+    }
+
+    setValue(updatedCart)
+
+    if (user?.id) {
+      updateUserCart(updatedCart, user.id)
     }
   }
 
@@ -35,7 +73,7 @@ export const useCartActions = () => {
     if (user?.id) updateUserCart([], user?.id)
   }
 
-  const removeProductFromCartAction = (cartProduct: cartProductType) => {
+  const removeProductFromCartAction = (cartProduct: CartProductType) => {
     remove(cartProduct)
     setValue(cart.filter((item) => item.id !== cartProduct.id))
     if (user?.id)
@@ -45,7 +83,7 @@ export const useCartActions = () => {
       )
   }
 
-  const increaseProductCartAction = (cartProduct: cartProductType) => {
+  const increaseProductCartAction = (cartProduct: CartProductType) => {
     increase(cartProduct)
     const items = cart.map((item) =>
       item.id === cartProduct.id
@@ -56,7 +94,7 @@ export const useCartActions = () => {
     if (user?.id) updateUserCart(items, user?.id)
   }
 
-  const decreaseProductCartAction = (cartProduct: cartProductType) => {
+  const decreaseProductCartAction = (cartProduct: CartProductType) => {
     decrease(cartProduct)
     const items = cart
       .map((item) =>
@@ -70,7 +108,8 @@ export const useCartActions = () => {
   }
 
   return {
-    addProductToCardAction,
+    addProductToCartAction,
+    addProductsToCartAction,
     removeProductFromCartAction,
     increaseProductCartAction,
     decreaseProductCartAction,

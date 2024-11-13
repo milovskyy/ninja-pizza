@@ -1,4 +1,4 @@
-import { cartProductType } from "@/app/_types/Types"
+import { CartProductType } from "@/app/_types/Types"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 import { PlusMinusBlock } from "./PlusMinusBlock"
@@ -7,7 +7,7 @@ import Link from "next/link"
 import { useCartActions } from "@/hooks/useCartActions"
 
 type Props = {
-  item: cartProductType
+  item: CartProductType
   setIsCartOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
 

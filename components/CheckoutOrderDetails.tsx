@@ -1,12 +1,12 @@
 import { Button } from "./ui/button"
 import { CartItem } from "./CartItem"
 import { DELIVERYPRICE } from "@/app/_constants/constants"
-import { cartProductType } from "@/app/_types/Types"
+import { CartProductType } from "@/app/_types/Types"
 import { CartEmpty } from "./CartEmpty"
 
 type Props = {
   method: string
-  cart: cartProductType[]
+  cart: CartProductType[]
   cartTotalPrice: number
   orderId?: number
   isloading?: boolean

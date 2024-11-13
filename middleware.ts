@@ -11,7 +11,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url))
   }
 
-  if (!user && request.nextUrl.pathname === "/account") {
+  if (!user && request.nextUrl.pathname.startsWith("/account")) {
     return NextResponse.redirect(new URL("/", request.url))
   }
 

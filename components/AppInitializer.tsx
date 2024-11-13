@@ -6,7 +6,7 @@ import { useIngredients } from "@/app/_store/ingredients"
 import { useOrders } from "@/app/_store/orders"
 import { useProducts } from "@/app/_store/products"
 import {
-  cartProductType,
+  CartProductType,
   CategoryType,
   IngredientType,
   OrderType,
@@ -41,7 +41,7 @@ export const AppInitializer = ({
   const { setOrders } = useOrders()
   const { setUser } = useUser()
   const { setFavorites } = useFavorites()
-  const [value, setValue] = useLocalStorage<cartProductType[]>("cart", [])
+  const [value, setValue] = useLocalStorage<CartProductType[]>("cart", [])
 
   const supabase = createUserClient()
   const { addOrder, deleteOrder, updateOrder } = useOrders()
@@ -71,14 +71,16 @@ export const AppInitializer = ({
   if (user?.cart && JSON.stringify(value) !== JSON.stringify(user?.cart))
     setValue(user?.cart)
 
+  if (value && value?.length > 0 && user?.cart?.length === 0) setCart(value)
+
   useEffect(() => {
     setProducts(products)
     setIngredients(ingredients)
     setCategories(categories)
     setOrders(orders)
-    setCart(user?.cart || value || [])
     setUser(user)
     setFavorites(user?.favorites || [])
+    if (user?.cart && user?.cart?.length > 0) setCart(user?.cart || value || [])
   }, [
     setProducts,
     products,

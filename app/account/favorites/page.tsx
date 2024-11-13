@@ -1,18 +1,18 @@
+"use client"
+
+import { useFavorites } from "@/app/_store/favorites"
+import { useUser } from "@/app/_store/user"
 import { AccountEmptyBlock } from "@/components/account/AccountEmptyBlock"
 import { UserFavoritesList } from "@/components/account/UserFavoritesList"
-import { getUser } from "@/utils/user-service"
 
-export const revalidate = 1000
-async function Favorites() {
-  const user = await getUser()
+function Favorites() {
+  const { user } = useUser()
+  const { favorites } = useFavorites()
 
-  if (!user) {
-    return null
-  }
   return (
     <div className="">
       <h1 className="mb-7 text-5xl font-black">Favorites</h1>
-      {user.favorites.length > 0 ? (
+      {favorites.length > 0 ? (
         <UserFavoritesList />
       ) : (
         <AccountEmptyBlock

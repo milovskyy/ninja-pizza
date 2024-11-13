@@ -57,7 +57,7 @@ function MenuCard({ product }: PropsType) {
   const itemsInCart = cart?.find((item) => item.name === name)?.quantity
 
   const {
-    addProductToCardAction,
+    addProductToCartAction,
     increaseProductCartAction,
     decreaseProductCartAction,
   } = useCartActions()
@@ -118,7 +118,7 @@ function MenuCard({ product }: PropsType) {
                 toast.success("Product has been added to cart", {
                   id: "clipboard",
                 })
-                addProductToCardAction(cartProduct)
+                addProductToCartAction(cartProduct)
               }}
             >
               Order

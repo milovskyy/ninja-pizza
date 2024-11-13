@@ -1,7 +1,7 @@
 import { cn } from "@/utils/utils"
 import Image from "next/image"
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel"
-import { cartProductType, OrderType } from "@/app/_types/Types"
+import { CartProductType, OrderType } from "@/app/_types/Types"
 import { sortOrderProductsByCategoryOrder } from "@/utils/helperFunction"
 import { format } from "date-fns"
 
@@ -14,11 +14,11 @@ export const OrderPreview = ({ order, setDialogOpen }: Props) => {
   const parsedItems = JSON.parse(order.items)
   const items = sortOrderProductsByCategoryOrder(parsedItems)
   const itemsNumber = items.reduce(
-    (acc: number, item: cartProductType) => acc + item.quantity,
+    (acc: number, item: CartProductType) => acc + item.quantity,
     0,
   )
 
-  const images = items.map((item: cartProductType) => item.image)
+  const images = items.map((item: CartProductType) => item.image)
   const today = format(new Date(), "dd-MM-yy")
   return (
     <div className="flex flex-1 items-center justify-center gap-4 px-5 py-1 font-semibold">

@@ -12,7 +12,7 @@ export const UserAuthHover = () => {
     try {
       await logoutAction()
       toast.success("User successfully logged out")
-      router.refresh()
+      router.push("/")
     } catch (e: any) {
       toast.error(e.message)
     }

@@ -133,7 +133,6 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
             ? data.address
             : `${data.street} №${data.building}${data.entrance && `, entrance №${data.entrance}`}${data.apt && `, apt №${data.apt}`}${data.floor && `, floor №${data.floor}`}`
           : data.pickupAddress,
-      // : data.pickupAddress,
       choices: `${data.doorBell === true ? "Do not ring the doorbell" : ""}${data.doorOutside && data.doorBell ? ", " : ""}${data.doorOutside === true ? "Leave my order outside the door" : ""}`,
       date,
       time: data.time,
@@ -152,14 +151,14 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
     setIsloading(true)
     if (!order)
       try {
-        await createOrder(newOrder)
+        const order = await createOrder(newOrder)
 
         toast.success("Order successfully created")
-        router.push("/")
+        router.push(`/order/${order.id}`)
       } catch (err: any) {
         toast.error(err.message)
       } finally {
-        setTimeout(() => deleteCartAction(), 2000)
+        setTimeout(() => deleteCartAction(), 2500)
         setIsloading(false)
       }
 

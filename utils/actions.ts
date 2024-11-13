@@ -1,8 +1,8 @@
 "use server"
 
 import {
-  cartProductType,
-  newOrderType,
+  CartProductType,
+  NewOrderType,
   OrderType,
   ProductType,
   UserDeliveryAddress,
@@ -36,7 +36,7 @@ export async function logoutAction() {
   await logoutApi()
 }
 
-export async function createOrder(order: newOrderType) {
+export async function createOrder(order: NewOrderType) {
   const data = await createOrderApi(order)
   return data
 }
@@ -69,7 +69,7 @@ export async function updateUserFavorites(address: ProductType[], id: string) {
   return data
 }
 
-export async function updateUserCart(address: cartProductType[], id: string) {
+export async function updateUserCart(address: CartProductType[], id: string) {
   const data = await updateUserCartApi(address, id)
   return data
 }

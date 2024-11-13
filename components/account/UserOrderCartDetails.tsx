@@ -1,5 +1,5 @@
 import { useProducts } from "@/app/_store/products"
-import { cartProductType, OrderType, ProductType } from "@/app/_types/Types"
+import { CartProductType, OrderType, ProductType } from "@/app/_types/Types"
 import { sortOrderProductsByCategoryOrder } from "@/utils/helperFunction"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
@@ -13,7 +13,7 @@ export const UserOrderCartDetails = ({ order }: Props) => {
 
   const { allProducts } = useProducts()
 
-  const items = orderedItems.map((smallItem: cartProductType) => {
+  const items = orderedItems.map((smallItem: CartProductType) => {
     const match = allProducts.find((bigItem) => bigItem.id === smallItem.id)
     if (match) {
       return { ...smallItem, ingredients: match.ingredients, size: match.size }

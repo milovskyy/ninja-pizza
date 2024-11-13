@@ -16,7 +16,7 @@ export type ProductType = {
   image: string
 }
 
-export type cartProductType = {
+export type CartProductType = {
   id: number
   name: string
   category: string
@@ -65,7 +65,7 @@ export type OrderType = {
   totalAmount: number
 }
 
-export type newOrderType = {
+export type NewOrderType = {
   created: string
   updated?: string | null
   name: string
@@ -97,7 +97,7 @@ export type UserType = {
   email?: string
   address?: UserDeliveryAddress[] | undefined
   favorites?: ProductType[] | undefined
-  cart?: cartProductType[] | undefined
+  cart?: CartProductType[] | undefined
 }
 
 export type UserDeliveryAddress = {

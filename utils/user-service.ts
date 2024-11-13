@@ -1,5 +1,5 @@
 import {
-  cartProductType,
+  CartProductType,
   ProductType,
   UserDeliveryAddress,
   UserType,
@@ -95,13 +95,13 @@ export const updateUserFavoritesApi = async function (
     return { success: false, message: error.message }
   }
 
-  revalidatePath("/account/favorites")
+  // revalidatePath("/account/favorites")
 
   return { success: true, data }
 }
 
 export const updateUserCartApi = async function (
-  cart: cartProductType[],
+  cart: CartProductType[],
   id: string,
 ) {
   const supabase = createServerClient()
