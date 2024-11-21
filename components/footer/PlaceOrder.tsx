@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button"
 
 function PlaceOrder() {
   return (
-    <div className="flex flex-col gap-4">
-      <p className="px-2 text-sm text-stone-400">Place an order:</p>
+    <div className="flex w-[190px] flex-col gap-4 md:w-[220px]">
+      <p className="px-2 text-sm font-semibold text-stone-400">
+        Place an order:
+      </p>
 
       <Button variant={"phone"} size={"phone"}>
         {"+38 (095) 344 22 44"}

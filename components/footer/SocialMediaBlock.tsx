@@ -3,7 +3,7 @@ import { SiFacebook, SiInstagram, SiTelegram } from "react-icons/si"
 
 function SocialMediaBlock() {
   return (
-    <div className="flex gap-2">
+    <div className="flex md:gap-2">
       <Link
         title="Telegram"
         href="/facebook"

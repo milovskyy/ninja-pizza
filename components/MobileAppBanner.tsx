@@ -3,7 +3,6 @@ import MobileAppIcons from "./MobileAppIcons"
 
 function MobileAppBanner() {
   return (
-    // <div className="flex h-[420px] flex-col items-center justify-center px-3">
     <div className="flex w-full flex-col items-center justify-center gap-1 rounded-[32px] bg-primary px-8 md:px-20 lg:grid lg:h-[340px] lg:min-h-[340px] lg:grid-cols-[3fr_4fr] lg:gap-10 xl:h-[420px] xl:min-h-[420px]">
       <div className="flex flex-col items-center justify-center gap-4 max-lg:pt-6 sm:gap-6 lg:items-start lg:gap-10 xl:py-16">
         <p className="text-center text-3xl font-black md:text-4xl md:leading-[50px] lg:text-start xl:text-5xl xl:leading-[60px]">
@@ -23,7 +22,6 @@ function MobileAppBanner() {
         </div>
       </div>
     </div>
-    //  </div>
   )
 }
 
