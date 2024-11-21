@@ -34,7 +34,7 @@ export const UpdateInfoModal = () => {
   })
 
   async function onSubmit({ name, email }: AuthType) {
-    if (!name || !email || !currentUser?.id) return
+    if (!name || !currentUser?.id) return
 
     try {
       setIsLoading(true)

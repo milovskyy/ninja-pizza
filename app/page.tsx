@@ -1,10 +1,11 @@
-import MainSwiper from "../components/MainSwiper"
 import MainAbout from "../components/MainAbout"
 import MobileAppBanner from "../components/MobileAppBanner"
 import MapComponent from "../components/MapComponent"
 import FullMenu from "../components/FullMenu"
 import AppFooter from "../components/footer/AppFooter"
 import { Container } from "@/components/Container"
+import MainCarousel from "../components/MainCarousel"
+import MainSwiper from "@/components/MainSwiper"
 
 export default function Home() {
   return (
@@ -13,12 +14,12 @@ export default function Home() {
       <MainAbout />
       <FullMenu />
 
-      <MapComponent />
-      <div className="mt-[-100px]">
-        <MobileAppBanner />
-      </div>
+      {/* <MapComponent /> */}
+
+      <MobileAppBanner />
+
       <div className="py-20 text-center">Best Pizza Ever!</div>
-      <AppFooter />
+      {/* <AppFooter /> */}
     </Container>
   )
 }

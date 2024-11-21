@@ -36,6 +36,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" sizes="48x48" href="favicon.jpg" />
+      </head>
       <body
         className={`${manrope.className} mx-auto flex min-h-screen flex-col items-center bg-stone-100`}
       >

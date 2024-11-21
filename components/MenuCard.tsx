@@ -73,60 +73,112 @@ function MenuCard({ product }: PropsType) {
 
   return (
     <div className="flex w-full rounded-3xl bg-white p-6 pb-5">
-      <div className="relative flex w-full flex-col">
+      <div className="relative flex w-full sm:flex-col">
         <Link
           href={`/product/${linkName}`}
-          className="relative aspect-square w-[75%] self-center rounded-2xl bg-white"
+          className="relative aspect-square w-40 self-center rounded-2xl bg-white sm:w-[75%]"
         >
           <Image src={image} alt="img" fill className="object-cover" />
-        </Link>
-        <Link className="mt-5" href={`/product/${linkName}`}>
-          <h1 className="text-center text-xl font-bold">{name}</h1>
-        </Link>
-
-        <div className="flex flex-1 items-center">
-          <h3 className="mt-3 flex-1 items-center text-center text-[14px] font-semibold text-stone-400">
-            <span className="font-semibold text-main">{size}</span>
-
-            {ingredients?.length > 0 && ` - " ${formattedIngredients}`}
-          </h3>
-        </div>
-
-        <div className="mt-5 flex items-center justify-between">
-          <div className="flex gap-2">
-            <div className="text-xl font-bold">{price}</div>
-            <div className="text-sm font-semibold text-stone-400">UAH</div>
+          <div
+            className={cn(
+              "absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-2 text-stone-500 hover:text-sky-400",
+              {
+                "bg-sky-200 text-stone-800 hover:text-white": isFavorite,
+              },
+            )}
+            onClick={() => favoriteAction(product)}
+          >
+            <GoHeart size="22px" className="relative top-[2px]" />
           </div>
 
-          {itemsInCart ? (
-            <PlusMinusBlock
-              number={itemsInCart}
-              plusFunc={() => {
-                toast.success("Product has been added to cart", {
-                  id: "clipboard",
-                })
-                increaseProductCartAction(cartProduct)
-              }}
-              minusFunc={() => decreaseProductCartAction(cartProduct)}
-              bg="bg-stone-100"
-              hoverBg="hover:bg-primary"
-            />
-          ) : (
-            <Button
-              className="bg-stone-100 text-[16px] font-bold"
-              onClick={() => {
-                toast.success("Product has been added to cart", {
-                  id: "clipboard",
-                })
-                addProductToCartAction(cartProduct)
-              }}
-            >
-              Order
-            </Button>
+          {isNew && (
+            <div className="absolute left-0 top-0 rounded-lg bg-[#ddf0ce] px-2 py-[3px] text-sm font-bold text-[#55b30b]">
+              NEW
+            </div>
           )}
+
+          {hit && !isNew && (
+            <div className="absolute left-0 top-0 rounded-lg bg-[#fad5d5] px-2 py-[3px] text-sm font-bold text-[#e72e2e]">
+              HIT
+            </div>
+          )}
+
+          {vegetarian && (
+            <div className="absolute left-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#ddf0ce] p-[7px]">
+              <div className="relative aspect-square">
+                <Image
+                  src={`${PRODUCT_IMAGE_URL}filters/vegetarian.png`}
+                  alt="img"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          )}
+
+          {spicy && (
+            <div className="absolute right-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#fad5d5] p-[7px]">
+              <div className="relative aspect-square">
+                <Image
+                  src={`${PRODUCT_IMAGE_URL}filters/spicy.png`}
+                  alt="img"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          )}
+        </Link>
+
+        <div>
+          <Link className="mt-5" href={`/product/${linkName}`}>
+            <h1 className="text-center text-xl font-bold">{name}</h1>
+          </Link>
+
+          <div className="flex flex-1 items-center">
+            <h3 className="mt-3 flex-1 items-center text-center text-[14px] font-semibold text-stone-400">
+              <span className="font-semibold text-main">{size}</span>
+
+              {ingredients?.length > 0 && ` - " ${formattedIngredients}`}
+            </h3>
+          </div>
+
+          <div className="mt-5 flex items-center justify-between">
+            <div className="flex gap-2">
+              <div className="text-xl font-bold">{price}</div>
+              <div className="text-sm font-semibold text-stone-400">UAH</div>
+            </div>
+
+            {itemsInCart ? (
+              <PlusMinusBlock
+                number={itemsInCart}
+                plusFunc={() => {
+                  toast.success("Product has been added to cart", {
+                    id: "clipboard",
+                  })
+                  increaseProductCartAction(cartProduct)
+                }}
+                minusFunc={() => decreaseProductCartAction(cartProduct)}
+                bg="bg-stone-100"
+                hoverBg="hover:bg-primary"
+              />
+            ) : (
+              <Button
+                className="bg-stone-100 text-[16px] font-bold"
+                onClick={() => {
+                  toast.success("Product has been added to cart", {
+                    id: "clipboard",
+                  })
+                  addProductToCartAction(cartProduct)
+                }}
+              >
+                Order
+              </Button>
+            )}
+          </div>
         </div>
 
-        <div
+        {/* <div
           className={cn(
             "absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-2 text-stone-500 hover:text-sky-400",
             {
@@ -174,7 +226,7 @@ function MenuCard({ product }: PropsType) {
               />
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   )

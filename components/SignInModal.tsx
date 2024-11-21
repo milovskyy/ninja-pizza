@@ -48,53 +48,6 @@ export const SignInModal = ({ buttonText }: Props) => {
 
   const router = useRouter()
 
-  // async function onSubmit({ phone, password }: AuthType) {
-  //   if (!phone || !password) return
-
-  //   const phoneNumber = "380" + phone.replace(/\D/g, "")
-
-  //   try {
-  //     setIsLoading(true)
-  //     const { user } = await signupAction({
-  //       phone: phoneNumber,
-  //       password,
-  //     })
-
-  //     if (user) {
-  //       const newUser = {
-  //         created_at: format(new Date(), "yyyy-MM-dd HH:mm"),
-  //         id: user.id,
-  //         number: user.phone,
-  //       }
-  //       await createUser(newUser)
-  //     }
-
-  //     toast.success("User successfully created")
-  //     setIsDialogOpen(false)
-  //     reset()
-  //     router.refresh()
-  //   } catch (e: any) {
-  //     if (e.message === "User already registered") {
-  //       try {
-  //         const user = await loginAction({
-  //           phone: phoneNumber,
-  //           password,
-  //         })
-  //         toast.success("User successfully logged in")
-  //         setIsDialogOpen(false)
-  //         reset()
-  //         router.refresh()
-  //       } catch (e: any) {
-  //         toast.error(e.message)
-  //       }
-  //       return
-  //     }
-  //     toast.error(e.message)
-  //   } finally {
-  //     setIsLoading(false)
-  //   }
-  // }
-
   async function onSubmit({ phone, password }: AuthType) {
     if (!phone || !password) return
 
@@ -148,7 +101,7 @@ export const SignInModal = ({ buttonText }: Props) => {
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger className="w-full rounded-full bg-primary p-3 text-[16px] font-black hover:bg-main">
+      <DialogTrigger className="w-full rounded-full bg-primary p-2 text-[16px] font-black hover:bg-main lg:p-3">
         {buttonText}
       </DialogTrigger>
       <DialogContent className="flex w-full flex-col items-center justify-center rounded-none px-16 py-10 outline-none">

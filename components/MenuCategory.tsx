@@ -42,7 +42,11 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
       <h1 className="mb-6 self-start text-5xl font-extrabold">{name}</h1>
       {!limit && name === "Pizza" && <PizzaFilter filter={filter} />}
 
-      <div className={cn("mb-12 grid w-full grid-cols-4 gap-[6px]")}>
+      <div
+        className={cn(
+          "mb-12 grid w-full gap-[6px] sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+        )}
+      >
         {productsToShow.map((product) => (
           <MenuCard key={product.id} product={product} />
         ))}

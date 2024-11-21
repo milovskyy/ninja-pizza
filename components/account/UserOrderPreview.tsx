@@ -56,7 +56,7 @@ export const UserOrderPreview = ({ order }: Props) => {
           </CarouselContent>
         </Carousel>
 
-        <div className="flex w-[55px] flex-col gap-1 px-2 py-1">
+        <div className="flex w-14 flex-col gap-1 px-2 py-1">
           <p className="text-start text-2xl font-bold">{itemsNumber}</p>
           <p className="text-start text-sm text-stone-400">Q-ty</p>
         </div>
@@ -69,7 +69,7 @@ export const UserOrderPreview = ({ order }: Props) => {
         </div>
 
         <div
-          className="flex h-[56px] w-[56px] cursor-pointer items-center justify-center rounded-full bg-primary pb-[2px]"
+          className="flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-primary pb-[2px]"
           onClick={handleAddToCart}
         >
           <LiaShoppingBagSolid size="28px" />

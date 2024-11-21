@@ -28,16 +28,16 @@ function InfoHeaderCart() {
   if (pathname === "/checkout") return null
 
   return (
-    <div className="flex h-[56px] w-[56px] items-center justify-center">
-      <div ref={ref} className="relative h-full w-full">
+    <div className="h-10 w-10 items-center justify-center sm:flex xl:h-14 xl:w-14">
+      <div ref={ref} className="h-full w-full">
         {!isCartOpen ? (
           <div
-            className="flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-primary pb-[2px]"
+            className="relative flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-primary pb-[2px]"
             onClick={() => setIsCartOpen(true)}
           >
-            <LiaShoppingBagSolid size="28px" />
+            <LiaShoppingBagSolid size="26px" />
             {numberOfProducts > 0 && (
-              <div className="absolute right-[5px] top-[5px] flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-sm font-bold text-red-50">
+              <div className="absolute right-[1px] top-[1px] flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-red-50 xl:h-6 xl:w-6 xl:text-sm">
                 {numberOfProducts}
               </div>
             )}
@@ -51,12 +51,14 @@ function InfoHeaderCart() {
           </div>
         )}
         {isCartOpen && (
-          <div className="absolute right-0 top-[74px] flex h-[635px] max-h-[635px] w-[480px] flex-col overflow-hidden rounded-3xl bg-white">
-            {numberOfProducts ? (
-              <Cart setIsCartOpen={setIsCartOpen} />
-            ) : (
-              <CartEmpty setIsCartOpen={setIsCartOpen} />
-            )}
+          <div className="absolute right-0 top-[60px] flex max-h-[635px] w-full flex-col overflow-hidden rounded-3xl px-3 sm:right-3 sm:w-[480px] md:top-[68px] xl:top-[88px]">
+            <div className="overflow-hidden rounded-3xl bg-white">
+              {numberOfProducts ? (
+                <Cart setIsCartOpen={setIsCartOpen} />
+              ) : (
+                <CartEmpty setIsCartOpen={setIsCartOpen} />
+              )}
+            </div>
           </div>
         )}
       </div>

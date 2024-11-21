@@ -8,8 +8,8 @@ type Props = {
 }
 function InfoHeaderUser({ user }: Props) {
   return (
-    <div className="flex h-[56px] w-[56px] items-center justify-center">
-      <div className="group relative h-full w-full">
+    <div className="hidden h-10 w-10 items-center justify-center sm:flex xl:h-14 xl:w-14">
+      <div className="group h-full w-full xl:relative">
         <div
           className={cn(
             "relative flex h-full w-full items-center justify-center rounded-full bg-stone-100 pb-[2px] text-stone-500 hover:bg-stone-950 hover:text-white",

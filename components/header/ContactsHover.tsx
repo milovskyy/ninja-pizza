@@ -1,4 +1,3 @@
-import { cn } from "@/utils/utils"
 import { Button } from "../ui/button"
 import Image from "next/image"
 
@@ -6,7 +5,7 @@ type Props = {}
 
 export const ContactsHover = ({}: Props) => {
   return (
-    <div className="absolute right-0 top-[55px] hidden w-[250px] overflow-hidden pt-5 text-center group-hover:flex">
+    <div className="absolute right-2 top-10 hidden w-[250px] overflow-hidden pt-5 text-center group-hover:flex md:top-12 xl:-right-2 xl:top-14">
       <div className="flex w-full flex-col gap-1 rounded-3xl bg-white px-5 pb-5 pt-7">
         <div className="fixed left-0 top-0 z-[-2] h-full w-full bg-stone-800/25 p-5 hover:hidden" />
         <div className="flex flex-col items-center justify-center gap-3">

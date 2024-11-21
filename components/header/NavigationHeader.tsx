@@ -5,11 +5,11 @@ import MenuCategories from "../MenuCategories"
 
 function NavigationHeader() {
   return (
-    <nav className="ml-12 flex items-center justify-center">
-      <ol className="flex items-center justify-center gap-2">
+    <nav className="ml-3 hidden items-center justify-center lg:flex xl:ml-12">
+      <ol className="flex items-center justify-center gap-2 text-sm xl:text-base">
         <li>
           <Link
-            className="flex h-[56px] items-center justify-center rounded-full px-5 font-bold text-stone-800 hover:bg-stone-200"
+            className="flex h-12 items-center justify-center rounded-full px-2 font-bold text-stone-800 hover:bg-stone-200 xl:h-14 xl:px-3 2xl:px-5"
             href="/"
             prefetch={true}
           >
@@ -17,7 +17,7 @@ function NavigationHeader() {
           </Link>
         </li>
         <li className="group flex h-full flex-col items-center justify-center font-bold text-stone-800">
-          <div className="flex h-[56px] items-center justify-center gap-1 rounded-full px-5 hover:bg-stone-200">
+          <div className="flex h-12 items-center justify-center gap-1 rounded-full px-2 hover:bg-stone-200 xl:h-14 xl:px-3 2xl:px-5">
             <p>Menu</p>
             <IoIosArrowDown
               size="14px"
@@ -30,7 +30,7 @@ function NavigationHeader() {
         </li>
         <li>
           <Link
-            className="flex h-[56px] items-center justify-center rounded-full px-5 font-bold text-stone-800 hover:bg-stone-200"
+            className="flex h-12 items-center justify-center rounded-full px-2 font-bold text-stone-800 hover:bg-stone-200 xl:h-14 xl:px-3 2xl:px-5"
             href="/about"
             prefetch={true}
           >
@@ -39,7 +39,7 @@ function NavigationHeader() {
         </li>
         <li>
           <Link
-            className="flex h-[56px] items-center justify-center rounded-full px-5 font-bold text-stone-800 hover:bg-stone-200"
+            className="flex h-12 items-center justify-center rounded-full px-2 font-bold text-stone-800 hover:bg-stone-200 xl:h-14 xl:px-3 2xl:px-5"
             href="/news"
             prefetch={true}
           >

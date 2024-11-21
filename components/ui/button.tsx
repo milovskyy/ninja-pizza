@@ -24,7 +24,7 @@ const buttonVariants = cva(
         phone: "text-stone-800 hover:text-primary self-start text-[16px]",
       },
       size: {
-        default: "h-10 px-6 py-6",
+        default: "h-8 p-5 xl:p-6 xl:h-10 ",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-8 w-8",

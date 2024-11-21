@@ -21,7 +21,7 @@ export const Cart = ({ setIsCartOpen }: Props) => {
     <>
       <div className="flex flex-1 flex-col gap-3 bg-white first-line:pt-6">
         <h2 className="px-6 pt-6 text-xl font-bold">Your order</h2>
-        <div className="flex max-h-[475px] flex-col gap-2 overflow-auto px-6 pb-2">
+        <div className="flex max-h-[390px] flex-col gap-2 overflow-auto px-6 pb-2 sm:h-[472px] sm:max-h-[472px]">
           {cart?.map((item) => (
             <CartItem key={item.id} item={item} setIsCartOpen={setIsCartOpen} />
           ))}

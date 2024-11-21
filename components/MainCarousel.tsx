@@ -1,11 +1,13 @@
 "use client"
 
-import { Swiper, SwiperSlide } from "swiper/react"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
-import "swiper/css"
-import "swiper/css/pagination"
-
-import { Pagination } from "swiper/modules"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
@@ -32,47 +34,37 @@ const slides = [
   },
 ]
 
-export default function MainSwiper() {
+export default function MainCarousel() {
   const router = useRouter()
 
   return (
-    <div className="relative">
-      <Swiper
-        style={{
-          // @ts-ignore
-          "--swiper-pagination-color": "#ffc700",
-          "--swiper-pagination-bullet-size": "12px",
-          "--swiper-pagination-bottom": "6px",
-          "--swiper-pagination-bullet-inactive-color": "black",
-          "--swiper-pagination-bullet-inactive-size": "3px",
-          "--swiper-pagination-bullet-inactive-opacity": "1",
-          // "--swiper-pagination-bullet-size": "8px",
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        loop={true}
-        className="mb-5 overflow-auto pb-5"
-      >
+    <Carousel
+      className="rounded-[40px]"
+      opts={{
+        align: "start",
+        loop: true,
+      }}
+    >
+      <CarouselContent className="">
         {slides.map((slide) => (
-          <SwiperSlide
+          <CarouselItem
             // onClick={() => router.push(`/news/${slide.link}`)}
             key={slide.url}
             className=""
           >
-            <div className="flex justify-center">
+            <div className="relative flex h-[300px] w-[600px] justify-center xl:h-[500px] xl:w-full">
               <Image
                 src={slide.url}
                 alt="img"
-                width={1200}
-                height={460}
-                className="cursor-pointer"
+                fill
+                className="cursor-pointer object-cover"
               />
             </div>
-          </SwiperSlide>
+          </CarouselItem>
         ))}
-      </Swiper>
-    </div>
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   )
 }

@@ -1,26 +1,22 @@
 import { IoMdGlobe } from "react-icons/io"
-import LocalizationExpander from "./LocalizationExpander"
-
-// type PropsType = {
-//   setIsLocalOpen: (value: boolean) => void
-// }
+import LocalizationHover from "./LocalizationHover"
 
 function LocalizationHeader() {
   return (
-    <div className="relative flex flex-col items-center justify-center">
-      <div className="group ml-[26px] flex flex-col px-2">
-        <div className="flex">
-          <div className="text-stone-00 flex h-[56px] items-center justify-center px-1 font-bold">
+    <div className="flex flex-col items-center justify-center">
+      <div className="group ml-1 flex flex-col px-1 md:px-2 lg:ml-5 xl:relative xl:ml-8">
+        <div className="flex gap-1 md:gap-0">
+          <div className="flex h-14 items-center justify-center font-bold text-stone-800 md:px-1">
             <IoMdGlobe size="24px" />
           </div>
-          <div className="flex h-[56px] items-center justify-center px-1 font-bold text-stone-800">
+          <div className="flex h-14 items-center justify-center text-sm font-bold text-stone-800 md:px-1 xl:text-base">
             Odessa
           </div>
-          <div className="flex h-[56px] items-center justify-center px-1 font-bold text-stone-800">
+          <div className="flex h-14 items-center justify-center text-sm font-bold text-stone-800 md:px-1 xl:text-base">
             EN
           </div>
         </div>
-        <LocalizationExpander />
+        <LocalizationHover />
       </div>
     </div>
   )

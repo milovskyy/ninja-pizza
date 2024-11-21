@@ -21,7 +21,7 @@ function MenuCategoriesElement({ category, separate }: PropsType) {
   return (
     <div
       className={cn(
-        "flex h-[380px] w-[200px] flex-col items-center p-6 pb-10",
+        "flex flex-col items-center p-2 pb-10 xl:p-6",
         separate && "w-full rounded-3xl",
       )}
       style={{ backgroundColor: color }}
@@ -31,7 +31,7 @@ function MenuCategoriesElement({ category, separate }: PropsType) {
     >
       <div
         className={twMerge(
-          "relative mb-3 aspect-square max-h-[150px] w-[150px] flex-1 cursor-pointer",
+          "relative mb-3 aspect-square h-[145px] w-[145px] flex-1 cursor-pointer xl:max-h-[150px] xl:w-[150px]",
           name === "Desserts" && "relative bottom-2 scale-[1.1]",
         )}
       >

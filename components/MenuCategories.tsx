@@ -8,8 +8,6 @@ type PropsType = {
   separate?: boolean
 }
 
-// сортировать чтоб сначала новые шли
-
 function MenuCategories({ separate }: PropsType) {
   const { categories } = useCategories()
 

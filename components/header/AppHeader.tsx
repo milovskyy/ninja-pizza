@@ -5,9 +5,9 @@ import Logo from "../Logo"
 
 const AppHeader = () => {
   return (
-    <div className="fixed top-1 z-50 flex h-[80px] w-full max-w-[1920px] flex-1 rounded-full bg-white">
-      <div className="w-full rounded-full bg-white">
-        <div className="mx-auto flex h-[80px] w-full max-w-[1464px] flex-1 px-3">
+    <div className="fixed top-1 z-50 flex h-14 w-full max-w-[1920px] flex-1 rounded-full bg-white md:h-16 lg:max-w-[1464px] xl:h-20">
+      <div className="relative w-full rounded-full bg-white">
+        <div className="mx-auto flex h-full w-full max-w-[1464px] flex-1 items-center justify-center px-4">
           <Logo />
           <LocalizationHeader />
           <NavigationHeader />
@@ -19,5 +19,3 @@ const AppHeader = () => {
 }
 
 export default AppHeader
-
-// 3.5 3 9 1 15.5

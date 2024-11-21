@@ -4,7 +4,7 @@ type PropsType = {
   text: string
 }
 
-function LocalizationExpanderBlock({
+function LocalizationHoverBlock({
   text,
   children,
 }: PropsWithChildren<PropsType>) {
@@ -16,4 +16,4 @@ function LocalizationExpanderBlock({
   )
 }
 
-export default LocalizationExpanderBlock
+export default LocalizationHoverBlock
