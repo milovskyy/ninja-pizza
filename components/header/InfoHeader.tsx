@@ -10,7 +10,7 @@ async function InfoHeader() {
   const user = await getUser()
   return (
     <div className="flex flex-1 justify-end">
-      <div className="ml-4 flex items-center justify-center gap-1 md:gap-2 lg:gap-3 xl:gap-4">
+      <div className="xs:ml-4 ml-2 flex items-center justify-center gap-1 md:gap-2 lg:gap-3 xl:gap-4">
         <InfoHeaderNumber />
         <InfoHeaderLike user={Boolean(user)} />
         <InfoHeaderUser user={Boolean(user)} />

@@ -15,7 +15,7 @@ async function FullMenu() {
   if (!products || !filteredProducts) return null
 
   return (
-    <div className="mb-16 flex flex-col">
+    <div className="mb-16 flex flex-col max-sm:mb-4">
       {filteredProducts.map((category) => (
         <MenuCategory
           key={category.name}

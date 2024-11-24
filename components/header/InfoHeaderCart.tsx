@@ -47,12 +47,12 @@ function InfoHeaderCart() {
             className="flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-primary"
             onClick={() => setIsCartOpen(false)}
           >
-            <X />
+            <X size="24px" />
           </div>
         )}
         {isCartOpen && (
-          <div className="absolute right-0 top-[60px] flex max-h-[635px] w-full flex-col overflow-hidden rounded-3xl px-3 sm:right-3 sm:w-[480px] md:top-[68px] xl:top-[88px]">
-            <div className="overflow-hidden rounded-3xl bg-white">
+          <div className="absolute right-0 top-[60px] flex max-h-[635px] w-full flex-col overflow-hidden rounded-3xl sm:right-3 sm:w-[480px] md:top-[68px] xl:top-[88px]">
+            <div className="overflow-auto rounded-3xl bg-white">
               {numberOfProducts ? (
                 <Cart setIsCartOpen={setIsCartOpen} />
               ) : (

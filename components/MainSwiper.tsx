@@ -53,7 +53,7 @@ export default function MainSwiper() {
         }}
         modules={[Pagination]}
         loop={true}
-        className="mb-5 overflow-auto pb-5"
+        className="mb-1 overflow-auto pb-5 md:mb-5"
       >
         {slides.map((slide) => (
           <SwiperSlide

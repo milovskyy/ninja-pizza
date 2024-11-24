@@ -8,13 +8,15 @@ import ReceiveOrder from "../../components/about/ReceiveOrder"
 import AppFooter from "../../components/footer/AppFooter"
 import MapComponent from "../../components/MapComponent"
 import MobileAppBanner from "../../components/MobileAppBanner"
+import Navigation from "@/components/Navigation"
 
 export const revalidate = 0
 
 function About() {
   return (
     <Container>
-      <MapComponent />
+      <Navigation categoryName="About" />
+      {/* <MapComponent /> */}
       <DeliveryDetails />
       <MakeOrder />
       <PaymentMethod />

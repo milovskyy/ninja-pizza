@@ -19,7 +19,7 @@ function Navigation({ productName, categoryName }: PropsType) {
 
   return (
     <Container>
-      <div className="my-8 flex items-center gap-4 text-xs">
+      <div className="my-8 flex items-center gap-2 text-xs max-sm:my-3 md:gap-4">
         <div
           onClick={() => router.back()}
           className="flex cursor-pointer items-center gap-3 rounded-full bg-stone-300/35 px-4 py-3 text-stone-500"
@@ -29,7 +29,7 @@ function Navigation({ productName, categoryName }: PropsType) {
         </div>
         <Link
           href="/"
-          className="rounded-full px-4 py-3 font-semibold tracking-wider hover:bg-stone-300/25"
+          className="max:md-mr-2 rounded-full px-3 py-3 font-semibold tracking-wider hover:bg-stone-300/25 md:px-4"
         >
           Home
         </Link>

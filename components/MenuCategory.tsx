@@ -16,8 +16,6 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
 
   if (limit) productsToShow = products.slice(0, limit)
 
-  // сортировать чтоб сначала были NEW
-
   if (name === "Pizza") {
     if (filter === "spicy")
       productsToShow = products.filter((prod) => prod.spicy === true)
@@ -29,22 +27,21 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
       productsToShow = products.filter((prod) => prod.vegetarian === true)
   }
 
-  // итерация по Object.keys чтоб определить что в юрл поиске значение поиска есть в ключах обьекта продукта
-  // //////////////////////////
-
   if (name)
     productsToShow.sort(
       (a, b) => (a.isNew === true ? 0 : 1) - (b.isNew === true ? 0 : 1),
     )
 
   return (
-    <div className="flex flex-col items-center px-3 pb-2">
-      <h1 className="mb-6 self-start text-5xl font-extrabold">{name}</h1>
+    <div className="flex flex-col items-center pb-2 md:px-3">
+      <h1 className="mb-6 self-center text-2xl font-extrabold sm:text-3xl md:text-5xl">
+        {name}
+      </h1>
       {!limit && name === "Pizza" && <PizzaFilter filter={filter} />}
 
       <div
         className={cn(
-          "mb-12 grid w-full gap-[6px] sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+          "mb-4 grid w-full gap-[6px] sm:mb-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
         )}
       >
         {productsToShow.map((product) => (
@@ -54,7 +51,7 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
       {limit && name && (
         <Link
           href={`/category/${name.toLowerCase()}`}
-          className="mb-3 rounded-full bg-stone-700 px-6 py-4 text-[16px] font-bold text-stone-50"
+          className="mb-3 rounded-full bg-stone-700 px-6 py-4 text-base font-bold text-stone-50 max-md:py-2"
           prefetch={true}
         >
           See all

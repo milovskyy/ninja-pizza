@@ -22,7 +22,12 @@ export const PlusMinusBlock = ({
   minusFunc,
 }: Props) => {
   return (
-    <div className={cn("flex items-center justify-center gap-3", className)}>
+    <div
+      className={cn(
+        "flex items-center justify-center gap-2 md:gap-3",
+        className,
+      )}
+    >
       <div
         className={cn(
           "relative aspect-square cursor-pointer rounded-full hover:bg-main",
@@ -34,7 +39,7 @@ export const PlusMinusBlock = ({
       >
         <AiOutlineMinus className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
       </div>
-      <div className="font-bold">{number}</div>
+      <div className="font-bold max-sm:text-sm">{number}</div>
       <div
         className={cn(
           "relative aspect-square cursor-pointer rounded-full hover:bg-main",

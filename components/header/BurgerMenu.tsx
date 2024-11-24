@@ -2,38 +2,117 @@
 
 import { cn } from "@/utils/utils"
 import { Menu } from "lucide-react"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { useState } from "react"
+import { CartCategories } from "../CartCategories"
+import { Button } from "../ui/button"
+import { useRouter } from "next/navigation"
+import { useUser } from "@/app/_store/user"
+import { SignInModal } from "../SignInModal"
 
 export const BurgerMenu = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+  const { user } = useUser()
+
+  const router = useRouter()
+
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger
         className={cn(
-          // h-10 w-10 items-center justify-center sm:flex xl:h-14 xl:w-14
-          "flex h-10 w-10 items-center justify-center rounded-full bg-stone-100 p-3 text-[16px] font-black transition sm:flex lg:hidden xl:h-14 xl:w-14",
+          "flex h-10 w-10 items-center justify-center rounded-full bg-stone-100 p-[10px] text-[16px] font-black transition sm:flex lg:hidden xl:h-14 xl:w-14",
           isDialogOpen && "rotate-90",
         )}
       >
-        <Menu />
+        <Menu size={24} />
       </DialogTrigger>
-      <DialogContent className="flex flex-col items-center justify-center rounded-none px-16 py-10 outline-none">
-        <DialogHeader className="mb-2 gap-3">
-          <DialogTitle className="text-center text-4xl font-bold">
-            Sign in
-          </DialogTitle>
-          <DialogDescription className="text-normal text-stone-400">
-            Please enter your phone number and password
-          </DialogDescription>
-        </DialogHeader>
+      <DialogContent className="flex max-h-[90vh] w-[98%] max-w-[98%] flex-col items-center justify-center gap-2 overflow-auto rounded-3xl p-3 py-4 outline-none lg:hidden">
+        <p className="text-xl font-semibold">Menu</p>
+        <CartCategories setIsCartOpen={setIsDialogOpen} />
+        <div className="grid w-full grid-cols-2 gap-2">
+          <Button
+            variant={"burger"}
+            size={"burger"}
+            onClick={() => {
+              router.push("/account/favorites")
+              setIsDialogOpen(false)
+            }}
+          >
+            Favorites
+          </Button>
+
+          <Button
+            variant={"burger"}
+            size={"burger"}
+            onClick={() => {
+              router.push("/account")
+              setIsDialogOpen(false)
+            }}
+          >
+            Account
+          </Button>
+
+          <Button
+            variant={"burger"}
+            size={"burger"}
+            onClick={() => {
+              router.push("/")
+              setIsDialogOpen(false)
+            }}
+          >
+            Home
+          </Button>
+          <Button
+            variant={"burger"}
+            size={"burger"}
+            onClick={() => {
+              router.push("/about")
+              setIsDialogOpen(false)
+            }}
+          >
+            About
+          </Button>
+          {user?.role === "admin" && (
+            <Button
+              variant={"burger"}
+              size={"burger"}
+              onClick={() => {
+                router.push("/orders")
+                setIsDialogOpen(false)
+              }}
+            >
+              Orders
+            </Button>
+          )}
+        </div>
+        <div className="flex w-full flex-col items-center justify-center gap-1 rounded-2xl bg-gray-100 p-2">
+          <Button
+            variant={"phone"}
+            size={"phone"}
+            className="self-center max-xs:text-sm"
+          >
+            {"+38 (095) 344 22 44"}
+          </Button>
+          <Button
+            variant={"phone"}
+            size={"phone"}
+            className="self-center max-xs:text-sm"
+          >
+            {"+38 (067) 344 22 44"}
+          </Button>
+          <Button
+            variant={"phone"}
+            size={"phone"}
+            className="self-center max-xs:text-sm"
+          >
+            {" +38 (063) 344 22 44"}
+          </Button>
+
+          <p className="max-w-52 px-2 text-center text-sm text-stone-400">
+            Call us from 11:00 to 22:30 seven days a week
+          </p>
+        </div>
       </DialogContent>
     </Dialog>
   )

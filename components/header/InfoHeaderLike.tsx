@@ -21,7 +21,7 @@ function InfoHeaderLike({ user }: Props) {
     router.push("/account/favorites")
   }
   return (
-    <div className="flex h-10 w-10 items-center justify-center xl:h-14 xl:w-14">
+    <div className="xs:flex hidden h-10 w-10 items-center justify-center xl:h-14 xl:w-14">
       <div className="group h-full w-full xl:relative">
         <div
           className={cn(

@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        xs: "480px",
+      },
       colors: {
         main: "#ffc700",
         border: "hsl(var(--border))",

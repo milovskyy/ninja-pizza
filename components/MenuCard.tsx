@@ -72,39 +72,44 @@ function MenuCard({ product }: PropsType) {
     formattedIngredients = formatIngredients(ingredients.slice(0, 4))
 
   return (
-    <div className="flex w-full rounded-3xl bg-white p-6 pb-5">
-      <div className="relative flex w-full sm:flex-col">
+    <div className="flex w-full rounded-3xl bg-white px-3 py-2 pb-5 md:p-6">
+      <div className="relative flex w-full gap-2 max-sm:gap-3 sm:flex-col">
         <Link
           href={`/product/${linkName}`}
-          className="relative aspect-square w-40 self-center rounded-2xl bg-white sm:w-[75%]"
+          className="b relative flex aspect-square w-32 self-center rounded-2xl max-xs:w-24 sm:w-full sm:p-7 md:p-10 lg:p-8 xl:p-3"
         >
-          <Image src={image} alt="img" fill className="object-cover" />
+          <div className="relative flex w-full items-center justify-center">
+            <Image src={image} alt="img" fill className="object-cover" />
+          </div>
           <div
             className={cn(
-              "absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-2 text-stone-500 hover:text-sky-400",
+              "absolute right-0 top-0 z-10 cursor-pointer rounded-full bg-stone-100 p-[6px] text-stone-500 hover:text-sky-400 sm:right-2 sm:p-2 sm:max-xl:top-3",
               {
                 "bg-sky-200 text-stone-800 hover:text-white": isFavorite,
               },
             )}
-            onClick={() => favoriteAction(product)}
+            onClick={(e) => {
+              favoriteAction(product)
+              e.preventDefault()
+            }}
           >
-            <GoHeart size="22px" className="relative top-[2px]" />
+            <GoHeart className="relative top-[2px] h-5 w-5 sm:h-[26px] sm:w-[26px]" />
           </div>
 
           {isNew && (
-            <div className="absolute left-0 top-0 rounded-lg bg-[#ddf0ce] px-2 py-[3px] text-sm font-bold text-[#55b30b]">
+            <div className="absolute left-0 top-0 rounded-lg bg-[#ddf0ce] px-2 py-[2px] text-xs font-bold text-[#55b30b] xs:px-2 xs:py-[3px] xs:text-sm sm:left-2 sm:max-xl:top-3">
               NEW
             </div>
           )}
 
           {hit && !isNew && (
-            <div className="absolute left-0 top-0 rounded-lg bg-[#fad5d5] px-2 py-[3px] text-sm font-bold text-[#e72e2e]">
+            <div className="absolute left-0 top-0 rounded-lg bg-[#fad5d5] px-2 py-[2px] text-xs font-bold text-[#e72e2e] xs:px-2 xs:py-[3px] xs:text-sm sm:left-2 sm:top-3">
               HIT
             </div>
           )}
 
           {vegetarian && (
-            <div className="absolute left-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#ddf0ce] p-[7px]">
+            <div className="absolute bottom-0 left-0 aspect-square h-8 w-8 rounded-lg bg-[#ddf0ce] p-1 xs:h-10 xs:w-10 xs:p-[7px] sm:left-2">
               <div className="relative aspect-square">
                 <Image
                   src={`${PRODUCT_IMAGE_URL}filters/vegetarian.png`}
@@ -117,7 +122,7 @@ function MenuCard({ product }: PropsType) {
           )}
 
           {spicy && (
-            <div className="absolute right-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#fad5d5] p-[7px]">
+            <div className="absolute bottom-0 right-0 aspect-square h-8 w-8 rounded-lg bg-[#fad5d5] p-1 xs:h-10 xs:w-10 xs:p-[7px] sm:right-2">
               <div className="relative aspect-square">
                 <Image
                   src={`${PRODUCT_IMAGE_URL}filters/spicy.png`}
@@ -130,23 +135,27 @@ function MenuCard({ product }: PropsType) {
           )}
         </Link>
 
-        <div>
-          <Link className="mt-5" href={`/product/${linkName}`}>
-            <h1 className="text-center text-xl font-bold">{name}</h1>
+        <div className="flex flex-1 flex-col">
+          <Link className="max-sm:mt-5" href={`/product/${linkName}`}>
+            <h1 className="text-base font-bold sm:text-center md:text-xl">
+              {name}
+            </h1>
           </Link>
 
           <div className="flex flex-1 items-center">
-            <h3 className="mt-3 flex-1 items-center text-center text-[14px] font-semibold text-stone-400">
+            <h3 className="mt-3 flex-1 items-center text-xs font-semibold text-stone-400 sm:text-center md:text-sm">
               <span className="font-semibold text-main">{size}</span>
 
               {ingredients?.length > 0 && ` - " ${formattedIngredients}`}
             </h3>
           </div>
 
-          <div className="mt-5 flex items-center justify-between">
+          <div className="mt-3 flex h-10 items-center justify-between sm:px-2 md:mt-5">
             <div className="flex gap-2">
-              <div className="text-xl font-bold">{price}</div>
-              <div className="text-sm font-semibold text-stone-400">UAH</div>
+              <div className="text-base font-bold md:text-xl">{price}</div>
+              <div className="text-xs font-semibold text-stone-400 md:text-sm">
+                UAH
+              </div>
             </div>
 
             {itemsInCart ? (
@@ -161,10 +170,11 @@ function MenuCard({ product }: PropsType) {
                 minusFunc={() => decreaseProductCartAction(cartProduct)}
                 bg="bg-stone-100"
                 hoverBg="hover:bg-primary"
+                size="h-[40px]"
               />
             ) : (
               <Button
-                className="bg-stone-100 text-[16px] font-bold"
+                className="bg-stone-100 text-sm font-bold md:text-base"
                 onClick={() => {
                   toast.success("Product has been added to cart", {
                     id: "clipboard",
@@ -177,56 +187,6 @@ function MenuCard({ product }: PropsType) {
             )}
           </div>
         </div>
-
-        {/* <div
-          className={cn(
-            "absolute right-0 top-0 cursor-pointer rounded-full bg-stone-100 p-2 text-stone-500 hover:text-sky-400",
-            {
-              "bg-sky-200 text-stone-800 hover:text-white": isFavorite,
-            },
-          )}
-          onClick={() => favoriteAction(product)}
-        >
-          <GoHeart size="22px" className="relative top-[2px]" />
-        </div>
-
-        {isNew && (
-          <div className="absolute left-0 top-0 rounded-lg bg-[#ddf0ce] px-2 py-[3px] text-sm font-bold text-[#55b30b]">
-            NEW
-          </div>
-        )}
-
-        {hit && !isNew && (
-          <div className="absolute left-0 top-0 rounded-lg bg-[#fad5d5] px-2 py-[3px] text-sm font-bold text-[#e72e2e]">
-            HIT
-          </div>
-        )}
-
-        {vegetarian && (
-          <div className="absolute left-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#ddf0ce] p-[7px]">
-            <div className="relative aspect-square">
-              <Image
-                src={`${PRODUCT_IMAGE_URL}filters/vegetarian.png`}
-                alt="img"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        )}
-
-        {spicy && (
-          <div className="absolute right-0 top-[160px] aspect-square h-10 w-10 rounded-lg bg-[#fad5d5] p-[7px]">
-            <div className="relative aspect-square">
-              <Image
-                src={`${PRODUCT_IMAGE_URL}filters/spicy.png`}
-                alt="img"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        )} */}
       </div>
     </div>
   )

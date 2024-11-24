@@ -60,7 +60,7 @@ export default async function RootLayout({
           user={user}
         />
         <AppHeader />
-        <main className="mt-[84px] flex w-full flex-1 justify-center">
+        <main className="mt-[60px] flex w-full flex-1 justify-center md:mt-[68px] xl:mt-[84px]">
           {children}
         </main>
       </body>

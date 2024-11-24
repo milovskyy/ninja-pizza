@@ -7,7 +7,7 @@ export default function News() {
         "text-bold flex h-screen w-full items-center justify-center text-2xl",
       )}
     >
-      No News Yet
+      <p>No News Yet</p>
     </div>
   )
 }

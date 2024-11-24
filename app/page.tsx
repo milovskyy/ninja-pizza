@@ -18,7 +18,7 @@ export default function Home() {
 
       <MobileAppBanner />
 
-      <div className="py-20 text-center">Best Pizza Ever!</div>
+      <div className="py-16 text-center">Best Pizza Ever!</div>
       <AppFooter />
     </Container>
   )

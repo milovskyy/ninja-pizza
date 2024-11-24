@@ -22,7 +22,7 @@ export const CartEmpty = ({ setIsCartOpen }: Props) => {
       </h3>
       <CartCategories setIsCartOpen={setIsCartOpen} />
 
-      <Link href={"/"}>
+      <Link href={"/account/orders"}>
         <Button className="mt-2 text-[16px] font-bold">Your orders</Button>
       </Link>
     </div>

@@ -14,7 +14,7 @@ export const CartCategoriesElement = ({ category, setIsCartOpen }: Props) => {
     <Link
       href={`/category/${linkName}`}
       className={cn(
-        "flex flex-col items-center justify-center gap-1 overflow-hidden rounded-3xl",
+        "flex flex-col items-center justify-center gap-1 overflow-hidden rounded-3xl max-sm:rounded-2xl",
       )}
       style={{ backgroundColor: color }}
       onClick={() => {
@@ -29,9 +29,11 @@ export const CartCategoriesElement = ({ category, setIsCartOpen }: Props) => {
         alt={name}
         width={160}
         height={160}
-        className={cn("mt-[-95px]")}
+        className={cn("mt-[-95px] max-sm:mt-[-110px]")}
       />
-      <h3 className="text-xl font-semibold">{name}</h3>
+      <h3 className="text-xl font-semibold max-sm:mb-2 max-sm:text-base">
+        {name}
+      </h3>
     </Link>
   )
 }

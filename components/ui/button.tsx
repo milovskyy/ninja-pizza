@@ -22,6 +22,8 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         phone: "text-stone-800 hover:text-primary self-start text-[16px]",
+        burger:
+          "bg-gray-100 w-full h-full rounded-2xl text-center py-6 text-black",
       },
       size: {
         default: "h-8 p-5 xl:p-6 xl:h-10 ",
@@ -29,6 +31,7 @@ const buttonVariants = cva(
         lg: "h-11 rounded-md px-8",
         icon: "h-8 w-8",
         phone: "px-2",
+        burger: "p-3",
       },
     },
     defaultVariants: {

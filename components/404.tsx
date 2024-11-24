@@ -11,8 +11,10 @@ export const Error = () => {
         width={400}
         height={200}
       />
-      <h1 className="text-3xl font-black">Something went wrong</h1>
-      <h3 className="text-xl font-black">
+      <h1 className="text-center text-3xl font-black max-xs:text-2xl">
+        Something went wrong
+      </h1>
+      <h3 className="text-center text-xl font-black max-xs:text-base">
         {"This page could not be found :("}
       </h3>
       <Link

@@ -20,18 +20,20 @@ export const Cart = ({ setIsCartOpen }: Props) => {
   return (
     <>
       <div className="flex flex-1 flex-col gap-3 bg-white first-line:pt-6">
-        <h2 className="px-6 pt-6 text-xl font-bold">Your order</h2>
-        <div className="flex max-h-[390px] flex-col gap-2 overflow-auto px-6 pb-2 sm:h-[472px] sm:max-h-[472px]">
+        <h2 className="px-3 pt-3 text-base font-bold sm:px-6 sm:pt-6 sm:text-xl">
+          Your order
+        </h2>
+        <div className="flex max-h-[390px] flex-col gap-2 overflow-auto px-3 pb-2 sm:h-[472px] sm:max-h-[472px] sm:px-6">
           {cart?.map((item) => (
             <CartItem key={item.id} item={item} setIsCartOpen={setIsCartOpen} />
           ))}
         </div>
       </div>
-      <div className="flex justify-between bg-primary p-6">
+      <div className="flex justify-between bg-primary px-6 py-4 sm:p-6">
         <div className="gap2 flex flex-col">
           <h3 className="text-sm font-medium text-stone-600">Order amount:</h3>
           <div className="flex gap-2">
-            <div className="text-xl font-bold text-stone-900">
+            <div className="xs:text-xl text-[18px] font-bold text-stone-900">
               {cartTotalPrice}
             </div>
             <div className="text-sm font-medium text-stone-600">UAH</div>
