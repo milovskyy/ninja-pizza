@@ -34,14 +34,19 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
 
   return (
     <div className="flex flex-col items-center pb-2 md:px-3">
-      <h1 className="mb-6 self-center text-2xl font-extrabold sm:text-3xl md:text-5xl">
+      <h1
+        className={cn(
+          "mb-6 text-2xl font-extrabold sm:text-3xl md:text-5xl",
+          limit ? "self-center" : "self-start",
+        )}
+      >
         {name}
       </h1>
       {!limit && name === "Pizza" && <PizzaFilter filter={filter} />}
 
       <div
         className={cn(
-          "mb-4 grid w-full gap-[6px] sm:mb-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+          "mb-4 grid w-full gap-[6px] sm:mb-12 sm:grid-cols-2 sm:max-xl:gap-4 lg:grid-cols-3 xl:grid-cols-4",
         )}
       >
         {productsToShow.map((product) => (

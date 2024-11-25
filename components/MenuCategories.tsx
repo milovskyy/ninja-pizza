@@ -13,13 +13,13 @@ function MenuCategories({ separate }: PropsType) {
 
   if (categories.length === 0)
     return (
-      <div className="flex h-[380px] w-full items-center justify-center">
+      <div className="flex h-[200px] w-full items-center justify-center md:h-[380px]">
         <RotateLoader color="#ffc700" size={25} margin={30} />
       </div>
     )
 
   return (
-    <div className={`flex ${separate && "w-full gap-2"}`}>
+    <div className={`grid grid-cols-5 ${separate && "w-full gap-1 lg:gap-2"}`}>
       {categories.map((category) => {
         return (
           <MenuCategoriesElement

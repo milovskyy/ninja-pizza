@@ -33,7 +33,7 @@ export default async function Page({ params, searchParams }: PropsType) {
         background: `linear-gradient(180deg, ${color} 0%, #f5f5f4 80%)`,
       }}
     >
-      <Container className="mt-[84px] flex flex-col">
+      <Container className="mt-[60px] flex flex-col px-0 md:mt-[68px] xl:mt-[84px]">
         <Navigation categoryName={name} />
         {products.length !== 0 && (
           <MenuCategory products={products} name={name} filter={filter} />

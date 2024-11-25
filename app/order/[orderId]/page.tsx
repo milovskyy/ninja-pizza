@@ -30,7 +30,7 @@ export default async function Page({ params }: PropsType) {
         "absolute left-0 top-0 flex w-full flex-1 justify-center px-3",
       )}
     >
-      <Container className="mt-[84px] flex flex-col">
+      <Container className="mt-[60px] flex flex-col md:mt-[68px] xl:mt-[84px]">
         <Navigation categoryName={`Order #${orderId}`} />
         <OrderConfirmationHeading id={orderId} />
 

@@ -29,17 +29,17 @@ function Navigation({ productName, categoryName }: PropsType) {
         </div>
         <Link
           href="/"
-          className="max:md-mr-2 rounded-full px-3 py-3 font-semibold tracking-wider hover:bg-stone-300/25 md:px-4"
+          className="rounded-full px-3 py-3 font-semibold tracking-wider hover:bg-stone-300/25 max-sm:hidden md:px-4"
         >
           Home
         </Link>
-        <IoIosArrowForward className="text-stone-500" />
+        <IoIosArrowForward className="text-stone-500 max-sm:hidden" />
 
         {product ? (
           <>
             <Link
               href={`/category/${product.category.toLocaleLowerCase()}`}
-              className="font-semibold tracking-wider text-stone-500"
+              className="font-semibold tracking-wider text-stone-500 max-sm:hidden"
             >
               {product.category}
             </Link>
@@ -47,7 +47,9 @@ function Navigation({ productName, categoryName }: PropsType) {
             <div className="tracking-wider text-stone-500">{product.name}</div>
           </>
         ) : (
-          <div className="tracking-wider text-stone-500">{categoryName}</div>
+          <div className="tracking-wider text-stone-500 max-sm:hidden">
+            {categoryName}
+          </div>
         )}
       </div>
     </Container>

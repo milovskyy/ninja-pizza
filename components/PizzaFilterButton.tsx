@@ -9,7 +9,7 @@ type PropsType = {
 function PizzaFilterButton({ handleFilter, selectedFilter, name }: PropsType) {
   return (
     <div
-      className="flex cursor-pointer gap-2 p-2"
+      className="flex cursor-pointer items-center gap-2 p-2 max-xs:p-1"
       onClick={() => handleFilter(name)}
     >
       <div
@@ -25,7 +25,7 @@ function PizzaFilterButton({ handleFilter, selectedFilter, name }: PropsType) {
         width={24}
         height={24}
       />
-      <p className="font-semibold">
+      <p className="font-semibold max-xs:text-sm">
         {name.charAt(0).toUpperCase() + name.slice(1)}
       </p>
     </div>

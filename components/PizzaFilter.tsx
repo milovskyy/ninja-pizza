@@ -29,7 +29,7 @@ function PizzaFilter({ filter = "" }: Props) {
   }
 
   return (
-    <div className="mb-3 mt-5 flex w-full gap-9 self-start rounded-2xl bg-white px-5 py-3">
+    <div className="mb-3 mt-5 w-full gap-3 self-start rounded-2xl bg-white px-3 py-3 max-sm:grid max-sm:grid-cols-2 sm:flex sm:px-5 md:gap-9">
       {PIZZA_FILTERS.map((filter) => (
         <PizzaFilterButton
           key={filter}
