@@ -12,15 +12,15 @@ import toast from "react-hot-toast"
 import { useCartActions } from "@/hooks/useCartActions"
 import { useFavorites } from "@/app/_store/favorites"
 import { cn } from "@/utils/utils"
-import { updateUserFavorites } from "@/utils/actions"
-import { useUser } from "@/app/_store/user"
+
 import { useFavoritesActions } from "@/hooks/useFavoritesActions"
 
 type PropsType = {
   product: ProductType
+  carousel?: boolean
 }
 
-function MenuCard({ product }: PropsType) {
+function MenuCard({ product, carousel = false }: PropsType) {
   const {
     id,
     name,
@@ -72,11 +72,19 @@ function MenuCard({ product }: PropsType) {
     formattedIngredients = formatIngredients(ingredients.slice(0, 4))
 
   return (
-    <div className="flex w-full rounded-3xl bg-white px-3 py-2 pb-5 md:p-6">
-      <div className="relative flex w-full gap-2 max-sm:gap-3 sm:flex-col">
+    <div
+      className={cn(
+        "flex w-full rounded-3xl bg-white px-3 py-2 pb-3 md:p-6",
+        carousel && "md:p-2 lg:px-2 lg:py-4",
+      )}
+    >
+      <div className="relative flex w-full gap-2 max-sm:items-center max-sm:gap-3 sm:flex-col">
         <Link
           href={`/product/${linkName}`}
-          className="b relative flex aspect-square w-32 self-center rounded-2xl max-xs:w-24 sm:w-full sm:p-7 md:p-10 lg:p-8 xl:p-3"
+          className={cn(
+            "relative flex aspect-square w-32 self-center rounded-2xl pt-1 max-xs:w-24 sm:w-full sm:p-7 md:p-10 lg:p-8 xl:p-4",
+            carousel && "sm:p-9 md:p-5 lg:p-5",
+          )}
         >
           <div className="relative flex w-full items-center justify-center">
             <Image src={image} alt="img" fill className="object-cover" />
@@ -143,14 +151,19 @@ function MenuCard({ product }: PropsType) {
           </Link>
 
           <div className="flex flex-1 items-center">
-            <h3 className="mt-3 flex-1 items-center text-xs font-semibold text-stone-400 sm:text-center md:text-sm">
+            <h3 className="mt-3 flex-1 items-center text-xs font-semibold text-stone-400 sm:text-center sm:text-sm">
               <span className="font-semibold text-main">{size}</span>
 
               {ingredients?.length > 0 && ` - " ${formattedIngredients}`}
             </h3>
           </div>
 
-          <div className="mt-3 flex h-10 items-center justify-between sm:px-2 md:mt-5">
+          <div
+            className={cn(
+              "mt-3 flex h-10 items-center justify-between sm:px-2 md:mt-5",
+              carousel && "",
+            )}
+          >
             <div className="flex gap-2">
               <div className="text-base font-bold md:text-xl">{price}</div>
               <div className="text-xs font-semibold text-stone-400 md:text-sm">

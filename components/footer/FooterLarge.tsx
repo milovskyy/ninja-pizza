@@ -7,7 +7,7 @@ import WorkingHours from "./WorkingHours"
 export const FooterLarge = () => {
   return (
     <div className="b hidden flex-col items-center px-1 py-12 md:flex">
-      <div className="flex w-full justify-between gap-2 pb-12">
+      <div className="flex w-full justify-between gap-1 pb-12 lg:gap-2">
         <FooterAbout />
         <WebsiteMap />
         <PlaceOrder />

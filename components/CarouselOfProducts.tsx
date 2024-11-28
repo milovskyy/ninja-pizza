@@ -1,8 +1,6 @@
 "use client"
-
-import { cn } from "@/utils/utils"
 import { Button } from "./ui/button"
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
+import { IoIosArrowBack, IoIosArrowForward, IoMdGlobe } from "react-icons/io"
 import {
   Carousel,
   CarouselApi,
@@ -13,6 +11,7 @@ import { useEffect, useState } from "react"
 import MenuCard from "./MenuCard"
 import Link from "next/link"
 import { useProducts } from "@/app/_store/products"
+import MenuCategory from "./MenuCategory"
 
 type Props = {
   productName: string
@@ -49,12 +48,12 @@ export const CarouselOfProducts = ({ productName }: Props) => {
   if (!productCategory || !carouselProducts) return null
 
   return (
-    <div className={cn("mb-20 mt-14 flex flex-col gap-8 px-5")}>
-      <div className="flex items-center justify-between">
-        <h2 className="text-[32px] font-bold">
+    <div className="mb-10 mt-6 flex flex-col gap-8 px-1 md:mb-20 md:mt-14 lg:px-5">
+      <div className="flex items-center justify-center sm:justify-between">
+        <h2 className="text-2xl font-bold max-sm:self-center max-sm:text-center md:text-3xl">
           {productCategory !== "Drinks" ? "Add some drinks" : "Add a pizza"}
         </h2>
-        <div className="flex gap-2">
+        <div className="flex gap-2 max-sm:hidden">
           <Link
             href={`/category/${productCategory === "Drinks" ? "pizza" : "drinks"}`}
             prefetch={true}
@@ -64,34 +63,47 @@ export const CarouselOfProducts = ({ productName }: Props) => {
           <div className="flex gap-2">
             <Button
               onClick={() => api?.scrollTo(current - 1)}
-              className="h-12 w-12 bg-white p-0"
+              className="bg-white xl:h-12 xl:w-12 xl:p-0"
             >
               <IoIosArrowBack className="text-stone-900" />
             </Button>
             <Button
               onClick={() => api?.scrollTo(current + 1)}
-              className="h-12 w-12 bg-white p-0"
+              className="bg-white xl:h-12 xl:w-12 xl:p-0"
             >
               <IoIosArrowForward className="text-stone-900" />
             </Button>
           </div>
         </div>
       </div>
+
       <Carousel
-        className="w-full"
+        className="geid-cols-2 grid max-w-full items-center justify-center max-sm:hidden"
         setApi={setApi}
         opts={{
           align: "start",
         }}
       >
-        <CarouselContent className="-ml-2 w-full">
+        <CarouselContent className="-ml-2 flex justify-between">
           {carouselProducts.map((product) => (
-            <CarouselItem key={product.id} className="flex basis-1/4 pl-2">
-              <MenuCard product={product} />
+            <CarouselItem
+              key={product.id}
+              className="flex pl-2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/4"
+            >
+              <MenuCard product={product} key={product.id} carousel />
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
+
+      <div className="sm:hidden">
+        <MenuCategory
+          products={carouselProducts}
+          name={productCategory === "Drinks" ? "Pizza" : "Drinks"}
+          limit={4}
+          title={false}
+        />
+      </div>
     </div>
   )
 }

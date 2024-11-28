@@ -3,9 +3,9 @@ import MobileAppIcons from "./MobileAppIcons"
 
 function MobileAppBanner() {
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-1 rounded-[32px] bg-primary px-8 md:px-20 lg:grid lg:h-[340px] lg:min-h-[340px] lg:grid-cols-[3fr_4fr] lg:gap-10 xl:h-[420px] xl:min-h-[420px]">
+    <div className="flex w-full flex-col items-center justify-center gap-1 rounded-[32px] bg-primary px-8 max-xs:px-4 md:px-20 lg:grid lg:h-[340px] lg:min-h-[340px] lg:grid-cols-[3fr_4fr] lg:gap-10 xl:h-[420px] xl:min-h-[420px]">
       <div className="flex flex-col items-center justify-center gap-4 max-lg:pt-8 sm:gap-6 lg:items-start lg:gap-10 xl:py-16">
-        <p className="xs:text-2xl text-center text-xl font-black sm:text-3xl md:text-4xl md:leading-[50px] lg:text-start xl:text-5xl xl:leading-[60px]">
+        <p className="text-center text-xl font-black xs:text-2xl sm:text-3xl md:text-4xl md:leading-[50px] lg:text-start xl:text-5xl xl:leading-[60px]">
           Download the mobile app and save time ordering
         </p>
         <MobileAppIcons className="h-[32px] w-[115px] sm:h-[40px] sm:w-[145px]" />

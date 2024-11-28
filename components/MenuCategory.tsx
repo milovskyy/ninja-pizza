@@ -9,9 +9,16 @@ type PropsType = {
   name?: string
   limit?: number
   filter?: string
+  title?: boolean
 }
 
-function MenuCategory({ products, name, limit, filter }: PropsType) {
+function MenuCategory({
+  products,
+  name,
+  limit,
+  filter,
+  title = true,
+}: PropsType) {
   let productsToShow = products
 
   if (limit) productsToShow = products.slice(0, limit)
@@ -34,14 +41,16 @@ function MenuCategory({ products, name, limit, filter }: PropsType) {
 
   return (
     <div className="flex flex-col items-center pb-2 md:px-3">
-      <h1
-        className={cn(
-          "mb-6 text-2xl font-extrabold sm:text-3xl md:text-5xl",
-          limit ? "self-center" : "self-start",
-        )}
-      >
-        {name}
-      </h1>
+      {title && (
+        <h1
+          className={cn(
+            "mb-6 text-2xl font-extrabold sm:text-3xl md:text-5xl",
+            limit ? "self-center" : "self-start",
+          )}
+        >
+          {name}
+        </h1>
+      )}
       {!limit && name === "Pizza" && <PizzaFilter filter={filter} />}
 
       <div

@@ -18,13 +18,13 @@ function Logo() {
       </Link>
       <Link
         href="/"
-        className="flex min-w-[68px] items-center justify-center md:hidden"
+        className="flex min-w-[68px] items-center justify-center px-1 md:hidden"
       >
         <Image
           src="https://gdgccriibsrmjzltjugb.supabase.co/storage/v1/object/public/images/logo-mobile.svg"
           quality={100}
-          width={68}
-          height={30}
+          width={73}
+          height={32}
           alt="The Ninja Pizza logo"
         />
       </Link>
