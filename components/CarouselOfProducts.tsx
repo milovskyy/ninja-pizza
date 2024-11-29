@@ -63,13 +63,13 @@ export const CarouselOfProducts = ({ productName }: Props) => {
           <div className="flex gap-2">
             <Button
               onClick={() => api?.scrollTo(current - 1)}
-              className="bg-white xl:h-12 xl:w-12 xl:p-0"
+              className="h-10 w-10 bg-white p-0 xl:h-12 xl:w-12"
             >
               <IoIosArrowBack className="text-stone-900" />
             </Button>
             <Button
               onClick={() => api?.scrollTo(current + 1)}
-              className="bg-white xl:h-12 xl:w-12 xl:p-0"
+              className="h-10 w-10 bg-white p-0 xl:h-12 xl:w-12"
             >
               <IoIosArrowForward className="text-stone-900" />
             </Button>
@@ -78,7 +78,7 @@ export const CarouselOfProducts = ({ productName }: Props) => {
       </div>
 
       <Carousel
-        className="geid-cols-2 grid max-w-full items-center justify-center max-sm:hidden"
+        className="grid max-w-full max-sm:hidden"
         setApi={setApi}
         opts={{
           align: "start",

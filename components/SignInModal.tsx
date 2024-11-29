@@ -108,7 +108,7 @@ export const SignInModal = ({ buttonText, className, open }: Props) => {
     }
   }
 
-  console.log(isDialogOpen)
+  // console.log(isDialogOpen)
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

@@ -11,8 +11,9 @@ export const ProductImage = ({ product }: Props) => {
   const { image, vegetarian, spicy } = product
 
   return (
-    <div className={cn("relative px-10 py-3")}>
-      <div className="relative aspect-square w-[400px]">
+    <div className={cn("relative h-full")}>
+      <div className="relative mt-5 aspect-square h-[90%]">
+        {/* <div className="relative aspect-square h-full bg-red-100"> */}
         <Image src={image} alt="img" fill className="object-cover" />
       </div>
       {(vegetarian || spicy) && (

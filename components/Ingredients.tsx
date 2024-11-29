@@ -58,19 +58,19 @@ export const Ingredients = ({ productIngredients }: Props) => {
           </Button>
         </div>
       </div>
-      <div className="overflow-hidden rounded-xl">
+      <div className="grid overflow-hidden rounded-xl">
         <Carousel
-          className="max-w-[720px w-[720px]"
+          className="grid w-full max-w-full"
           setApi={setApi}
           opts={{
             align: "start",
           }}
         >
-          <CarouselContent className="flex w-full justify-start">
+          <CarouselContent className="-ml-1 flex w-full justify-start gap-0">
             {productIngredients.map((productIngredients) => (
               <CarouselItem
                 key={productIngredients?.id}
-                className="basis-[18.2%]"
+                className="pl-1 md:basis-[28%] lg:basis-[21%] xl:basis-[18%]"
               >
                 <IngredientItem ingredient={productIngredients} />
               </CarouselItem>
