@@ -68,66 +68,72 @@ export const ProductDescription = ({ product }: Props) => {
           "relative flex w-full flex-col justify-center justify-self-center",
         )}
       >
-        {(isNew || hit) && (
-          <div
-            className={cn(
-              "mb-1 mr-auto rounded-lg px-2 text-sm font-bold",
-              isNew
-                ? "bg-[#ddf0ce] text-[#55b30b]"
-                : "bg-[#fad5d5] text-[#e72e2e]",
-            )}
-          >
-            {isNew ? "NEW" : "HIT"}
-          </div>
-        )}
         <div className={cn("flex flex-1 flex-col gap-4")}>
-          <h1 className="text-3xl font-extrabold lg:text-4xl xl:text-[40px]">
-            {name}
-          </h1>
+          <div className="flex flex-col gap-1 self-center">
+            {(isNew || hit) && (
+              <div
+                className={cn(
+                  "flex w-12 items-center justify-center rounded-md px-2 text-sm font-bold",
+                  isNew
+                    ? "bg-[#ddf0ce] text-[#55b30b]"
+                    : "bg-[#fad5d5] text-[#e72e2e]",
+                )}
+              >
+                {isNew ? "NEW" : "HIT"}
+              </div>
+            )}
+            <h1 className="text-3xl font-extrabold max-md:text-center lg:text-4xl xl:text-[40px]">
+              {name}
+            </h1>
+          </div>
           {!!productIngredients?.length && (
             <Ingredients productIngredients={productIngredients} />
           )}
-          <div className="mt-4 flex items-center gap-3">
+          <div className="mt-4 flex items-center gap-3 max-md:w-full max-md:justify-between max-md:self-center">
             <div className="mr-3 flex min-w-[120px] flex-col px-1">
-              <div className="text-xl font-black lg:text-2xl">{price} UAH</div>
-              <div className="text-sm font-semibold">{size}</div>
+              <div className="text-xl font-black max-xs:text-lg lg:text-2xl">
+                {price} UAH
+              </div>
+              <div className="text-sm font-semibold max-xs:text-xs">{size}</div>
             </div>
-            {itemsInCart ? (
-              <PlusMinusBlock
-                number={itemsInCart}
-                plusFunc={() => {
-                  toast.success("Product has been added to cart", {
-                    id: "clipboard",
-                  })
-                  increaseProductCartAction(cartProduct)
-                }}
-                minusFunc={() => decreaseProductCartAction(cartProduct)}
-              />
-            ) : (
-              <Button
-                className="text-[16px]"
-                onClick={() => {
-                  toast.success("Product has been added to cart", {
-                    id: "clipboard",
-                  })
-                  addProductToCartAction(cartProduct)
-                }}
-              >
-                Add to cart
-              </Button>
-            )}
-            <Button
-              className={cn(
-                "h-[52px] w-[52px] bg-white p-3 text-stone-500 hover:bg-white hover:text-sky-400 xl:h-12 xl:w-12 xl:p-0",
-                {
-                  "bg-sky-200 text-stone-800 hover:bg-sky-200 hover:text-white":
-                    isFavorite,
-                },
+            <div className="itecems-center flex justify-center gap-2">
+              {itemsInCart ? (
+                <PlusMinusBlock
+                  number={itemsInCart}
+                  plusFunc={() => {
+                    toast.success("Product has been added to cart", {
+                      id: "clipboard",
+                    })
+                    increaseProductCartAction(cartProduct)
+                  }}
+                  minusFunc={() => decreaseProductCartAction(cartProduct)}
+                />
+              ) : (
+                <Button
+                  className="text-base max-xs:text-sm"
+                  onClick={() => {
+                    toast.success("Product has been added to cart", {
+                      id: "clipboard",
+                    })
+                    addProductToCartAction(cartProduct)
+                  }}
+                >
+                  Add to cart
+                </Button>
               )}
-              onClick={() => favoriteAction(product)}
-            >
-              <GoHeart size="24px" className="relative top-[1px]" />
-            </Button>
+              <Button
+                className={cn(
+                  "h-10 w-10 bg-white p-0 text-stone-500 hover:bg-white hover:text-sky-400 xl:h-12 xl:w-12 xl:p-0",
+                  {
+                    "bg-sky-200 text-stone-800 hover:bg-sky-200 hover:text-white":
+                      isFavorite,
+                  },
+                )}
+                onClick={() => favoriteAction(product)}
+              >
+                <GoHeart size="24px" className="relative top-[1px]" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>

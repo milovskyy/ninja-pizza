@@ -70,7 +70,7 @@ export const Ingredients = ({ productIngredients }: Props) => {
             {productIngredients.map((productIngredients) => (
               <CarouselItem
                 key={productIngredients?.id}
-                className="pl-1 md:basis-[28%] lg:basis-[21%] xl:basis-[18%]"
+                className="basis-[37%] pl-1 xs:basis-[27%] sm:basis-[21%] md:basis-[28%] lg:basis-[21%] xl:basis-[18%]"
               >
                 <IngredientItem ingredient={productIngredients} />
               </CarouselItem>

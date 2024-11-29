@@ -17,7 +17,7 @@ export const PlusMinusBlock = ({
   number,
   bg = "bg-primary",
   hoverBg,
-  size = "h-[48px]",
+  size = "xl:h-[48px] h-10",
   plusFunc,
   minusFunc,
 }: Props) => {
@@ -39,7 +39,7 @@ export const PlusMinusBlock = ({
       >
         <AiOutlineMinus className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
       </div>
-      <div className="font-bold max-sm:text-sm">{number}</div>
+      <div className="min-w-5 text-center font-bold">{number}</div>
       <div
         className={cn(
           "relative aspect-square cursor-pointer rounded-full hover:bg-main",
