@@ -44,8 +44,8 @@ function MenuCategory({
       {title && (
         <h1
           className={cn(
-            "mb-6 text-2xl font-extrabold sm:text-3xl md:text-5xl",
-            limit ? "self-center" : "self-start",
+            "text-2xl font-extrabold max-sm:mb-4 sm:text-3xl md:text-4xl lg:mb-6 xl:text-5xl",
+            limit ? "self-center" : "self-center sm:self-start",
           )}
         >
           {name}
@@ -55,7 +55,7 @@ function MenuCategory({
 
       <div
         className={cn(
-          "mb-4 grid w-full gap-[6px] sm:mb-12 sm:grid-cols-2 sm:max-xl:gap-4 lg:grid-cols-3 xl:grid-cols-4",
+          "mb-4 grid w-full gap-2 sm:mb-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
         )}
       >
         {productsToShow.map((product) => (
@@ -65,7 +65,7 @@ function MenuCategory({
       {limit && name && (
         <Link
           href={`/category/${name.toLowerCase()}`}
-          className="mb-3 rounded-full bg-stone-700 px-6 py-4 text-base font-bold text-stone-50 max-md:py-2"
+          className="rounded-full bg-stone-700 px-6 py-4 text-base font-bold text-stone-50 max-md:py-2 sm:mb-3"
           prefetch={true}
         >
           See all

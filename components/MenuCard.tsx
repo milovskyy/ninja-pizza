@@ -74,24 +74,22 @@ function MenuCard({ product, carousel = false }: PropsType) {
   return (
     <div
       className={cn(
-        "flex w-full rounded-3xl bg-white px-3 py-2 pb-3 md:p-6",
-        carousel && "md:p-2 lg:px-2 lg:py-4",
+        "flex w-full rounded-3xl bg-white px-3 py-2 max-xs:px-2 xs:p-4 md:p-5",
       )}
     >
-      <div className="relative flex w-full gap-2 max-sm:items-center max-sm:gap-3 sm:flex-col">
+      <div className="relative flex w-full gap-3 max-sm:items-center sm:flex-col">
         <Link
           href={`/product/${linkName}`}
           className={cn(
-            "relative flex aspect-square w-32 self-center rounded-2xl pt-1 max-xs:w-24 sm:w-full sm:p-7 md:p-10 lg:p-8 xl:p-4",
-            carousel && "sm:p-9 md:p-5 lg:p-5",
+            "relative max-xs:h-28 max-xs:w-28 xs:max-sm:h-32 xs:max-sm:w-32 sm:px-12 sm:py-1 md:px-14 lg:px-10 xl:px-6",
           )}
         >
-          <div className="relative flex w-full items-center justify-center">
+          <div className="relative aspect-square w-full">
             <Image src={image} alt="img" fill className="object-cover" />
           </div>
           <div
             className={cn(
-              "absolute right-0 top-0 z-10 cursor-pointer rounded-full bg-stone-100 p-[6px] text-stone-500 hover:text-sky-400 sm:right-2 sm:p-2 sm:max-xl:top-3",
+              "absolute right-0 top-0 z-10 cursor-pointer rounded-full bg-stone-100 p-[5px] text-stone-500 hover:text-sky-400 sm:right-2 sm:p-2 sm:max-xl:top-3",
               {
                 "bg-sky-200 text-stone-800 hover:text-white": isFavorite,
               },
@@ -143,8 +141,8 @@ function MenuCard({ product, carousel = false }: PropsType) {
           )}
         </Link>
 
-        <div className="flex flex-1 flex-col">
-          <Link className="max-sm:mt-5" href={`/product/${linkName}`}>
+        <div className="flex h-full w-full flex-1 flex-col">
+          <Link className="max-sm:mt-3" href={`/product/${linkName}`}>
             <h1 className="text-base font-bold sm:text-center md:text-xl">
               {name}
             </h1>
@@ -183,7 +181,6 @@ function MenuCard({ product, carousel = false }: PropsType) {
                 minusFunc={() => decreaseProductCartAction(cartProduct)}
                 bg="bg-stone-100"
                 hoverBg="hover:bg-primary"
-                size="h-[40px]"
               />
             ) : (
               <Button

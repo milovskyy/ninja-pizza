@@ -62,15 +62,14 @@ export const ProductDescription = ({ product }: Props) => {
   // ...... ДОБАВИТЬ СЮДА СКЕЛЕТОН (ШАДСН) ПРИ ЗАГРУЗКЕ. А ТО ЕСТЬ ПУСТОЕ МЕСТО
 
   return (
-    <div className="flex w-full items-center">
+    <div className="mt-3 flex w-full items-center">
       <div
         className={cn(
           "relative flex w-full flex-col justify-center justify-self-center",
         )}
       >
         <div className={cn("flex flex-1 flex-col gap-4")}>
-          <div className="flex flex-col gap-1 self-center">
-            {(isNew || hit) && (
+          {/* {(isNew || hit) && (
               <div
                 className={cn(
                   "flex w-12 items-center justify-center rounded-md px-2 text-sm font-bold",
@@ -81,11 +80,11 @@ export const ProductDescription = ({ product }: Props) => {
               >
                 {isNew ? "NEW" : "HIT"}
               </div>
-            )}
-            <h1 className="text-3xl font-extrabold max-md:text-center lg:text-4xl xl:text-[40px]">
-              {name}
-            </h1>
-          </div>
+            )} */}
+          <h1 className="text-3xl font-extrabold max-md:text-center lg:text-4xl xl:text-[40px]">
+            {name}
+          </h1>
+
           {!!productIngredients?.length && (
             <Ingredients productIngredients={productIngredients} />
           )}
@@ -96,7 +95,7 @@ export const ProductDescription = ({ product }: Props) => {
               </div>
               <div className="text-sm font-semibold max-xs:text-xs">{size}</div>
             </div>
-            <div className="itecems-center flex justify-center gap-2">
+            <div className="itecems-center flex justify-center gap-4">
               {itemsInCart ? (
                 <PlusMinusBlock
                   number={itemsInCart}
@@ -123,7 +122,7 @@ export const ProductDescription = ({ product }: Props) => {
               )}
               <Button
                 className={cn(
-                  "h-10 w-10 bg-white p-0 text-stone-500 hover:bg-white hover:text-sky-400 xl:h-12 xl:w-12 xl:p-0",
+                  "h-10 w-10 bg-white p-0 text-stone-500 hover:bg-white hover:text-sky-400 md:h-12 md:w-12 md:p-0",
                   {
                     "bg-sky-200 text-stone-800 hover:bg-sky-200 hover:text-white":
                       isFavorite,

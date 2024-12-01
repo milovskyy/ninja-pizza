@@ -17,14 +17,14 @@ export const PlusMinusBlock = ({
   number,
   bg = "bg-primary",
   hoverBg,
-  size = "xl:h-[48px] h-10",
+  size = "md:h-12 h-10",
   plusFunc,
   minusFunc,
 }: Props) => {
   return (
     <div
       className={cn(
-        "flex items-center justify-center gap-2 md:gap-3",
+        "flex items-center justify-center gap-1 md:gap-3",
         className,
       )}
     >

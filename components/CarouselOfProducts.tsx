@@ -48,7 +48,7 @@ export const CarouselOfProducts = ({ productName }: Props) => {
   if (!productCategory || !carouselProducts) return null
 
   return (
-    <div className="mb-10 mt-6 flex flex-col gap-8 px-1 md:mb-20 md:mt-14 lg:px-5">
+    <div className="mb-6 mt-6 flex flex-col gap-8 px-1 md:mb-20 md:mt-14 lg:px-5">
       <div className="flex items-center justify-center sm:justify-between">
         <h2 className="text-2xl font-bold max-sm:self-center max-sm:text-center md:text-3xl">
           {productCategory !== "Drinks" ? "Add some drinks" : "Add a pizza"}
@@ -63,13 +63,13 @@ export const CarouselOfProducts = ({ productName }: Props) => {
           <div className="flex gap-2">
             <Button
               onClick={() => api?.scrollTo(current - 1)}
-              className="h-10 w-10 bg-white p-0 xl:h-12 xl:w-12"
+              className="h-10 w-10 bg-white p-0 md:h-12 md:w-12 md:p-0"
             >
               <IoIosArrowBack className="text-stone-900" />
             </Button>
             <Button
               onClick={() => api?.scrollTo(current + 1)}
-              className="h-10 w-10 bg-white p-0 xl:h-12 xl:w-12"
+              className="h-10 w-10 bg-white p-0 md:h-12 md:w-12 md:p-0"
             >
               <IoIosArrowForward className="text-stone-900" />
             </Button>
@@ -84,11 +84,11 @@ export const CarouselOfProducts = ({ productName }: Props) => {
           align: "start",
         }}
       >
-        <CarouselContent className="-ml-2 flex justify-between">
+        <CarouselContent className="-ml-4 flex justify-between">
           {carouselProducts.map((product) => (
             <CarouselItem
               key={product.id}
-              className="flex pl-2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/4"
+              className="flex pl-5 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
             >
               <MenuCard product={product} key={product.id} carousel />
             </CarouselItem>

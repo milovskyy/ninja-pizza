@@ -35,7 +35,7 @@ export const ProductDetails = ({ productName }: Props) => {
     <div className="relative">
       {product && (
         <>
-          {/* <SideProducts prevProduct={prevProduct} nextProduct={nextProduct} /> */}
+          <SideProducts prevProduct={prevProduct} nextProduct={nextProduct} />
 
           <Container className="flex grid-cols-[3fr_4fr] flex-col px-4 md:grid md:gap-2 lg:gap-6 xl:gap-10 xl:px-8">
             <ProductImage product={product} />

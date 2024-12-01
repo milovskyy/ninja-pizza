@@ -24,9 +24,9 @@ export const FooterSmall = () => {
         </div>
       </div>
 
-      {/* <div className="mb-10 grid grid-cols-2 gap-x-4 max-xs:gap-x-2 xs:gap-x-16"> */}
-      <div className="mb-10 flex justify-around gap-2">
-        <div className="flex flex-col justify-between gap-10">
+      <div className="mb-10 flex justify-between gap-10 pl-3">
+        {/* <div className="mb-10 flex justify-between gap-10 pl-3"> */}
+        <div className="flex flex-col justify-between gap-5">
           <WebsiteMap />
           <div className="flex flex-col gap-3 px-2">
             <p className="text-sm font-semibold text-stone-400">
@@ -39,7 +39,7 @@ export const FooterSmall = () => {
         </div>
         <div className="flex flex-col gap-10">
           <PlaceOrder />
-          <div className="flex flex-col gap-3 px-2">
+          <div className="flex flex-col gap-3 md:px-2">
             <p className="text-sm font-semibold text-stone-400">
               Find us on social media:
             </p>
