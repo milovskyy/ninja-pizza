@@ -15,7 +15,7 @@ export const SideProducts = ({ prevProduct, nextProduct }: Props) => {
   return (
     <div
       className={cn(
-        "absolute top-1/2 z-50 hidden w-full -translate-y-1/2 items-center justify-between 2xl:flex",
+        "absolute top-1/2 z-10 hidden w-full -translate-y-1/2 items-center justify-between bg-red-100 2xl:flex",
       )}
     >
       {!prevProduct && <div></div>}

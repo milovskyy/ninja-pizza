@@ -69,18 +69,6 @@ export const ProductDescription = ({ product }: Props) => {
         )}
       >
         <div className={cn("flex flex-1 flex-col gap-4")}>
-          {/* {(isNew || hit) && (
-              <div
-                className={cn(
-                  "flex w-12 items-center justify-center rounded-md px-2 text-sm font-bold",
-                  isNew
-                    ? "bg-[#ddf0ce] text-[#55b30b]"
-                    : "bg-[#fad5d5] text-[#e72e2e]",
-                )}
-              >
-                {isNew ? "NEW" : "HIT"}
-              </div>
-            )} */}
           <h1 className="text-3xl font-extrabold max-md:text-center lg:text-4xl xl:text-[40px]">
             {name}
           </h1>

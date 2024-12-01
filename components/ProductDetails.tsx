@@ -8,6 +8,7 @@ import { useProducts } from "@/app/_store/products"
 import { categoryProductsByLinkname } from "@/utils/helperFunction"
 import { notFound } from "next/navigation"
 import { RotateLoader } from "react-spinners"
+import { SideProduct } from "./SideProduct"
 
 type Props = {
   productName: string
@@ -35,7 +36,9 @@ export const ProductDetails = ({ productName }: Props) => {
     <div className="relative">
       {product && (
         <>
-          <SideProducts prevProduct={prevProduct} nextProduct={nextProduct} />
+          {/* <SideProducts prevProduct={prevProduct} nextProduct={nextProduct} /> */}
+          {prevProduct && <SideProduct type="prev" product={prevProduct} />}
+          {nextProduct && <SideProduct type="next" product={nextProduct} />}
 
           <Container className="flex grid-cols-[3fr_4fr] flex-col px-4 md:grid md:gap-2 lg:gap-6 xl:gap-10 xl:px-8">
             <ProductImage product={product} />
