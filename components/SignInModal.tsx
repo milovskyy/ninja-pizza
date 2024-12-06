@@ -1,13 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { createUser, loginAction, signupAction } from "@/utils/actions"
 import Image from "next/image"
@@ -24,28 +23,16 @@ import {
 import { Button } from "./ui/button"
 import { format } from "date-fns"
 import { useRouter } from "next/navigation"
-import { cn } from "@/utils/utils"
-
-type Props = {
-  buttonText: string
-  className?: string
-  open?: boolean
-}
+import useModalStore from "@/app/_store/login-modal"
 
 export type AuthType = {
   phone: string
   password: string
 }
 
-export const SignInModal = ({ buttonText, className, open }: Props) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
+export const SignInModal = () => {
   const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    if (open) {
-      setIsDialogOpen(true)
-    }
-  }, [open])
+  const { showModal, setShowModal } = useModalStore()
 
   const {
     register,
@@ -78,7 +65,7 @@ export const SignInModal = ({ buttonText, className, open }: Props) => {
         }
         await createUser(newUser)
         toast.success("User successfully created")
-        setIsDialogOpen(false)
+        setShowModal(false)
         reset()
         router.refresh()
       }
@@ -91,7 +78,7 @@ export const SignInModal = ({ buttonText, className, open }: Props) => {
 
           if (result.success) {
             toast.success("User successfully logged in")
-            setIsDialogOpen(false)
+            setShowModal(false)
             reset()
             router.refresh()
           } else {
@@ -108,18 +95,8 @@ export const SignInModal = ({ buttonText, className, open }: Props) => {
     }
   }
 
-  // console.log(isDialogOpen)
-
   return (
-    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger
-        className={cn(
-          "w-full rounded-full bg-primary p-2 text-[16px] font-black hover:bg-main lg:p-3",
-          className,
-        )}
-      >
-        {buttonText}
-      </DialogTrigger>
+    <Dialog open={showModal} onOpenChange={setShowModal}>
       <DialogContent className="flex w-full flex-col items-center justify-center rounded-none outline-none max-md:rounded-3xl sm:px-16 sm:py-10">
         <DialogHeader className="mb-2 gap-3">
           <DialogTitle className="text-center text-2xl font-bold md:text-4xl">

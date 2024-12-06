@@ -8,7 +8,6 @@ import { CartCategories } from "../CartCategories"
 import { Button } from "../ui/button"
 import { useRouter } from "next/navigation"
 import { useUser } from "@/app/_store/user"
-import { SignInModal } from "../SignInModal"
 
 export const BurgerMenu = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)

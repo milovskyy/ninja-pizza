@@ -1,6 +1,5 @@
 "use client"
 
-import { SideProducts } from "./SideProducts"
 import { ProductImage } from "./ProductImage"
 import { ProductDescription } from "./ProductDescription"
 import { Container } from "./Container"
@@ -36,7 +35,6 @@ export const ProductDetails = ({ productName }: Props) => {
     <div className="relative">
       {product && (
         <>
-          {/* <SideProducts prevProduct={prevProduct} nextProduct={nextProduct} /> */}
           {prevProduct && <SideProduct type="prev" product={prevProduct} />}
           {nextProduct && <SideProduct type="next" product={nextProduct} />}
 

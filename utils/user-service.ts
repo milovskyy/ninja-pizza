@@ -6,7 +6,6 @@ import {
 } from "@/app/_types/Types"
 import { createServerClient } from "./supabase/server"
 import { revalidatePath } from "next/cache"
-import { AddressType } from "@/components/account/UpdateAddressModal"
 
 export async function createUserApi(user: UserType) {
   const supabase = createServerClient()

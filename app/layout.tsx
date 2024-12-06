@@ -11,6 +11,7 @@ import {
 import { AppInitializer } from "@/components/AppInitializer"
 import { Toaster } from "react-hot-toast"
 import { getUser } from "@/utils/user-service"
+import { SignInModal } from "@/components/SignInModal"
 
 const manrope = Manrope({ subsets: ["latin"] })
 
@@ -23,11 +24,11 @@ export const revalidate = 100000
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   const [products, categories, ingredients, orders, user] = await Promise.all([
-    await getProducts(),
+    getProducts(),
     getCategories(),
     getIngredients(),
     getOrders(),
@@ -52,6 +53,7 @@ export default async function RootLayout({
             },
           }}
         />
+        <SignInModal />
         <AppInitializer
           products={products}
           categories={categories}

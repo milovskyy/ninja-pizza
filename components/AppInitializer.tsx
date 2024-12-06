@@ -18,6 +18,7 @@ import { useLocalStorage } from "react-use"
 import { createUserClient } from "@/utils/supabase/client"
 import { useUser } from "@/app/_store/user"
 import { useFavorites } from "@/app/_store/favorites"
+import useModalStore from "@/app/_store/login-modal"
 
 type Props = {
   products: ProductType[]
@@ -42,6 +43,24 @@ export const AppInitializer = ({
   const { setUser } = useUser()
   const { setFavorites } = useFavorites()
   const [value, setValue] = useLocalStorage<CartProductType[]>("cart", [])
+
+  const { setShowModal } = useModalStore()
+
+  useEffect(() => {
+    const cookies = document.cookie.split("; ").reduce(
+      (acc, cookie) => {
+        const [key, value] = cookie.split("=")
+        acc[key] = value
+        return acc
+      },
+      {} as Record<string, string>,
+    )
+
+    if (cookies["login-modal"] === "true") {
+      setShowModal(true)
+      document.cookie = "login-modal=false; path=/"
+    }
+  }, [setShowModal])
 
   const supabase = createUserClient()
   const { addOrder, deleteOrder, updateOrder } = useOrders()
@@ -68,11 +87,6 @@ export const AppInitializer = ({
     )
     .subscribe()
 
-  if (user?.cart && JSON.stringify(value) !== JSON.stringify(user?.cart))
-    setValue(user?.cart)
-
-  if (value && value?.length > 0 && user?.cart?.length === 0) setCart(value)
-
   useEffect(() => {
     setProducts(products)
     setIngredients(ingredients)
@@ -80,7 +94,13 @@ export const AppInitializer = ({
     setOrders(orders)
     setUser(user)
     setFavorites(user?.favorites || [])
-    if (user?.cart && user?.cart?.length > 0) setCart(user?.cart || value || [])
+    setCart(
+      user?.cart && user?.cart?.length > 0
+        ? user.cart
+        : value && value.length > 0
+          ? value
+          : [],
+    )
   }, [
     setProducts,
     products,
@@ -89,12 +109,12 @@ export const AppInitializer = ({
     setCategories,
     categories,
     setCart,
-    value,
     setOrders,
     orders,
     setUser,
     user,
     setFavorites,
+    value,
   ])
   return null
 }
