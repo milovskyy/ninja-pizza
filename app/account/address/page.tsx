@@ -14,9 +14,11 @@ async function Address() {
   }
 
   return (
-    <div className="">
-      <div className="mb-7 flex items-center justify-between">
-        <h1 className="text-5xl font-black">Delivery address</h1>
+    <>
+      <div className="mb-4 flex w-full items-center justify-between max-md:mt-5 max-md:px-2 md:mb-7">
+        <h1 className="font-black max-md:text-center sm:text-2xl md:text-4xl lg:text-5xl">
+          Delivery address
+        </h1>
         <UpdateAddressModal user={user} />
       </div>
       {userAddresses?.length > 0 ? (
@@ -28,7 +30,7 @@ async function Address() {
           page="address"
         />
       )}
-    </div>
+    </>
   )
 }
 

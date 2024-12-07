@@ -9,7 +9,7 @@ type Props = {
 
 export const UserDeliveryAddressList = ({ userAddresses, user }: Props) => {
   return (
-    <div className={cn("flex w-full flex-col gap-2")}>
+    <div className={cn("flex w-full flex-1 flex-col gap-2")}>
       {userAddresses.map((userAddress) => (
         <UserDeliveryAddressItem
           key={userAddress.id}

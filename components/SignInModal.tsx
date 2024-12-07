@@ -97,7 +97,7 @@ export const SignInModal = () => {
 
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
-      <DialogContent className="flex w-full flex-col items-center justify-center rounded-none outline-none max-md:rounded-3xl sm:px-16 sm:py-10">
+      <DialogContent className="flex w-full flex-col items-center justify-center self-center rounded-none outline-none max-md:rounded-3xl max-sm:max-w-[95%] xs:px-16 sm:py-10">
         <DialogHeader className="mb-2 gap-3">
           <DialogTitle className="text-center text-2xl font-bold md:text-4xl">
             Sign in

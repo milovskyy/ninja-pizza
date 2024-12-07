@@ -8,11 +8,13 @@ import { CartCategories } from "../CartCategories"
 import { Button } from "../ui/button"
 import { useRouter } from "next/navigation"
 import { useUser } from "@/app/_store/user"
+import useModalStore from "@/app/_store/login-modal"
 
 export const BurgerMenu = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const { user } = useUser()
+  const { setShowModal } = useModalStore()
 
   const router = useRouter()
 
@@ -35,6 +37,7 @@ export const BurgerMenu = () => {
             size={"burger"}
             onClick={() => {
               router.push("/account/favorites")
+              if (!user) setShowModal(true)
               setIsDialogOpen(false)
             }}
           >
@@ -45,7 +48,8 @@ export const BurgerMenu = () => {
             variant={"burger"}
             size={"burger"}
             onClick={() => {
-              router.push("/account")
+              router.push("/account/orders")
+              if (!user) setShowModal(true)
               setIsDialogOpen(false)
             }}
           >
@@ -57,6 +61,7 @@ export const BurgerMenu = () => {
             size={"burger"}
             onClick={() => {
               router.push("/")
+
               setIsDialogOpen(false)
             }}
           >

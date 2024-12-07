@@ -10,10 +10,10 @@ async function Orders() {
     return null
   }
   return (
-    <div className="">
-      <div className="mb-7 flex items-center justify-between">
-        <h1 className="text-5xl font-black">Orders</h1>
-      </div>
+    <>
+      <h1 className="mb-5 text-xl font-black max-md:mt-5 max-md:text-center sm:text-2xl md:text-4xl lg:text-5xl">
+        Orders
+      </h1>
       {orders?.length > 0 ? (
         <UserOrdersList orders={orders} />
       ) : (
@@ -23,7 +23,7 @@ async function Orders() {
           page="orders"
         />
       )}
-    </div>
+    </>
   )
 }
 

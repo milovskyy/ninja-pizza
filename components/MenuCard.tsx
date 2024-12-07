@@ -81,7 +81,7 @@ function MenuCard({ product, carousel = false }: PropsType) {
         <Link
           href={`/product/${linkName}`}
           className={cn(
-            "relative max-xs:h-28 max-xs:w-28 xs:max-sm:h-32 xs:max-sm:w-32 sm:px-12 sm:py-1 md:px-14 lg:px-10 xl:px-6",
+            "relative max-xs:h-28 max-xs:w-28 xs:max-sm:h-32 xs:max-sm:w-32 sm:px-10 sm:py-1 md:px-12 lg:px-10 xl:px-6",
           )}
         >
           <div className="relative aspect-square w-full">

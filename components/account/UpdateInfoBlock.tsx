@@ -9,9 +9,9 @@ export const UpdateInfo = () => {
   if (!user?.id) return null
 
   return (
-    <div className="mt-2 flex flex-col gap-2 border-t border-t-stone-200 px-2 pt-3">
+    <div className="flex flex-col gap-2 px-1 md:mt-2 md:border-t md:border-t-stone-200 md:pt-3 lg:px-2">
       <div className="flex items-center gap-1">
-        <p className="font-bold">+{user?.number}</p>
+        <p className="font-bold max-lg:text-sm">+{user?.number}</p>
         <UpdateInfoModal />
       </div>
 

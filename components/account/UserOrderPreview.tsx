@@ -13,7 +13,6 @@ type Props = {
 }
 
 export const UserOrderPreview = ({ order }: Props) => {
-  // const { addProductToCartAction } = useCartActions()
   const { addProductsToCartAction } = useCartActions()
 
   const parsedItems = JSON.parse(order.items)
@@ -36,13 +35,13 @@ export const UserOrderPreview = ({ order }: Props) => {
 
   return (
     <div className="flex flex-1 flex-col gap-5 px-5 py-4">
-      <div className="font flex flex-1 items-center gap-4">
+      <div className="font flex flex-1 items-center gap-4 max-sm:justify-between">
         <div className="h-14 w-[120px] px-4 py-1">
           <div className="text-start text-2xl font-bold"># {order.id}</div>
           <div className="text-start text-sm text-stone-400">{order.date}</div>
         </div>
         <Carousel
-          className="w-full flex-1"
+          className="w-full flex-1 max-sm:hidden"
           opts={{
             align: "start",
           }}

@@ -10,8 +10,10 @@ function Favorites() {
   const { favorites } = useFavorites()
 
   return (
-    <div className="">
-      <h1 className="mb-7 text-5xl font-black">Favorites</h1>
+    <>
+      <h1 className="mb-5 text-xl font-black max-md:mt-5 max-md:text-center sm:text-2xl md:text-4xl lg:text-5xl">
+        Favorites
+      </h1>
       {favorites.length > 0 ? (
         <UserFavoritesList />
       ) : (
@@ -21,7 +23,7 @@ function Favorites() {
           page="favorites"
         />
       )}
-    </div>
+    </>
   )
 }
 

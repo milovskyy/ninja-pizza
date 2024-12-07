@@ -10,7 +10,7 @@ export const UserFavoritesList = () => {
 
   const favoritesToShow = sortOrderProductsByCategoryOrder(favorites)
   return (
-    <div className="mb-16 grid grid-cols-3 gap-1">
+    <div className="mb-4 grid w-full gap-2 sm:mb-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {favoritesToShow.map((product: ProductType) => (
         <MenuCard key={product.id} product={product} />
       ))}

@@ -11,7 +11,7 @@ export const AccountEmptyBlock = ({ title, subtitle, page }: Props) => {
   return (
     <div
       className={cn(
-        "grid w-full grid-cols-[2fr_3fr] items-center gap-5 rounded-3xl bg-white px-10 py-6",
+        "grid w-full flex-1 grid-cols-[2fr_3fr] items-center gap-1 rounded-3xl bg-white px-2 py-6 sm:px-2 lg:gap-5 lg:px-8",
       )}
     >
       <Image
@@ -22,8 +22,10 @@ export const AccountEmptyBlock = ({ title, subtitle, page }: Props) => {
       />
 
       <div className="flex flex-col gap-3">
-        <h2 className="text-4xl font-black">{title}</h2>
-        <p className="font-semibold text-stone-500">{subtitle}</p>
+        <h2 className="text-xl font-black md:text-2xl lg:text-4xl">{title}</h2>
+        <p className="font-semibold text-stone-500 max-lg:text-sm">
+          {subtitle}
+        </p>
       </div>
     </div>
   )
