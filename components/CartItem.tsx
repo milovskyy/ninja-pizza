@@ -21,7 +21,9 @@ export const CartItem = ({ item, setIsCartOpen }: Props) => {
 
   return (
     <div
-      className={cn("relative flex gap-3 rounded-3xl bg-stone-100 p-2 sm:p-4")}
+      className={cn(
+        "relative flex gap-2 rounded-3xl bg-stone-100 p-3 sm:gap-3 sm:p-4",
+      )}
     >
       <div
         onClick={() => removeProductFromCartAction(item)}

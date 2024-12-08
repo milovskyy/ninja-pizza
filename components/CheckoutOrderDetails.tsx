@@ -29,11 +29,11 @@ export const CheckoutOrderDetails = ({
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-2 bg-white first-line:pt-6">
-        <h2 className="mb-2 px-6 pt-6 text-xl font-bold">
+        <h2 className="p-3 text-xl font-bold xs:p-4 sm:mb-2 sm:p-6">
           {orderId ? `Order #${orderId}` : "Your order"}
         </h2>
 
-        <div className="flex flex-col gap-2 px-6">
+        <div className="flex flex-col gap-2 px-3 xs:px-4 sm:px-6">
           {cart?.map((item) => <CartItem key={item.id} item={item} />)}
         </div>
         <p className="mb-2 flex h-7 items-center justify-center p-1 pl-5 text-sm font-semibold text-stone-400">

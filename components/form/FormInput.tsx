@@ -30,7 +30,7 @@ export const FormInput = ({
       name={name}
       render={({ field }) => (
         <FormItem className="w-full">
-          <FormLabel className="text-sm font-normal text-stone-400">
+          <FormLabel className="text-xs font-normal text-stone-400 sm:text-sm">
             {label} {required && <span className="text-primary">*</span>}
           </FormLabel>
           <FormControl>
@@ -44,7 +44,7 @@ export const FormInput = ({
               }
               placeholder={placeholder}
               className={cn(
-                "mt-2 flex-1 rounded-lg border border-transparent bg-stone-100 px-4 py-2 text-base font-bold outline-none [appearance:textfield] placeholder:font-thin placeholder:tracking-wider",
+                "mt-2 flex-1 rounded-lg border border-transparent bg-stone-100 px-3 py-2 text-sm font-bold outline-none [appearance:textfield] placeholder:font-thin placeholder:tracking-wider sm:px-4 sm:text-base",
                 errors[name] && "border-red-300",
               )}
               {...field}

@@ -24,7 +24,7 @@ export const FormSelect = ({ name, label, array }: Props) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="mb-3 pl-1 text-sm text-stone-400">
+          <FormLabel className="mb-3 pl-1 text-xs text-stone-400 sm:text-sm">
             {label}
           </FormLabel>
           <Select

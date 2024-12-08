@@ -20,7 +20,7 @@ export const AccountNav = ({}: Props) => {
       <Link
         href="/account/orders"
         className={cn(
-          "flex cursor-pointer items-center gap-3 rounded-xl px-1 py-2 lg:px-3",
+          "flex cursor-pointer items-center gap-3 rounded-xl px-2 py-2 lg:px-3",
           subPath === "orders" && "bg-stone-100",
         )}
       >
@@ -30,7 +30,7 @@ export const AccountNav = ({}: Props) => {
       <Link
         href="/account/favorites"
         className={cn(
-          "flex cursor-pointer items-center gap-3 rounded-xl px-1 py-2 lg:px-3",
+          "flex cursor-pointer items-center gap-3 rounded-xl px-2 py-2 lg:px-3",
           subPath === "favorites" && "bg-stone-100",
         )}
       >
@@ -40,7 +40,7 @@ export const AccountNav = ({}: Props) => {
       <Link
         href="/account/address"
         className={cn(
-          "flex cursor-pointer items-center gap-3 rounded-xl px-1 py-2 lg:px-3",
+          "flex cursor-pointer items-center gap-3 rounded-xl px-2 py-2 lg:px-3",
           subPath === "address" && "bg-stone-100",
         )}
       >

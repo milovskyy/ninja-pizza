@@ -15,7 +15,7 @@ export const FormPaymentMethod = ({}: Props) => {
   const { control, watch } = useFormContext()
   const method = watch("payment")
   return (
-    <FormBlock title="Payment Method" className="grid grid-cols-2 gap-5">
+    <FormBlock title="Payment Method" className="flex flex-col gap-1">
       <div>
         <FormField
           control={control}
@@ -50,7 +50,7 @@ export const FormPaymentMethod = ({}: Props) => {
           )}
         />
         {method === "cash" && (
-          <div className="mt-5">
+          <div className="mt-3 w-1/2">
             <FormInput
               type="number"
               label="Get change for"

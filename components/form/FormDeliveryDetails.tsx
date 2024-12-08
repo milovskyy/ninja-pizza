@@ -24,7 +24,7 @@ export const FormDeliveryDetails = ({
     <FormBlock
       title="Delivery"
       subtitle="Don't forget to check the delivery zone before ordering"
-      className="flex flex-col justify-between gap-5"
+      className="flex flex-col justify-between gap-3 sm:gap-5"
       delivery={address ? false : true}
     >
       <DeliveryMethodToggle method={method} setMethod={setMethod} />

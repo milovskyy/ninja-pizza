@@ -180,9 +180,9 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
     <FormProvider {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="grid w-full grid-cols-2 gap-3"
+        className="flex w-full flex-col gap-3 lg:grid lg:grid-cols-2"
       >
-        <div className="flex flex-col gap-5 bg-white p-6">
+        <div className="flex flex-col gap-5 bg-white p-3 xs:p-4 sm:p-6">
           {!order && !user && <FormGoLogin />}
           <FormPersonalDetails />
           <FormDeliveryDetails

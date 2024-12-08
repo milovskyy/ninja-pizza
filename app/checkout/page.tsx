@@ -8,8 +8,8 @@ export default function Checkout() {
   return (
     <Container className="">
       <Navigation categoryName="Checkout" />
-      <div className="flex flex-col items-center px-3 pb-2">
-        <h1 className="mb-6 self-start text-3xl font-extrabold md:text-5xl">
+      <div className="flex flex-col items-center pb-2 md:px-1 lg:px-3">
+        <h1 className="mb-3 self-start text-2xl font-extrabold md:mb-6 md:text-4xl lg:text-5xl">
           Checkout
         </h1>
         <CheckoutForm />

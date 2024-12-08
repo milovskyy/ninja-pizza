@@ -56,16 +56,16 @@ export const FormAddressSelectModal = ({ userAddressList }: Props) => {
         Change
       </Button>
 
-      <DialogContent className="flex max-w-[500px] flex-col items-center justify-center rounded-none p-10 outline-none">
+      <DialogContent className="flex max-w-[500px] flex-col items-center justify-center rounded-none p-6 outline-none max-xs:gap-2 xs:p-10">
         <DialogHeader className="mb-2 gap-3">
-          <DialogTitle className="text-center text-3xl font-bold leading-snug">
+          <DialogTitle className="text-center text-xl font-bold leading-snug xs:text-2xl md:text-3xl">
             Choose delivery address
           </DialogTitle>
         </DialogHeader>
         <div className="flex w-full flex-col gap-2">
           {userAddressList.map((userAddress) => (
             <div
-              className="flex cursor-pointer items-center gap-5 rounded-3xl bg-stone-100 p-5"
+              className="flex cursor-pointer items-center gap-5 rounded-3xl bg-stone-100 px-4 py-3 xs:p-5"
               key={userAddress.id}
               onClick={() => setSelected(userAddress.id)}
             >

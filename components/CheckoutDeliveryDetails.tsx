@@ -23,12 +23,14 @@ export const CheckoutDeliveryDetails = ({ address }: Props) => {
   }
 
   return (
-    <div className={cn("flex flex-col gap-3")}>
+    <div className={cn("flex flex-col gap-2 sm:gap-3")}>
       {address ? (
         <FormInput label="Address" name="address" required max={40} />
       ) : (
         <>
-          <h3 className="font-semibold">Free delivery from 500 UAH</h3>
+          <h3 className="text-sm font-semibold sm:text-base">
+            Free delivery from 500 UAH
+          </h3>
           {userAddressList.length > 0 && (
             <FormAddressSelectBlock userAddressList={userAddressList} />
           )}
