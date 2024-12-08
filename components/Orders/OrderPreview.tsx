@@ -24,7 +24,7 @@ export const OrderPreview = ({ order, setDialogOpen }: Props) => {
     <div className="flex flex-1 items-center justify-center gap-4 px-5 py-1 font-semibold">
       <div
         className={cn(
-          "h-14 w-[105px] rounded-xl px-4 py-1 text-center",
+          "flex h-16 w-[105px] flex-col justify-center rounded-xl px-4 text-center",
           order.date === today ? "bg-emerald-100" : "",
         )}
       >
@@ -39,6 +39,7 @@ export const OrderPreview = ({ order, setDialogOpen }: Props) => {
         >
           {order.time === "The nearest time" ? "As Soon" : order.time}
         </div>
+        <div className="text-sm">#{order.id}</div>
       </div>
       <div
         className={cn(

@@ -6,7 +6,11 @@ type Props = {
 
 export const UserOrderProgressPickup = ({ status }: Props) => {
   return (
-    <div className={cn("grid grid-cols-[1fr_4fr_1fr]")}>
+    <div
+      className={cn(
+        "grid max-sm:grid-cols-[1fr_1fr_1fr] sm:grid-cols-[1fr_2fr_1fr] lg:grid-cols-[1fr_4fr_1fr] xl:grid-cols-[1fr_5fr_1fr]",
+      )}
+    >
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-center gap-2">
           <div className="flex-1"></div>
@@ -22,7 +26,7 @@ export const UserOrderProgressPickup = ({ status }: Props) => {
             })}
           ></div>
         </div>
-        <div className={cn("font-semibold")}>Order received</div>
+        <div className="font-semibold max-xs:text-sm">Order received</div>
       </div>
       {/* /////////////////////////// */}
       <div className="flex flex-col gap-2">
@@ -55,7 +59,7 @@ export const UserOrderProgressPickup = ({ status }: Props) => {
           ></div>
         </div>
         <div
-          className={cn("text-stone-400", {
+          className={cn("text-stone-400 max-xs:text-sm", {
             "font-semibold text-stone-950":
               status === "Confirmed" ||
               status === "Shipped" ||
@@ -86,7 +90,7 @@ export const UserOrderProgressPickup = ({ status }: Props) => {
           <div className="flex-1"></div>
         </div>
         <div
-          className={cn("text-stone-400", {
+          className={cn("text-stone-400 max-xs:text-sm", {
             "font-semibold text-stone-950":
               status === "Shipped" || status === "Delivered",
           })}

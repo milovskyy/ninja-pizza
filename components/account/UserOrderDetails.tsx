@@ -10,7 +10,7 @@ type Props = {
 
 export const UserOrderDetails = ({ order }: Props) => {
   return (
-    <div className={cn("mt-3 flex flex-col gap-3 px-20 py-5")}>
+    <div className={cn("mt-3 flex flex-col gap-3 px-3 py-5 xs:px-10 xl:px-20")}>
       <div className="text-semibold flex flex-col gap-2">
         <UserOrderDetailsRow text="Delivery Address:" value={order.address} />
         <UserOrderDetailsRow text="Delivery Method:" value={order.method} />

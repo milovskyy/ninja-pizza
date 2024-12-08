@@ -64,12 +64,15 @@ export async function updateUserAddress(
   return data
 }
 
-export async function updateUserFavorites(address: ProductType[], id: string) {
-  const data = await updateUserFavoritesApi(address, id)
+export async function updateUserFavorites(
+  favorites: ProductType[],
+  id: string,
+) {
+  const data = await updateUserFavoritesApi(favorites, id)
   return data
 }
 
-export async function updateUserCart(address: CartProductType[], id: string) {
-  const data = await updateUserCartApi(address, id)
+export async function updateUserCart(cart: CartProductType[], id: string) {
+  const data = await updateUserCartApi(cart, id)
   return data
 }

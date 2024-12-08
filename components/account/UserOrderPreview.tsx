@@ -29,15 +29,16 @@ export const UserOrderPreview = ({ order }: Props) => {
     toast.success("Products have been added to cart", {
       id: "clipboard",
     })
-    // parsedItems.forEach((item: CartProductType) => addProductToCartAction(item))
     addProductsToCartAction(parsedItems)
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-5 px-5 py-4">
-      <div className="font flex flex-1 items-center gap-4 max-sm:justify-between">
-        <div className="h-14 w-[120px] px-4 py-1">
-          <div className="text-start text-2xl font-bold"># {order.id}</div>
+    <div className="flex flex-1 flex-col gap-3 py-2 sm:gap-5 sm:px-1 sm:py-4 lg:px-5">
+      <div className="flex flex-1 items-center gap-1 px-2 max-sm:justify-between sm:gap-4">
+        <div className="h-14 w-[82px] py-1 max-sm:pl-1 sm:w-24 sm:px-1 lg:w-[120px] lg:px-4">
+          <div className="text-start text-2xl font-bold max-xs:text-lg">
+            # {order.id}
+          </div>
           <div className="text-start text-sm text-stone-400">{order.date}</div>
         </div>
         <Carousel
@@ -55,26 +56,31 @@ export const UserOrderPreview = ({ order }: Props) => {
           </CarouselContent>
         </Carousel>
 
-        <div className="flex w-14 flex-col gap-1 px-2 py-1">
-          <p className="text-start text-2xl font-bold">{itemsNumber}</p>
+        <div className="flex w-10 flex-col gap-1 py-1 sm:w-14 sm:px-2">
+          <p className="text-start text-2xl font-bold max-xs:text-lg">
+            {itemsNumber}
+          </p>
           <p className="text-start text-sm text-stone-400">Q-ty</p>
         </div>
-        <div className="flex w-[120px] flex-col gap-1 px-2 py-1">
+
+        <div className="flex w-24 flex-col gap-1 py-1 sm:w-[120px] sm:px-2">
           <div className="flex gap-1">
-            <p className="text-start text-2xl font-bold">{order.totalAmount}</p>
-            <p className="tex-sm text-stone-400">UAH</p>
+            <p className="text-start text-2xl font-bold max-xs:text-lg">
+              {order.totalAmount}
+            </p>
+            <p className="tex-sm text-stone-400 max-xs:text-xs">UAH</p>
           </div>
           <p className="text-start text-sm text-stone-400">Total</p>
         </div>
 
         <div
-          className="flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-primary pb-[2px]"
+          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-primary pb-[2px] sm:h-14 sm:w-14"
           onClick={handleAddToCart}
         >
           <LiaShoppingBagSolid size="28px" />
         </div>
       </div>
-      <div className="w-full px-2">
+      <div className="w-full px-2 max-xs:px-1">
         {order.method === "Delivery" ? (
           <UserOrderProgressDelivery status={order.status} />
         ) : (

@@ -6,7 +6,11 @@ type Props = {
 
 export const UserOrderProgressDelivery = ({ status }: Props) => {
   return (
-    <div className={cn("grid grid-cols-[1fr_3fr_3fr_1fr]")}>
+    <div
+      className={cn(
+        "grid grid-cols-4 sm:grid-cols-[1fr_2fr_2fr_1fr] xl:grid-cols-[1fr_3fr_3fr_1fr]",
+      )}
+    >
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-center gap-2">
           <div className="flex-1"></div>
@@ -22,7 +26,7 @@ export const UserOrderProgressDelivery = ({ status }: Props) => {
             })}
           ></div>
         </div>
-        <div className={cn("font-semibold")}>Order received</div>
+        <div className={cn("font-semibold max-xs:text-sm")}>Order received</div>
       </div>
       {/* /////////////////////////// */}
       <div className="flex flex-col gap-2">
@@ -55,7 +59,7 @@ export const UserOrderProgressDelivery = ({ status }: Props) => {
           ></div>
         </div>
         <div
-          className={cn("text-stone-400", {
+          className={cn("text-stone-400 max-xs:text-sm", {
             "font-semibold text-stone-950":
               status === "Confirmed" ||
               status === "Shipped" ||
@@ -90,8 +94,9 @@ export const UserOrderProgressDelivery = ({ status }: Props) => {
           ></div>
         </div>
         <div
-          className={cn("text-stone-400", {
-            "font-semibold text-stone-950": status === "Shipped",
+          className={cn("text-stone-400 max-xs:text-sm", {
+            "font-semibold text-stone-950":
+              status === "Shipped" || status === "Delivered",
           })}
         >
           Courier is on the way
@@ -118,7 +123,7 @@ export const UserOrderProgressDelivery = ({ status }: Props) => {
           <div className="flex-1"></div>
         </div>
         <div
-          className={cn("text-stone-400", {
+          className={cn("text-stone-400 max-xs:text-sm", {
             "font-semibold text-stone-950": status === "Delivered",
           })}
         >

@@ -53,7 +53,7 @@ export default async function RootLayout({
             },
           }}
         />
-        <SignInModal />
+        {!user?.id && <SignInModal />}
         <AppInitializer
           products={products}
           categories={categories}

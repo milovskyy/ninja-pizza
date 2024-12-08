@@ -62,30 +62,35 @@ export const AppInitializer = ({
     }
   }, [setShowModal])
 
-  const supabase = createUserClient()
-  const { addOrder, deleteOrder, updateOrder } = useOrders()
+  // SAVING SUPABASE REALTIME
+  // const supabase = createUserClient()
+  // const { addOrder, deleteOrder, updateOrder } = useOrders()
+  // const channels = supabase
+  //   .channel("custom-all-channel")
+  //   .on(
+  //     "postgres_changes",
+  //     { event: "*", schema: "public", table: "orders" },
+  //     (payload: any) => {
+  //       const { new: newRec, old } = payload
+  //       const order = { ...newRec, items: JSON.stringify(newRec.items) }
 
-  const channels = supabase
-    .channel("custom-all-channel")
-    .on(
-      "postgres_changes",
-      { event: "*", schema: "public", table: "orders" },
-      (payload: any) => {
-        const { new: newRec, old } = payload
-        const order = { ...newRec, items: JSON.stringify(newRec.items) }
+  //       if (payload.eventType == "INSERT") {
+  //         addOrder(order as OrderType)
+  //       }
+  //       if (payload.eventType == "DELETE") {
+  //         deleteOrder(old.id)
+  //       }
+  //       if (payload.eventType == "UPDATE") {
+  //         updateOrder(old.id, order as OrderType)
+  //       }
+  //     },
+  //   )
+  //   .subscribe()
+  // SAVING SUPABASE REALTIME
 
-        if (payload.eventType == "INSERT") {
-          addOrder(order as OrderType)
-        }
-        if (payload.eventType == "DELETE") {
-          deleteOrder(old.id)
-        }
-        if (payload.eventType == "UPDATE") {
-          updateOrder(old.id, order as OrderType)
-        }
-      },
-    )
-    .subscribe()
+  // if (user?.cart && JSON.stringify(value) !== JSON.stringify(user?.cart))
+  //   setValue(user?.cart)
+  // if (value && value?.length > 0 && user?.cart?.length === 0) setCart(value)
 
   useEffect(() => {
     setProducts(products)
@@ -94,6 +99,7 @@ export const AppInitializer = ({
     setOrders(orders)
     setUser(user)
     setFavorites(user?.favorites || [])
+    // setCart(user?.cart || value || [])
     setCart(
       user?.cart && user?.cart?.length > 0
         ? user.cart

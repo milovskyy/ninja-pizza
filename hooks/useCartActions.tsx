@@ -10,37 +10,27 @@ export const useCartActions = () => {
 
   const [value, setValue] = useLocalStorage("cart")
 
-  const addProductsToCartAction = (cartProducts: CartProductType[]) => {
-    setValue((prevCart: any) => {
-      let updatedCart = [...prevCart] // Копируем текущую корзину
+  const addProductsToCartAction = (orderProducts: CartProductType[]) => {
+    let updatedCart = [...cart]
 
-      cartProducts.forEach((cartProduct) => {
-        // Проверяем, есть ли каждый товар в корзине
-        const isInCart = updatedCart.some((item) => item.id === cartProduct.id)
+    orderProducts.forEach((orderProduct) => {
+      const isInCart = updatedCart.some((item) => item.id === orderProduct.id)
 
-        if (!isInCart) {
-          // Если товара нет в корзине, добавляем его
-          updatedCart = [...updatedCart, cartProduct]
-          add(cartProduct) // Обновляем корзину в контексте
-        } else {
-          // Если товар уже есть в корзине, увеличиваем его количество
-          updatedCart = updatedCart.map((item) =>
-            item.id === cartProduct.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item,
-          )
-          increase(cartProduct) // Увеличиваем количество в контексте
-        }
-      })
-
-      // Если пользователь авторизован, обновляем данные на сервере
-      if (user?.id) {
-        updateUserCart(updatedCart, user.id)
+      if (!isInCart) {
+        updatedCart = [...updatedCart, orderProduct]
+        add(orderProduct)
+      } else {
+        updatedCart = updatedCart.map((item) =>
+          item.id === orderProduct.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        )
+        increase(orderProduct)
       }
-
-      // Возвращаем обновлённый массив корзины
-      return updatedCart
     })
+
+    setValue(updatedCart)
+    if (user?.id) updateUserCart(updatedCart, user.id)
   }
 
   const addProductToCartAction = (cartProduct: CartProductType) => {
