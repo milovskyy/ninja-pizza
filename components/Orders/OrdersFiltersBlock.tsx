@@ -18,30 +18,6 @@ export const OrdersFiltersBlock = ({}: Props) => {
   const pathname = usePathname()
   const router = useRouter()
 
-  // const handleFilterStatus = (status: string) => {
-  //   if (selectedStatus === status) {
-  //     router.replace(`${pathname}`, { scroll: false })
-  //     setSelectedStatus("")
-  //     return
-  //   }
-  //   const params = new URLSearchParams(searchParams)
-  //   params.set("status", status)
-  //   router.replace(`${pathname}?${params.toString()}`, { scroll: false })
-  //   setSelectedStatus(status)
-  // }
-
-  // const handleFilterTime = (filter: string) => {
-  //   if (selectedTime === filter) {
-  //     router.replace(`${pathname}`, { scroll: false })
-  //     setSelectedTime("")
-  //     return
-  //   }
-  //   const params = new URLSearchParams(searchParams)
-  //   params.set("time", filter)
-  //   router.replace(`${pathname}?${params.toString()}`, { scroll: false })
-  //   setSelectedTime(filter)
-  // }
-
   const handleUpdateFilter = (type: string, value: string) => {
     const params = new URLSearchParams(searchParams)
 
@@ -63,7 +39,7 @@ export const OrdersFiltersBlock = ({}: Props) => {
   }
 
   return (
-    <div className="mb-5 flex w-full justify-between p-1">
+    <div className="mb-5 flex w-full justify-between max-md:flex-col max-sm:gap-4 lg:p-1">
       <OrdersFilter
         handleFilter={handleUpdateFilter}
         selected={selectedStatus}

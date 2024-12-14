@@ -34,7 +34,7 @@ export const UserOrderPreview = ({ order }: Props) => {
 
   return (
     <div className="flex flex-1 flex-col gap-3 py-2 sm:gap-5 sm:px-1 sm:py-4 lg:px-5">
-      <div className="flex flex-1 items-center gap-1 px-2 max-sm:justify-between sm:gap-4">
+      <div className="flex flex-1 items-center gap-1 px-2 max-sm:justify-between sm:gap-2">
         <div className="h-14 w-[82px] py-1 max-sm:pl-1 sm:w-24 sm:px-1 lg:w-[120px] lg:px-4">
           <div className="text-start text-2xl font-bold max-xs:text-lg">
             # {order.id}

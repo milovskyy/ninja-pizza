@@ -66,7 +66,6 @@ export const getCategoryColor = async function (category: string) {
     .maybeSingle()
 
   if (error) {
-    // throw new Error("Categories could not be loaded")
     throw new Error(error.message)
   }
 

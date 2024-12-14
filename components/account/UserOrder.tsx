@@ -16,19 +16,17 @@ type Props = {
 
 export const UserOrder = ({ order }: Props) => {
   return (
-    <>
-      <AccordionItem
-        value={order.id.toString()}
-        className="flex flex-col rounded-2xl bg-white"
-      >
-        <AccordionTrigger>
-          <UserOrderPreview order={order} />
-        </AccordionTrigger>
-        <AccordionContent>
-          <UserOrderDetails order={order} />
-          <UserOrderCartDetails order={order} />
-        </AccordionContent>
-      </AccordionItem>
-    </>
+    <AccordionItem
+      value={order.id.toString()}
+      className="flex flex-col rounded-2xl bg-white"
+    >
+      <AccordionTrigger>
+        <UserOrderPreview order={order} />
+      </AccordionTrigger>
+      <AccordionContent>
+        <UserOrderDetails order={order} />
+        <UserOrderCartDetails order={order} />
+      </AccordionContent>
+    </AccordionItem>
   )
 }

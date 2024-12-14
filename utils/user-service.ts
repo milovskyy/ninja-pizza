@@ -119,7 +119,7 @@ export const updateUserCartApi = async function (
   return { success: true, data }
 }
 
-export const getUserOrders = async function (number: string) {
+export const getUserOrders = async function (number: string, id: string) {
   const supabase = createServerClient()
   const {
     data: { user },
@@ -129,13 +129,22 @@ export const getUserOrders = async function (number: string) {
   if (error) return null
 
   if (user?.id) {
-    const { data, error } = await supabase
-      .from("orders")
-      .select("*")
-      .eq("phone", number)
+    const [
+      { data: numberOrders, error: numberError },
+      { data: userOrders, error: userError },
+    ] = await Promise.all([
+      supabase.from("orders").select("*").eq("phone", number),
+      supabase.from("orders").select("*").eq("user", id),
+    ])
 
-    if (error) throw new Error(error.message)
+    console.log(userOrders)
+    if (numberError || userError)
+      throw new Error(numberError?.message || userError?.message)
 
-    return data
+    const orders = [...numberOrders, ...userOrders].filter(
+      (item, index, self) => index === self.findIndex((t) => t.id === item.id),
+    )
+
+    return orders
   }
 }

@@ -21,17 +21,17 @@ export const OrderPreview = ({ order, setDialogOpen }: Props) => {
   const images = items.map((item: CartProductType) => item.image)
   const today = format(new Date(), "dd-MM-yy")
   return (
-    <div className="flex flex-1 items-center justify-center gap-4 px-5 py-1 font-semibold">
+    <div className="flex flex-1 items-center justify-center px-2 py-1 font-semibold max-sm:justify-between xs:gap-2 md:px-3 lg:gap-4 lg:px-5">
       <div
         className={cn(
-          "flex h-16 w-[105px] flex-col justify-center rounded-xl px-4 text-center",
+          "flex h-16 w-[65px] flex-col justify-center rounded-xl text-center text-sm xs:w-[85px] xs:text-base md:w-[105px] md:px-4",
           order.date === today ? "bg-emerald-100" : "",
         )}
       >
         <div className="">{order.date}</div>
         <div
           className={cn(
-            "w-full rounded-lg text-center text-sm",
+            "w-full rounded-lg text-center text-xs xs:text-sm",
             order.time === "The nearest time" && order.date === today
               ? "bg-red-100"
               : "",
@@ -39,18 +39,19 @@ export const OrderPreview = ({ order, setDialogOpen }: Props) => {
         >
           {order.time === "The nearest time" ? "As Soon" : order.time}
         </div>
-        <div className="text-sm">#{order.id}</div>
+        <div className="text-xs xs:text-sm">#{order.id}</div>
       </div>
       <div
         className={cn(
-          "flex h-14 w-[88px] items-center justify-center rounded-xl p-3",
-          order.method === "Delivery" ? "bg-amber-100" : "",
+          "flex h-14 w-[65px] items-center justify-center rounded-xl max-md:text-sm md:w-[88px] md:p-3",
+          order.method === "Delivery" && "bg-amber-100",
         )}
       >
         {order.method}
       </div>
+
       <Carousel
-        className="w-full flex-1"
+        className="w-full flex-1 max-sm:hidden"
         opts={{
           align: "start",
         }}
@@ -64,14 +65,16 @@ export const OrderPreview = ({ order, setDialogOpen }: Props) => {
         </CarouselContent>
       </Carousel>
 
-      <div className="w-[48px] p-2 text-center text-[18px]">{itemsNumber}</div>
-      <div className="w-[94px] whitespace-nowrap p-2 text-center text-[18px]">
+      <div className="w-5 text-center text-base sm:w-[25px] md:w-[48px] md:p-2 md:text-lg">
+        {itemsNumber}
+      </div>
+      <div className="w-[60px] whitespace-nowrap text-center text-base sm:w-[65px] md:w-[94px] md:p-2 md:text-lg">
         {order.totalAmount} ₴
       </div>
 
       <div
         className={cn(
-          "w-[120px] rounded-xl border border-transparent p-2 text-center font-black",
+          "w-[84px] rounded-xl border border-transparent p-2 text-center text-xs font-black xs:text-sm sm:w-[96px] md:w-[120px] md:text-base",
           order.status === "Pending" &&
             "border-orange-700 bg-orange-50 text-orange-600",
           order.status === "Cancelled" &&

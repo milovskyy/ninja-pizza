@@ -1,13 +1,14 @@
 import { AccountEmptyBlock } from "@/components/account/AccountEmptyBlock"
 import { UserOrdersList } from "@/components/account/UserOrdersList"
 import { getUser, getUserOrders } from "@/utils/user-service"
+import { notFound } from "next/navigation"
 
 export const revalidate = 1000
 async function Orders() {
   const user = await getUser()
-  const orders = (await getUserOrders(user.number.slice(2))) || []
+  const orders = (await getUserOrders(user.number.slice(2), user.id)) || []
   if (!user) {
-    return null
+    return notFound()
   }
   return (
     <>

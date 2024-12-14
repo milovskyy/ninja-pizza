@@ -54,6 +54,7 @@ export const Order = ({ order }: Props) => {
           <OrderDetails order={order} setStatus={setStatus} />
         </AccordionContent>
       </AccordionItem>
+
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>

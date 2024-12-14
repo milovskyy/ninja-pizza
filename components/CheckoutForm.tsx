@@ -141,7 +141,7 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
       comment: data.comment,
       payment: data.payment,
       paymentID: "",
-      user: "1366ca27-ac43-4f9e-ac8d-d6193773bfa7",
+      user: user?.id || "",
       status: "Pending",
       items: JSON.stringify(cart),
       totalAmount:

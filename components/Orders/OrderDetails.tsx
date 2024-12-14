@@ -2,7 +2,6 @@ import { CartProductType, OrderType } from "@/app/_types/Types"
 import { sortOrderProductsByCategoryOrder } from "@/utils/helperFunction"
 import { cn } from "@/utils/utils"
 import Image from "next/image"
-import { Button } from "../ui/button"
 import { OrderEditModal } from "./OrderEditModal"
 
 type Props = {
@@ -13,19 +12,28 @@ type Props = {
 export const OrderDetails = ({ order, setStatus }: Props) => {
   const items = sortOrderProductsByCategoryOrder(JSON.parse(order.items))
   return (
-    <div className={cn("grid grid-cols-[2fr_1fr] gap-5 px-8 py-3")}>
+    <div
+      className={cn(
+        "flex flex-col gap-3 px-2 py-3 xs:px-3 sm:px-5 md:grid md:grid-cols-[3fr_2fr] md:px-3 lg:grid-cols-[2fr_1fr] lg:gap-5 lg:px-8",
+      )}
+    >
       <div className="flex w-full flex-col gap-2 overflow-hidden px-1">
         {items.map((item: CartProductType) => (
-          <div className="flex items-center justify-start gap-5" key={item.id}>
+          <div
+            className="flex items-center justify-start gap-3 lg:gap-5"
+            key={item.id}
+          >
             <Image width={70} height={70} src={item.image} alt="img" />
-            <p className="text-lg font-semibold">
-              <span className="text-xl font-bold">{item.quantity}</span>
+            <p className="text-sm font-semibold xs:text-base lg:text-lg">
+              <span className="text-base font-bold xs:text-lg lg:text-xl">
+                {item.quantity}
+              </span>
               <span className="mx-1">x</span> {item.name}
             </p>
           </div>
         ))}
       </div>
-      <div className="flex flex-col gap-3 overflow-hidden p-1 text-base font-semibold">
+      <div className="flex flex-col gap-3 overflow-hidden text-wrap p-1 px-1 text-sm font-semibold lg:text-base">
         <div className="flex items-center justify-between">
           <p>Created:</p>
           <p>{order.created}</p>
@@ -72,7 +80,7 @@ export const OrderDetails = ({ order, setStatus }: Props) => {
         {order.comment && (
           <div className="flex items-center justify-between">
             <p>Comment:</p>
-            <p className="w-[75%] max-w-[75%] shrink-0 overflow-hidden text-ellipsis text-end">
+            <p className="w-[70%] max-w-[70%] shrink-0 overflow-hidden text-ellipsis text-end">
               {order.comment}
             </p>
           </div>

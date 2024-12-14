@@ -11,7 +11,7 @@ export const OrderConfirmation = ({ order }: Props) => {
   return (
     <Accordion
       type="multiple"
-      className="mb-5 flex w-full flex-col gap-3 bg-stone-100 pb-10"
+      className="flex w-full flex-col gap-3 bg-stone-100 lg:pb-10"
     >
       <UserOrder key={order.id} order={order} />
     </Accordion>
