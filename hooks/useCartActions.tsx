@@ -5,7 +5,8 @@ import { updateUserCart } from "@/utils/actions"
 import { useLocalStorage } from "react-use"
 
 export const useCartActions = () => {
-  const { add, cart, increase, decrease, remove, deleteCart } = useCart()
+  const { add, setCart, cart, increase, decrease, remove, deleteCart } =
+    useCart()
   const { user } = useUser()
 
   const [value, setValue] = useLocalStorage("cart")
@@ -18,17 +19,16 @@ export const useCartActions = () => {
 
       if (!isInCart) {
         updatedCart = [...updatedCart, orderProduct]
-        add(orderProduct)
       } else {
         updatedCart = updatedCart.map((item) =>
           item.id === orderProduct.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + orderProduct.quantity }
             : item,
         )
-        increase(orderProduct)
       }
     })
 
+    setCart(updatedCart)
     setValue(updatedCart)
     if (user?.id) updateUserCart(updatedCart, user.id)
   }

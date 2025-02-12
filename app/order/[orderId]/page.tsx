@@ -1,15 +1,15 @@
+import { notFound } from "next/navigation"
+
 import { Container } from "@/components/Container"
 import AppFooter from "@/components/footer/AppFooter"
 
 import MobileAppBanner from "@/components/MobileAppBanner"
 import Navigation from "@/components/Navigation"
 
-import { cn } from "@/utils/utils"
 import { getOrder } from "@/utils/order-service"
 
 import { OrderConfirmation } from "@/components/OrderConfirmation"
 import { OrderConfirmationHeading } from "@/components/OrderConfirmationHeading"
-import { notFound } from "next/navigation"
 
 type PropsType = {
   params: { orderId: string }
@@ -25,7 +25,7 @@ export default async function Page({ params }: PropsType) {
   if (!order) return notFound()
 
   return (
-    <Container className="flex flex-col">
+    <Container className="str flex flex-col">
       <Navigation categoryName={`Order #${orderId}`} />
       <OrderConfirmationHeading id={orderId} />
 

@@ -17,7 +17,6 @@ import {
   updateUserCartApi,
   updateUserFavoritesApi,
 } from "./user-service"
-import { AddressType } from "@/components/account/UpdateAddressModal"
 
 export type AuthType = {
   phone: string

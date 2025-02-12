@@ -26,10 +26,10 @@ export const UserOrderPreview = ({ order }: Props) => {
 
   const handleAddToCart = (e: any) => {
     e.preventDefault()
+    addProductsToCartAction(parsedItems)
     toast.success("Products have been added to cart", {
       id: "clipboard",
     })
-    addProductsToCartAction(parsedItems)
   }
 
   return (

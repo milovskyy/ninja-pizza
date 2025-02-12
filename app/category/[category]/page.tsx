@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation"
 
+import { getCategoryColor, getProductsByCategory } from "@/utils/data-service"
+import { cn } from "@/utils/utils"
+
 import { Container } from "@/components/Container"
 import AppFooter from "@/components/footer/AppFooter"
 import MenuCategory from "@/components/MenuCategory"
 import MenuCategories from "@/components/MenuCategories"
 import MobileAppBanner from "@/components/MobileAppBanner"
 import Navigation from "@/components/Navigation"
-
-import { getCategoryColor, getProductsByCategory } from "@/utils/data-service"
-import { cn } from "@/utils/utils"
 
 type PropsType = {
   params: { category: string }

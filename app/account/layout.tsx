@@ -1,3 +1,6 @@
+import { ReactNode } from "react"
+import type { Metadata } from "next"
+
 import { AccountLogOut } from "@/components/account/AccountLogOut"
 import { AccountNav } from "@/components/account/AccountNav"
 import { UpdateInfo } from "@/components/account/UpdateInfoBlock"
@@ -6,8 +9,6 @@ import AppFooter from "@/components/footer/AppFooter"
 import MenuCategories from "@/components/MenuCategories"
 import MobileAppBanner from "@/components/MobileAppBanner"
 import Navigation from "@/components/Navigation"
-import type { Metadata } from "next"
-import { ReactNode } from "react"
 
 export const metadata: Metadata = {
   title: "Account",

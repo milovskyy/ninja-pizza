@@ -1,7 +1,9 @@
+import { notFound } from "next/navigation"
+
+import { getUser, getUserOrders } from "@/utils/user-service"
+
 import { AccountEmptyBlock } from "@/components/account/AccountEmptyBlock"
 import { UserOrdersList } from "@/components/account/UserOrdersList"
-import { getUser, getUserOrders } from "@/utils/user-service"
-import { notFound } from "next/navigation"
 
 export const revalidate = 1000
 async function Orders() {

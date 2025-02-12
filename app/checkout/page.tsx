@@ -15,7 +15,7 @@ export default function Checkout() {
         <CheckoutForm />
       </div>
 
-      {/* <CheckoutModal /> */}
+      <CheckoutModal />
 
       <AppFooter />
     </Container>

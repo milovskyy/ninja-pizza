@@ -34,11 +34,11 @@ export const OrderEditModal = ({ order, setStatus }: Props) => {
     <div className="mt-5 flex justify-end">
       <Dialog onOpenChange={cartOnDialogOpen} open={isopenModal}>
         <DialogTrigger asChild>
-          <Button className="sell-end w-24 rounded-xl bg-stone-200 py-3 font-bold">
+          <Button className="w-24 rounded-xl bg-stone-200 py-3 font-bold">
             Edit Order
           </Button>
         </DialogTrigger>
-        <DialogContent className="h-[800px] w-full max-w-7xl overflow-auto">
+        <DialogContent className="h-full w-full max-w-7xl overflow-auto lg:h-[800px]">
           <CheckoutForm
             order={order}
             setIsopenModal={cartOnDialogOpen}

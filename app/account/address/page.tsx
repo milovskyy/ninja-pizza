@@ -1,7 +1,8 @@
+import { getUser } from "@/utils/user-service"
+
 import { AccountEmptyBlock } from "@/components/account/AccountEmptyBlock"
 import { UpdateAddressModal } from "@/components/account/UpdateAddressModal"
 import { UserDeliveryAddressList } from "@/components/account/UserDeliveryAddressList"
-import { getUser } from "@/utils/user-service"
 
 export const revalidate = 1000
 async function Address() {

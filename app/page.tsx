@@ -4,7 +4,6 @@ import MapComponent from "../components/MapComponent"
 import FullMenu from "../components/FullMenu"
 import AppFooter from "../components/footer/AppFooter"
 import { Container } from "@/components/Container"
-import MainCarousel from "../components/MainCarousel"
 import MainSwiper from "@/components/MainSwiper"
 
 export default function Home() {
@@ -13,11 +12,8 @@ export default function Home() {
       <MainSwiper />
       <MainAbout />
       <FullMenu />
-
       {/* <MapComponent /> */}
-
       <MobileAppBanner />
-
       <div className="py-16 text-center">Best Pizza Ever!</div>
       <AppFooter />
     </Container>
