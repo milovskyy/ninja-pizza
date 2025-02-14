@@ -11,7 +11,7 @@ export const CartEmpty = ({ setIsCartOpen }: Props) => {
   return (
     <div
       className={cn(
-        "flex h-full flex-col items-center justify-center gap-3 bg-white px-6 py-10",
+        "flex h-full flex-col items-center justify-center gap-3 bg-white px-6 py-7",
       )}
     >
       <h1 className="text-center text-xl font-bold tracking-wide text-stone-950">

@@ -23,7 +23,7 @@ export const Cart = ({ setIsCartOpen }: Props) => {
         <h2 className="px-3 pt-3 text-base font-bold sm:px-6 sm:pt-6 sm:text-xl">
           Your order
         </h2>
-        <div className="flex max-h-[390px] flex-col gap-2 overflow-auto px-3 pb-2 sm:h-[472px] sm:max-h-[472px] sm:px-6">
+        <div className="flex max-h-[390px] flex-col gap-2 overflow-auto px-3 pb-2 sm:max-h-[472px] sm:min-h-[240px] sm:px-6">
           {cart?.map((item) => (
             <CartItem key={item.id} item={item} setIsCartOpen={setIsCartOpen} />
           ))}
@@ -33,7 +33,7 @@ export const Cart = ({ setIsCartOpen }: Props) => {
         <div className="gap2 flex flex-col">
           <h3 className="text-sm font-medium text-stone-600">Order amount:</h3>
           <div className="flex gap-2">
-            <div className="xs:text-xl text-[18px] font-bold text-stone-900">
+            <div className="text-[18px] font-bold text-stone-900 xs:text-xl">
               {cartTotalPrice}
             </div>
             <div className="text-sm font-medium text-stone-600">UAH</div>
