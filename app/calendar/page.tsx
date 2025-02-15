@@ -139,28 +139,32 @@ export default function Calendar() {
             <div>занято</div>
             {bookings.length > 0 && (
               <div className="flex flex-col">
-                {bookings.map((slot) => (
-                  // <div key={booking.start} className="text-red-500">
-                  //   {booking.start} - {booking.end}
-                  // </div>
-                  <div
-                    className={cn(
-                      "cursor-pointer",
-                      bookings.some((b) => b.start === slot.start) &&
-                        "bg-red-200",
-                    )}
-                    key={slot.start}
-                    onClick={() =>
-                      setBookings(
-                        bookings.some((b) => b.start === slot.start)
-                          ? bookings.filter((b) => b.start !== slot.start)
-                          : [...bookings, slot],
-                      )
-                    }
-                  >
-                    {slot.start} - {slot.end}
-                  </div>
-                ))}
+                {bookings
+                  .sort(
+                    (a, b) => timeToMinutes(a.start) - timeToMinutes(b.start),
+                  )
+                  .map((slot) => (
+                    // <div key={booking.start} className="text-red-500">
+                    //   {booking.start} - {booking.end}
+                    // </div>
+                    <div
+                      className={cn(
+                        "cursor-pointer",
+                        bookings.some((b) => b.start === slot.start) &&
+                          "bg-red-200",
+                      )}
+                      key={slot.start}
+                      onClick={() =>
+                        setBookings(
+                          bookings.some((b) => b.start === slot.start)
+                            ? bookings.filter((b) => b.start !== slot.start)
+                            : [...bookings, slot],
+                        )
+                      }
+                    >
+                      {slot.start} - {slot.end}
+                    </div>
+                  ))}
               </div>
             )}
           </div>
