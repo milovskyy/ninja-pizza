@@ -16,27 +16,6 @@ export default function News() {
       >
         <p>No News Yet</p>
       </div>
-      <div>
-        <a
-          title=""
-          target="_blank"
-          href="https://drive.google.com/file/d/1Ae7fKRchCbGMf3Io-3h3aMl14MU0LKqZ/view?usp=share_link"
-        >
-          Я приймаю правила та умови студії. Ознайомитись з правилами можна за
-          посиланням натиснувши на це повідомленння
-        </a>
-        <div className="my-10">
-          Я приймаю{" "}
-          <a
-            title=""
-            target="_blank"
-            href="https://drive.google.com/file/d/1Ae7fKRchCbGMf3Io-3h3aMl14MU0LKqZ/view?usp=share_link"
-          >
-            <span className="my-10 underline">правила та умови</span>
-          </a>{" "}
-          студії
-        </div>
-      </div>
 
       <MobileAppBanner />
       <AppFooter />
