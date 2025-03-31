@@ -14,7 +14,6 @@ export default function Home() {
       <FullMenu />
       {/* <MapComponent /> */}
       <MobileAppBanner />
-      <div className="py-16 text-center">Best Pizza Ever!</div>
       <AppFooter />
     </Container>
   )

@@ -26,7 +26,6 @@ export const UpdateAddressRadioGroup = ({}: Props) => {
                 defaultValue={field.value}
                 className="flex flex-col gap-0"
               >
-                {/*  */}
                 <FormItem className="flex items-center space-x-3 space-y-0 py-2">
                   <FormControl>
                     <RadioGroupItem value="Home" className="" />
@@ -35,7 +34,6 @@ export const UpdateAddressRadioGroup = ({}: Props) => {
                     Home
                   </FormLabel>
                 </FormItem>
-                {/*  */}
                 <FormItem className="flex items-center space-x-3 space-y-0 py-2">
                   <FormControl>
                     <RadioGroupItem value="Work" className="" />
@@ -44,7 +42,6 @@ export const UpdateAddressRadioGroup = ({}: Props) => {
                     Work
                   </FormLabel>
                 </FormItem>
-                {/*  */}
                 <FormItem className="flex items-center space-x-3 space-y-0 py-2">
                   <FormControl>
                     <RadioGroupItem value="Location" className="" />

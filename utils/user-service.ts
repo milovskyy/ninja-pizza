@@ -94,8 +94,6 @@ export const updateUserFavoritesApi = async function (
     return { success: false, message: error.message }
   }
 
-  // revalidatePath("/account/favorites")
-
   return { success: true, data }
 }
 

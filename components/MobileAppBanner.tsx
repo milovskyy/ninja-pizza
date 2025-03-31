@@ -10,7 +10,6 @@ function MobileAppBanner() {
         </p>
         <MobileAppIcons className="h-[32px] w-[115px] sm:h-[40px] sm:w-[145px]" />
       </div>
-      {/*  */}
       <div className="self-center max-lg:h-full max-lg:w-full max-md:hidden lg:self-end lg:px-2">
         <div className="relative aspect-video self-end">
           <Image

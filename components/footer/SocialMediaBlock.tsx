@@ -6,21 +6,21 @@ function SocialMediaBlock() {
     <div className="flex md:gap-2">
       <Link
         title="Telegram"
-        href="/facebook"
+        href="/"
         className="px-2 font-semibold text-stone-500 hover:text-stone-900"
       >
         <SiTelegram size="24px" />
       </Link>
       <Link
         title="Facebook"
-        href="/facebook"
+        href="/"
         className="px-2 font-semibold text-stone-500 hover:text-stone-900"
       >
         <SiFacebook size="24px" />
       </Link>
       <Link
         title="Instagram"
-        href="/facebook"
+        href="/"
         className="px-2 font-semibold text-stone-500 hover:text-stone-900"
       >
         <SiInstagram size="24px" />

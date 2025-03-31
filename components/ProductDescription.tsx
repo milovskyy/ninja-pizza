@@ -59,8 +59,6 @@ export const ProductDescription = ({ product }: Props) => {
     ?.map((ing) => allIngredients.find((i) => i.name === ing))
     .filter((item) => item !== undefined) as IngredientType[]
 
-  // ...... ДОБАВИТЬ СЮДА СКЕЛЕТОН (ШАДСН) ПРИ ЗАГРУЗКЕ. А ТО ЕСТЬ ПУСТОЕ МЕСТО
-
   return (
     <div className="mt-3 flex w-full items-center">
       <div

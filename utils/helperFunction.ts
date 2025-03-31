@@ -186,23 +186,3 @@ export const sortOrdersByDateTime = (
 
   return data
 }
-// ;[
-//   { name: "Event A", date: "16-10-24", time: "The nearest time" },
-//   { name: "Event B", date: "14-10-24", time: "The nearest time" },
-//   { name: "Event C", date: "14-10-24", time: "10:30" },
-//   { name: "Event D", date: "14-10-24", time: "The nearest time" },
-//   { name: "Event E", date: "16-10-24", time: "19:30" },
-//   { name: "Event F", date: "14-10-24", time: "17:30" },
-//   { name: "Event G", date: "16-10-24", time: "12:30" },
-//   { name: "Event G", date: "16-10-24", time: "The nearest time" },
-// ],
-// ;[
-//   { name: "Event B", date: "14-10-24", time: "The nearest time" },
-//   { name: "Event D", date: "14-10-24", time: "The nearest time" },
-//   { name: "Event C", date: "14-10-24", time: "10:30" },
-//   { name: "Event F", date: "14-10-24", time: "17:30" },
-//   { name: "Event A", date: "16-10-24", time: "The nearest time" },
-//   { name: "Event G", date: "16-10-24", time: "The nearest time" },
-//   { name: "Event G", date: "16-10-24", time: "12:30" },
-//   { name: "Event E", date: "16-10-24", time: "19:30" },
-// ]

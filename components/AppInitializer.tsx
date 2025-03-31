@@ -62,7 +62,6 @@ export const AppInitializer = ({
     }
   }, [setShowModal])
 
-  // SAVING SUPABASE REALTIME
   const supabase = createUserClient()
   const { addOrder, deleteOrder, updateOrder } = useOrders()
   const channels = supabase
@@ -89,11 +88,6 @@ export const AppInitializer = ({
       },
     )
     .subscribe()
-  // SAVING SUPABASE REALTIME
-
-  // if (user?.cart && JSON.stringify(value) !== JSON.stringify(user?.cart))
-  //   setValue(user?.cart)
-  // if (value && value?.length > 0 && user?.cart?.length === 0) setCart(value)
 
   useEffect(() => {
     setProducts(products)
@@ -102,7 +96,7 @@ export const AppInitializer = ({
     setOrders(orders)
     setUser(user)
     setFavorites(user?.favorites || [])
-    // setCart(user?.cart || value || [])
+
     setCart(
       user?.cart && user?.cart?.length > 0
         ? user.cart

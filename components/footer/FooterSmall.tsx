@@ -25,7 +25,6 @@ export const FooterSmall = () => {
       </div>
 
       <div className="mb-10 flex justify-between gap-10 pl-3">
-        {/* <div className="mb-10 flex justify-between gap-10 pl-3"> */}
         <div className="flex flex-col justify-between gap-5">
           <WebsiteMap />
           <div className="flex flex-col gap-3 px-2">
@@ -48,7 +47,6 @@ export const FooterSmall = () => {
           </div>
         </div>
       </div>
-      {/* <div className="grid grid-cols-2 gap-x-4 xs:gap-x-16"> */}
 
       <div className="mb-5 flex flex-col items-center justify-center gap-4 border-t border-t-stone-200 pt-6">
         <Link

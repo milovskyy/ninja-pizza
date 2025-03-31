@@ -28,7 +28,6 @@ export const UserOrderProgressDelivery = ({ status }: Props) => {
         </div>
         <div className={cn("font-semibold max-xs:text-sm")}>Order received</div>
       </div>
-      {/* /////////////////////////// */}
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-center gap-2">
           <div
@@ -69,7 +68,6 @@ export const UserOrderProgressDelivery = ({ status }: Props) => {
           Order is being prepared
         </div>
       </div>
-      {/*  /////////////////////////*/}
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-center gap-2">
           <div
@@ -102,7 +100,6 @@ export const UserOrderProgressDelivery = ({ status }: Props) => {
           Courier is on the way
         </div>
       </div>
-      {/*  /////////////////////////*/}
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-center gap-2">
           <div

@@ -46,7 +46,6 @@ export default function MainSwiper() {
           "--swiper-pagination-bullet-inactive-color": "black",
           "--swiper-pagination-bullet-inactive-size": "3px",
           "--swiper-pagination-bullet-inactive-opacity": "1",
-          // "--swiper-pagination-bullet-size": "8px",
         }}
         pagination={{
           clickable: true,
@@ -56,11 +55,7 @@ export default function MainSwiper() {
         className="mb-1 overflow-auto pb-5 md:mb-5"
       >
         {slides.map((slide) => (
-          <SwiperSlide
-            // onClick={() => router.push(`/news/${slide.link}`)}
-            key={slide.url}
-            className=""
-          >
+          <SwiperSlide key={slide.url} className="">
             <div className="flex justify-center">
               <Image
                 src={slide.url}

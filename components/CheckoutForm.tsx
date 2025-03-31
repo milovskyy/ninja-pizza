@@ -65,8 +65,6 @@ export const CheckoutForm = ({ order, setIsopenModal, setStatus }: Props) => {
     0,
   )
 
-  // address: order?.address || "",
-
   const form = useForm({
     resolver: zodResolver(
       order

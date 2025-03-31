@@ -47,11 +47,7 @@ export default function MainCarousel() {
     >
       <CarouselContent className="">
         {slides.map((slide) => (
-          <CarouselItem
-            // onClick={() => router.push(`/news/${slide.link}`)}
-            key={slide.url}
-            className=""
-          >
+          <CarouselItem key={slide.url} className="">
             <div className="relative flex h-[300px] w-[600px] justify-center xl:h-[500px] xl:w-full">
               <Image
                 src={slide.url}
